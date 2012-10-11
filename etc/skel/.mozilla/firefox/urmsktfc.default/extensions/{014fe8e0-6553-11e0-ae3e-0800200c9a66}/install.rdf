@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+  <em:type>4</em:type>   
+  <em:id>{014fe8e0-6553-11e0-ae3e-0800200c9a66}</em:id>
+    <em:version>2.6</em:version>
+  
+<!-- Target Application this extension can install into, 
+         with minimum and maximum supported versions. --> 
+
+<em:targetApplication>
+    <Description>
+      <!-- Firefox's UUID // DO NOT CHANGE-->
+      <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+       <!-- End Firefox's UUID // -->
+      <em:minVersion>4.0b9pre</em:minVersion>
+      <em:maxVersion>14.*</em:maxVersion>
+    </Description>
+  </em:targetApplication>
+  <em:unpack>true</em:unpack>
+  
+  <!-- Front End MetaData -->
+  <em:name>FT SilverGlow</em:name>
+  <em:description>Smooth silver theme for Firefox</em:description>
+  <em:creator>Stefano</em:creator>
+  <em:contributor>Stefano</em:contributor>
+  <em:homepageURL>http://www.stefrosselli.com</em:homepageURL>
+  <em:internalName>ftsilverglow</em:internalName>
+  </Description>      
+
+</RDF>

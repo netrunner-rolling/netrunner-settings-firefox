@@ -1,0 +1,70 @@
+netrunner-artwork-firefox (1.0.10) dryland-se; urgency=low
+
+  * Removed Tabmix Plus
+  * Removed Easylist from AdBlockPlus
+  * Upgraded AdBlockPlus
+  * Removed Oxygen KDE Options
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 21 Aug 2012 11:47:00 +0100
+
+netrunner-artwork-firefox (1.0.9) dryland-se; urgency=low
+
+  * Manage torrent file association
+  * Change initial homepage
+
+ -- Frederic Gaudet <fred@linuxmint.com>  Thu, 19 Jul 2012 10:12:31 +0200
+
+netrunner-artwork-firefox (1.0.8) dryland-se; urgency=low
+
+  * Initial dryland-se release
+
+ -- Fred <fred@linuxmint.com>  Fri, 13 Apr 2012 10:10:28 +0200
+
+netrunner-artwork-firefox (1.0.7) dryland; urgency=low
+
+  * Misc fixes
+
+ -- Phoenix <phoenix@netrunner-os.com>  Wed,  22 Dec 2011 16:16:00 +0000
+
+netrunner-artwork-firefox (1.0.6) dryland; urgency=low
+
+  * Misc fixes
+
+ -- Phoenix <phoenix@netrunner-os.com>  Wed,  22 Dec 2011 16:16:00 +0000
+
+netrunner-artwork-firefox (1.0.5) dryland; urgency=low
+
+  * Misc fixes
+
+ -- Phoenix <phoenix@netrunner-os.com>  Wed,  11 Dec 2011 18:16:00 +0000
+
+netrunner-artwork-firefox (1.0.4) dryland; urgency=low
+
+  * Misc fixes
+
+ -- Phoenix <phoenix@netrunner-os.com>  Wed,  11 Dec 2011 18:16:00 +0000
+
+netrunner-artwork-firefox (1.0.3) dryland; urgency=low
+
+  * Fix toolbar
+
+ -- Phoenix <phoenix@netrunner-os.com>  Wed,  5 Dec 2011 10:48:00 +0000
+
+netrunner-artwork-firefox (1.0.2) dryland; urgency=low
+
+  * Fix extensions
+
+ -- Phoenix <phoenix@netrunner-os.com>  Wed,  2 Dec 2011 16:48:00 +0000
+
+netrunner-artwork-firefox (1.0.1) dryland; urgency=low
+
+  * Add extensions
+
+ -- Phoenix <phoenix@netrunner-os.com>  Wed,  2 Dec 2011 16:48:00 +0000
+
+netrunner-artwork-firefox (1.0.0) dryland; urgency=low
+
+  * Initial release
+
+ -- Phoenix <phoenix@netrunner-os.com>  Wed,  30 Nov 2011 13:48:00 +0000
+

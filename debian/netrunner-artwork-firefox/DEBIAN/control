@@ -1,0 +1,9 @@
+Package: netrunner-artwork-firefox
+Version: 1.0.10
+Architecture: all
+Maintainer: Phoenix <phoenix@netrunner-os.com>
+Installed-Size: 80821
+Section: admin
+Priority: optional
+Description: Default configuration for Firefox in Netrunner
+ Default configuration for Firefox in Netrunner

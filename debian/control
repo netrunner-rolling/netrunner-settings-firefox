@@ -1,0 +1,11 @@
+Source: netrunner-artwork-firefox
+Section: admin
+Priority: optional
+Maintainer: Phoenix <phoenix@netrunner-os.com>
+Build-Depends: debhelper (>= 5)
+Standards-Version: 3.7.2
+
+Package: netrunner-artwork-firefox
+Architecture: all
+Description: Default configuration for Firefox in Netrunner
+ Default configuration for Firefox in Netrunner
