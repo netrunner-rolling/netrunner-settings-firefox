@@ -178,6 +178,21 @@ Core.prototype.unregisterProbe=function(probe) {
 	}
 }
 
+Core.prototype.handleYTVisitorCookie=function(channel,request) {
+	if(this.pref.getCharPref("yt-visitor-cookie")=="remove") {
+		if(/^https?:\/\/[^\/]*\.?youtube\.[^\/\.]+/.test(request.name)) {
+			try {
+				var cookies=channel.getRequestHeader("Cookie");
+				var cookies2=cookies.replace(/ ?VISITOR_INFO1_LIVE=[^;]*;?/,"");
+				if(cookies!=cookies2)
+					channel.setRequestHeader("Cookie",cookies2,false);
+			} catch(e) {
+				// ignore if cookie not set
+			}
+		}
+	}
+}
+
 Core.prototype.observe=function(subject, topic , data) {
 	//dump("[Core] observe("+subject+","+topic+","+data+")\n");	
 	try {
@@ -186,8 +201,10 @@ Core.prototype.observe=function(subject, topic , data) {
 			var channel=subject.QueryInterface(Components.interfaces.nsIHttpChannel);
 			if(channel.requestMethod!="GET")
 				return;
+			
 		    var request=subject.QueryInterface(Components.interfaces.nsIRequest);
 			//dump("[Core] observe/http-on-modify-request "+request.name+"\n");
+		    this.handleYTVisitorCookie(channel,request);
 		    if(this.listMgr.checkCurrentURL(request.name)) {
 				return;
 		    }
@@ -1199,6 +1216,21 @@ Core.prototype.updateSystemMenu=function(menupopup) {
 			method: "expireMenu",
 			cond: "showExpireMenu",
 	   	},
+		{ 
+			type: "separator"
+		},
+		{ 
+			label: Util.getText("menu.play-strategy-games"),
+			type: "opentab",
+			url: "http://www.jocly.com/jocly/dwhelper",
+			image: "chrome://dwhelper/skin/jocly-16x16.png",
+		},
+		{ 
+			label: Util.getText("menu.couponshelper"),
+			type: "opentab",
+			url: "https://addons.mozilla.org/firefox/addon/couponshelper/",
+			image: "chrome://dwhelper/skin/couponshelper-16x16.png",
+		},
 		{ 
 			label: Util.getText("menu.about"),
 			image: "chrome://dwhelper/skin/icon-about.png",

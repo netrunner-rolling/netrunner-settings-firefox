@@ -142,14 +142,20 @@ YTLCItem.prototype.handle=function(document,window,item) {
 										for(var j in fmts) {
 											var parts=fmts[j].split("&");
 											var fmts2={}
+											var sig=null;
 											for(var k in parts) {
 												var pline=decodeURIComponent(parts[k]);
+												var m=/^sig=(.*)/.exec(pline);
+												if(m)
+													sig=m[1];
 												var match2=/^(.*?)=(.*)$/.exec(pline);
 												if(match2 && match2.length==3) {
 													fmts2[match2[1]]=match2[2];
 												}
 											}
 											if(fmts2['itag'] && fmts2['url']) {
+												if(sig)
+													fmts2['url']+="&signature="+sig;
 												availFormats[fmts2['itag']]=fmts2['url'];
 											}
 										}										

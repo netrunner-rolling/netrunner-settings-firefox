@@ -10,7 +10,7 @@ locale  dwhelper de jar:chrome/dwhelper.jar!/locale/de/
 locale  dwhelper es-ES jar:chrome/dwhelper.jar!/locale/es-ES/
 locale  dwhelper fi jar:chrome/dwhelper.jar!/locale/fi/
 locale  dwhelper fr jar:chrome/dwhelper.jar!/locale/fr/
-locale  dwhelper he-IL jar:chrome/dwhelper.jar!/locale/he-IL/
+locale  dwhelper he jar:chrome/dwhelper.jar!/locale/he/
 locale  dwhelper it jar:chrome/dwhelper.jar!/locale/it/
 locale  dwhelper ja-JP jar:chrome/dwhelper.jar!/locale/ja-JP/
 locale  dwhelper ko-KR jar:chrome/dwhelper.jar!/locale/ko-KR/

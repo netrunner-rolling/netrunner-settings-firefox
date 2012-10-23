@@ -1,8 +1,9 @@
 content   proxtube                 jar:chrome/proxtube.jar!/content/ contentaccessible=yes
-skin      proxtube   classic/1.0   jar:chrome/proxtube.jar!/skin/
+skin proxtube classic/1.0 jar:chrome/proxtube.jar!/skin/all/
+skin proxtube-os classic/1.0 jar:chrome/proxtube.jar!/skin/unix/
+skin proxtube-os classic/1.0 jar:chrome/proxtube.jar!/skin/win/ os=WINNT
+skin proxtube-os classic/1.0 jar:chrome/proxtube.jar!/skin/mac/ os=Darwin
 locale    proxtube   en-US         jar:chrome/proxtube.jar!/locale/en-US/
 locale    proxtube   de            jar:chrome/proxtube.jar!/locale/de/
-
-
 overlay   chrome://browser/content/browser.xul   chrome://proxtube/content/ff-overlay.xul
 style chrome://global/content/customizeToolbar.xul chrome://proxtube/skin/overlay.css
