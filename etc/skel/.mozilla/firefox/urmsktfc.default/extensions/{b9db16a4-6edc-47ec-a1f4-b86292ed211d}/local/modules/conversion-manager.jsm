@@ -482,7 +482,7 @@ ConvertMgr.prototype.execConvert=function(dEntry) {
 					                                  .get("TmpD", Components.interfaces.nsIFile);
 					this.tmpFile.append("passlogfile.tmp");
 					this.tmpFile.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0666);
-					this.convertPass(["-pass","1","-passlogfile",file.path].concat(this.dEntry.args));
+					this.convertPass(["-pass","1","-passlogfile",this.tmpFile.path].concat(this.dEntry.args));
 				} else {
 					this.pass=0;
 					this.convertPass(this.dEntry.args);
@@ -1341,6 +1341,10 @@ ConvertMgr.prototype.defaultConfigs = [
      {
     	 value: 'mp3/-ab 128k -f mp3',
     	 title: 'MP3'
+     },
+     {
+    	 value: 'mp3/-ab 192k -f mp3',
+    	 title: 'MP3 192k'
      },
 ]; 
 

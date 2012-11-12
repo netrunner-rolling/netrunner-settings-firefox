@@ -61,6 +61,7 @@ MLProbe.prototype.handleDocument=function(document,window) {
 		var hitCount=0;
 		var hitCountMax=this.pref.getIntPref("medialink-max-hits");
 		var aNodes=Util.xpGetNodes(dom,".//a[@href]",{});
+
 		for(var i=0;i<aNodes.length;i++) {
 			var aNode=aNodes[i];
 			var href=aNode.getAttribute("href");
@@ -113,10 +114,10 @@ MLProbe.prototype.handleDocument=function(document,window) {
 			var desc=this.getDesc(document,Util.getText("menu.alllinkstomedia")+" ("+mediaNodes.length+")",mediaNodes);
 			this.core.addEntryForDocument(desc,document,window);
 		}
-		return;
 	} catch(e) {
 		dump("!!! [MLProbe] handleDocument("+document.URL+"): "+Util.exceptionDesc(e)+"\n");
 	}
+	return null;
 }
 
 MLProbe.prototype.getDesc = function(document,label,nodes) {

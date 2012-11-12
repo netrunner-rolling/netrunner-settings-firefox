@@ -298,6 +298,7 @@ YTProbe.prototype.handleDocument=function(document,window) {
 	} catch(e) {
 		dump("!!! [YTProbe] handleDocument("+document.URL+"): "+e+"\n");
 	}
+	return null;
 }
 
 YTProbe.prototype.handleRequest=function(request) {

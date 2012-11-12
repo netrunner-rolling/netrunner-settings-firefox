@@ -105,12 +105,18 @@ Core.prototype.registerMenu=function(menupopup,menutype) {
 				}
 				Listener.prototype={
 					handleEvent: function(event) {
-						if(event.target==this.button)
-							this.core.buttonClicked(this.window);
+						var button=this.button.get();
+						var window=this.window.get();
+						if(button && window) {
+							if(event.target==button)
+								this.core.buttonClicked(window);
+						}
 					}
 				}
 				var buttonTarget=button.QueryInterface(Components.interfaces.nsIDOMEventTarget);
-				buttonTarget.addEventListener("command",new Listener(this,menupopup.ownerDocument.defaultView,button),false,false);
+				buttonTarget.addEventListener("command",new Listener(this,
+						Components.utils.getWeakReference(menupopup.ownerDocument.defaultView),
+						Components.utils.getWeakReference(button)),false,false);
 				button.setAttribute("dh-installed-handler","true");
 			}
 		}
@@ -320,7 +326,7 @@ Core.prototype.cleanupEntriesForDocument=function(document,window) {
 					if(entry.has("window") && entry.has("document")) {
 						var entryWindow=entry.get("window",Components.interfaces.nsIDOMWindow);
 						var entryDocument=entry.get("document",Components.interfaces.nsIDOMDocument);
-						if(entryWindow==window && entryDocument==document) {
+						if(entryWindow==window && (entryDocument==document || this.getTopDocument(entryDocument)==document)) {
 							tbd.push(entry);
 						}
 					}
@@ -480,17 +486,20 @@ Core.prototype.updateMenus=function(document,window) {
 								}
 								MouseListener.prototype={
 									handleEvent: function(event) {
-										switch(event.type) {
-											case "mouseover":
-												this.probeListener.mouseOver(this.entry);
-												break;
-											case "mouseout":
-												this.probeListener.mouseOut(this.entry);
-												break;
+										var entry=this.entry.get();
+										if(entry) {
+											switch(event.type) {
+												case "mouseover":
+													this.probeListener.mouseOver(entry);
+													break;
+												case "mouseout":
+													this.probeListener.mouseOut(entry);
+													break;
+											}
 										}
 									}
 								}
-								var listener=new MouseListener(entry,entry.get("mouse-listener",Components.interfaces.dhIProbeMouseListener));
+								var listener=new MouseListener(Components.utils.getWeakReference(entry),entry.get("mouse-listener",Components.interfaces.dhIProbeMouseListener));
 								var eventTarget=menuitem.QueryInterface(Components.interfaces.nsIDOMEventTarget);
 								eventTarget.addEventListener("mouseover",listener,false,false);
 								eventTarget.addEventListener("mouseout",listener,false,false);
@@ -610,16 +619,19 @@ Core.prototype.makeDownloadMenuitem=function(menupopup,entry,classes) {
 	CommandListener.prototype={
 		handleEvent: function(event) {
 			if(event.type=="command") {
-				var key=(event.ctrlKey?CTRL_KEY:0) |
-					(event.shiftKey?SHIFT_KEY:0) |
-					(event.altKey?ALT_KEY:0) |
-					(event.metaKey?META_KEY:0);
-				this.commandListener.handleCommand(this.entry,key);
+				var entry=this.entry.get();
+				if(entry) {
+					var key=(event.ctrlKey?CTRL_KEY:0) |
+						(event.shiftKey?SHIFT_KEY:0) |
+						(event.altKey?ALT_KEY:0) |
+						(event.metaKey?META_KEY:0);
+					this.commandListener.handleCommand(entry,key);
+				}
 			}
 		}
 	}
-	var commandListener=new CommandListener(entry,this);
-	eventTarget.addEventListener("command",commandListener,false,false);
+	var commandListener=new CommandListener(Components.utils.getWeakReference(entry),this);
+	//eventTarget.addEventListener("command",commandListener,false,false);
 	return menuitem;
 }
 
@@ -637,7 +649,9 @@ Core.prototype.makeDownloadMenu=function(menupopup,entry,classes) {
 	CommandListener.prototype={
 		handleEvent: function(event) {
 			try {
-				this.core.processEntry(this.processor,this.entry);
+				var entry=this.entry.get();
+				if(entry)
+					this.core.processEntry(this.processor,entry);
 			} catch(e) {
 				dump("!!! [Core/DownloadMenu] CommandListener.handleEvent(): "+e+"\n");
 			}
@@ -654,11 +668,11 @@ Core.prototype.makeDownloadMenu=function(menupopup,entry,classes) {
 			menuitem1.setAttribute("tooltiptext",processor.description);
 			menuitem1.setAttribute("class","download-processor-entry");
 			menuitem1.QueryInterface(Components.interfaces.nsIDOMEventTarget).
-				addEventListener("command",new CommandListener(this,entry,processor),false,false);
+				addEventListener("command",new CommandListener(this,Components.utils.getWeakReference(entry),processor),false,false);
 			menupopup1.appendChild(menuitem1);
 		}
 	}
-
+	
 	var eventTarget=menuitem.QueryInterface(Components.interfaces.nsIDOMEventTarget);
 	var label=Util.getPropsString(entry,"label");
 	if(label)
@@ -671,7 +685,7 @@ Core.prototype.makeDownloadMenu=function(menupopup,entry,classes) {
 	}
 	
 	function ClickListener(entry,commandListener) {
-		this.entry=Components.utils.getWeakReference(entry);
+		this.entry=entry;
 		this.commandListener=commandListener;
 	}
 	ClickListener.prototype={
@@ -689,8 +703,8 @@ Core.prototype.makeDownloadMenu=function(menupopup,entry,classes) {
 			}
 		}
 	}
-	var commandListener=new ClickListener(entry,this);
-	eventTarget.addEventListener("click",commandListener,false,false);	
+	var commandListener=new ClickListener(Components.utils.getWeakReference(entry),this);
+	eventTarget.addEventListener("click",commandListener,false,false);
 	return menuitem;
 }
 

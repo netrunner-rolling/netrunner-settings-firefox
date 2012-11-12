@@ -25,7 +25,7 @@
   </RDF:Description>
   <RDF:Description RDF:about="urn:mimetype:externalApplication:application/x-deb"
                    NC:prettyName="gdebi"
-                   NC:path="/usr/bin/gdebi" />
+                   NC:path="/usr/bin/gdebi-gtk" />
   <RDF:Description RDF:about="urn:scheme:handler:mailto"
                    NC:alwaysAsk="false">
     <NC:possibleApplication RDF:resource="urn:handler:web:https://mail.google.com/mail/?extsrc=mailto&amp;url=%s"/>

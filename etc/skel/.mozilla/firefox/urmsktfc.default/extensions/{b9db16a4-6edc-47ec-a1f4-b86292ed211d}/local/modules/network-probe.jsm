@@ -71,6 +71,7 @@ NetProbe.prototype.init=function() {
 }
 	
 NetProbe.prototype.handleDocument=function(document,window) {
+	return null;
 }
 
 NetProbe.prototype.handleRequest=function(request) {
