@@ -30,9 +30,7 @@
                    screenX="262"
                    screenY="179" />
   <RDF:Description RDF:about="chrome://browser/content/browser.xul#main-window"
-                   sizemode="maximized"
-                   width="994"
-                   height="695" />
+                    />
   <RDF:Description RDF:about="chrome://browser/content/preferences/preferences.xul">
     <NC:persist RDF:resource="chrome://browser/content/preferences/preferences.xul#BrowserPreferences"/>
   </RDF:Description>
