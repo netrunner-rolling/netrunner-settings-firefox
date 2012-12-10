@@ -1,3 +1,9 @@
+netrunner-artwork-firefox (1.0.12) dryland-te; urgency=low
+
+  * Webapps not maximized
+
+ -- Frédéric Gaudet <fred@linuxmint.com>  Mon, 10 Dec 2012 21:52:08 +0100
+
 netrunner-artwork-firefox (1.0.11) dryland-te; urgency=low
 
   * Initial Dryland TE release
