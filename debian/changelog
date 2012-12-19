@@ -1,3 +1,9 @@
+netrunner-artwork-firefox (1.0.13) dryland-te; urgency=low
+
+  * Update against version 17.0.1 
+
+ -- Frédéric Gaudet <fred@linuxmint.com>  Wed, 19 Dec 2012 13:11:09 +0100
+
 netrunner-artwork-firefox (1.0.12) dryland-te; urgency=low
 
   * Webapps not maximized
