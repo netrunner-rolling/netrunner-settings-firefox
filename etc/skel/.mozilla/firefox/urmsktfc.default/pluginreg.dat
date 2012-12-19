@@ -8,7 +8,7 @@ Arch:x86-gcc3:$
 IcedTeaPlugin.so:$
 /usr/lib/jvm/java-7-openjdk-i386/jre/lib/i386/IcedTeaPlugin.so:$
 :$
-1352222884000:0:1:$
+1352222884000:0:5:$
 The <a href="http://icedtea.classpath.org/wiki/IcedTea-Web">IcedTea-Web Plugin</a> executes Java applets.:$
 IcedTea-Web Plugin (using IcedTea-Web 1.3 (1.3-1ubuntu1.1)):$
 36
@@ -51,32 +51,95 @@ IcedTea-Web Plugin (using IcedTea-Web 1.3 (1.3-1ubuntu1.1)):$
 libflashplayer.so:$
 /opt/netrunner-flashplugin-11/libflashplayer.so:$
 :$
-1351715636000:0:1:$
+1351715636000:0:5:$
 Shockwave Flash 11.2 r202:$
 Shockwave Flash:$
 2
 0:application/x-shockwave-flash:Shockwave Flash:swf:$
 1:application/futuresplash:FutureSplash Player:spl:$
-libnpgtpo3dautoplugin.so:$
-/opt/google/talkplugin/libnpgtpo3dautoplugin.so:$
-:$
-1351528348000:0:1:$
-Google Talk Plugin Video Accelerator version:0.1.44.23:$
-Google Talk Plugin Video Accelerator:$
-1
-0:application/vnd.gtpo3d.auto:O3D MIME::$
 libnpgoogletalk.so:$
 /opt/google/talkplugin/libnpgoogletalk.so:$
 :$
-1351528348000:0:1:$
+1351528348000:0:5:$
 Version: 3.10.2.0:$
 Google Talk Plugin:$
 1
 0:application/googletalk:Google Talk Plugin:googletalk:$
+libnpgtpo3dautoplugin.so:$
+/opt/google/talkplugin/libnpgtpo3dautoplugin.so:$
+:$
+1351528348000:0:5:$
+Google Talk Plugin Video Accelerator version:0.1.44.23:$
+Google Talk Plugin Video Accelerator:$
+1
+0:application/vnd.gtpo3d.auto:O3D MIME::$
+gecko-mediaplayer-dvx.so:$
+/usr/lib/mozilla/plugins/gecko-mediaplayer-dvx.so:$
+:$
+1348798148000:0:5:$
+<a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.6<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
+DivX Browser Plug-In:$
+2
+0:video/divx:DivX Media Format:divx:$
+1:video/vnd.divx:DivX Media Format:divx:$
+gecko-mediaplayer-qt.so:$
+/usr/lib/mozilla/plugins/gecko-mediaplayer-qt.so:$
+:$
+1348798148000:0:5:$
+<a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.6<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
+QuickTime Plug-in 7.6.9:$
+6
+0:video/quicktime:Quicktime:mov:$
+1:video/x-quicktime:Quicktime:mov:$
+2:image/x-quicktime:Quicktime:mov:$
+3:video/quicktime:Quicktime:mp4:$
+4:video/quicktime:Quicktime - Session Description Protocol:sdp:$
+5:application/x-quicktimeplayer:Quicktime:mov:$
+gecko-mediaplayer-rm.so:$
+/usr/lib/mozilla/plugins/gecko-mediaplayer-rm.so:$
+:$
+1348798148000:0:5:$
+<a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.6<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
+RealPlayer 9:$
+7
+0:audio/x-pn-realaudio:RealAudio:ram,rm:$
+1:application/vnd.rn-realmedia:RealMedia:rm:$
+2:application/vnd.rn-realaudio:RealAudio:ra,ram:$
+3:video/vnd.rn-realvideo:RealVideo:rv:$
+4:audio/x-realaudio:RealAudio:ra:$
+5:audio/x-pn-realaudio-plugin:RealAudio:rpm:$
+6:application/smil:SMIL:smil:$
+gecko-mediaplayer-wmp.so:$
+/usr/lib/mozilla/plugins/gecko-mediaplayer-wmp.so:$
+:$
+1348798148000:0:5:$
+<a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.6<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
+Windows Media Player Plug-in:$
+20
+0:application/asx:Media Files:*:$
+1:video/x-ms-asf-plugin:Media Files:*:$
+2:video/x-msvideo:AVI:avi,*:$
+3:video/msvideo:AVI:avi,*:$
+4:application/x-mplayer2:Media Files:*:$
+5:video/x-mplayer2:Media Files:*:$
+6:application/x-ms-wmv:Microsoft WMV video:wmv,*:$
+7:video/x-ms-asf:Media Files:asf,asx,*:$
+8:video/x-ms-asx:Media Files:asx,*:$
+9:video/x-ms-wm:Media Files:wm,*:$
+10:video/x-ms-wmv:Microsoft WMV video:wmv,*:$
+11:audio/x-ms-wmv:Windows Media:wmv,*:$
+12:video/x-ms-wmp:Windows Media:wmp,*:$
+13:application/x-ms-wmp:Windows Media:wmp,*:$
+14:video/x-ms-wvx:Windows Media:wvx,*:$
+15:audio/x-ms-wax:Windows Media:wax,*:$
+16:audio/x-ms-wma:Windows Media:wma,*:$
+17:application/x-drm-v2:Windows Media:asx,*:$
+18:audio/wav:Microsoft wave file:wav,*:$
+19:audio/x-wav:Microsoft wave file:wav,*:$
 gecko-mediaplayer.so:$
 /usr/lib/mozilla/plugins/gecko-mediaplayer.so:$
 :$
-1348798148000:0:1:$
+1348798148000:0:5:$
 <a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.6<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
 mplayerplug-in is now gecko-mediaplayer 1.0.6:$
 46
@@ -126,68 +189,5 @@ mplayerplug-in is now gecko-mediaplayer 1.0.6:$
 43:audio/x-webm:WEBM audio File:webm:$
 44:video/webm:WEBM video File:webm:$
 45:video/x-webm:WEBM video File:webm:$
-gecko-mediaplayer-wmp.so:$
-/usr/lib/mozilla/plugins/gecko-mediaplayer-wmp.so:$
-:$
-1348798148000:0:1:$
-<a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.6<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
-Windows Media Player Plug-in:$
-20
-0:application/asx:Media Files:*:$
-1:video/x-ms-asf-plugin:Media Files:*:$
-2:video/x-msvideo:AVI:avi,*:$
-3:video/msvideo:AVI:avi,*:$
-4:application/x-mplayer2:Media Files:*:$
-5:video/x-mplayer2:Media Files:*:$
-6:application/x-ms-wmv:Microsoft WMV video:wmv,*:$
-7:video/x-ms-asf:Media Files:asf,asx,*:$
-8:video/x-ms-asx:Media Files:asx,*:$
-9:video/x-ms-wm:Media Files:wm,*:$
-10:video/x-ms-wmv:Microsoft WMV video:wmv,*:$
-11:audio/x-ms-wmv:Windows Media:wmv,*:$
-12:video/x-ms-wmp:Windows Media:wmp,*:$
-13:application/x-ms-wmp:Windows Media:wmp,*:$
-14:video/x-ms-wvx:Windows Media:wvx,*:$
-15:audio/x-ms-wax:Windows Media:wax,*:$
-16:audio/x-ms-wma:Windows Media:wma,*:$
-17:application/x-drm-v2:Windows Media:asx,*:$
-18:audio/wav:Microsoft wave file:wav,*:$
-19:audio/x-wav:Microsoft wave file:wav,*:$
-gecko-mediaplayer-rm.so:$
-/usr/lib/mozilla/plugins/gecko-mediaplayer-rm.so:$
-:$
-1348798148000:0:1:$
-<a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.6<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
-RealPlayer 9:$
-7
-0:audio/x-pn-realaudio:RealAudio:ram,rm:$
-1:application/vnd.rn-realmedia:RealMedia:rm:$
-2:application/vnd.rn-realaudio:RealAudio:ra,ram:$
-3:video/vnd.rn-realvideo:RealVideo:rv:$
-4:audio/x-realaudio:RealAudio:ra:$
-5:audio/x-pn-realaudio-plugin:RealAudio:rpm:$
-6:application/smil:SMIL:smil:$
-gecko-mediaplayer-qt.so:$
-/usr/lib/mozilla/plugins/gecko-mediaplayer-qt.so:$
-:$
-1348798148000:0:1:$
-<a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.6<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
-QuickTime Plug-in 7.6.9:$
-6
-0:video/quicktime:Quicktime:mov:$
-1:video/x-quicktime:Quicktime:mov:$
-2:image/x-quicktime:Quicktime:mov:$
-3:video/quicktime:Quicktime:mp4:$
-4:video/quicktime:Quicktime - Session Description Protocol:sdp:$
-5:application/x-quicktimeplayer:Quicktime:mov:$
-gecko-mediaplayer-dvx.so:$
-/usr/lib/mozilla/plugins/gecko-mediaplayer-dvx.so:$
-:$
-1348798148000:0:1:$
-<a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.6<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
-DivX Browser Plug-In:$
-2
-0:video/divx:DivX Media Format:divx:$
-1:video/vnd.divx:DivX Media Format:divx:$
 
 [INVALID]
