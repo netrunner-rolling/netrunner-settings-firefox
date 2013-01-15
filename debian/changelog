@@ -1,3 +1,9 @@
+netrunner-artwork-firefox (1.0.14) dryland-te; urgency=low
+
+  * Update against version 18.0
+
+ -- Frédéric Gaudet <fred@linuxmint.com>  Tue, 15 Jan 2013 14:54:38 +0100
+
 netrunner-artwork-firefox (1.0.13) dryland-te; urgency=low
 
   * Update against version 17.0.1 
