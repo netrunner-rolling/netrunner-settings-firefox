@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<searchresults total_results="4">
+                    <addon id="6180">
+  <name>English (South African) Language Pack</name>
+  <type id="5">Language Pack (Application)</type>
+  <guid>langpack-en-ZA@firefox.mozilla.org</guid>
+  <slug>english-south-african-language</slug>
+  <version>19.0</version>
+  <status id="4">Fully Reviewed</status>
+  <authors>
+        <author id="169373">
+      <name>Dwayne Bailey</name>
+      <link>https://addons.mozilla.org/en-US/firefox/user/169373/?src=api</link>
+    </author><author id="182568">
+      <name>Translate.org.za</name>
+      <link>https://addons.mozilla.org/en-US/firefox/user/182568/?src=api</link>
+    </author><author id="4757633">
+      <name>Mozilla</name>
+      <link>https://addons.mozilla.org/en-US/firefox/user/4757633/?src=api</link>
+    </author>      </authors>
+  <summary>Adds South African English language support to the Firefox browser. All interfaces will be translated into South African English.</summary>
+  <description>Translation of the Firefox user interface into South African English by &lt;a href=&#34;http://outgoing.mozilla.org/v1/ebf7b3ba66c87e5449a05dcf913d243b92346271/http%3A//translate.org.za.&#34;&gt;http://translate.org.za.&lt;/a&gt;
+
+If you find missing translations or incorrect translations then visit &lt;a href=&#34;http://outgoing.mozilla.org/v1/145f17ae8f2887d14fb2ee13dfd3452575bcb599/http%3A//pootle.translate.org.za&#34;&gt;http://pootle.translate.org.za&lt;/a&gt; and please contribute a correction.</description><license>
+    <name>Mozilla Public License, version 1.1</name>
+    <url>http://www.mozilla.org/MPL/MPL-1.1.html</url>
+  </license>  <icon size="64">https://addons.cdn.mozilla.net/img/uploads/addon_icons/6/6180-64.png?modified=1358380391</icon>
+  <icon size="32">https://addons.cdn.mozilla.net/img/uploads/addon_icons/6/6180-32.png?modified=1358380391</icon>
+  <compatible_applications><application>
+      <name>Firefox</name>
+      <application_id>1</application_id>
+      <min_version>19.0</min_version>
+      <max_version>19.0.*</max_version>
+      <appID>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</appID>
+    </application></compatible_applications>
+  <all_compatible_os><os>ALL</os></all_compatible_os>
+  <eula></eula><previews></previews><rating>0</rating>
+  <learnmore>https://addons.mozilla.org/en-US/firefox/addon/english-south-african-language/?src=api</learnmore><install hash="sha256:ff7536028b1a605523d37d07e7b388e769bfde5c9f879bb219762afb67131b8e"
+    os="ALL"
+    size="308182">https://addons.mozilla.org/firefox/downloads/file/193322/english_south_african_language_pack-19.0-fx.xpi?src=api</install>
+      <developer_comments></developer_comments>
+    <reviews num="0">
+      https://addons.mozilla.org/en-US/firefox/addon/english-south-african-language/reviews/?src=api
+    </reviews>
+    <total_downloads>73120</total_downloads>
+    <weekly_downloads>179</weekly_downloads>
+    <daily_users>73120</daily_users>
+    <created epoch="1197461163">
+      2007-12-12T12:06:03Z
+    </created>
+    <last_updated epoch="1361287597">
+      2013-02-19T15:26:37Z
+    </last_updated>
+    <homepage>http://translate.org.za/content/view/15/31/lang,en/</homepage>
+    <support></support>
+    <featured>0</featured>
+        <performance>
+      </performance>
+    </addon>
+
+                  <addon id="417164">
+  <name>Deutsch (DE) Language Pack</name>
+  <type id="5">Language Pack (Application)</type>
+  <guid>langpack-de@firefox.mozilla.org</guid>
+  <slug>deutsch-de-language-pack</slug>
+  <version>19.0</version>
+  <status id="4">Fully Reviewed</status>
+  <authors>
+        <author id="4757633">
+      <name>Mozilla</name>
+      <link>https://addons.mozilla.org/en-US/firefox/user/4757633/?src=api</link>
+    </author>      </authors>
+  <summary></summary>
+  <description></description>  <icon size="64"></icon>
+  <icon size="32"></icon>
+  <compatible_applications><application>
+      <name>Firefox</name>
+      <application_id>1</application_id>
+      <min_version>19.0</min_version>
+      <max_version>19.0.*</max_version>
+      <appID>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</appID>
+    </application></compatible_applications>
+  <all_compatible_os><os>ALL</os></all_compatible_os>
+  <eula></eula><previews></previews><rating>3</rating>
+  <learnmore>https://addons.mozilla.org/en-US/firefox/addon/deutsch-de-language-pack/?src=api</learnmore><install hash="sha256:faa7a5b39c82de1515fc8bd3a0f26cbf163396a3840ebad4c6ca09db743594be"
+    os="ALL"
+    size="306394">https://addons.mozilla.org/firefox/downloads/file/193316/deutsch_de_language_pack-19.0-fx.xpi?src=api</install>
+      <developer_comments></developer_comments>
+    <reviews num="3">
+      https://addons.mozilla.org/en-US/firefox/addon/deutsch-de-language-pack/reviews/?src=api
+    </reviews>
+    <total_downloads>28864</total_downloads>
+    <weekly_downloads>4017</weekly_downloads>
+    <daily_users>28864</daily_users>
+    <created epoch="1358459076">
+      2013-01-17T21:44:36Z
+    </created>
+    <last_updated epoch="1361287590">
+      2013-02-19T15:26:30Z
+    </last_updated>
+    <homepage></homepage>
+    <support></support>
+    <featured>0</featured>
+        <performance>
+      </performance>
+    </addon>
+
+                  <addon id="1865">
+  <name>Adblock Plus</name>
+  <type id="1">Extension</type>
+  <guid>{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}</guid>
+  <slug>adblock-plus</slug>
+  <version>2.2.3</version>
+  <status id="4">Fully Reviewed</status>
+  <authors>
+        <author id="346">
+      <name>Wladimir Palant</name>
+      <link>https://addons.mozilla.org/en-US/firefox/user/346/?src=api</link>
+    </author>      </authors>
+  <summary>Annoyed by adverts? Troubled by tracking? Bothered by banners? Install Adblock Plus now to regain control of the internet and change the way that you view the web.
+
+A short video overview is available at &lt;a href=&#34;http://outgoing.mozilla.org/v1/53bef0e0769bb5d1d134b467eec73a45d619110732f8552f5e3927aac00a9a43/http%3A//www.youtube.com/watch%3Fv=oNvb2SjVjjI&#34; rel=&#34;nofollow&#34;&gt;http://www.youtube.com/watch?v=oNvb2SjVjjI&lt;/a&gt;</summary>
+  <description>Adblock Plus allows you to regain control of the internet and view the web the way you want to. The add-on is supported by over forty filter subscriptions in dozens of languages which automatically configure it for purposes ranging from removing online advertising to blocking all known malware domains. Adblock Plus also allows you to customize your filters with the assistance of a variety of useful features, including a context option for images, a block tab for Flash and Java objects, and a list of blockable items to remove scripts and stylesheets.
+
+Starting with Adblock Plus 2.0 there is an option in Filter Preferences to allow some non-intrusive advertising. The goal is to support websites using non-intrusive ways to advertise and to encourage more websites to do the same. &lt;a href=&#34;http://outgoing.mozilla.org/v1/1562af6ef7d30389889449d42850bac00b0ce14e/http%3A//adblockplus.org/en/acceptable-ads&#34; rel=&#34;nofollow&#34;&gt;Read more&lt;/a&gt;</description><license>
+    <name>GNU General Public License, version 3.0</name>
+    <url>http://www.gnu.org/licenses/gpl-3.0.html</url>
+  </license>  <icon size="64">https://addons.cdn.mozilla.net/img/uploads/addon_icons/1/1865-64.png?modified=1360338835</icon>
+  <icon size="32">https://addons.cdn.mozilla.net/img/uploads/addon_icons/1/1865-32.png?modified=1360338835</icon>
+  <compatible_applications><application>
+      <name>Thunderbird</name>
+      <application_id>18</application_id>
+      <min_version>9.0</min_version>
+      <max_version>22.0</max_version>
+      <appID>{3550f703-e582-4d05-9a08-453d09bdfdc6}</appID>
+    </application><application>
+      <name>Firefox for Android</name>
+      <application_id>61</application_id>
+      <min_version>11.0a1</min_version>
+      <max_version>22.0</max_version>
+      <appID>{aa3c5121-dab2-40e2-81ca-7ea25febc110}</appID>
+    </application><application>
+      <name>SeaMonkey</name>
+      <application_id>59</application_id>
+      <min_version>2.6</min_version>
+      <max_version>2.19</max_version>
+      <appID>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</appID>
+    </application><application>
+      <name>Firefox</name>
+      <application_id>1</application_id>
+      <min_version>9.0</min_version>
+      <max_version>22.0</max_version>
+      <appID>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</appID>
+    </application></compatible_applications>
+  <all_compatible_os><os>ALL</os></all_compatible_os>
+  <eula></eula><previews><preview position="0">
+      <full type="" width="200" height="150">
+        https://addons.cdn.mozilla.net/img/uploads/previews/full/55/55574.png?src=api&amp;modified=1327649601
+      </full>
+      <thumbnail type="" width="200" height="150">
+        https://addons.cdn.mozilla.net/img/uploads/previews/thumbs/55/55574.png?src=api&amp;modified=1327649601
+      </thumbnail></preview><preview position="1">
+      <full type="" width="350" height="280">
+        https://addons.cdn.mozilla.net/img/uploads/previews/full/55/55568.png?src=api&amp;modified=1327649601
+      </full>
+      <thumbnail type="" width="187" height="150">
+        https://addons.cdn.mozilla.net/img/uploads/previews/thumbs/55/55568.png?src=api&amp;modified=1327649601
+      </thumbnail><caption>Toolbar button</caption></preview><preview position="2">
+      <full type="" width="700" height="481">
+        https://addons.cdn.mozilla.net/img/uploads/previews/full/55/55569.png?src=api&amp;modified=1327649601
+      </full>
+      <thumbnail type="" width="200" height="137">
+        https://addons.cdn.mozilla.net/img/uploads/previews/thumbs/55/55569.png?src=api&amp;modified=1327649601
+      </thumbnail><caption>Issue reporter</caption></preview><preview position="3">
+      <full type="" width="567" height="483">
+        https://addons.cdn.mozilla.net/img/uploads/previews/full/55/55570.png?src=api&amp;modified=1327649601
+      </full>
+      <thumbnail type="" width="176" height="150">
+        https://addons.cdn.mozilla.net/img/uploads/previews/thumbs/55/55570.png?src=api&amp;modified=1327649601
+      </thumbnail><caption>Adding a filter subscription</caption></preview><preview position="4">
+      <full type="" width="450" height="225">
+        https://addons.cdn.mozilla.net/img/uploads/previews/full/55/55571.png?src=api&amp;modified=1327649601
+      </full>
+      <thumbnail type="" width="200" height="100">
+        https://addons.cdn.mozilla.net/img/uploads/previews/thumbs/55/55571.png?src=api&amp;modified=1327649601
+      </thumbnail><caption>Blocking an image ad</caption></preview><preview position="5">
+      <full type="" width="550" height="277">
+        https://addons.cdn.mozilla.net/img/uploads/previews/full/55/55572.png?src=api&amp;modified=1327649601
+      </full>
+      <thumbnail type="" width="200" height="100">
+        https://addons.cdn.mozilla.net/img/uploads/previews/thumbs/55/55572.png?src=api&amp;modified=1327649601
+      </thumbnail><caption>List of blockable items</caption></preview><preview position="6">
+      <full type="" width="600" height="400">
+        https://addons.cdn.mozilla.net/img/uploads/previews/full/55/55573.png?src=api&amp;modified=1327649601
+      </full>
+      <thumbnail type="" width="200" height="133">
+        https://addons.cdn.mozilla.net/img/uploads/previews/thumbs/55/55573.png?src=api&amp;modified=1327649601
+      </thumbnail><caption>Adding a filter</caption></preview></previews><rating>5</rating>
+  <learnmore>https://addons.mozilla.org/en-US/firefox/addon/adblock-plus/?src=api</learnmore><install hash="sha256:d8b609ac2c0987da3b99dd687c1aa1a59eb48fdf4a93f9d4e2c8f2fffca2c9ca"
+    os="ALL"
+    size="817280">https://addons.mozilla.org/firefox/downloads/file/192004/adblock_plus-2.2.3-tb+an+sm+fx.xpi?src=api</install>
+  <contribution_data>
+      <link>https://addons.mozilla.org/en-US/firefox/addon/adblock-plus/contribute/?src=api</link>
+                <suggested_amount currency="USD" amount="5.00">
+            $5.00
+          </suggested_amount>
+            <meet_developers>
+        https://addons.mozilla.org/en-US/firefox/addon/adblock-plus/developers?src=api
+      </meet_developers>
+    </contribution_data>    <developer_comments></developer_comments>
+    <reviews num="3572">
+      https://addons.mozilla.org/en-US/firefox/addon/adblock-plus/reviews/?src=api
+    </reviews>
+    <total_downloads>194655431</total_downloads>
+    <weekly_downloads>1086560</weekly_downloads>
+    <daily_users>15774589</daily_users>
+    <created epoch="1137511710">
+      2006-01-17T15:28:30Z
+    </created>
+    <last_updated epoch="1360805753">
+      2013-02-14T01:35:53Z
+    </last_updated>
+    <homepage>http://adblockplus.org/</homepage>
+    <support>http://adblockplus.org/forum/</support>
+    <featured>0</featured>
+        <performance>
+            <application name="fx" version="8.0.1">
+                <platform name="WINNT" version="6.1">
+          <result type="ts" baseline="548.47" average="554.32"
+                  above_threshold="false" />
+        </platform>        <platform name="MacOSX" version="10.6 (rev4)">
+          <result type="ts" baseline="637.58" average="637.26"
+                  above_threshold="false" />
+        </platform>        <platform name="Fedora" version="12 - Constantine">
+          <result type="ts" baseline="479.26" average="482.58"
+                  above_threshold="false" />
+        </platform></application>      <application name="fx" version="4.0">
+                <platform name="WINNT" version="6.1">
+          <result type="ts" baseline="536.21" average="611.21"
+                  above_threshold="false" />
+        </platform>        <platform name="WINNT" version="5.1">
+          <result type="ts" baseline="401.89" average="494.79"
+                  above_threshold="false" />
+        </platform>        <platform name="MacOSX" version="10.5.8">
+          <result type="ts" baseline="695.32" average="697.16"
+                  above_threshold="false" />
+        </platform>        <platform name="Fedora" version="12 - Constantine">
+          <result type="ts" baseline="506.32" average="519.47"
+                  above_threshold="false" />
+        </platform></application>      <application name="fx" version="3.6.15">
+                <platform name="WINNT" version="5.1">
+          <result type="ts" baseline="368.95" average="391.47"
+                  above_threshold="false" />
+        </platform>        <platform name="WINNT" version="6.1">
+          <result type="ts" baseline="413.47" average="446.21"
+                  above_threshold="false" />
+        </platform></application>      <application name="fx" version="7.0.1">
+                <platform name="WINNT" version="6.1">
+          <result type="ts" baseline="547.16" average="613.11"
+                  above_threshold="false" />
+        </platform></application>      <application name="fx" version="8.0">
+                <platform name="MacOSX" version="10.6 (rev4)">
+          <result type="ts" baseline="624.84" average="642.0"
+                  above_threshold="false" />
+        </platform>        <platform name="WINNT" version="6.1">
+          <result type="ts" baseline="541.58" average="556.53"
+                  above_threshold="false" />
+        </platform>        <platform name="Fedora" version="12 - Constantine">
+          <result type="ts" baseline="477.95" average="473.84"
+                  above_threshold="false" />
+        </platform>        <platform name="MacOSX" version="10.6.2 (rev3)">
+          <result type="ts" baseline="657.21" average="654.05"
+                  above_threshold="false" />
+        </platform></application></performance>
+    </addon>
+
+                  <addon id="417168">
+  <name>English (GB) Language Pack</name>
+  <type id="5">Language Pack (Application)</type>
+  <guid>langpack-en-GB@firefox.mozilla.org</guid>
+  <slug>english-gb-language-pack</slug>
+  <version>19.0</version>
+  <status id="4">Fully Reviewed</status>
+  <authors>
+        <author id="4757633">
+      <name>Mozilla</name>
+      <link>https://addons.mozilla.org/en-US/firefox/user/4757633/?src=api</link>
+    </author>      </authors>
+  <summary></summary>
+  <description></description>  <icon size="64"></icon>
+  <icon size="32"></icon>
+  <compatible_applications><application>
+      <name>Firefox</name>
+      <application_id>1</application_id>
+      <min_version>19.0</min_version>
+      <max_version>19.0.*</max_version>
+      <appID>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</appID>
+    </application></compatible_applications>
+  <all_compatible_os><os>ALL</os></all_compatible_os>
+  <eula></eula><previews></previews><rating>0</rating>
+  <learnmore>https://addons.mozilla.org/en-US/firefox/addon/english-gb-language-pack/?src=api</learnmore><install hash="sha256:dc35694f72213304bc45491472efb80ca15197ef59c763d10c7838dd9d442b41"
+    os="ALL"
+    size="305564">https://addons.mozilla.org/firefox/downloads/file/193320/english_gb_language_pack-19.0-fx.xpi?src=api</install>
+      <developer_comments></developer_comments>
+    <reviews num="0">
+      https://addons.mozilla.org/en-US/firefox/addon/english-gb-language-pack/reviews/?src=api
+    </reviews>
+    <total_downloads>32463</total_downloads>
+    <weekly_downloads>4907</weekly_downloads>
+    <daily_users>32463</daily_users>
+    <created epoch="1358459080">
+      2013-01-17T21:44:40Z
+    </created>
+    <last_updated epoch="1361287593">
+      2013-02-19T15:26:33Z
+    </last_updated>
+    <homepage></homepage>
+    <support></support>
+    <featured>0</featured>
+        <performance>
+      </performance>
+    </addon>
+
+          </searchresults>

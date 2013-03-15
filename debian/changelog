@@ -1,3 +1,9 @@
+netrunner-artwork-firefox (1.0.15) enigma-1306; urgency=low
+
+  * Initial enigma release
+
+ -- Frédéric Gaudet <fred@linuxmint.com>  Fri, 15 Mar 2013 10:24:54 +0100
+
 netrunner-artwork-firefox (1.0.14) dryland-te; urgency=low
 
   * Update against version 18.0
