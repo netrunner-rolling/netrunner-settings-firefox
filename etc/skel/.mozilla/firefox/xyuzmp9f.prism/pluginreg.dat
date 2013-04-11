@@ -8,7 +8,7 @@ Arch:x86-gcc3:$
 IcedTeaPlugin.so:$
 /usr/lib/jvm/java-7-openjdk-i386/jre/lib/i386/IcedTeaPlugin.so:$
 :$
-1362705485000:0:1:$
+1362705485000:0:5:$
 The <a href="http://icedtea.classpath.org/wiki/IcedTea-Web">IcedTea-Web Plugin</a> executes Java applets.:$
 IcedTea-Web Plugin (using IcedTea-Web 1.3.1 (1.3.1-3ubuntu1)):$
 36
@@ -48,24 +48,10 @@ IcedTea-Web Plugin (using IcedTea-Web 1.3.1 (1.3.1-3ubuntu1)):$
 33:application/x-java-bean;version=1.7:IcedTea:class,jar:$
 34:application/x-java-bean;jpi-version=1.7.0_50:IcedTea:class,jar:$
 35:application/x-java-vm-npruntime:IcedTea::$
-gecko-mediaplayer-rm.so:$
-/usr/lib/mozilla/plugins/gecko-mediaplayer-rm.so:$
-:$
-1362651117000:0:1:$
-<a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.8<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
-RealPlayer 9:$
-7
-0:audio/x-pn-realaudio:RealAudio:ram,rm:$
-1:application/vnd.rn-realmedia:RealMedia:rm:$
-2:application/vnd.rn-realaudio:RealAudio:ra,ram:$
-3:video/vnd.rn-realvideo:RealVideo:rv:$
-4:audio/x-realaudio:RealAudio:ra:$
-5:audio/x-pn-realaudio-plugin:RealAudio:rpm:$
-6:application/smil:SMIL:smil:$
 gecko-mediaplayer-wmp.so:$
 /usr/lib/mozilla/plugins/gecko-mediaplayer-wmp.so:$
 :$
-1362651117000:0:1:$
+1362651117000:0:5:$
 <a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.8<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
 Windows Media Player Plug-in:$
 20
@@ -92,7 +78,7 @@ Windows Media Player Plug-in:$
 gecko-mediaplayer-dvx.so:$
 /usr/lib/mozilla/plugins/gecko-mediaplayer-dvx.so:$
 :$
-1362651117000:0:1:$
+1362651117000:0:5:$
 <a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.8<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
 DivX Browser Plug-In:$
 2
@@ -101,7 +87,7 @@ DivX Browser Plug-In:$
 gecko-mediaplayer.so:$
 /usr/lib/mozilla/plugins/gecko-mediaplayer.so:$
 :$
-1362651117000:0:1:$
+1362651117000:0:5:$
 <a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.8<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
 mplayerplug-in is now gecko-mediaplayer 1.0.8:$
 46
@@ -154,7 +140,7 @@ mplayerplug-in is now gecko-mediaplayer 1.0.8:$
 gecko-mediaplayer-qt.so:$
 /usr/lib/mozilla/plugins/gecko-mediaplayer-qt.so:$
 :$
-1362651117000:0:1:$
+1362651117000:0:5:$
 <a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.8<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
 QuickTime Plug-in 7.6.9:$
 6
@@ -164,14 +150,20 @@ QuickTime Plug-in 7.6.9:$
 3:video/quicktime:Quicktime:mp4:$
 4:video/quicktime:Quicktime - Session Description Protocol:sdp:$
 5:application/x-quicktimeplayer:Quicktime:mov:$
-skypebuttons.so:$
-/usr/lib/mozilla/plugins/skypebuttons.so:$
+gecko-mediaplayer-rm.so:$
+/usr/lib/mozilla/plugins/gecko-mediaplayer-rm.so:$
 :$
-1362553001000:0:1:$
-Mime Type x-skype for Skype Buttons:$
-Skype Buttons for Kopete:$
-1
-0:application/x-skype:Skype Buttons::$
+1362651117000:0:5:$
+<a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.8<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
+RealPlayer 9:$
+7
+0:audio/x-pn-realaudio:RealAudio:ram,rm:$
+1:application/vnd.rn-realmedia:RealMedia:rm:$
+2:application/vnd.rn-realaudio:RealAudio:ra,ram:$
+3:video/vnd.rn-realvideo:RealVideo:rv:$
+4:audio/x-realaudio:RealAudio:ra:$
+5:audio/x-pn-realaudio-plugin:RealAudio:rpm:$
+6:application/smil:SMIL:smil:$
 libflashplayer.so:$
 /opt/netrunner-flashplugin-11/libflashplayer.so:$
 :$
@@ -181,5 +173,21 @@ Shockwave Flash:$
 2
 0:application/x-shockwave-flash:Shockwave Flash:swf:$
 1:application/futuresplash:FutureSplash Player:spl:$
+libnpgoogletalk.so:$
+/opt/google/talkplugin/libnpgoogletalk.so:$
+:$
+1351528348000:0:1:$
+Version: 3.10.2.0:$
+Google Talk Plugin:$
+1
+0:application/googletalk:Google Talk Plugin:googletalk:$
+libnpgtpo3dautoplugin.so:$
+/opt/google/talkplugin/libnpgtpo3dautoplugin.so:$
+:$
+1351528348000:0:1:$
+Google Talk Plugin Video Accelerator version:0.1.44.23:$
+Google Talk Plugin Video Accelerator:$
+1
+0:application/vnd.gtpo3d.auto:O3D MIME::$
 
 [INVALID]
