@@ -64,7 +64,12 @@ NetProbe.prototype.init=function() {
 		this.cookieManager = Components.classes["@mozilla.org/cookiemanager;1"]
     		.getService(Components.interfaces.nsICookieManager);
 		//cookieManager.remove("."+domain,"VISITOR_INFO1_LIVE","/",false);
-
+		try {
+			Components.utils['import']("resource://gre/modules/PrivateBrowsingUtils.jsm");
+			this.pbUtils=PrivateBrowsingUtils;
+		} catch(e) {
+			this.pbUtils=null;
+		}
 	} catch(e) {
 		dump("[NetProbe] !!! init: "+e+"\n");
 	}
@@ -317,6 +322,16 @@ NetProbe.prototype.analyzeMeta = function(murl,contentType,contentDisp,contentLe
 				//dump("Range removed from "+murl+" to "+murl1+"\n");
 				murl=murl1;
 			}
+			
+			// for dm videos
+			var murl1=murl.replace(/^(https?:\/\/.*\/sec\([0-9a-f]+\))\/frag\([^\)]+\)(.*)$/,function(match,p1,p2) {
+				return p1+p2;
+			});
+			if(murl!=murl1) {
+				//dump("Fixed DM\n");
+				murl=murl1;
+			}
+			
 			var desc=Components.classes["@mozilla.org/properties;1"].
 				createInstance(Components.interfaces.nsIProperties);
 			Util.setPropsString(desc,"media-url",murl);
@@ -326,6 +341,13 @@ NetProbe.prototype.analyzeMeta = function(murl,contentType,contentDisp,contentLe
 			Util.setPropsString(desc,"page-url",pageUrl);
 			Util.setPropsString(desc,"icon-url","chrome://dwhelper/skin/mediaresp.gif");
 			Util.setPropsString(desc,"capture-method","network");
+			if(wnd && this.pbUtils) {
+				if(this.pbUtils.privacyContextFromWindow)
+					desc.set("loadContext", this.pbUtils.privacyContextFromWindow(wnd));
+				Util.setPropsString(desc,"private",this.pbUtils.isWindowPrivate(wnd)?"yes":"no");
+			}
+			if(contentLength && !isNaN(contentLength))
+				Util.setPropsString(desc,"size",""+contentLength);
 	
 			if(wnd && wnd.document)
 				desc.set("window-document",wnd);

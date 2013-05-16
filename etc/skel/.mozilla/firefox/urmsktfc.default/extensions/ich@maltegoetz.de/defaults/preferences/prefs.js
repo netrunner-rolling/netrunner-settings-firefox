@@ -6,3 +6,5 @@ pref("extensions.proxtube.boolpref_showsslnotf", false);
 pref("extensions.proxtube.intpref_enabled", 0);
 pref("extensions.proxtube.intpref_http", 0);
 pref("extensions.proxtube.stringpref_http", "");
+pref("extensions.proxtube.boolpref_showfoxydeal", false);
+pref("extensions.proxtube.boolpref_showfoxydealnotf", true);

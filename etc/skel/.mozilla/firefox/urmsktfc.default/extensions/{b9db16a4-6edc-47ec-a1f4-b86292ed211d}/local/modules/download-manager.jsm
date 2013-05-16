@@ -126,17 +126,18 @@ DLMgr.prototype.doDownload=function(listener,entry,ctx) {
 	try {
 		persist.saveURI(url,null, referrer, null, null,fileURL);
 	} catch(e) {
-		var entryWindow=entry.get("window",Components.interfaces.nsIDOMWindow);
-		if(entryWindow) {
-			var docShell=entryWindow.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsIWebNavigation);
-			loadContext=docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor);
-		}
+		if(entry.has("loadContext"))
+			loadContext=entry.get("loadContext",Components.interfaces.nsIInterfaceRequestor);
 		persist.saveURI(url,null, referrer, null, null,fileURL, loadContext);		
 	}
 	try {
 		tr.init(url,fileURL, "", null, null, null, persist);
 	} catch(e) {
-		tr.init(url,fileURL, "", null, null, null, persist, loadContext);
+		var priv=Util.getPropsString(entry,"private");
+		if(priv=="yes")
+			tr.init(url,fileURL, "", null, null, null, persist, loadContext);
+		else
+			tr.init(url,fileURL, "", null, null, null, persist, null);
 	}
 
 	} catch(e) {

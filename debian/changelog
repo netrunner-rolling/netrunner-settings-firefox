@@ -1,3 +1,9 @@
+netrunner-artwork-firefox (1.0.17) enigma-1306; urgency=low
+
+  * BETA4
+
+ -- Frédéric Gaudet <fred@linuxmint.com>  Thu, 16 May 2013 15:59:44 +0200
+
 netrunner-artwork-firefox (1.0.16) enigma-1306; urgency=low
 
   * Update against FF20.0

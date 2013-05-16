@@ -35,6 +35,12 @@ function MLProbe() {
 		this.core=Components.classes["@downloadhelper.net/core;1"].
 			getService(Components.interfaces.dhICore);
 		this.core.registerProbe(this);
+		try {
+			Components.utils['import']("resource://gre/modules/PrivateBrowsingUtils.jsm");
+			this.pbUtils=PrivateBrowsingUtils;
+		} catch(e) {
+			this.pbUtils=null;
+		}
 	} catch(e) {
 		dump("[MLProbe] !!! constructor: "+e+"\n");
 	}
@@ -65,6 +71,10 @@ MLProbe.prototype.handleDocument=function(document,window) {
 		for(var i=0;i<aNodes.length;i++) {
 			var aNode=aNodes[i];
 			var href=aNode.getAttribute("href");
+			if(typeof String.prototype.trim=="function")
+				href=href.trim();
+			else
+				href=/^\s*(.*?)\s*$/.exec(href)[1];
 			if(allHRefs[href]!=null)
 				continue;
 			allHRefs[href]="";
@@ -106,12 +116,12 @@ MLProbe.prototype.handleDocument=function(document,window) {
 			if(maxNodeCount<classNodes.length)
 				maxNodeCount=classNodes.length;
 			if(classNodes.length>=this.minFileCount) {
-				var desc=this.getDesc(document,group.ext+" ("+classNodes.length+")",group.nodes)
+				var desc=this.getDesc(document,group.ext+" ("+classNodes.length+")",group.nodes,window)
 				this.core.addEntryForDocument(desc,document,window);
 			}
 		}
 		if(maxNodeCount<mediaNodes.length) {
-			var desc=this.getDesc(document,Util.getText("menu.alllinkstomedia")+" ("+mediaNodes.length+")",mediaNodes);
+			var desc=this.getDesc(document,Util.getText("menu.alllinkstomedia")+" ("+mediaNodes.length+")",mediaNodes,window);
 			this.core.addEntryForDocument(desc,document,window);
 		}
 	} catch(e) {
@@ -120,7 +130,7 @@ MLProbe.prototype.handleDocument=function(document,window) {
 	return null;
 }
 
-MLProbe.prototype.getDesc = function(document,label,nodes) {
+MLProbe.prototype.getDesc = function(document,label,nodes,window) {
 	var desc=Components.classes["@mozilla.org/properties;1"].
 		createInstance(Components.interfaces.nsIProperties);
 	Util.setPropsString(desc,"page-url",document.URL);
@@ -144,6 +154,15 @@ MLProbe.prototype.getDesc = function(document,label,nodes) {
 		var urlStr=url.resolve(href);
 		Util.setPropsString(ndesc,"media-url",urlStr);
 		ndesc.set("node",node);
+		try {
+			if(this.pbUtils) {
+				if(this.pbUtils.privacyContextFromWindow)
+					desc.set("loadContext", this.pbUtils.privacyContextFromWindow(window));
+				Util.setPropsString(desc,"private",this.pbUtils.isWindowPrivate(window)?"yes":"no");
+			}
+		} catch(e) {
+			dump("!!! [MLProbe]: setting loadContext/private]: "+e+"\n");
+		}
 		fdescs.appendElement(ndesc,false);
 	}
 	return desc;

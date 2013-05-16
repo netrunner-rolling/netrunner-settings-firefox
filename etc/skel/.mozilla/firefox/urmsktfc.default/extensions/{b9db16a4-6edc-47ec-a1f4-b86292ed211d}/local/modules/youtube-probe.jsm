@@ -35,6 +35,12 @@ function YTProbe() {
 		this.core=Components.classes["@downloadhelper.net/core;1"].
 			getService(Components.interfaces.dhICore);
 		this.core.registerProbe(this);
+		try {
+			Components.utils['import']("resource://gre/modules/PrivateBrowsingUtils.jsm");
+			this.pbUtils=PrivateBrowsingUtils;
+		} catch(e) {
+			this.pbUtils=null;
+		}
 	} catch(e) {
 		dump("[YTProbe] !!! constructor: "+e+"\n");
 	}
@@ -199,10 +205,10 @@ YTProbe.prototype.handleDocument=function(document,window) {
 			}
 
 			function StreamListener(desc,service,document,window,availFormats) {
-				this.desc=desc;
+				this.desc=Components.utils.getWeakReference(desc);
 				this.service=service;
-				this.document=document;
-				this.window=window;
+				this.document=Components.utils.getWeakReference(document);
+				this.window=Components.utils.getWeakReference(window);
 				this.availFormats=availFormats;
 				var formats=this.service.pref.getCharPref("ythq-formats").split(",");
 				this.formats=[];
@@ -258,24 +264,31 @@ YTProbe.prototype.handleDocument=function(document,window) {
 								}
 							} 
 						}
-						for(var j in this.formats) {
-							if(typeof(this.availFormats[this.formats[j]])!="undefined") {
-								var format=parseInt(this.formats[j]);
-								var url=this.availFormats[this.formats[j]];
-								var desc1=this.service.core.cloneEntry(desc);
-								Util.setPropsString(desc1,"media-url",url);
-								var extension=this.service.ytInfo.getExtension(format);
-								var fileName=Util.getPropsString(desc,"base-name");
-								Util.setPropsString(desc1,"file-name",fileName+"."+extension);
-								Util.setPropsString(desc1,"file-extension",extension);
-								var title=Util.getPropsString(desc,"youtube-title");
-								var prefix=this.service.ytInfo.getFormatPrefix(format);
-								Util.setPropsString(desc1,"label-prefix",prefix);
-								Util.setPropsString(desc1,"label",prefix+title);
-								this.service.core.addEntryForDocument(desc1,this.document,this.window);
+						var desc=this.desc.get();
+						var window=this.window.get();
+						var document=this.document.get();
+						if(desc && window && document) {
+							for(var j in this.formats) {
+								if(typeof(this.availFormats[this.formats[j]])!="undefined") {
+									var format=parseInt(this.formats[j]);
+									var url=this.availFormats[this.formats[j]];
+									var desc1=this.service.core.cloneEntry(desc);
+									Util.setPropsString(desc1,"media-url",url);
+									var extension=this.service.ytInfo.getExtension(format);
+									var fileName=Util.getPropsString(desc,"base-name");
+									Util.setPropsString(desc1,"file-name",fileName+"."+extension);
+									Util.setPropsString(desc1,"file-extension",extension);
+									var title=Util.getPropsString(desc,"youtube-title");
+									var prefix=this.service.ytInfo.getFormatPrefix(format);
+									Util.setPropsString(desc1,"label-prefix",prefix);
+									Util.setPropsString(desc1,"label",prefix+title);
+									this.service.core.addEntryForDocument(desc1,document,window);
+								}
 							}
 						}
 					}
+					uri=null;
+					channel=null;
 				}
 			}
 		
@@ -292,7 +305,21 @@ YTProbe.prototype.handleDocument=function(document,window) {
 			Util.setPropsString(desc,"base-name",fileName);
 			Util.setPropsString(desc,"capture-method","youtube-hq");
 			Util.setPropsString(desc,"youtube-title",title);
-			Util.setPropsString(desc,"icon-url","http://www.youtube.com/favicon.ico");	     
+			Util.setPropsString(desc,"icon-url","http://www.youtube.com/favicon.ico");
+			try {
+				if(this.pbUtils) {
+					if(this.pbUtils.privacyContextFromWindow)
+						desc.set("loadContext", this.pbUtils.privacyContextFromWindow(window));
+					if(this.pbUtils.isWindowPrivate(window)) {
+						Util.setPropsString(desc,"private","yes");
+						var pbc=channel.QueryInterface(Components.interfaces.nsIPrivateBrowsingChannel);
+						pbc.setPrivate(true);
+					} else 
+						Util.setPropsString(desc,"private","no");
+				}
+			} catch(e) {
+				dump("!!! [NetworkProbeService: setting loadContext]: "+e+"\n");
+			}
 			channel.asyncOpen(new StreamListener(desc,this,document,window,availFormats), null);
 		} 
 	} catch(e) {

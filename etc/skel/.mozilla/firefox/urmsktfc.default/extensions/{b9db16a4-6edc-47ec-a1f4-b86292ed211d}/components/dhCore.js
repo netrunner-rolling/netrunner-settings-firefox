@@ -1,5 +1,5 @@
 /******************************************************************************
- *            Copyright (c) 2006-2011 Michel Gutierrez. All Rights Reserved.
+ *            Copyright (c) 2006-2013 Michel Gutierrez. All Rights Reserved.
  ******************************************************************************/
 
 /**
@@ -65,16 +65,16 @@ Core.prototype.init=function() {
 		this.hook.core=this;
 		this.smartNamer = Components.classes["@downloadhelper.net/smart-namer;1"]
 		                                .getService(Components.interfaces.dhISmartNamer);
-/*
-		this.regMenus=[];
-		this.probes=[];
-		this.entries=[];
-		this.processors=[];
-		this.ctxItems=[];
-		this.blacklist=[];
-*/		
+
 		this.updateBlackList();
 		this.shareBlackList();
+		
+		try {
+			Components.utils['import']("resource://gre/modules/PrivateBrowsingUtils.jsm");
+			this.pbUtils=PrivateBrowsingUtils;
+		} catch(e) {
+			this.pbUtils=null;
+		}
 
 		this.observerService.addObserver(this,"http-on-modify-request",false);
 		this.observerService.addObserver(this,"http-on-examine-response",false);
@@ -83,6 +83,9 @@ Core.prototype.init=function() {
 		try {
 			this.observerService.addObserver(this,"private-browsing",false);
 			this.observerService.addObserver(this,"browser:purge-session-history",false);			  
+		} catch(e) {}
+		try {
+			this.observerService.addObserver(this,"last-pb-context-exited",false);
 		} catch(e) {}
 		
 	} catch(e) {
@@ -279,6 +282,11 @@ Core.prototype.observe=function(subject, topic , data) {
 				}
 			}
 			break;
+			
+		case "last-pb-context-exited":
+			this.cleanupPrivateEntries();
+			this.updateMenus(null,null);
+			break;
 
 	}
 	} catch(e) {
@@ -376,7 +384,7 @@ Core.prototype.addEntryForDocument=function(entry,document,window) {
 		if(this.filterBlackList(entry)) {
 			this.smartNamer.updateEntry(entry);
 			this.entries.push(entry);
-			this.updateMenus(document,window);
+			this.updateMenus(null,null);
 		}
 	} catch(e) {
 		dump("!!! [Core] addEntryForDocument("+document.URL+"): "+e+"\n");
@@ -522,8 +530,23 @@ Core.prototype.updateMenus=function(document,window) {
 								}
 								menuitem.setAttribute("tooltiptext",tooltipText);								
 							} else if(entry.has("media-url")) {
-								var mediaUrl=Util.getPropsString(entry,"media-url");
-								menuitem.setAttribute("tooltiptext",mediaUrl);
+								var tooltip="";
+								try {
+									var contentLength=Util.getPropsString(entry,"size");
+									if(contentLength) {
+										contentLength=parseInt(contentLength);
+										if(!isNaN(contentLength)) {
+											if(contentLength>=1024*1024)
+												tooltip=parseInt(contentLength/(1024*1024))+"MB - ";
+											else if(contentLength>=1024)
+												tooltip=parseInt(contentLength/1024)+"KB - ";
+											else
+												tooltip=contentLength+"B - ";
+										}
+									}									
+								} catch(e) {}
+								tooltip+=Util.getPropsString(entry,"media-url");
+								menuitem.setAttribute("tooltiptext",tooltip);
 							}
 							var highlightMFCP=true;
 							try {
@@ -631,7 +654,7 @@ Core.prototype.makeDownloadMenuitem=function(menupopup,entry,classes) {
 		}
 	}
 	var commandListener=new CommandListener(Components.utils.getWeakReference(entry),this);
-	//eventTarget.addEventListener("command",commandListener,false,false);
+	eventTarget.addEventListener("command",commandListener,false,false);
 	return menuitem;
 }
 
@@ -744,6 +767,18 @@ Core.prototype.cleanupExpiredEntries=function() {
 		this.entries.splice(this.entries.indexOf(tbd[i]),1);	
 }
 
+Core.prototype.cleanupPrivateEntries=function() {
+	//dump("[Core] cleanupPrivateEntries()\n");
+	var tbd=[];
+	for(var i=0;i<this.entries.length;i++) {
+		var entry=this.entries[i];
+		if(Util.getPropsString(entry,"private")=="yes")
+			tbd.push(entry);
+	}
+	for(var i in tbd)
+		this.entries.splice(this.entries.indexOf(tbd[i]),1);	
+}
+
 Core.prototype.registerWindow=function(window) {
 	//dump("[Core] registerWindow("+window+")\n");
 	this.monitorWindow(window);
@@ -816,7 +851,7 @@ Core.prototype.monitorWindow=function(win) {
 							} catch(e) {
 								dump("!!! [Core] monitorWindow/hook: "+e+"\n");
 							}
-							this.core.updateMenus(document,this.window);
+							this.core.updateMenus(null,null);
 						} catch(e) {}
 						break;
 					case "pagehide":
@@ -824,7 +859,7 @@ Core.prototype.monitorWindow=function(win) {
 							//dump("pagehide - "+event.target.URL+"\n");
 							var document=event.target;
 							this.core.cleanupEntriesForDocument(document,this.window);
-							this.core.updateMenus(document,this.window);
+							this.core.updateMenus(null,null);
 						} catch(e) {}
 						break;
 				}
@@ -848,7 +883,7 @@ Core.prototype.monitorWindow=function(win) {
 								var browser = win.gBrowser.getBrowserForTab(event.target)
 								var document = browser.contentWindow.document;
 								this.core.cleanupEntriesForDocument(document,this.window);
-								this.core.updateMenus(document,this.window);
+								this.core.updateMenus(null,null);
 							} catch(e) {
 								dump("!!! [Core] monitorWindow/TabMonitor.handleEvent: "+e+"\n");
 							}

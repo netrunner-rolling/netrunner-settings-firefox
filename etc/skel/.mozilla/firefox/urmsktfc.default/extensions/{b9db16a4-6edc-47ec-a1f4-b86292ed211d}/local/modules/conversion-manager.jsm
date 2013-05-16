@@ -138,7 +138,7 @@ ConvertMgr.prototype.convert=function(sourceFile,targetFile,format,autoClear,lis
 	}                
 }
 
-ConvertMgr.prototype.setFFMPEGArgs=function(dEntry,params,sourceFile,targetFile,doTrace,doVhook) {
+ConvertMgr.prototype.setFFMPEGArgs=function(dEntry,params,sourceFile,targetFile,doTrace,doVhook,windows) {
 	var pArgs=["args"];
 	var pParams=[params];
 	var passes=1;
@@ -150,6 +150,8 @@ ConvertMgr.prototype.setFFMPEGArgs=function(dEntry,params,sourceFile,targetFile,
 	}
 	for(var i=0;i<passes;i++) {
 		dEntry[pArgs[i]] = [ "-i", sourceFile.path,"-y","-v","0"];
+		if(!windows) // add "-strict experimental" on linux/mac only 
+			dEntry[pArgs[i]]=dEntry[pArgs[i]].concat(["-strict","experimental"]);			
 		dEntry[pArgs[i]]=dEntry[pArgs[i]].concat(pParams[i].split(" "));
 		if(doTrace) {
 			dEntry[pArgs[i]].push("-Xhello");
@@ -196,7 +198,6 @@ ConvertMgr.prototype.setFFMPEGArgs=function(dEntry,params,sourceFile,targetFile,
 ConvertMgr.prototype.convertUnix=function(sourceFile,targetFile,params,extension,convRes,autoClear,listener,entry,ctx) {
 	var ffmpegFile = Components.classes["@mozilla.org/file/local;1"]
     	.createInstance(Components.interfaces.nsILocalFile);
-
 	var ffmpegPath="/usr/bin/ffmpeg";
 	try {
 		ffmpegPath=this.pref.getCharPref("converter-path-ffmpeg");
@@ -205,12 +206,29 @@ ConvertMgr.prototype.convertUnix=function(sourceFile,targetFile,params,extension
 	try {
 		ffmpegFile.initWithPath(ffmpegPath);
 		if(!ffmpegFile.exists()) {
-			dump("!!![ConvertMgr] convert(): no ffmpeg found\n");
+			//dump("!!![ConvertMgr] convert(): no ffmpeg found\n");
 			ffmpegFile=null;
 		}
 	} catch(e) {
 		dump("!!![ConvertMgr] convert(): invalid ffmpeg path\n");
 		ffmpegFile=null;
+	}
+	var avconvFile = Components.classes["@mozilla.org/file/local;1"]
+		.createInstance(Components.interfaces.nsILocalFile);
+	var avconvPath="/usr/bin/avconv";
+	try {
+		avconvPath=this.pref.getCharPref("converter-path-avconv");
+	} catch(e) {
+	}
+	try {
+		avconvFile.initWithPath(avconvPath);
+		if(!avconvFile.exists()) {
+			//dump("!!![ConvertMgr] convert(): no avconv found\n");
+			avconvFile=null;
+		}
+	} catch(e) {
+		dump("!!![ConvertMgr] convert(): invalid avconv path\n");
+		avconvFile=null;
 	}
 	var mencoderFile = Components.classes["@mozilla.org/file/local;1"]
     	.createInstance(Components.interfaces.nsILocalFile);
@@ -222,7 +240,7 @@ ConvertMgr.prototype.convertUnix=function(sourceFile,targetFile,params,extension
 	try {
 		mencoderFile.initWithPath(mencoderPath);
 		if(!mencoderFile.exists()) {
-			dump("!!![ConvertMgr] convert(): no mencoder found\n");
+			//dump("!!![ConvertMgr] convert(): no mencoder found\n");
 			mencoderFile=null;
 		}
 	} catch(e) {
@@ -230,25 +248,29 @@ ConvertMgr.prototype.convertUnix=function(sourceFile,targetFile,params,extension
 		mencoderFile=null;
 	}
 	
-	if(mencoderFile==null && ffmpegFile==null) {
+	if(mencoderFile==null && ffmpegFile==null && avconvFile==null) {
 		dump("!!![ConvertMgr] convert(): no converter found\n");
 	}
 
 	var converterFile=null;
-	if(mencoderFile==null && ffmpegFile!=null) {
+	var preferred=this.pref.getCharPref("preferred-converter");
+	switch(preferred) {
+	case 'ffmpeg':
 		converterFile=ffmpegFile;
-	} else if(mencoderFile!=null && ffmpegFile==null) {
+		break;
+	case 'avconv':
+		converterFile=avconvFile;
+		break;
+	case 'mencoder':
 		converterFile=mencoderFile;
-	} else {
-		var preferred="ffmpeg";
-		try {
-			preferred=this.pref.getCharPref("preferred-converter");
-		} catch(e) {
-		}
-		
-		if(preferred=="ffmpeg")
+		break;
+	}
+	if(converterFile==null) {
+		if(ffmpegFile!=null)
 			converterFile=ffmpegFile;
-		else
+		else if(avconvFile!=null)
+			converterFile=avconvFile;
+		else if(mencoderFile!=null)
 			converterFile=mencoderFile;
 	}
 	
@@ -264,9 +286,9 @@ ConvertMgr.prototype.convertUnix=function(sourceFile,targetFile,params,extension
 		ctx: ctx
 	}
 	
-	if(converterFile==ffmpegFile) {
+	if(converterFile==ffmpegFile || converterFile==avconvFile) {
 		//dump("[ConvertMgr] converterFile==ffmpegFile\n");
-		this.setFFMPEGArgs(dEntry,params,sourceFile,targetFile,false,false);
+		this.setFFMPEGArgs(dEntry,params,sourceFile,targetFile,false,false,false);
 	}
 	if(converterFile==mencoderFile) {
 		dEntry.args = [ sourceFile.path ];
@@ -307,7 +329,7 @@ ConvertMgr.prototype.convertDH=function(sourceFile,targetFile,params,extension,c
 		ctx: ctx
 	}
 
-	this.setFFMPEGArgs(dEntry,params,sourceFile,targetFile,true,unreg);
+	this.setFFMPEGArgs(dEntry,params,sourceFile,targetFile,true,unreg,true);
 
 	//dump("[ConvertMgr] push dEntry\n");
 	this.delayQueue.push(dEntry);
@@ -491,6 +513,7 @@ ConvertMgr.prototype.execConvert=function(dEntry) {
 			convertPass: function(args) {
 				var process = Components.classes["@mozilla.org/process/util;1"]
 			                        .createInstance(Components.interfaces.nsIProcess);
+				dump("Executing "+this.dEntry.file.path+" "+args.join(" ")+"\n");
 				process.init(this.dEntry.file);
 				process.runwAsync(args, args.length, this);
 			},
@@ -517,7 +540,8 @@ ConvertMgr.prototype.execConvert=function(dEntry) {
 				} else {
 					if(this.dEntry.autoClear) {
 						try {
-							this.dEntry.targetFile.remove(false);
+							if(this.dEntry.targetFile.exists())
+								this.dEntry.targetFile.remove(false);
 						} catch(e) {
 							dump("!!! [ConvertMgr/Processor] execConvert [run] failed: "+e+"\n");
 						}
@@ -1345,6 +1369,10 @@ ConvertMgr.prototype.defaultConfigs = [
      {
     	 value: 'mp3/-ab 192k -f mp3',
     	 title: 'MP3 192k'
+     },
+     {
+    	 value: 'mp3/-ab 256k -f mp3',
+    	 title: 'MP3 HQ'
      },
 ]; 
 

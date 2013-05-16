@@ -47,6 +47,7 @@ pref("dwhelper.show-in-toolsmenu",true);
 pref("dwhelper.quick-processor","quick-download");
 pref("dwhelper.preferred-converter","ffmpeg");
 pref("dwhelper.converter-path-ffmpeg","/usr/bin/ffmpeg");
+pref("dwhelper.converter-path-avconv","/usr/bin/avconv");
 pref("dwhelper.converter-path-mencoder","/usr/bin/mencoder");
 pref("dwhelper.mp3tunes.username","");
 pref("dwhelper.mp3tunes.password","");
