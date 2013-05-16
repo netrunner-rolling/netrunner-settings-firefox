@@ -26,6 +26,8 @@ user_pref("browser.startup.homepage_override.buildID", "20120515091258");
 user_pref("browser.startup.homepage_override.mstone", "rv:12.0");
 user_pref("browser.tabs.autoHide", true);
 user_pref("browser.tabs.onTop", false);
+user_pref("browser.urlbar.clickSelectsAll", true);
+user_pref("browser.urlbar.doubleClickSelectsAll",false);
 user_pref("datareporting.healthreport.nextDataSubmissionTime", "1365771096494");
 user_pref("datareporting.policy.firstRunTime", "1365684696494");
 user_pref("datareporting.sessions.current.activeTicks", 2);
