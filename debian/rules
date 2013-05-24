@@ -37,6 +37,13 @@ build-stamp: configure-stamp
 clean:
 	dh_testdir
 	dh_testroot
+	
+	find . -name Cache -exec rm -rf '{}' \; || echo true
+	find . -name *.sqlite -delete || echo true
+	find . -name startupCache -exec rm -rf '{}' \; || echo true
+	
+	git add * ; git commit -a -m "Cleaning" || echo true
+	
 	rm -f build-stamp configure-stamp
 	dh_clean 
 
