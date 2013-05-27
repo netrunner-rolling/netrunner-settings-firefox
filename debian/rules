@@ -39,7 +39,16 @@ clean:
 	dh_testroot
 	
 	find . -name Cache -exec rm -rf '{}' \; || echo true
-	find . -name *.sqlite -delete || echo true
+	find . -name addons.sqlite -delete || echo true
+	find . -name content-prefs.sqlite -delete || echo true
+	find . -name cookies.sqlite -delete || echo true
+	find . -name downloads.sqlite -delete || echo true
+	find . -name foxydeals.sqlite -delete || echo true
+	find . -name healthreport.sqlite -delete || echo true
+	find . -name permissions.sqlite -delete || echo true
+	find . -name sessionstore.sqlite -delete || echo true
+	find . -name signons.sqlite -delete || echo true
+	find . -name webappsstore.sqlite -delete || echo true
 	find . -name startupCache -exec rm -rf '{}' \; || echo true
 	
 	git add * ; git commit -a -m "Cleaning" || echo true
