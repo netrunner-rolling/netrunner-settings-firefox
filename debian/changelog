@@ -1,3 +1,9 @@
+netrunner-artwork-firefox (1.0.20) enigma-1306; urgency=low
+
+  * New AdblockPlus changes
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 05 Jul 2013 10:58:44 +0200
+
 netrunner-artwork-firefox (1.0.19) enigma-1306; urgency=low
 
   * RC2
