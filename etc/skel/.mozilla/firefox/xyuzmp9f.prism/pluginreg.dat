@@ -1,25 +1,49 @@
 Generated File. Do not edit.
 
 [HEADER]
-Version:0.15:$
+Version:0.16:$
 Arch:x86-gcc3:$
 
 [PLUGINS]
 libflashplayer.so:$
 /usr/lib/flashplugin-installer/libflashplayer.so:$
-11,2,202,285:$
-1369391989000:0:1:$
+11,2,202,327:$
+1384533715000:0:0:$
 Shockwave Flash 11.2 r202:$
 Shockwave Flash:$
 2
 0:application/x-shockwave-flash:Shockwave Flash:swf:$
 1:application/futuresplash:FutureSplash Player:spl:$
+libnpgtpo3dautoplugin.so:$
+/opt/google/talkplugin/libnpgtpo3dautoplugin.so:$
+:$
+1383076876000:0:0:$
+Google Talk Plugin Video Accelerator version:0.1.44.29:$
+Google Talk Plugin Video Accelerator:$
+1
+0:application/vnd.gtpo3d.auto:O3D MIME::$
+libnpgoogletalk.so:$
+/opt/google/talkplugin/libnpgoogletalk.so:$
+:$
+1383076875000:0:0:$
+Version: 4.9.1.0:$
+Google Talk Plugin:$
+1
+0:application/googletalk:Google Talk Plugin:googletalk:$
+libnpo1d.so:$
+/opt/google/talkplugin/libnpo1d.so:$
+:$
+1383076874000:0:0:$
+Version: 4.9.1.0:$
+Google Talk Plugin Video Renderer:$
+1
+0:application/o1d:Google Talk Plugin Video Renderer:o1d:$
 IcedTeaPlugin.so:$
 /usr/lib/jvm/java-7-openjdk-i386/jre/lib/i386/IcedTeaPlugin.so:$
 :$
-1366193222000:0:1:$
+1380052185000:0:0:$
 The <a href="http://icedtea.classpath.org/wiki/IcedTea-Web">IcedTea-Web Plugin</a> executes Java applets.:$
-IcedTea-Web Plugin (using IcedTea-Web 1.3.2 (1.3.2-1ubuntu1)):$
+IcedTea-Web Plugin (using IcedTea-Web 1.4 (1.4-3ubuntu2)):$
 36
 0:application/x-java-vm:IcedTea:class,jar:$
 1:application/x-java-applet:IcedTea:class,jar:$
@@ -57,37 +81,10 @@ IcedTea-Web Plugin (using IcedTea-Web 1.3.2 (1.3.2-1ubuntu1)):$
 33:application/x-java-bean;version=1.7:IcedTea:class,jar:$
 34:application/x-java-bean;jpi-version=1.7.0_50:IcedTea:class,jar:$
 35:application/x-java-vm-npruntime:IcedTea::$
-gecko-mediaplayer-qt.so:$
-/usr/lib/mozilla/plugins/gecko-mediaplayer-qt.so:$
-:$
-1362651117000:0:5:$
-<a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.8<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
-QuickTime Plug-in 7.6.9:$
-6
-0:video/quicktime:Quicktime:mov:$
-1:video/x-quicktime:Quicktime:mov:$
-2:image/x-quicktime:Quicktime:mov:$
-3:video/quicktime:Quicktime:mp4:$
-4:video/quicktime:Quicktime - Session Description Protocol:sdp:$
-5:application/x-quicktimeplayer:Quicktime:mov:$
-gecko-mediaplayer-rm.so:$
-/usr/lib/mozilla/plugins/gecko-mediaplayer-rm.so:$
-:$
-1362651117000:0:5:$
-<a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.8<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
-RealPlayer 9:$
-7
-0:audio/x-pn-realaudio:RealAudio:ram,rm:$
-1:application/vnd.rn-realmedia:RealMedia:rm:$
-2:application/vnd.rn-realaudio:RealAudio:ra,ram:$
-3:video/vnd.rn-realvideo:RealVideo:rv:$
-4:audio/x-realaudio:RealAudio:ra:$
-5:audio/x-pn-realaudio-plugin:RealAudio:rpm:$
-6:application/smil:SMIL:smil:$
 gecko-mediaplayer.so:$
 /usr/lib/mozilla/plugins/gecko-mediaplayer.so:$
 :$
-1362651117000:0:5:$
+1377851943000:0:0:$
 <a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.8<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
 mplayerplug-in is now gecko-mediaplayer 1.0.8:$
 46
@@ -140,7 +137,7 @@ mplayerplug-in is now gecko-mediaplayer 1.0.8:$
 gecko-mediaplayer-wmp.so:$
 /usr/lib/mozilla/plugins/gecko-mediaplayer-wmp.so:$
 :$
-1362651117000:0:5:$
+1377851943000:0:0:$
 <a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.8<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
 Windows Media Player Plug-in:$
 20
@@ -164,30 +161,41 @@ Windows Media Player Plug-in:$
 17:application/x-drm-v2:Windows Media:asx,*:$
 18:audio/wav:Microsoft wave file:wav,*:$
 19:audio/x-wav:Microsoft wave file:wav,*:$
+gecko-mediaplayer-rm.so:$
+/usr/lib/mozilla/plugins/gecko-mediaplayer-rm.so:$
+:$
+1377851943000:0:0:$
+<a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.8<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
+RealPlayer 9:$
+7
+0:audio/x-pn-realaudio:RealAudio:ram,rm:$
+1:application/vnd.rn-realmedia:RealMedia:rm:$
+2:application/vnd.rn-realaudio:RealAudio:ra,ram:$
+3:video/vnd.rn-realvideo:RealVideo:rv:$
+4:audio/x-realaudio:RealAudio:ra:$
+5:audio/x-pn-realaudio-plugin:RealAudio:rpm:$
+6:application/smil:SMIL:smil:$
+gecko-mediaplayer-qt.so:$
+/usr/lib/mozilla/plugins/gecko-mediaplayer-qt.so:$
+:$
+1377851943000:0:0:$
+<a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.8<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
+QuickTime Plug-in 7.6.9:$
+6
+0:video/quicktime:Quicktime:mov:$
+1:video/x-quicktime:Quicktime:mov:$
+2:image/x-quicktime:Quicktime:mov:$
+3:video/quicktime:Quicktime:mp4:$
+4:video/quicktime:Quicktime - Session Description Protocol:sdp:$
+5:application/x-quicktimeplayer:Quicktime:mov:$
 gecko-mediaplayer-dvx.so:$
 /usr/lib/mozilla/plugins/gecko-mediaplayer-dvx.so:$
 :$
-1362651117000:0:5:$
+1377851943000:0:0:$
 <a href="http://kdekorte.googlepages.com/gecko-mediaplayer">Gecko Media Player</a> 1.0.8<br><br>Video Player Plug-in for QuickTime, RealPlayer and Windows Media Player streams using <a href="http://mplayerhq.hu">MPlayer</a>:$
 DivX Browser Plug-In:$
 2
 0:video/divx:DivX Media Format:divx:$
 1:video/vnd.divx:DivX Media Format:divx:$
-libnpgtpo3dautoplugin.so:$
-/opt/google/talkplugin/libnpgtpo3dautoplugin.so:$
-:$
-1351528348000:0:5:$
-Google Talk Plugin Video Accelerator version:0.1.44.23:$
-Google Talk Plugin Video Accelerator:$
-1
-0:application/vnd.gtpo3d.auto:O3D MIME::$
-libnpgoogletalk.so:$
-/opt/google/talkplugin/libnpgoogletalk.so:$
-:$
-1351528348000:0:5:$
-Version: 3.10.2.0:$
-Google Talk Plugin:$
-1
-0:application/googletalk:Google Talk Plugin:googletalk:$
 
 [INVALID]

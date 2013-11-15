@@ -1,6 +1,41 @@
 <?xml version="1.0"?>
 <RDF:RDF xmlns:NC="http://home.netscape.com/NC-rdf#"
          xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <RDF:Description RDF:about="urn:handler:local:/usr/bin/dolphin"
+                   NC:prettyName="dolphin"
+                   NC:path="/usr/bin/dolphin" />
+  <RDF:Description RDF:about="urn:scheme:mailto"
+                   NC:value="mailto">
+    <NC:handlerProp RDF:resource="urn:scheme:handler:mailto"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:mimetype:handler:application/x-deb"
+                   NC:alwaysAsk="false">
+    <NC:possibleApplication RDF:resource="urn:handler:local:/usr/bin/qapt-deb-installer"/>
+    <NC:possibleApplication RDF:resource="urn:handler:local:/usr/bin/gdebi"/>
+    <NC:externalApplication RDF:resource="urn:mimetype:externalApplication:application/x-deb"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:handler:local:/usr/bin/thunderbird"
+                   NC:prettyName="thunderbird"
+                   NC:path="/usr/bin/thunderbird" />
+  <RDF:Description RDF:about="urn:mimetype:handler:application/zip"
+                   NC:alwaysAsk="true"
+                   NC:saveToDisk="true">
+    <NC:externalApplication RDF:resource="urn:mimetype:externalApplication:application/zip"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:handler:web:http://compose.mail.yahoo.com/?To=%s"
+                   NC:prettyName="Yahoo! Mail"
+                   NC:uriTemplate="http://compose.mail.yahoo.com/?To=%s" />
+  <RDF:Description RDF:about="urn:scheme:externalApplication:file"
+                   NC:prettyName="dolphin"
+                   NC:path="/usr/bin/dolphin" />
+  <RDF:Description RDF:about="urn:mimetype:handler:application/x-bittorrent"
+                   NC:alwaysAsk="false"
+                   NC:useSystemDefault="true">
+    <NC:externalApplication RDF:resource="urn:mimetype:externalApplication:application/x-bittorrent"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:mimetype:handler:application/pdf"
+                   NC:handleInternal="true"
+                   NC:alwaysAsk="false" />
   <RDF:Description RDF:about="urn:mimetype:handler:application/x-tar"
                    NC:useSystemDefault="false"
                    NC:handleInternal="false"
@@ -9,55 +44,33 @@
     <NC:externalApplication RDF:resource="urn.mimetype:externalApplication:application/x-tar"/>
     <NC:externalApplication RDF:resource="urn:mimetype:externalApplication:application/x-tar"/>
   </RDF:Description>
-  <RDF:Description RDF:about="urn:scheme:webcal"
-                   NC:value="webcal">
-    <NC:handlerProp RDF:resource="urn:scheme:handler:webcal"/>
-  </RDF:Description>
-  <RDF:Description RDF:about="urn:handler:local:/usr/bin/thunderbird"
-                   NC:prettyName="thunderbird"
-                   NC:path="/usr/bin/thunderbird" />
-  <RDF:Description RDF:about="urn:scheme:externalApplication:mailto"
-                   NC:prettyName="thunderbird"
-                   NC:path="/usr/bin/thunderbird" />
-  <RDF:Description RDF:about="urn:scheme:handler:file"
-                   NC:alwaysAsk="false">
-    <NC:externalApplication RDF:resource="urn:scheme:externalApplication:file"/>
-    <NC:possibleApplication RDF:resource="urn:handler:local:/usr/bin/dolphin"/>
-  </RDF:Description>
-  <RDF:Description RDF:about="urn:scheme:handler:webcal"
-                   NC:alwaysAsk="true">
-    <NC:possibleApplication RDF:resource="urn:handler:web:http://30boxes.com/external/widget?refer=ff&amp;url=%s"/>
-  </RDF:Description>
-  <RDF:Seq RDF:about="urn:mimetypes:root">
-    <RDF:li RDF:resource="urn:mimetype:application/x-tar"/>
-    <RDF:li RDF:resource="urn:mimetype:application/x-gzip"/>
-    <RDF:li RDF:resource="urn:mimetype:application/x-msdos-program"/>
-    <RDF:li RDF:resource="urn:mimetype:application/zip"/>
-    <RDF:li RDF:resource="urn:mimetype:application/x-deb"/>
-    <RDF:li RDF:resource="urn:mimetype:application/x-bittorrent"/>
-    <RDF:li RDF:resource="urn:mimetype:application/pdf"/>
-  </RDF:Seq>
   <RDF:Description RDF:about="urn:scheme:irc"
                    NC:value="irc">
     <NC:handlerProp RDF:resource="urn:scheme:handler:irc"/>
   </RDF:Description>
-  <RDF:Description RDF:about="urn:handler:web:http://compose.mail.yahoo.com/?To=%s"
-                   NC:prettyName="Yahoo! Mail"
-                   NC:uriTemplate="http://compose.mail.yahoo.com/?To=%s" />
-  <RDF:Description RDF:about="urn:mimetype:handler:application/x-gzip"
-                   NC:alwaysAsk="true"
-                   NC:saveToDisk="true"
-                   NC:useSystemDefault="false">
-    <NC:externalApplication RDF:resource="urn:mimetype:externalApplication:application/x-gzip"/>
+  <RDF:Description RDF:about="urn:mimetype:application/x-tar"
+                   NC:fileExtensions="tar"
+                   NC:description="archive tar"
+                   NC:value="application/x-tar"
+                   NC:editable="true">
+    <NC:handlerProp RDF:resource="urn:mimetype:handler:application/x-tar"/>
   </RDF:Description>
-  <RDF:Seq RDF:about="urn:schemes:root">
-    <RDF:li RDF:resource="urn:scheme:mailto"/>
-    <RDF:li RDF:resource="urn:scheme:irc"/>
-    <RDF:li RDF:resource="urn:scheme:ircs"/>
-    <RDF:li RDF:resource="urn:scheme:webcal"/>
-    <RDF:li RDF:resource="urn:scheme:apt"/>
-    <RDF:li RDF:resource="urn:scheme:file"/>
-  </RDF:Seq>
+  <RDF:Description RDF:about="urn:schemes">
+    <NC:Protocol-Schemes RDF:resource="urn:schemes:root"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:root"
+                   NC:fr_defaultHandlersVersion="2"
+                   NC:en-US_defaultHandlersVersion="4" />
+  <RDF:Description RDF:about="urn:scheme:webcal"
+                   NC:value="webcal">
+    <NC:handlerProp RDF:resource="urn:scheme:handler:webcal"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:handler:local:/usr/bin/qapt-deb-installer"
+                   NC:prettyName="qapt-deb-installer"
+                   NC:path="/usr/bin/qapt-deb-installer" />
+  <RDF:Description RDF:about="urn:mimetype:externalApplication:application/x-tar"
+                   NC:path="/usr/bin/mintInstall"
+                   NC:prettyName="mintInstall" />
   <RDF:Description RDF:about="urn:mimetype:application/x-msdos-program"
                    NC:value="application/x-msdos-program"
                    NC:editable="true"
@@ -68,59 +81,81 @@
     <NC:fileExtensions>dll</NC:fileExtensions>
     <NC:handlerProp RDF:resource="urn:mimetype:handler:application/x-msdos-program"/>
   </RDF:Description>
-  <RDF:Description RDF:about="urn:handler:local:/usr/bin/dolphin"
-                   NC:prettyName="dolphin"
-                   NC:path="/usr/bin/dolphin" />
+  <RDF:Description RDF:about="urn:scheme:handler:ircs"
+                   NC:alwaysAsk="true">
+    <NC:possibleApplication RDF:resource="urn:handler:web:https://www.mibbit.com/?url=%s"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:mimetype:application/pdf"
+                   NC:value="application/pdf">
+    <NC:handlerProp RDF:resource="urn:mimetype:handler:application/pdf"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:scheme:handler:file"
+                   NC:alwaysAsk="false">
+    <NC:externalApplication RDF:resource="urn:scheme:externalApplication:file"/>
+    <NC:possibleApplication RDF:resource="urn:handler:local:/usr/bin/dolphin"/>
+  </RDF:Description>
   <RDF:Description RDF:about="urn:mimetype:handler:application/x-msdos-program"
                    NC:alwaysAsk="true"
                    NC:saveToDisk="true">
     <NC:externalApplication RDF:resource="urn:mimetype:externalApplication:application/x-msdos-program"/>
   </RDF:Description>
-  <RDF:Description RDF:about="urn:scheme:mailto"
-                   NC:value="mailto">
-    <NC:handlerProp RDF:resource="urn:scheme:handler:mailto"/>
-  </RDF:Description>
-  <RDF:Description RDF:about="urn:handler:web:http://30boxes.com/external/widget?refer=ff&amp;url=%s"
+  <RDF:Description RDF:about="urn:handler:web:https://mail.google.com/mail/?extsrc=mailto&amp;url=%s"
+                   NC:prettyName="Gmail"
+                   NC:uriTemplate="https://mail.google.com/mail/?extsrc=mailto&amp;url=%s" />
+  <RDF:Description RDF:about="urn:handler:web:https://30boxes.com/external/widget?refer=ff&amp;url=%s"
                    NC:prettyName="30 Boxes"
-                   NC:uriTemplate="http://30boxes.com/external/widget?refer=ff&amp;url=%s" />
-  <RDF:Description RDF:about="urn:scheme:handler:irc"
-                   NC:useSystemDefault="true"
-                   NC:alwaysAsk="true">
-    <NC:possibleApplication RDF:resource="urn:handler:web:https://www.mibbit.com/?url=%s"/>
+                   NC:uriTemplate="https://30boxes.com/external/widget?refer=ff&amp;url=%s" />
+  <RDF:Description RDF:about="urn:scheme:apt"
+                   NC:value="apt">
+    <NC:handlerProp RDF:resource="urn:scheme:handler:apt"/>
   </RDF:Description>
-  <RDF:Description RDF:about="urn:handler:local:/usr/bin/gdebi"
-                   NC:prettyName="gdebi"
-                   NC:path="/usr/bin/gdebi" />
+  <RDF:Description RDF:about="urn:scheme:externalApplication:mailto"
+                   NC:prettyName="thunderbird"
+                   NC:path="/usr/bin/thunderbird" />
   <RDF:Description RDF:about="urn:handler:web:https://www.mibbit.com/?url=%s"
                    NC:prettyName="Mibbit"
                    NC:uriTemplate="https://www.mibbit.com/?url=%s" />
-  <RDF:Description RDF:about="urn:handler:local:/usr/bin/qapt-deb-installer"
-                   NC:prettyName="qapt-deb-installer"
-                   NC:path="/usr/bin/qapt-deb-installer" />
-  <RDF:Description RDF:about="urn:mimetype:application/x-gzip"
-                   NC:description="Gzip archive"
-                   NC:value="application/x-gzip"
-                   NC:editable="true">
-    <NC:handlerProp RDF:resource="urn:mimetype:handler:application/x-gzip"/>
+  <RDF:Description RDF:about="urn:mimetype:application/x-bittorrent"
+                   NC:value="application/x-bittorrent"
+                   NC:editable="true"
+                   NC:fileExtensions="torrent"
+                   NC:description="BitTorrent seed file">
+    <NC:handlerProp RDF:resource="urn:mimetype:handler:application/x-bittorrent"/>
+  </RDF:Description>
+  <RDF:Seq RDF:about="urn:mimetypes:root">
+    <RDF:li RDF:resource="urn:mimetype:application/x-tar"/>
+    <RDF:li RDF:resource="urn:mimetype:application/x-gzip"/>
+    <RDF:li RDF:resource="urn:mimetype:application/x-msdos-program"/>
+    <RDF:li RDF:resource="urn:mimetype:application/zip"/>
+    <RDF:li RDF:resource="urn:mimetype:application/x-deb"/>
+    <RDF:li RDF:resource="urn:mimetype:application/x-bittorrent"/>
+    <RDF:li RDF:resource="urn:mimetype:application/pdf"/>
+  </RDF:Seq>
+  <RDF:Description RDF:about="urn:handler:local:/usr/bin/gdebi"
+                   NC:prettyName="gdebi"
+                   NC:path="/usr/bin/gdebi" />
+  <RDF:Description RDF:about="urn:scheme:handler:mailto"
+                   NC:alwaysAsk="false">
+    <NC:possibleApplication RDF:resource="urn:handler:web:https://mail.google.com/mail/?extsrc=mailto&amp;url=%s"/>
+    <NC:possibleApplication RDF:resource="urn:handler:web:http://compose.mail.yahoo.com/?To=%s"/>
+    <NC:possibleApplication RDF:resource="urn:handler:local:/usr/bin/thunderbird"/>
+    <NC:possibleApplication RDF:resource="urn:handler:web:https://compose.mail.yahoo.com/?To=%s"/>
+    <NC:externalApplication RDF:resource="urn:scheme:externalApplication:mailto"/>
+  </RDF:Description>
+  <RDF:Seq RDF:about="urn:schemes:root">
+    <RDF:li RDF:resource="urn:scheme:mailto"/>
+    <RDF:li RDF:resource="urn:scheme:irc"/>
+    <RDF:li RDF:resource="urn:scheme:ircs"/>
+    <RDF:li RDF:resource="urn:scheme:webcal"/>
+    <RDF:li RDF:resource="urn:scheme:apt"/>
+    <RDF:li RDF:resource="urn:scheme:file"/>
+  </RDF:Seq>
+  <RDF:Description RDF:about="urn:mimetypes">
+    <NC:MIME-types RDF:resource="urn:mimetypes:root"/>
   </RDF:Description>
   <RDF:Description RDF:about="urn:mimetype:externalApplication:application/x-deb"
                    NC:prettyName="gdebi"
                    NC:path="/usr/bin/gdebi-gtk" />
-  <RDF:Description RDF:about="urn:root"
-                   NC:en-US_defaultHandlersVersion="3"
-                   NC:fr_defaultHandlersVersion="2" />
-  <RDF:Description RDF:about="urn:schemes">
-    <NC:Protocol-Schemes RDF:resource="urn:schemes:root"/>
-  </RDF:Description>
-  <RDF:Description RDF:about="urn:mimetype:handler:application/pdf"
-                   NC:handleInternal="true"
-                   NC:alwaysAsk="false" />
-  <RDF:Description RDF:about="urn:mimetype:handler:application/x-deb"
-                   NC:alwaysAsk="false">
-    <NC:possibleApplication RDF:resource="urn:handler:local:/usr/bin/qapt-deb-installer"/>
-    <NC:possibleApplication RDF:resource="urn:handler:local:/usr/bin/gdebi"/>
-    <NC:externalApplication RDF:resource="urn:mimetype:externalApplication:application/x-deb"/>
-  </RDF:Description>
   <RDF:Description RDF:about="urn:scheme:ircs"
                    NC:value="ircs">
     <NC:handlerProp RDF:resource="urn:scheme:handler:ircs"/>
@@ -133,40 +168,9 @@
     <NC:fileExtensions>udeb</NC:fileExtensions>
     <NC:handlerProp RDF:resource="urn:mimetype:handler:application/x-deb"/>
   </RDF:Description>
-  <RDF:Description RDF:about="urn:handler:web:https://mail.google.com/mail/?extsrc=mailto&amp;url=%s"
-                   NC:prettyName="Gmail"
-                   NC:uriTemplate="https://mail.google.com/mail/?extsrc=mailto&amp;url=%s" />
-  <RDF:Description RDF:about="urn:scheme:handler:ircs"
-                   NC:alwaysAsk="true">
-    <NC:possibleApplication RDF:resource="urn:handler:web:https://www.mibbit.com/?url=%s"/>
-  </RDF:Description>
-  <RDF:Description RDF:about="urn:mimetype:externalApplication:application/x-tar"
-                   NC:path="/usr/bin/mintInstall"
-                   NC:prettyName="mintInstall" />
-  <RDF:Description RDF:about="urn:scheme:file"
-                   NC:value="file">
-    <NC:handlerProp RDF:resource="urn:scheme:handler:file"/>
-  </RDF:Description>
-  <RDF:Description RDF:about="urn:scheme:handler:apt"
-                   NC:useSystemDefault="true"
-                   NC:alwaysAsk="false" />
-  <RDF:Description RDF:about="urn:mimetype:handler:application/x-bittorrent"
-                   NC:alwaysAsk="false"
-                   NC:useSystemDefault="true">
-    <NC:externalApplication RDF:resource="urn:mimetype:externalApplication:application/x-bittorrent"/>
-  </RDF:Description>
-  <RDF:Description RDF:about="urn:scheme:handler:mailto"
-                   NC:alwaysAsk="false">
-    <NC:possibleApplication RDF:resource="urn:handler:web:https://mail.google.com/mail/?extsrc=mailto&amp;url=%s"/>
-    <NC:possibleApplication RDF:resource="urn:handler:web:http://compose.mail.yahoo.com/?To=%s"/>
-    <NC:possibleApplication RDF:resource="urn:handler:local:/usr/bin/thunderbird"/>
-    <NC:externalApplication RDF:resource="urn:scheme:externalApplication:mailto"/>
-  </RDF:Description>
-  <RDF:Description RDF:about="urn:mimetype:handler:application/zip"
-                   NC:alwaysAsk="true"
-                   NC:saveToDisk="true">
-    <NC:externalApplication RDF:resource="urn:mimetype:externalApplication:application/zip"/>
-  </RDF:Description>
+  <RDF:Description RDF:about="urn:handler:web:https://compose.mail.yahoo.com/?To=%s"
+                   NC:prettyName="Yahoo! Mail"
+                   NC:uriTemplate="https://compose.mail.yahoo.com/?To=%s" />
   <RDF:Description RDF:about="urn:mimetype:application/zip"
                    NC:value="application/zip"
                    NC:editable="true"
@@ -174,32 +178,36 @@
                    NC:description="Zip archive">
     <NC:handlerProp RDF:resource="urn:mimetype:handler:application/zip"/>
   </RDF:Description>
-  <RDF:Description RDF:about="urn:mimetypes">
-    <NC:MIME-types RDF:resource="urn:mimetypes:root"/>
-  </RDF:Description>
-  <RDF:Description RDF:about="urn:mimetype:application/pdf"
-                   NC:value="application/pdf">
-    <NC:handlerProp RDF:resource="urn:mimetype:handler:application/pdf"/>
-  </RDF:Description>
-  <RDF:Description RDF:about="urn:mimetype:application/x-bittorrent"
-                   NC:value="application/x-bittorrent"
-                   NC:editable="true"
-                   NC:fileExtensions="torrent"
-                   NC:description="BitTorrent seed file">
-    <NC:handlerProp RDF:resource="urn:mimetype:handler:application/x-bittorrent"/>
-  </RDF:Description>
-  <RDF:Description RDF:about="urn:mimetype:application/x-tar"
-                   NC:fileExtensions="tar"
-                   NC:description="archive tar"
-                   NC:value="application/x-tar"
+  <RDF:Description RDF:about="urn:handler:web:http://30boxes.com/external/widget?refer=ff&amp;url=%s"
+                   NC:prettyName="30 Boxes"
+                   NC:uriTemplate="http://30boxes.com/external/widget?refer=ff&amp;url=%s" />
+  <RDF:Description RDF:about="urn:mimetype:application/x-gzip"
+                   NC:description="Gzip archive"
+                   NC:value="application/x-gzip"
                    NC:editable="true">
-    <NC:handlerProp RDF:resource="urn:mimetype:handler:application/x-tar"/>
+    <NC:handlerProp RDF:resource="urn:mimetype:handler:application/x-gzip"/>
   </RDF:Description>
-  <RDF:Description RDF:about="urn:scheme:apt"
-                   NC:value="apt">
-    <NC:handlerProp RDF:resource="urn:scheme:handler:apt"/>
+  <RDF:Description RDF:about="urn:scheme:handler:irc"
+                   NC:useSystemDefault="true"
+                   NC:alwaysAsk="true">
+    <NC:possibleApplication RDF:resource="urn:handler:web:https://www.mibbit.com/?url=%s"/>
   </RDF:Description>
-  <RDF:Description RDF:about="urn:scheme:externalApplication:file"
-                   NC:prettyName="dolphin"
-                   NC:path="/usr/bin/dolphin" />
+  <RDF:Description RDF:about="urn:scheme:handler:webcal"
+                   NC:alwaysAsk="true">
+    <NC:possibleApplication RDF:resource="urn:handler:web:http://30boxes.com/external/widget?refer=ff&amp;url=%s"/>
+    <NC:possibleApplication RDF:resource="urn:handler:web:https://30boxes.com/external/widget?refer=ff&amp;url=%s"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:scheme:handler:apt"
+                   NC:useSystemDefault="true"
+                   NC:alwaysAsk="false" />
+  <RDF:Description RDF:about="urn:scheme:file"
+                   NC:value="file">
+    <NC:handlerProp RDF:resource="urn:scheme:handler:file"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:mimetype:handler:application/x-gzip"
+                   NC:alwaysAsk="true"
+                   NC:saveToDisk="true"
+                   NC:useSystemDefault="false">
+    <NC:externalApplication RDF:resource="urn:mimetype:externalApplication:application/x-gzip"/>
+  </RDF:Description>
 </RDF:RDF>
