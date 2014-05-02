@@ -1,1 +1,1 @@
-2014-02-15 11:47:11 ERROR addons.xpi: Attempted to load bootstrap scope from missing directory /home/leszek/.mozilla/firefox/urmsktfc.default/extensions/{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi at resource://gre/modules/XPIProvider.jsm:3907
+2014-05-02 11:41:19 ERROR addons.xpi: Attempted to load bootstrap scope from missing directory /home/leszek/.mozilla/firefox/urmsktfc.default/extensions/{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi at resource://gre/modules/XPIProvider.jsm:4192
