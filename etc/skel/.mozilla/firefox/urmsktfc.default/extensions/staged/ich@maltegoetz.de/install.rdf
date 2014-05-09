@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>ich@maltegoetz.de</em:id>
+    <em:name>ProxTube - Unblock YouTube</em:name>
+    <em:localized>
+      <Description> 
+        <em:locale>en-US</em:locale>
+        <em:name>ProxTube - Unblock YouTube</em:name>
+        <em:description>Helps you to unblock region locked videos on youtube.</em:description>
+      </Description>
+    </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>de-DE</em:locale>
+        <em:name>ProxTube - Gesperrte YouTube Videos entsperren</em:name>
+        <em:description>Hilft beim Entsperren von gesperrten YouTube Videos.</em:description>
+      </Description>
+    </em:localized>
+    <em:type>2</em:type>
+    <em:version>1.5.5</em:version>
+    <em:creator>Malte Goetz</em:creator>
+    <em:optionsURL>chrome://proxtube/content/options.xul</em:optionsURL>
+    <em:aboutURL>chrome://proxtube/content/about.xul</em:aboutURL>
+	<em:iconURL>chrome://proxtube/skin/icon.png</em:iconURL>
+	<em:icon64URL>chrome://proxtube/skin/icon_big.png</em:icon64URL>
+	<em:unpack>true</em:unpack>
+    <em:targetApplication>
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id> <!-- Firefox -->
+        <em:minVersion>4.0</em:minVersion>
+        <em:maxVersion>27.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  </Description>
+</RDF>

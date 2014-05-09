@@ -1,0 +1,71 @@
+overlay chrome://browser/content/browser.xul chrome://dwhelper/content/dwhelper.xul
+content dwhelper    jar:chrome/dwhelper.jar!/content/
+skin    dwhelper classic/1.0 jar:chrome/dwhelper.jar!/skin/classic/
+locale  dwhelper en-US jar:chrome/dwhelper.jar!/locale/en-US/
+locale  dwhelper ar jar:chrome/dwhelper.jar!/locale/ar/
+locale  dwhelper bg-BG jar:chrome/dwhelper.jar!/locale/bg-BG/
+locale  dwhelper cs-CZ jar:chrome/dwhelper.jar!/locale/cs-CZ/
+locale  dwhelper da jar:chrome/dwhelper.jar!/locale/da/
+locale  dwhelper de jar:chrome/dwhelper.jar!/locale/de/
+locale  dwhelper es-ES jar:chrome/dwhelper.jar!/locale/es-ES/
+locale  dwhelper fi jar:chrome/dwhelper.jar!/locale/fi/
+locale  dwhelper fr jar:chrome/dwhelper.jar!/locale/fr/
+locale  dwhelper he jar:chrome/dwhelper.jar!/locale/he/
+locale  dwhelper it jar:chrome/dwhelper.jar!/locale/it/
+locale  dwhelper ja-JP jar:chrome/dwhelper.jar!/locale/ja-JP/
+locale  dwhelper ko-KR jar:chrome/dwhelper.jar!/locale/ko-KR/
+locale  dwhelper lt jar:chrome/dwhelper.jar!/locale/lt/
+locale  dwhelper nl jar:chrome/dwhelper.jar!/locale/nl/
+locale  dwhelper pl jar:chrome/dwhelper.jar!/locale/pl/
+locale  dwhelper pt-BR jar:chrome/dwhelper.jar!/locale/pt-BR/
+locale  dwhelper pt-PT jar:chrome/dwhelper.jar!/locale/pt-PT/
+locale  dwhelper ro jar:chrome/dwhelper.jar!/locale/ro/
+locale  dwhelper ru-RU jar:chrome/dwhelper.jar!/locale/ru-RU/
+locale  dwhelper si-LK jar:chrome/dwhelper.jar!/locale/si-LK/
+locale  dwhelper sk-SK jar:chrome/dwhelper.jar!/locale/sk-SK/
+locale  dwhelper sl-SI jar:chrome/dwhelper.jar!/locale/sl-SI/
+locale  dwhelper sv-SE jar:chrome/dwhelper.jar!/locale/sv-SE/
+locale  dwhelper tr jar:chrome/dwhelper.jar!/locale/tr/
+locale  dwhelper uk-UA jar:chrome/dwhelper.jar!/locale/uk-UA/
+locale  dwhelper vi jar:chrome/dwhelper.jar!/locale/vi/
+locale  dwhelper zh-CN jar:chrome/dwhelper.jar!/locale/zh-CN/
+locale  dwhelper zh-TW jar:chrome/dwhelper.jar!/locale/zh-TW/
+style   chrome://global/content/customizeToolbar.xul    chrome://dwhelper/skin/dwhelper.css
+overlay chrome://songbird/content/xul/layoutWithBrowserOverlay.xul chrome://dwhelper/content/dwhelper.xul
+style   chrome://songbird/content/xul/layoutWithBrowserOverlay.xul    chrome://dwhelper/skin/classic/dwhelper.css
+overlay chrome://navigator/content/navigator.xul chrome://dwhelper/content/dwhelper.xul
+style chrome://navigator/content/navigator.xul chrome://dwhelper/skin/classic/dwhelper.css
+resource dwhelper local/modules/
+
+interfaces components/dhIYTInfo.xpt
+interfaces components/dhIProbe.xpt
+interfaces components/dhIPreProcessor.xpt
+interfaces components/dhIProbeMouseListener.xpt
+interfaces components/dhIMediaListMgr.xpt
+interfaces components/dhIYoutubeTool.xpt
+interfaces components/dhIYTHQChecker.xpt
+interfaces components/dhIUtilService.xpt
+interfaces components/dhIDownloadListener.xpt
+interfaces components/dhIYTHQCheckerListener.xpt
+interfaces components/dhIDownloadMgr.xpt
+interfaces components/dhISmartNamer.xpt
+interfaces components/dhIConversionListener.xpt
+interfaces components/dhIConvertMgr.xpt
+interfaces components/dhIMP3Tunes.xpt
+interfaces components/dhIDOMHook.xpt
+interfaces components/dhIYTLinkFinder.xpt
+interfaces components/dhIProcessor.xpt
+interfaces components/dhIContextItem.xpt
+interfaces components/dhICore.xpt
+interfaces components/dhISocialShare.xpt
+interfaces components/dhIScapMgr.xpt
+
+component {e4e95e7f-12f1-4b21-8155-82eb22b88c86} components/dhCore.js
+contract @downloadhelper.net/core;1 {e4e95e7f-12f1-4b21-8155-82eb22b88c86}
+
+component {7d087a1b-d9f1-4698-92ea-b9a1b514ebde} components/dhSmartNamer.js
+contract @downloadhelper.net/smart-namer;1 {7d087a1b-d9f1-4698-92ea-b9a1b514ebde}
+
+component {fc78d3e8-91f0-4ccd-a830-aefd00595f43} components/dhYoutubeLinksContextItem.js
+contract @downloadhelper.net/youtube-links-context-item;1 {fc78d3e8-91f0-4ccd-a830-aefd00595f43}
+
