@@ -334,8 +334,17 @@ Core.prototype.cleanupEntriesForDocument=function(document,window) {
 					if(entry.has("window") && entry.has("document")) {
 						var entryWindow=entry.get("window",Components.interfaces.nsIDOMWindow);
 						var entryDocument=entry.get("document",Components.interfaces.nsIDOMDocument);
-						if(entryWindow==window && (entryDocument==document || this.getTopDocument(entryDocument)==document)) {
-							tbd.push(entry);
+						if(entryWindow==window) {
+							if(entryDocument==document || this.getTopDocument(entryDocument)==document) {
+								//dump("cleanup "+Util.getPropsString(entry,"label")+"\n");
+								tbd.push(entry);							
+							} else if(entry.has("page-url")) {
+								var pageUrl = Util.getPropsString(entry,"page-url");
+								if(pageUrl==document.URL) {
+									tbd.push(entry);
+									//dump("cleanup "+Util.getPropsString(entry,"label")+" from "+pageUrl+"\n");
+								}
+							} 
 						}
 					}
 				} else {
@@ -381,6 +390,25 @@ Core.prototype.addEntryForDocument=function(entry,document,window) {
 		Util.setPropsString(entry,"document-url",document.URL);
 		entry.set("document",document);
 		entry.set("window",window);
+		var redundant=false;
+		
+		if(entry.has("media-url")) {
+			var mediaUrl=Util.getPropsString(entry,"media-url");
+			this.entries.forEach(function(entry1) {
+				if(!entry1.has("document") || !entry1.has("window") || !entry1.has("media-url"))
+					return;
+				var window1=entry.get("window",Components.interfaces.nsIDOMWindow);
+				var document1=entry.get("document",Components.interfaces.nsIDOMDocument);
+				var mediaUrl1=Util.getPropsString(entry1,"media-url");
+				if(window==window1 && document==document1 && mediaUrl==mediaUrl1) {
+					redundant=true;
+				}
+			});
+		}
+		if(redundant) {
+			//dump("redundant not added "+Util.getPropsString(entry,"media-url")+"\n");
+			return;
+		}
 		if(this.filterBlackList(entry)) {
 			this.smartNamer.updateEntry(entry);
 			this.entries.push(entry);
@@ -468,13 +496,16 @@ Core.prototype.updateMenus=function(document,window) {
 						var entry=this.entries[j];
 						if(entry.has("document")) {
 							var entryDocument=entry.get("document",Components.interfaces.nsIDOMDocument);
-							if(document!=null && topDocument!=null && topDocument!=this.getTopDocument(entryDocument) && entryDocument!=document) {
+							if(document!=null && topDocument!=null && topDocument!=this.getTopDocument(entryDocument)) {
 								continue;
 							}
-							if(document==null && menu.window.content && menu.window.content.document!=entryDocument) {
+							if(document==null && menu.window.content && menu.window.content.document!=entryDocument && 
+									menu.window.content.document.URL!=entryDocument.URL) {
 								continue;
 							}
 						}
+						if(Util.getPropsString(entry,"disabled")=="disabled")
+							continue;
 						var entryWindow=null;
 						if(entry.has("window"))
 							entryWindow=entry.get("window",Components.interfaces.nsIDOMWindow);
@@ -856,7 +887,6 @@ Core.prototype.monitorWindow=function(win) {
 						break;
 					case "pagehide":
 						try {
-							//dump("pagehide - "+event.target.URL+"\n");
 							var document=event.target;
 							this.core.cleanupEntriesForDocument(document,this.window);
 							this.core.updateMenus(null,null);

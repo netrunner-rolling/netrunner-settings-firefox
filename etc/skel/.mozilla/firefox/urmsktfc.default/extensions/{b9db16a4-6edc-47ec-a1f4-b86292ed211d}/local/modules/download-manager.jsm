@@ -223,9 +223,10 @@ DLMgr.prototype.transferDone = function(status,request,listener,entry,ctx) {
 
 	try {
 
-		if(status==0 && code==200) {
+		if(status==0 && code==200)
 			this.incrementDownloadCount();
-		}
+		else
+			dump("!! [DLMgr] transferDone: "+code+" status "+status+"\n");
 		
 		var nodeValue=Util.getPropsString(entry,"download-node-value");
 		

@@ -297,40 +297,37 @@ NetProbe.prototype.analyzeMeta = function(murl,contentType,contentDisp,contentLe
 			var youtube=/^https?:\/\/(?:[^\/\.]+\.)*youtube\.[^\/]+\/videoplayback/.test(murl);
 			if(/^https?:\/\/(?:[^\/\.]+\.)*youtube\.[^\/]+\/ptracking/.test(murl))
 				return null;
-			var murl1=murl.replace(/^(https?:\/\/(?:[^\/\.]+\.)*youtube\.[^\/]+\/videoplayback.*?)([&\?])?range=[0-9]+\-[0-9]+(&)?(.*)$/,function(match,p1,p2,p3,p4) {
-				if(p2.length && p3.length)
-					return p1+p2+p4;
-				else
-					return p1+p4;
-			});
-			murl1=murl1.replace(/^(https?:\/\/(?:[^\/\.]+\.)*youtube\.[^\/]+\/videoplayback.*?)([&\?])?begin=[0-9]+(&)?(.*)$/,function(match,p1,p2,p3,p4) {
-				if(p2.length && p3.length)
-					return p1+p2+p4;
-				else
-					return p1+p4;
-			});
-			// TODO remove this: test only to cause forbidden access
-			/*
-			murl1=murl1.replace(/^(https?:\/\/(?:[^\/\.]+\.)*youtube\.[^\/]+\/videoplayback.*?)([&\?])?signature=[^&]+(&)?(.*)$/,function(match,p1,p2,p3,p4) {
-				if(p2.length && p3.length)
-					return p1+p2+p4;
-				else
-					return p1+p4;
-			});
-			*/
-			if(murl!=murl1) {
-				//dump("Range removed from "+murl+" to "+murl1+"\n");
+
+			var ytNetworkHit=this.pref.getCharPref("yt-network-hit");
+			if(ytNetworkHit!="keep") {
+				if(ytNetworkHit=="cancel" && /^https?:\/\/[^\/\.]+\.*(?:youtube|googlevideo)\.[^\/]+\/get_video/.test(murl))
+					return null;
+				var murl1=murl.replace(/^(https?:\/\/(?:[^\/\.]+\.)*(?:youtube|googlevideo)\.[^\/]+\/videoplayback.*?)([&\?])?range=[0-9]+\-[0-9]+(&)?(.*)$/,function(match,p1,p2,p3,p4) {
+					if(ytNetworkHit=="cancel")
+						return "";
+					if(p2.length && p3.length)
+						return p1+p2+p4;
+					else
+						return p1+p4;
+				});
+				if(murl1.length==0)
+					return null;
+				murl1=murl1.replace(/^(https?:\/\/(?:[^\/\.]+\.)*(?:youtube|googlevideo)\.[^\/]+\/videoplayback.*?)([&\?])?begin=[0-9]+(&)?(.*)$/,function(match,p1,p2,p3,p4) {
+					if(ytNetworkHit=="cancel")
+						return "";
+					if(p2.length && p3.length)
+						return p1+p2+p4;
+					else
+						return p1+p4;
+				});
+				if(murl1.length==0)
+					return null;
 				murl=murl1;
 			}
 			
-			// for dm videos
-			var murl1=murl.replace(/^(https?:\/\/.*\/sec\([0-9a-f]+\))\/frag\([^\)]+\)(.*)$/,function(match,p1,p2) {
-				return p1+p2;
-			});
-			if(murl!=murl1) {
-				//dump("Fixed DM\n");
-				murl=murl1;
-			}
+			// ignore dm videos
+			if(/^https?:\/\/(?:[^\/]+\.)?dailymotion\./.test(murl))
+				return null;
 			
 			var desc=Components.classes["@mozilla.org/properties;1"].
 				createInstance(Components.interfaces.nsIProperties);

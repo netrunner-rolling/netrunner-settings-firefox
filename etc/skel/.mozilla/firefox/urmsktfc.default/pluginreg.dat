@@ -5,6 +5,15 @@ Version:0.16:$
 Arch:x86-gcc3:$
 
 [PLUGINS]
+libflashplayer.so:$
+/usr/lib/adobe-flashplugin/libflashplayer.so:$
+11.2.202.359:$
+1398466825000:0:0:$
+Shockwave Flash 11.2 r202:$
+Shockwave Flash:$
+2
+0:application/x-shockwave-flash:Shockwave Flash:swf:$
+1:application/futuresplash:FutureSplash Player:spl:$
 libnpgoogletalk.so:$
 /opt/google/talkplugin/libnpgoogletalk.so:$
 :$
@@ -21,15 +30,6 @@ Version: 5.3.1.0:$
 Google Talk Plugin Video Renderer:$
 1
 0:application/o1d:Google Talk Plugin Video Renderer:o1d:$
-libflashplayer.so:$
-/usr/lib/adobe-flashplugin/libflashplayer.so:$
-11.2.202.356:$
-1397863158000:0:0:$
-Shockwave Flash 11.2 r202:$
-Shockwave Flash:$
-2
-0:application/x-shockwave-flash:Shockwave Flash:swf:$
-1:application/futuresplash:FutureSplash Player:spl:$
 IcedTeaPlugin.so:$
 /usr/lib/jvm/java-7-openjdk-i386/jre/lib/i386/IcedTeaPlugin.so:$
 :$
