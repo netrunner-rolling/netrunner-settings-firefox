@@ -1,0 +1,1 @@
+services.addons.mozilla.org:HSTS	0	16449	1452767155687,1,0
