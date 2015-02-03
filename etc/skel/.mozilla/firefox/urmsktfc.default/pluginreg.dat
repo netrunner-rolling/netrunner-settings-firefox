@@ -2,13 +2,13 @@ Generated File. Do not edit.
 
 [HEADER]
 Version:0.17:$
-Arch:x86-gcc3:$
+Arch:x86_64-gcc3:$
 
 [PLUGINS]
 libflashplayer.so:$
-/usr/lib/adobe-flashplugin/libflashplayer.so:$
-11.2.202.425:$
-1416535782000:0:0:0:$
+/usr/lib/flashplugin-installer/libflashplayer.so:$
+11.2.202.429:$
+1421322469000:0:0:0:$
 Shockwave Flash 11.2 r202:$
 Shockwave Flash:$
 2
@@ -17,7 +17,7 @@ Shockwave Flash:$
 libnpgoogletalk.so:$
 /opt/google/talkplugin/libnpgoogletalk.so:$
 :$
-1415746081000:0:0:0:$
+1415654251000:0:0:0:$
 Version: 5.38.6.0:$
 Google Talk Plugin:$
 1
@@ -25,15 +25,15 @@ Google Talk Plugin:$
 libnpo1d.so:$
 /opt/google/talkplugin/libnpo1d.so:$
 :$
-1415746081000:0:0:0:$
+1415654250000:0:0:0:$
 Version: 5.38.6.0:$
 Google Talk Plugin Video Renderer:$
 1
 0:application/o1d:Google Talk Plugin Video Renderer:o1d:$
 IcedTeaPlugin.so:$
-/usr/lib/jvm/java-7-openjdk-i386/jre/lib/i386/IcedTeaPlugin.so:$
+/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/IcedTeaPlugin.so:$
 :$
-1397491758000:0:0:0:$
+1397491850000:0:0:0:$
 The <a href="http://icedtea.classpath.org/wiki/IcedTea-Web">IcedTea-Web Plugin</a> executes Java applets.:$
 IcedTea-Web Plugin (using IcedTea-Web 1.5 (1.5-1ubuntu1)):$
 36
