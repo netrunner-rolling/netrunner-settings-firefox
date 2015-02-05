@@ -356,3 +356,5 @@ user_pref("urlclassifier.keyupdatetime.https://sb-ssl.google.com/safebrowsing/ne
 user_pref("xpinstall.whitelist.add", "");
 user_pref("xpinstall.whitelist.add.180", "");
 user_pref("xpinstall.whitelist.add.36", "");
+user_pref("plugins.click_to_play", false);
+user_pref("dom.ipc.plugins.flash.disable-protected-mode",true);
