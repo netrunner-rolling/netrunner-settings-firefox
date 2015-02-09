@@ -1151,6 +1151,19 @@ UtilService.prototype.priorTo20 = function() {
 	return !browserCompatible;
 }
 
+UtilService.prototype.priorTo32 = function() {
+	var browserCompatible=false;
+	try {
+		var browserVersion=Components.classes["@mozilla.org/xre/app-info;1"]
+				    		                   .getService(Components.interfaces.nsIXULAppInfo).platformVersion;
+		var comparator=Components.classes["@mozilla.org/xpcom/version-comparator;1"]
+		                                  .getService(Components.interfaces.nsIVersionComparator);
+		if(comparator.compare(browserVersion,"32.0a1")>=0)
+			browserCompatible=true;
+	} catch(e) {}
+	return !browserCompatible;
+}
+
 UtilService.prototype.resolveNumericalEntities = function(str) {
 	if(!this._resolveNumericalEntitiesCallbackDec) {
 		this._resolveNumericalEntitiesCallbackDec=function(m,m1) {

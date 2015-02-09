@@ -399,19 +399,27 @@ YTInfo.prototype.handleDocumentSpf=function(document,window) {
 		window=Components.utils.getWeakReference(window);
 		
 		function HandleMeta(js) {
+			
+			var dataElement=null;
+			
 			var uefsm = null;
 			js.forEach(function(obj) {
 				for(var f in obj) {
-					if(f=="swfcfg" && obj.swfcfg.args) {
-						if(obj.swfcfg.args.title)
-							title = obj.swfcfg.args.title;
-						if(obj.swfcfg.args.url_encoded_fmt_stream_map)
-							uefsm = obj.swfcfg.args.url_encoded_fmt_stream_map;
+					var args=null;
+					if(f=="data" && obj.data && obj.data.swfcfg.args)
+						args=obj.data.swfcfg.args;
+					else if(f=="swfcfg" && obj.swfcfg.args)
+						args=obj.swfcfg.args;
+					if(args) {
+						if(args.title)
+							title = args.title;
+						if(args.url_encoded_fmt_stream_map)
+							uefsm = args.url_encoded_fmt_stream_map;
 					}
 				}
 			});
 			if(!uefsm) {
-				dump("!!! [YouTubeInfoService: no variant format in meta information]: "+e+"\n");
+				dump("!!! [YouTubeInfoService: no variant format in meta information]:\n");
 				return;							
 			}
 			var fileName = $this.getVideoFileName(title);

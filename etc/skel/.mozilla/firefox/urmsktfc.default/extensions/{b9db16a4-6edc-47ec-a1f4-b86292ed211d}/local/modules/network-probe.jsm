@@ -52,12 +52,18 @@ NetProbe.prototype.init=function() {
 		this.ytSigPattern=/^(http:\/\/(?:[^\/]*youtube\..*|.*origin=[^\/&]*youtube\..*))(?:&|&amp;)signature.*(?:&|&amp;)ip=.*$/;
 		Components.utils['import']("resource://dwhelper/medialist-manager.jsm");
 		this.listMgr=MediaListManagerService.get();
-		this.cacheService = Components.classes["@mozilla.org/network/cache-service;1"]
-		                               		.getService(Components.interfaces.nsICacheService);
-		this.httpCacheSession = this.cacheService.createSession("HTTP", 
-			Components.interfaces.nsICache.STORE_ANYWHERE,
-			Components.interfaces.nsICache.STREAM_BASED);
-		this.httpCacheSession.doomEntriesIfExpired=false;
+		
+		this.oldCacheAPI = Util.priorTo32();
+		
+		if(this.oldCacheAPI) {
+			this.cacheService = Components.classes["@mozilla.org/network/cache-service;1"]
+			                               		.getService(Components.interfaces.nsICacheService);
+			this.httpCacheSession = this.cacheService.createSession("HTTP", 
+				Components.interfaces.nsICache.STORE_ANYWHERE,
+				Components.interfaces.nsICache.STREAM_BASED);
+			this.httpCacheSession.doomEntriesIfExpired=false;
+		}
+
 		this.core=Components.classes["@downloadhelper.net/core;1"].
 			getService(Components.interfaces.dhICore);
 		this.core.registerProbe(this);
@@ -104,12 +110,6 @@ NetProbe.prototype.handleRequest=function(request) {
 				} catch(e) {}
 			}
 
-			/*
-			function checkCacheTracker(url,mediaresp,wnd) {
-				mediaresp.checkCacheTracker(url,wnd);			
-			}
-			setTimeout(checkCacheTracker,0,url,this,wnd);
-			*/
 			this.checkCacheTracker(url,wnd);
 		}
 			
@@ -190,13 +190,6 @@ NetProbe.prototype.handleResponse=function(request) {
 				httpChannel.setResponseHeader("Cache-Control","max-age="+24*60*60,false);
 			}
 
-/*
-		    var referer=null;
-			try {
-				referer=request.getRequestHeader("referer");
-			} catch(e) {
-			}
-*/
 		}
 	} catch(e) {
 		dump("!!! [NetProbe] handleResponse("+request.name+"): "+e+"\n");
@@ -204,38 +197,40 @@ NetProbe.prototype.handleResponse=function(request) {
 }
 
 NetProbe.prototype.checkCacheTracker=function(url,wnd) {
-	try {
-		var cacheEntryDescriptor=this.httpCacheSession.openCacheEntry(url, 
-					Components.interfaces.nsICache.ACCESS_READ, false);
-		if(cacheEntryDescriptor && (cacheEntryDescriptor.accessGranted & 1)) {			
-				var headers=cacheEntryDescriptor.getMetaDataElement("response-head");
-				if(/Location:/i.test(headers)) {
+	if(this.oldCacheAPI) {
+		try {
+			var cacheEntryDescriptor=this.httpCacheSession.openCacheEntry(url, 
+						Components.interfaces.nsICache.ACCESS_READ, false);
+			if(cacheEntryDescriptor && (cacheEntryDescriptor.accessGranted & 1)) {			
+					var headers=cacheEntryDescriptor.getMetaDataElement("response-head");
+					if(/Location:/i.test(headers)) {
+						cacheEntryDescriptor.close();
+						return;
+					}
+		
+					var contentType=null;
+					try {
+						contentType=/Content-Type: *(.*)/i.exec(headers)[1];
+					} catch(e) {}
+					var contentLength=null;
+					try {
+						contentLength=/Content-Length: *(.*)/i.exec(headers)[1];
+					} catch(e) {}
+					var contentDisp=null;
+					try {
+						contentDisp=/Content-Disposition: *(.*)/i.exec(headers)[1];
+					} catch(e) {}
+					
+					var fn=this.analyzeMeta(url,contentType,contentDisp,contentLength,wnd);
+					if(fn!=null) {
+						//dump("[MediaResp] checkCacheTracker("+url+"): hit\n");
+					}
 					cacheEntryDescriptor.close();
-					return;
 				}
-	
-				var contentType=null;
-				try {
-					contentType=/Content-Type: *(.*)/i.exec(headers)[1];
-				} catch(e) {}
-				var contentLength=null;
-				try {
-					contentLength=/Content-Length: *(.*)/i.exec(headers)[1];
-				} catch(e) {}
-				var contentDisp=null;
-				try {
-					contentDisp=/Content-Disposition: *(.*)/i.exec(headers)[1];
-				} catch(e) {}
-				
-				var fn=this.analyzeMeta(url,contentType,contentDisp,contentLength,wnd);
-				if(fn!=null) {
-					//dump("[MediaResp] checkCacheTracker("+url+"): hit\n");
-				}
-				cacheEntryDescriptor.close();
-			}
-	} catch(e) {
-		//dump("!!! [NetProbe] checkCacheTracker(): "+e+"\n");
-	}		
+		} catch(e) {
+			//dump("!!! [NetProbe] checkCacheTracker(): "+e+"\n");
+		}
+	}
 }
 
 NetProbe.prototype.analyzeMeta = function(murl,contentType,contentDisp,contentLength,wnd) {
