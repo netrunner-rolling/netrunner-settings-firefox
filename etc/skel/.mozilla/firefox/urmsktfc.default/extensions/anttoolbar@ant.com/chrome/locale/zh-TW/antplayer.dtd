@@ -1,0 +1,25 @@
+<!--       antplayer.dtd      firefox            Created by Zak on 2008-07-03.      Copyright 2008 Ant.com. All rights reserved. -->
+<!ENTITY antPlayerWindow.title "Ant.com 影片播放器">
+<!ENTITY antPlayerHeadSearchBox.value "搜尋網路">
+<!ENTITY antPlayerHeadDoSearch.tooltiptext "搜尋網路">
+<!ENTITY antPlayerPopupPlay.label "播放">
+<!ENTITY antPlayerPopupRename.label "重新命名">
+<!ENTITY antPlayerPopupDelete.label "刪除">
+<!ENTITY antPlayerHeaderOrigin.label "來源">
+<!ENTITY antPlayerHeaderPath.label "路徑">
+<!ENTITY antPlayerHeaderName.label "名稱">
+<!ENTITY antPlayerHeaderFileSize.label "大小">
+<!ENTITY antPlayerHeaderDate.label "日期">
+<!ENTITY antPlayerHeaderDuration.label "持續時間">
+<!ENTITY antPlayerAutoPlayNext "自動播放下一個視訊">
+<!ENTITY antPlayerLoopPlay "循環播放清單">
+<!ENTITY antPlayerRandomPlay "隨機播放">
+<!ENTITY antPlayerButtonNext "下一個">
+<!ENTITY antPlayerButtonPrevious "上一個">
+<!ENTITY antPlayerButtonAddPlaylist "建立一個新的播放清單">
+<!ENTITY antPlayerGeneralPlaylist "未分類">
+<!ENTITY antPlayerAddTo.label "移動至">
+<!ENTITY antPlayerNewPlaylist.label "新建播放清單">
+<!ENTITY antPlayerDeleteAllVideos "刪除此播放清單中的所有視訊">
+<!-- NOTE to translators - don not translate next 1 string -->
+<!ENTITY addonBarCmd.label "Add-ons Bar">

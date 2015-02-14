@@ -1,0 +1,45 @@
+<!ENTITY antFlvListPopupDownloadCurrent.label "Descărcați acest film">
+<!ENTITY antFlvListPopupPlayCurrent.label "Vizionați în player">
+<!ENTITY antFlvListPopupCopyLink.label "Copiați locația filmului">
+<!ENTITY antFlvListPopupRename.label "Redenumiți">
+<!ENTITY antFlvListPopupDownloadSelected.label "Descărcați filmele selectate">
+<!ENTITY antFlvListPopupDownloadAll.label "Descărcați toate filmele">
+<!ENTITY antFlvListPopupClearList.label "Ștergeți lista de filme">
+<!ENTITY antFlvToolbar.label "Lista filmelor">
+<!ENTITY antFlvToolBarMenuPrefButton.label "Preferințe">
+<!ENTITY antFlvToolBarMenuPrefButton.tooltiptext "Deschide fereastra de preferințe Ant">
+<!ENTITY antFlvToolBarMenuDisableButton.label "Înlăturați acesrt site">
+<!ENTITY antFlvToolBarMenuDisableButton.tooltiptext "Dezactivați prinderea filmelor pentru acest site">
+<!ENTITY antFlvToolbarClearList.tooltiptext "Șterge">
+<!ENTITY antFlvToolbarHelp.tooltiptext "Ajutor">
+<!ENTITY antFlvToolbarClose.tooltiptext "Închide">
+<!ENTITY antFlvHeaderOrigin.label "Origine">
+<!ENTITY antFlvHeaderUrl.label "Url">
+<!ENTITY antFlvHeaderName.label "Nume">
+<!ENTITY antFlvBoxDisabled.description "Activați detecția video pentru acest site">
+<!ENTITY antFlvBoxAddToWatchListButton.label "Activează">
+<!ENTITY antToolbar.toolbarname "Ant Video Downloader">
+<!ENTITY antToolBarSearchBox.value "Caută pe Web">
+<!ENTITY antToolBarResizeSplitter.tooltiptext "Redimensionează căsuța de căutare">
+<!ENTITY antToolBarCombinedButton.label "Caută">
+<!ENTITY antToolBarCombinedButton.tooltiptext "Caută">
+<!ENTITY antToolBarPlayerButton.tooltiptext "Vedeți filmul pe care l-ați descărcat">
+<!ENTITY antToolBarPlayerButton.label "Player">
+<!ENTITY antToolBarMovieListButton.tooltiptext "Apasă aici pentru a deschide panoulde descărcare filme">
+<!ENTITY antToolBarMovieListButton.label "Lista filmelor">
+<!ENTITY antToolBarDownloadButton.tooltiptext "Apasă aici pentru a descărca filmele din această pagină">
+<!ENTITY antToolBarDownloadButton.label "Descarcă">
+<!ENTITY antToolBarOpenDirButton.tooltiptext "Apasă aici pentru a deschide directorul cu filme">
+<!ENTITY antToolBarOpenDirButton.label "Caută">
+<!ENTITY antToolBarRankButton.tooltiptext "Apasă aici pentru a vedea detaliile de trafic de la această pagină.">
+<!ENTITY antToolBarRankButton.label "Fără clasament">
+<!ENTITY antToolBarSupportButton.tooltiptext "Dacă aveţi nevoie de ajutor, nu ezitaţi să întrebaţi sprijinul nostru.">
+<!ENTITY antToolBarSupportButton.label "Ajutor">
+<!ENTITY antToolBarAboutButton.tooltiptext "Despre Ant Downloader">
+<!ENTITY antToolBarAboutButton.label "Despre">
+<!ENTITY notFoundTipWindow.title "Nu există nici un video de detectat pe aceasta pagina">
+<!ENTITY notFoundTipWindow.startPlayingVideo "E posibil să trebuiască să porniți redarea video pe această pagină înainte de a încerca să-l descărcați">
+<!ENTITY notFoundTipWindow.reportIt "În caz de probleme de detectare, puteţi raporta">
+<!ENTITY notFoundTipWindow.feedbackPage "pe pagina de feedback">
+<!ENTITY notFoundTipWindow.dontDisplayAgain "Nu afişa acest mesaj din nou">
+<!ENTITY notFoundTipWindow.ieMode "Sunteţi în modul de Internet Explorer. Comutarea la modul de FireFox pentru a descărca video.">

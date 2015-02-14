@@ -1,0 +1,23 @@
+<!--       antplayer.dtd      firefox            Created by RigoNet on 2008-07-03.      Copyright 2008 Ant.com. All rights reserved. -->
+<!ENTITY antPlayerWindow.title "Reproductor de vídeo Ant.com">
+<!ENTITY antPlayerHeadSearchBox.value "Buscar la web">
+<!ENTITY antPlayerHeadDoSearch.tooltiptext "Buscar la web">
+<!ENTITY antPlayerPopupPlay.label "Reproducir">
+<!ENTITY antPlayerPopupRename.label "Renombrar">
+<!ENTITY antPlayerPopupDelete.label "Borrar">
+<!ENTITY antPlayerHeaderOrigin.label "Origen">
+<!ENTITY antPlayerHeaderPath.label "Ruta">
+<!ENTITY antPlayerHeaderName.label "Nombre">
+<!ENTITY antPlayerHeaderFileSize.label "Tamaño">
+<!ENTITY antPlayerHeaderDate.label "Fecha">
+<!ENTITY antPlayerHeaderDuration.label "Duración">
+<!ENTITY antPlayerAutoPlayNext "Reproducir automáticamente siguiente video">
+<!ENTITY antPlayerLoopPlay "Bucle lista de temas">
+<!ENTITY antPlayerRandomPlay "Reproducción aleatoria">
+<!ENTITY antPlayerButtonNext "Siguiente">
+<!ENTITY antPlayerButtonPrevious "Anterior">
+<!ENTITY antPlayerButtonAddPlaylist "Crear nueva lista de reproducción">
+<!ENTITY antPlayerGeneralPlaylist "Sin categoría">
+<!ENTITY antPlayerAddTo.label "Mover a">
+<!ENTITY antPlayerNewPlaylist.label "Nueva lista de reproducción">
+<!ENTITY antPlayerDeleteAllVideos "Eliminar todos los vídeos de esta lista de reproducción">

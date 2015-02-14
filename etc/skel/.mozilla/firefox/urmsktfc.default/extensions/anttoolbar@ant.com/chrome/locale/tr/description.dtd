@@ -1,0 +1,13 @@
+<!ENTITY description.title "Ant Video Downloader with embedded FLV Player">
+<!ENTITY description.short "With the Ant.com Video Downloader, you can download video from Youtube or any other streaming site. Rare are the sites you will not be able to download from. We have integrated a flash video player too, so that you can play your files immediately.">
+<!ENTITY description.li1 "<b>Download videos</b> from <b>Youtube</b>, <b>Myspace</b>, <b>Google Video</b>, <b>DailyMotion</b>, and <b>many others</b>, with the click of a button.">
+<!ENTITY description.li2 "Our network-based technology <b>will work even with non-popular or unknown video sites</b>.">
+<!ENTITY description.li3 "<b>Easy to use</b> : when a video is detected, the <b>Download</b> button becomes clickable.">
+<!ENTITY description.li4 "<b>The videos are saved directly to your hard drive</b> so you can keep them, edit, rename, move, or delete them.">
+<!ENTITY description.li5 "<b>Safe, open-source, flash video player integrated with your browser</b> : you can instantly play the videos that you have downloaded. Windows media player cannot play .flv videos so this integrated player will allow you to play your downloaded videos without having to find an external player. But if you wish to use another video player or already have one installed, you are free to do so. The Ant addon doesn't modify any file associations.">
+<!ENTITY description.li6 "<b>Integrated Traffic Rank indicator</b> for all the sites you visit.">
+<!ENTITY description.li7 "<b><a href='http://support.ant.com/'>Technical support</a></b> is available if you have any questions.">
+<!ENTITY description.screenshotStep1 "1 - Visit your favourite streaming video site and play the video you like">
+<!ENTITY description.screenshotStep2 "2 - Click on the 'Download' button of the Ant Video Downloader">
+<!ENTITY description.screenshotStep3 "3 - Click on 'Player' in the Ant Video Downloader panel">
+<!ENTITY description.screenshotStep4 "4 - Play your video as many time as you want and without being connected to Internet ;)">

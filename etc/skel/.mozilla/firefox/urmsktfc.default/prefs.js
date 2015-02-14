@@ -38,7 +38,7 @@ user_pref("browser.migration.version", 24);
 user_pref("browser.newtabpage.blocked", "{\"aBFOSpWKKZovsS8jo1+iaw==\":1,\"zl+I/j+JL34xbRqDai+QhQ==\":1,\"FVY+9UIVhpbdOiElW7BgTw==\":1,\"3kmHv7akp9GrxMeCZAyxEg==\":1,\"azDEENaeaS23ydQlxE/m9g==\":1,\"7SAEkFVJdUSNm9ftsmMdeg==\":1,\"PZn3scWZuO3L4qmuzvZ7pQ==\":1,\"+CCxFwp1uNvvfpJ1uvR1uA==\":1,\"q549xOEOVyajfQ3oKYW5Jg==\":1,\"zgNI948F84hI5zVvQH7ngw==\":1,\"OAjafNonHo1uDvH0m+ti0g==\":1,\"iOAzLopPbGHOBTauL4u3aw==\":1,\"mEUt4vmvEfmtHWabD3LJkQ==\":1}");
 user_pref("browser.newtabpage.enhanced", true);
 user_pref("browser.newtabpage.introShown", true);
-user_pref("browser.newtabpage.pinned", "[{\"url\":\"http://www.google.com/\",\"title\":\"Google\"},{\"url\":\"http://www.netrunner-os.com/\",\"title\":\"Netrunner — KDE GNU/LINUX DISTRIBUTION\"},{\"url\":\"http://www.jacknjoe.com/\",\"title\":\"Home | Jack'n'Joe\"}]");
+user_pref("browser.newtabpage.pinned", "[{\"url\":\"http://www.google.com/\",\"title\":\"Google\"},{\"url\":\"http://www.netrunner.com/\",\"title\":\"Netrunner — KDE GNU/LINUX DISTRIBUTION\"},{\"url\":\"http://www.jacknjoe.com/\",\"title\":\"Home | Jack'n'Joe\"}]");
 user_pref("browser.newtabpage.storageVersion", 1);
 user_pref("browser.pagethumbnails.storage_version", 3);
 user_pref("browser.places.importBookmarksHTML", false);

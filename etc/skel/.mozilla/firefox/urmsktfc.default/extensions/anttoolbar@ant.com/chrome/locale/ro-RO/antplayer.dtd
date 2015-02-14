@@ -1,0 +1,22 @@
+<!ENTITY antPlayerWindow.title "Ant.com Video player">
+<!ENTITY antPlayerHeadSearchBox.value "Căutaţi pe Web">
+<!ENTITY antPlayerHeadDoSearch.tooltiptext "Căutaţi pe Web">
+<!ENTITY antPlayerPopupPlay.label "Play">
+<!ENTITY antPlayerPopupRename.label "Redenumire">
+<!ENTITY antPlayerPopupDelete.label "Şterge">
+<!ENTITY antPlayerHeaderOrigin.label "Origine">
+<!ENTITY antPlayerHeaderPath.label "Cale">
+<!ENTITY antPlayerHeaderName.label "Nume">
+<!ENTITY antPlayerHeaderFileSize.label "Dimensiune">
+<!ENTITY antPlayerHeaderDate.label "Data">
+<!ENTITY antPlayerHeaderDuration.label "Durată">
+<!ENTITY antPlayerAutoPlayNext "Auto rulare următorul clip">
+<!ENTITY antPlayerLoopPlay "Buclă listă de redare">
+<!ENTITY antPlayerRandomPlay "Random Play">
+<!ENTITY antPlayerButtonNext "Următorul">
+<!ENTITY antPlayerButtonPrevious "Precedentul">
+<!ENTITY antPlayerButtonAddPlaylist "Crearea unei noi liste de redare">
+<!ENTITY antPlayerGeneralPlaylist "Fără categorie">
+<!ENTITY antPlayerAddTo.label "Mutaţi în">
+<!ENTITY antPlayerNewPlaylist.label "Playlist nou">
+<!ENTITY antPlayerDeleteAllVideos "Ştergeţi toate filmele din această listă de redare">

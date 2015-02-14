@@ -1,0 +1,183 @@
+/*
+   player.css
+   firefox
+
+   Created by Zak on 2008-07-08.
+   Edited by Simon on 2011-02-15.
+   Contributor Brian King
+   Copyright 2008-2012 Ant.com. All rights reserved.
+*/
+
+* {
+    padding:            0;
+    margin:             0;
+}
+
+window {
+    background-color:   #FFFFFF;
+    font-family:        Verdana, Arial, Helvetica, sans-serif;
+    color:              #B7B7B7;
+}
+
+#antFlvPlayerTitleBar {
+    background:#EDEDED;
+    color: #555555;
+    font-size: 1.2em;
+    height: 34px;
+    margin-bottom: 5px;
+    padding: 10px 5px 9px 5px;
+}
+
+
+box {
+    padding:5px;
+}
+
+popupset menupopup#antFlvPlayerPopupMenu * {
+    padding:1px !important;
+}
+
+/* Top Search Box */
+#search_box {
+    margin: 0 0 5px;
+    padding: 5px 0;
+}
+#search_box #search-text {
+    font-size: 1.1em;
+    padding:3px 5px 3px 30px;
+    background:#fff url("chrome://antbar/skin/img/Search-Icon.png") no-repeat 4px;
+    -moz-appearance: none;
+    -moz-border-radius:4px;
+}
+#search_box vbox image {
+    margin:5px;
+}
+
+/* List of video - tree */
+tree treechildren {
+    margin:0 5px;
+}
+
+treechildren::-moz-tree-cell-text(currentlyPlayed)        { font-weight:bold; }
+
+/* Player controls : bottom buttons */
+#player_controls {
+    padding:5px;
+    margin: 5px 0 0;
+}
+#player_controls toolbarbutton {
+    -moz-appearance: none;
+    -moz-box-align: center;
+    -moz-box-pack: center;
+    text-align: center;
+    padding:3px;
+    background-color: #FFFFFF !important;
+    -moz-border-radius:3px;
+    border: 1px solid #FFFFFF;
+    cursor: pointer;
+    height:28px;
+    margin:0 3px;
+    width:3.2em;
+    min-width:28px;
+}
+
+#player_controls toolbarbutton .toolbarbutton-icon {
+  -moz-box-align: center;
+}
+
+#player_controls toolbarbutton:focus {
+    border:none;
+}
+/* loop */
+#player_controls toolbarbutton.loop {
+    list-style-image:url("chrome://antbar/skin/img/buttons/loop.png");
+}
+#player_controls toolbarbutton.loop:hover {
+    list-style-image: url("chrome://antbar/skin/img/buttons/loop.png");
+    background: #ddd;
+}
+#player_controls toolbarbutton.loopEnabled {
+    list-style-image: url("chrome://antbar/skin/img/buttons/loop_on.png");
+    background: #c7d8ed;
+}
+#player_controls toolbarbutton.loopEnabled:hover,
+#player_controls button.loopEnabled:hover {
+    list-style-image: url("chrome://antbar/skin/img/buttons/loop_on.png");
+    background: #ddd;
+}
+
+/* random */
+#player_controls toolbarbutton.random {
+    list-style-image:url("chrome://antbar/skin/img/buttons/random.png");
+}
+#player_controls toolbarbutton.random:hover {
+    list-style-image: url("chrome://antbar/skin/img/buttons/random.png");
+    background: #ddd;
+}
+#player_controls toolbarbutton.randomEnabled {
+    list-style-image: url("chrome://antbar/skin/img/buttons/random_on.png");
+    background: #c7d8ed;
+}
+#player_controls toolbarbutton.randomEnabled:hover {
+    list-style-image: url("chrome://antbar/skin/img/buttons/random_on.png");
+    background: #ddd;
+}
+
+
+/* continuous */
+#player_controls toolbarbutton.continuous {
+    list-style-image: url("chrome://antbar/skin/img/buttons/cont.png");
+}
+#player_controls toolbarbutton.continuous:hover {
+    list-style-image: url("chrome://antbar/skin/img/buttons/cont.png");
+    background: #ddd;
+}
+#player_controls toolbarbutton.continuousEnabled {
+    list-style-image: url("chrome://antbar/skin/img/buttons/cont_on.png");
+    background: #c7d8ed;
+}
+#player_controls toolbarbutton.continuousEnabled:hover {
+    list-style-image: url("chrome://antbar/skin/img/buttons/cont_on.png");
+    background: #ddd;
+}
+
+
+/* Next */
+#player_controls toolbarbutton.next {
+    list-style-image: url("chrome://antbar/skin/img/buttons/next.png");
+}
+#player_controls toolbarbutton.next:hover {
+    list-style-image: url("chrome://antbar/skin/img/buttons/next_on.png");
+    background: #ddd;
+}
+/* Previous */
+#player_controls toolbarbutton.prev {
+    list-style-image: url("chrome://antbar/skin/img/buttons/prev.png");
+}
+#player_controls toolbarbutton.prev:hover {
+    list-style-image: url("chrome://antbar/skin/img/buttons/prev_on.png");
+    background: #ddd;
+}
+
+/* Missing/Disabled Content */
+#ant-video-plugin-missing-box {
+    padding: 30px;
+}
+
+#ant-video-plugin-message {
+    font-size: large;
+    font-weight: bold;
+}
+
+#ant-video-plugin-download {
+    
+}
+
+#ant-video-cont {
+ text-align: center;
+}
+
+html:video,
+video {
+  margin: 0 auto;
+}

@@ -1,0 +1,23 @@
+<!--       antplayer.dtd      firefox            Created by Zak on 2008-07-03.      Copyright 2008 Ant.com. All rights reserved. -->
+<!ENTITY antPlayerWindow.title "Ant.com Movie Player">
+<!ENTITY antPlayerHeadSearchBox.value "Das Internet durchsuchen">
+<!ENTITY antPlayerHeadDoSearch.tooltiptext "Das Internet durchsuchen">
+<!ENTITY antPlayerPopupPlay.label "Abspielen">
+<!ENTITY antPlayerPopupRename.label "Umbenennen">
+<!ENTITY antPlayerPopupDelete.label "Löschen">
+<!ENTITY antPlayerHeaderOrigin.label "Herkunft">
+<!ENTITY antPlayerHeaderPath.label "Pfad">
+<!ENTITY antPlayerHeaderName.label "Name">
+<!ENTITY antPlayerHeaderFileSize.label "Größe">
+<!ENTITY antPlayerHeaderDate.label "Datum">
+<!ENTITY antPlayerHeaderDuration.label "Länge">
+<!ENTITY antPlayerAutoPlayNext "Nächstes Video automatisch abspielen">
+<!ENTITY antPlayerLoopPlay "Wiedergabeliste wiederholen">
+<!ENTITY antPlayerRandomPlay "Zufällige Wiedergabe">
+<!ENTITY antPlayerButtonNext "Weiter">
+<!ENTITY antPlayerButtonPrevious "Zurück">
+<!ENTITY antPlayerButtonAddPlaylist "Eine neuen Wiedergabeliste erstellen">
+<!ENTITY antPlayerGeneralPlaylist "Nicht kategorisiert">
+<!ENTITY antPlayerAddTo.label "Move to">
+<!ENTITY antPlayerNewPlaylist.label "Neue Wiedergabeliste">
+<!ENTITY antPlayerDeleteAllVideos "Alle Viedeos in dieser Wiedergabeliste löschen">
