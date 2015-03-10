@@ -1,3 +1,150 @@
+netrunner-artwork-firefox (1.0.44) utopic; urgency=low
+
+  * Rebuild again
+
+ -- Leszek Lesner <leszek@zevenos.com>  Sat, 14 Feb 2015 19:30:47 +0100
+
+netrunner-artwork-firefox (1.0.43) utopic; urgency=low
+
+  * Use new netrunner.com link in bookmarks
+
+ -- Leszek Lesner <leszek@zevenos.com>  Sat, 14 Feb 2015 15:32:36 +0100
+
+netrunner-artwork-firefox (1.0.42) utopic; urgency=low
+
+  * Updated profile, Updated videodownloadhelper, Installed ant
+
+ -- Leszek Lesner <leszek@zevenos.com>  Mon, 09 Feb 2015 14:08:15 +0100
+
+netrunner-artwork-firefox (1.0.41) utopic; urgency=low
+
+  * Disable click to play
+  * Disbale flash version check blocking
+
+ -- Leszek Lesner <leszek@zevenos.com>  Thu, 05 Feb 2015 15:37:21 +0100
+
+netrunner-artwork-firefox (1.0.40) utopic; urgency=low
+
+  * Fixed last broken package
+
+ -- Leszek Lesner <leszek@zevenos.com>  Thu, 05 Feb 2015 11:58:22 +0100
+
+netrunner-artwork-firefox (1.0.39) utopic; urgency=low
+
+  * Updated profile and remove proxytube for good
+
+ -- Leszek Lesner <leszek@zevenos.com>  Wed, 04 Feb 2015 15:31:00 +0100
+
+netrunner-artwork-firefox (1.0.38) utopic; urgency=low
+
+  * Don't run dh_shlibdeps
+
+ -- Leszek Lesner <leszek@zevenos.com>  Tue, 03 Feb 2015 13:13:04 +0100
+
+netrunner-artwork-firefox (1.0.37) utopic; urgency=low
+
+  * Bumped version number for LP
+
+ -- Leszek Lesner <leszek@zevenos.com>  Tue, 03 Feb 2015 12:55:34 +0100
+
+netrunner-artwork-firefox (1.0.36) utopic; urgency=low
+
+  * Updated for Firefox 35.0.1
+  * Removed ProxTube
+  * Hide Share button from toolbar
+
+ -- Leszek Lesner <leszek@zevenos.com>  Tue, 03 Feb 2015 12:33:44 +0100
+
+netrunner-artwork-firefox (1.0.35) utopic; urgency=low
+
+  * Removed Jack'n Joe from Bookmarkstoolbar
+
+ -- Leszek Lesner <leszek@zevenos.com>  Tue, 25 Nov 2014 11:22:53 +0100
+
+netrunner-artwork-firefox (1.0.34) utopic; urgency=low
+
+  * Updated for ff33
+
+ -- Leszek Lesner <leszek@zevenos.com>  Wed, 29 Oct 2014 10:20:27 +0100
+
+netrunner-artwork-firefox (1.0.33) trusty; urgency=low
+
+  * Updated for ff30
+
+ -- Leszek Lesner <leszek@zevenos.com>  Fri, 20 Jun 2014 17:18:31 +0200
+
+netrunner-artwork-firefox (1.0.32) trusty; urgency=low
+
+  * Fixed 'New Tab' Button
+
+ -- Leszek Lesner <leszek@zevenos.com>  Thu, 15 May 2014 20:04:54 +0200
+
+netrunner-artwork-firefox (1.0.31) trusty; urgency=low
+
+  * Enabled Bookmarkstoolbar
+
+ -- Leszek Lesner <leszek@zevenos.com>  Tue, 13 May 2014 11:08:58 +0200
+
+netrunner-artwork-firefox (1.0.30) trusty; urgency=low
+
+  * Updated profile for design changes in ff29
+
+ -- Leszek Lesner <leszek@zevenos.com>  Fri, 09 May 2014 17:38:22 +0200
+
+netrunner-artwork-firefox (1.0.29) trusty; urgency=low
+
+  * Updated profile for ff29
+
+ -- Leszek Lesner <leszek@zevenos.com>  Fri, 02 May 2014 14:24:51 +0200
+
+netrunner-artwork-firefox (1.0.28) trusty; urgency=low
+
+  * Rebuild against trusty
+
+ -- Leszek Lesner <leszek@zevenos.com>  Thu, 24 Apr 2014 13:26:48 +0200
+
+netrunner-artwork-firefox (1.0.27) saucy; urgency=low
+
+  * Readded places.sqlite as needed for thumbnails on bookmarks
+
+ -- Leszek Lesner <leszek@zevenos.com>  Thu, 12 Dec 2013 14:39:37 +0100
+
+netrunner-artwork-firefox (1.0.26) saucy; urgency=low
+
+  * Removed prism profile
+
+ -- Leszek Lesner <leszek@zevenos.com>  Tue, 10 Dec 2013 13:58:53 +0100
+
+netrunner-artwork-firefox (1.0.25) saucy; urgency=low
+
+  * Removed places.sqlite
+
+ -- Leszek Lesner <leszek@zevenos.com>  Mon, 09 Dec 2013 15:19:38 +0100
+
+netrunner-artwork-firefox (1.0.24) saucy; urgency=low
+
+  * Renewed profile for new firefox version and updated qute theme
+
+ -- Leszek Lesner <leszek@zevenos.com>  Fri, 15 Nov 2013 17:57:06 +0100
+
+netrunner-artwork-firefox (1.0.23) saucy; urgency=low
+
+  * Remove Marketplace and NetrunnerID links from Toolbar
+
+ -- Leszek Lesner <leszek@zevenos.com>  Wed, 30 Oct 2013 21:38:27 +0100
+
+netrunner-artwork-firefox (1.0.22) saucy; urgency=low
+
+  * Made qute default theme
+
+ -- Leszek Lesner <leszek@zevenos.com>  Fri, 18 Oct 2013 15:50:30 +0200
+
+netrunner-artwork-firefox (1.0.21) saucy; urgency=low
+
+  * Updated profile and extenstions
+
+ -- Leszek Lesner <leszek@zevenos.com>  Wed, 16 Oct 2013 16:12:58 +0200
+
 netrunner-artwork-firefox (1.0.20) enigma-1306; urgency=low
 
   * New AdblockPlus changes
