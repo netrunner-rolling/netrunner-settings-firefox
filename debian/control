@@ -1,7 +1,7 @@
 Source: netrunner-artwork-firefox
 Section: admin
 Priority: optional
-Maintainer: Phoenix <phoenix@netrunner-os.com>
+Maintainer: Leszek Lesner <leszek@zevenos.com>
 Build-Depends: debhelper (>= 5)
 Standards-Version: 3.7.2
 
