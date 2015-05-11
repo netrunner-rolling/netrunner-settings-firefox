@@ -1,0 +1,13 @@
+<!ENTITY description.title "Ant Video Downloader avec lecteur FLV incorporé">
+<!ENTITY description.short "Avec Ant.com Video Downloader, vous pouvez télécharger des vidéos de Youtube ou autres sites de streaming. Rares sont les sites depuis lesquels vous ne pourrez pas télécharger. Nous avons intégré un lecteur de vidéo en Flash, pour vous permettre de lire immédiatement vos fichiers.">
+<!ENTITY description.li1 "<b>Téléchargez des vidéos</b> de <b>Youtube</b>, <b>Myspace</b>, <b>Google Video</b>, <b>DailyMotion</b>, et <b>bien d'autres</b>, avec un simple clic.">
+<!ENTITY description.li2 "Notre technologie basée sur l'analyse du réseau <b> fonctionnera même avec les sites de vidéo peu connus<b>.">
+<!ENTITY description.li3 "<b>Facile à utiliser</b> : lorsqu'une vidéo est détectée le bouton <b>Télécharger</b> s'active et peut alors être cliqué.">
+<!ENTITY description.li4 "<b>Les vidéos sont enregistrées directement sur votre disque dur<b>, vous pouvez donc les conserver, les modifier, les renommer, les déplacer ou les supprimer.">
+<!ENTITY description.li5 "<b>Un lecteur de vidéo en flash sécurisé et open source est intégré à votre navigateur</b> : vous pouvez immédiatement visualiser les vidéos que vous avez téléchargées. Windows media player ne permet pas de visualiser les vidéos .flv, ce lecteur intégré vous permettra donc de jouer vos vidéos téléchargées sans avoir besoin de lecteur externe. Cependant si vous souhaitez utiliser un autre lecteur vidéo ou bien si vous en avez déjà un d'installé, vous pouvez évidement l'utiliser. Cette extension ne modifie pas les associations de fichiers.">
+<!ENTITY description.li6 "Un <b>indicateur du classement des sites que vous visitez</b> est intégré et vous informe sur tous les sites que vous parcourez.">
+<!ENTITY description.li7 "Un <b><a href='http://support.ant.com/'>Support technique</a></b>  (en anglais) est disponible pour répondre à toutes vos questions.">
+<!ENTITY description.screenshotStep1 "1 - Visitez votre site favoris de vidéo et lancez la lecture de vidéo que vous voulez">
+<!ENTITY description.screenshotStep2 "2 - Cliquez sur le bouton « Télécharger » de l'extension Ant Video Downloader">
+<!ENTITY description.screenshotStep3 "3 - Cliquez sur « Lecteur » dans le panneau de l'extension Ant Video Downloader">
+<!ENTITY description.screenshotStep4 "4 - Jouez votre vidéo autant de fois que vous le souhaitez même sans être connecté à Internet ;-)">

@@ -1,0 +1,13 @@
+<!ENTITY description.title "Ant 視訊下載器用嵌入式 FLV 播放器">
+<!ENTITY description.short "用 Ant.com 視訊下載器，您可以從 Youtube 或其他任何串流媒體網站下載視訊。少見的網站您可能無法下載。我們已整合一個 Flash 視訊播放器，這樣您就可以立即播放您的檔案。">
+<!ENTITY description.li1 "從 <b>Youtube</b>、<b>Myspace</b>、<b>Google 視訊</b>、<b>DailyMotion</b> 和 <b>許多其他的</b>，<b>下載視訊</b>，只需點擊一個按鈕。">
+<!ENTITY description.li2 "我們的基於網路的技術 <b>將平穩工作在非熱門或未知的視訊網站</b>。">
+<!ENTITY description.li3 "<b>使用方便</b>：當視訊被檢測到時，<b>下載</b> 按鈕將變成可點擊的。">
+<!ENTITY description.li4 "<b>影片都是直接儲存到您的硬碟</b> 這樣您就可以儲存它們，編輯、重新命名、移動或刪除它們。">
+<!ENTITY description.li5 "<b>安全，開源，Flash 視訊播放器整合在您的瀏覽器</b>：您可以即時播放已下載的視訊。Windows 媒體播放器不能播放 .flv 視訊，所以這個整合的播放器將讓您能播放您已下載的視訊，無需找一個外部播放器。但如果您想使用另一個視訊播放器或已安裝一個，您也可以自由的這樣做。Ant 附加元件不修改任何檔案關聯。">
+<!ENTITY description.li6 "<b>綜合流量排名指標</b> 用於您造訪的所有網站。">
+<!ENTITY description.li7 "如果您有任何問題，可用 <b><a href='http://support.ant.com/'>技術支援</a></b>。">
+<!ENTITY description.screenshotStep1 "1 - 造訪您喜愛的串流媒體視訊網站並播放您喜歡的視訊">
+<!ENTITY description.screenshotStep2 "2 - 點擊 Ant 視訊下載器的「下載」按鈕">
+<!ENTITY description.screenshotStep3 "3 - 點擊在 Ant 視訊下載器面板的「播放」">
+<!ENTITY description.screenshotStep4 "4 - 播放您的視訊盡可能多的時間，因為它可以無需連接到網際網路 ;)">

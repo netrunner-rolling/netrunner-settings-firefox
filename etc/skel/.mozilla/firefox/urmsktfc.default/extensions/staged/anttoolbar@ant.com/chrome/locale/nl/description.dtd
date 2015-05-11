@@ -1,0 +1,13 @@
+<!ENTITY description.title "Ant Video Downloader met ingebouwde FLV Player">
+<!ENTITY description.short "Met de Ant.com Video Downloader kunt u video’s downloaden van Youtube of andere streaming websites. Er zijn vrijwel geen websites waar u niet van zult kunnen downloaden. We hebben ook een Flash-videospeler geïntegreerd, zodat u direct uw bestanden kunt afspelen.">
+<!ENTITY description.li1 "<b>Download Video’s</b> van <b>Youtube</b>, <b>Myspace</b>, <b>Google Video</b>, <b>DailyMotion</b> en <b>vele anderen</b>, met een muisklik.">
+<!ENTITY description.li2 "Onze netwerkgebaseerde technologie <b>zal zelfs met impopulaire of onbekende videosites werken</b>.">
+<!ENTITY description.li3 "<b>Makkelijk te gebruiken</b>: Wanneer een video wordt gedetecteerd, zal de knop <b>Downloaden</b> aanklikbaar worden.">
+<!ENTITY description.li4 "<b>De video’s worden direct op uw harde schijf opgeslagen</b> zodat u ze kunt bewaren, aanpassen, hernoemen, verplaatsen of verwijderen.">
+<!ENTITY description.li5 "<b>Veilig, openbron, Flash-videospeler geïntegreerd in uw browser</b>: u kunt direct de video’s afspelen die u heeft gedownload. Windows Media Player kan geen .flv-video’s afspelen, dus met behulp van deze geïntegreerde speler kunt u uw gedownloade video’s afspelen zonder een externe speler te hoeven zoeken. Maar als u liever een andere videospeler wilt gebruiken, of als u al een andere heeft geïnstalleerd bent u vrij om dat te doen. De Ant-add-on past uw bestandsassociaties niet aan.">
+<!ENTITY description.li6 "<b>Geïntegreerde Traffic Rank-indicator</b> voor alle websites die u bezoekt.">
+<!ENTITY description.li7 "<b><a href='http://support.ant.com/'>Technische ondersteuning</a></b> is beschikbaar als u vragen heeft.">
+<!ENTITY description.screenshotStep1 "1 - Ga naar uw favoriete videostreamwebsite en speel de gewenste video af">
+<!ENTITY description.screenshotStep2 "2 - Klik op de knop ‘Downloaden’ van de Ant Video Downloader">
+<!ENTITY description.screenshotStep3 "3 - Klik op ‘Speler’ in het Ant Video Downloader-paneel">
+<!ENTITY description.screenshotStep4 "4 - Speel uw video’s zo vaak als u wilt zonder verbonden te zijn met het internet ;)">

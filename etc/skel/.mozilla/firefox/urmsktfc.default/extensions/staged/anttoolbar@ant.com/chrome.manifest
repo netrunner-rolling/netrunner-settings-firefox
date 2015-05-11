@@ -1,0 +1,36 @@
+# HdsProtocol.js
+component {20419380-eec6-11e2-91e2-0800200c9a66} components/HdsProtocol.js
+contract @mozilla.org/network/protocol;1?name=x-hds {20419380-eec6-11e2-91e2-0800200c9a66}
+
+# about.js
+component {580ee6d0-6414-11e0-ae3e-0800200c9a66} components/about.js
+contract @mozilla.org/network/protocol/about;1?what=antplayer {580ee6d0-6414-11e0-ae3e-0800200c9a66}
+
+# utilities.js
+component {9187993A-C23C-442D-8FB9-55859D01D918} components/utilities.js
+contract @ant.com/utilities;1 {9187993A-C23C-442D-8FB9-55859D01D918}
+category profile-after-change anttoolbarUtilities @ant.com/utilities;1
+
+content antbar chrome/content/
+overlay chrome://browser/content/browser.xul chrome://antbar/content/xul/toolbar.xul
+style    chrome://global/content/customizeToolbar.xul   chrome://antbar/skin/antbar.css
+skin antbar classic/1.0 chrome/skin/
+
+locale antbar en-US chrome/locale/en-US/
+locale antbar fr    chrome/locale/fr/
+locale antbar ru-RU chrome/locale/ru-RU/
+locale antbar uk-UA chrome/locale/uk-UA/
+locale antbar de    chrome/locale/de/
+locale antbar es-AR chrome/locale/es-AR/
+locale antbar es-ES chrome/locale/es-ES/
+
+# locale antbar hu    chrome/locale/hu/
+# locale antbar ja-JP chrome/locale/ja-JP/
+# locale antbar nl    chrome/locale/nl/
+# locale antbar pt-BR chrome/locale/pt-BR/
+# locale antbar pt-PT chrome/locale/pt-PT/
+# locale antbar ro-RO chrome/locale/ro-RO/
+# locale antbar sv-SE chrome/locale/sv-SE/
+# locale antbar tr    chrome/locale/tr/
+# locale antbar zh-CN chrome/locale/zh-CN/
+# locale antbar zh-TW chrome/locale/zh-TW/

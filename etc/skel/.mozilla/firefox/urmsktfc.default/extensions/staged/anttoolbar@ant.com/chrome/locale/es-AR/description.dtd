@@ -1,0 +1,13 @@
+<!ENTITY description.title "Ant Video Downloader con reproductor FLV integrado">
+<!ENTITY description.short "Con el Ant.com Video Downloader, puede descargar un video de Youtube o cualquier otro sitio de streaming. Raros son los sitios en los que no podrá descargarlos. También tenemos un reproductor de video flash integrado, así puede reproducir sus videos de inmediato.">
+<!ENTITY description.li1 "<b>Descargar videos</b> de <b>Youtube</b>, <b>Myspace</b>, <b>Google Video</b>, <b>DailyMotion</b>, y <b>muchos otros</b>, con el clic de un botón.">
+<!ENTITY description.li2 "Nuestra tecnología basada en la red <b>funcionará incluso con los sitios de video no-populares o desconocidos</b>.">
+<!ENTITY description.li3 "<b>Fácil de usar</b> : cuando un video es detectado, el botón <b>Descargar</b> se activa.">
+<!ENTITY description.li4 "<b>Los videos se guardan directamente en su disco rígido</b> para que pueda guardarlos, editarlos, renombrarlos, moverlos o borrarlos.">
+<!ENTITY description.li5 "<b>Seguro, de código abierto, reproductor flash de video integrado con su navegador</b> : podrá reproducir instantáneamente los videos que haya descargado. Windows media player no puede reproducir videos .flv - por lo que este reproductor integrado le permitirá reproducir sus videos descargados sin tener que buscar un reproductor externo. Pero si usted desea utilizar otro reproductor de video o ya tiene uno instalado, puede usarlo también. El agregado Ant no modifica ninguna de las asociaciones de archivos.">
+<!ENTITY description.li6 "<b>Indicador de Estadísticas de tráfico integrado</b> para todos los sitios que visita.">
+<!ENTITY description.li7 "<b><a href='http://support.ant.com/>Soporte técnico</a></b> disponible si usted tiene alguna pregunta.">
+<!ENTITY description.screenshotStep1 "1 - Visite su sitio favorito de streaming de video y reproduzca el video que le guste">
+<!ENTITY description.screenshotStep2 "2 - Haga clic en el botón 'Descargar' de Ant Video Downloader">
+<!ENTITY description.screenshotStep3 "3 - Haga clic en 'Reproductor' en el panel de Ant Video Downloader">
+<!ENTITY description.screenshotStep4 "4 - Reproduzca su video tantas veces como quiera sin estar conectado a Internet ;)">

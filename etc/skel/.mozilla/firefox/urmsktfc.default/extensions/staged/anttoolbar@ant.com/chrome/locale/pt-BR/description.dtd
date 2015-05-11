@@ -1,0 +1,13 @@
+<!ENTITY description.title "Ant Video Downloader com Player FLV incorporado">
+<!ENTITY description.short "Com o Ant.com Vídeo Downloader você pode baixar vídeos do Youtube ou qualquer outra página de streaming (fluxo). Raros são as páginas que você não será capaz de importar delas. Nós incorporamos um player de vídeo flash para que você possa reproduzir seus arquivos imediatamente.">
+<!ENTITY description.li1 "<b>Baixar vídeos</b> do <b>Youtube</b>, <b>Myspace</b>, <b>Google Vídeo</b>, <b>DailyMotion</b>, e <b>muitos outros</b>, com o clique de um botão.">
+<!ENTITY description.li2 "Nossa tecnologia baseada em rede vai funcionar mesmo com as páginas de vídeo menos conhecidas.">
+<!ENTITY description.li3 "<b>Fácil de usar</b>: quando um vídeo é detectado, o botão de download fica ativo.">
+<!ENTITY description.li4 "<b>Os vídeos são salvos diretamente no seu disco rígido</b> para que você possa mantê-los, editar, renomear, mover ou apagar.">
+<!ENTITY description.li5 "<b>Executor de vídeos em flash integrado ao seu navegador, seguro e de fonte livre</b>: você pode executar instantaneamente os vídeos que você baixou. O Windows Media Player não pode executar vídeos .flv, de modo que este player integrado permitirá reproduzir seus vídeos baixados sem ter que encontrar um leitor externo. Mas se você desejar usar outro executor de vídeo, ou se já tiver um instalado, você é livre para fazê-lo. O complemento Ant não modifica nenhuma associação de arquivos.">
+<!ENTITY description.li6 "<b>Indicador Integrado de Classificação de Tráfico</b> para todos as páginas que você visita.">
+<!ENTITY description.li7 "<b><a href='http://support.ant.com/'>O Suporte Técnico</a></b> está disponível se você tiver alguma questão.">
+<!ENTITY description.screenshotStep1 "1 - Visite a sua página de vídeos favorita e veja o seu vídeo favorito">
+<!ENTITY description.screenshotStep2 "2 - Clique no botão 'Baixar' do Ant Video Downloader">
+<!ENTITY description.screenshotStep3 "3 - Clique no 'Player' no painel do Ant Video Downloader">
+<!ENTITY description.screenshotStep4 "4 - Veja o seu vídeo quantas vezes você quiser e sem estar conectado à internet ;)">

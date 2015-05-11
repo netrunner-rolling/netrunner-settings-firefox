@@ -1,0 +1,23 @@
+<!--       antplayer.dtd      firefox            Created by Zak on 2008-07-03.      Copyright 2008 Ant.com. All rights reserved. -->
+<!ENTITY antPlayerWindow.title "Ant.com videolejátszó">
+<!ENTITY antPlayerHeadSearchBox.value "Keresés a weben">
+<!ENTITY antPlayerHeadDoSearch.tooltiptext "Keresés a weben">
+<!ENTITY antPlayerPopupPlay.label "Lejátszás">
+<!ENTITY antPlayerPopupRename.label "Átnevezés">
+<!ENTITY antPlayerPopupDelete.label "Törlés">
+<!ENTITY antPlayerHeaderOrigin.label "Eredet">
+<!ENTITY antPlayerHeaderPath.label "Útvonal">
+<!ENTITY antPlayerHeaderName.label "Név">
+<!ENTITY antPlayerHeaderFileSize.label "Méret">
+<!ENTITY antPlayerHeaderDate.label "Dátum">
+<!ENTITY antPlayerHeaderDuration.label "Hossz">
+<!ENTITY antPlayerAutoPlayNext "Következő videó automatikus indítása">
+<!ENTITY antPlayerLoopPlay "Lejátszási lista ismétlése">
+<!ENTITY antPlayerRandomPlay "Véletlen lejátszás">
+<!ENTITY antPlayerButtonNext "Következő">
+<!ENTITY antPlayerButtonPrevious "Előző">
+<!ENTITY antPlayerButtonAddPlaylist "Új lejátszási lista létrehozása">
+<!ENTITY antPlayerGeneralPlaylist "Kategorizálatlan">
+<!ENTITY antPlayerAddTo.label "Mozgatás">
+<!ENTITY antPlayerNewPlaylist.label "Új lejátszási lista">
+<!ENTITY antPlayerDeleteAllVideos "Lejátszási listán lévő összes videó törlése">

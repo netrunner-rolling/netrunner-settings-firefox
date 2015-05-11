@@ -1,0 +1,30 @@
+<!--       antoptions.dtd      firefox            Created by Zak on 2008-07-03.      Copyright 2008-2009 Ant.com. All rights reserved. -->
+<!-- options.xul -->
+<!-- Note to translators ... make this value bigger if your strings are cut off at the       sides in the settings screen. This will widen the screen. -->
+<!ENTITY preferences.window.size "width: 43em; height: 50em;">
+<!ENTITY antBarPrefs.title "Ant Video Downloader - Einstellungen">
+<!ENTITY antBarPrefsPane.label "Ant.com-Einstellungen">
+<!ENTITY antBarPrefsFlvDirLabel.value "Download Zielverzeichnis:">
+<!ENTITY antBarPrefsFlvDirButton.label "Auswählen">
+<!ENTITY antBarPrefsNotificationCheckBox.label "Benachrichtigungen aktivieren">
+<!ENTITY antBarPrefsShowNotFoundWindow.label "Benachrichtigung anzeigen, falls kein Video erkannt wurde">
+<!ENTITY antBarPrefsSearch.label "Display search tools">
+<!ENTITY antBarPrefsSecurity.title "Privacy options">
+<!ENTITY antBarPrefsSecurityHint.title "Data collected by Ant.com is not sold or made available to any third party. This data is not used for ad targeting nor personal tracking.">
+<!ENTITY antBarPrefsRankModeCheckBox.label "Send browsing statistics (This enables AntRank)">
+<!ENTITY antBarPrefsSendDownloadStatsCheckBox.label "Send download statistics">
+<!ENTITY antBarPrefsSendHeartBeatCheckBox.label "Send daily heartbeat (This lets us know that you'r using the add-on)">
+<!ENTITY antBarPrefsCloseButton.label "Schließen">
+<!ENTITY antBarPrefsChoseMode "Anzeigemodus:">
+<!ENTITY antBarPrefsStatusBar "Statusleiste">
+<!ENTITY antBarPrefsToolbar "Symbolleiste">
+<!ENTITY antBarPrefsToolbarCompact "Compact mode">
+<!ENTITY antBarPrefsGeneralOptions "Allgemeine Einstellungen">
+<!ENTITY antBarPrefsPlayerMode "Player-Einstellungen">
+<!ENTITY antBarPrefsPlayerModeTab "Player in einem neuen Tab öffnen">
+<!ENTITY antBarPrefsPlayerModePopup "Player in einem neuen Fenster öffnen">
+<!ENTITY antBarPrefsConverter.title "Der Konverter">
+<!ENTITY antBarPrefsConverter.browse "Auswählen">
+<!ENTITY antBarPrefsConverter.install "Installieren">
+<!-- NOTE to translators - do not translate next 1 string -->
+<!ENTITY addonBarCmd.label "Tinkle Bar">

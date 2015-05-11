@@ -1,0 +1,47 @@
+<!--      antbar.dtd     firefox          Created by Zak on 2008-07-03.     Copyright 2008 Ant.com. All rights reserved.  -->
+<!ENTITY antFlvListPopupDownloadCurrent.label "Film letöltése">
+<!ENTITY antFlvListPopupPlayCurrent.label "Lejátszás">
+<!ENTITY antFlvListPopupCopyLink.label "Film helyének másolása">
+<!ENTITY antFlvListPopupRename.label "Átnevezés">
+<!ENTITY antFlvListPopupDownloadSelected.label "Kiöleltek letöltése">
+<!ENTITY antFlvListPopupDownloadAll.label "Összes letöltése">
+<!ENTITY antFlvListPopupClearList.label "Lista ürítése">
+<!ENTITY antFlvToolbar.label "Filmek listája">
+<!ENTITY antFlvToolBarMenuPrefButton.label "Beállítások">
+<!ENTITY antFlvToolBarMenuPrefButton.tooltiptext "Beállítások ablak megnyitása">
+<!ENTITY antFlvToolBarMenuDisableButton.label "Oldal eltávolítása">
+<!ENTITY antFlvToolBarMenuDisableButton.tooltiptext "Film figyelés letiltása ezen az oldalon">
+<!ENTITY antFlvToolbarClearList.tooltiptext "Ürítés">
+<!ENTITY antFlvToolbarHelp.tooltiptext "Súgó">
+<!ENTITY antFlvToolbarClose.tooltiptext "Bezárás">
+<!ENTITY antFlvHeaderOrigin.label "Eredet">
+<!ENTITY antFlvHeaderUrl.label "URL">
+<!ENTITY antFlvHeaderName.label "Név">
+<!ENTITY antFlvBoxDisabled.description "Videók érzékelésének engedélyezése ezen az oldalon.">
+<!ENTITY antFlvBoxAddToWatchListButton.label "Engedélyezés">
+<!ENTITY antToolbar.toolbarname "Ant Video Downloader">
+<!ENTITY antToolBarSearchBox.value "Keresés a weben">
+<!ENTITY antToolBarResizeSplitter.tooltiptext "Keresőmező átméretezése">
+<!ENTITY antToolBarCombinedButton.label "Keresés">
+<!ENTITY antToolBarCombinedButton.tooltiptext "Keresés">
+<!ENTITY antToolBarPlayerButton.tooltiptext "Letöltött filmek lejátszása.">
+<!ENTITY antToolBarPlayerButton.label "Lejátszó">
+<!ENTITY antToolBarMovieListButton.tooltiptext "Kattintson ide a letöltött filmek panel megnyitásához.">
+<!ENTITY antToolBarMovieListButton.label "Filmek listája">
+<!ENTITY antToolBarDownloadButton.tooltiptext "Kattintson ide az oldalon lévő filmek letöltéséhez.">
+<!ENTITY antToolBarDownloadButton.label "Letöltés">
+<!ENTITY antToolBarOpenDirButton.tooltiptext "Kattintson ide a videókönyvtár megnyitásához">
+<!ENTITY antToolBarOpenDirButton.label "Tallózás">
+<!ENTITY antToolBarRankButton.tooltiptext "Kattintson ide az oldal minősítéséhez.">
+<!ENTITY antToolBarRankButton.label "Nincs minősítve">
+<!ENTITY antToolBarSupportButton.tooltiptext "Ha segítségre van szüksége, ne habozzon a kérdéseddel!">
+<!ENTITY antToolBarSupportButton.label "Súgó">
+<!ENTITY antToolBarAboutButton.tooltiptext "About Ant downloader">
+<!ENTITY antToolBarAboutButton.label "About">
+<!ENTITY notFoundTipWindow.title "Nincs videó észlelve az oldalon">
+<!ENTITY notFoundTipWindow.startPlayingVideo "Lehet, hogy el kell indítania a videót mielőtt megpróbálná letölteni.">
+<!-- next two phrases are two parts of one whole sentence -->
+<!ENTITY notFoundTipWindow.reportIt "Ha észlelési problémát talál, visszajelzést küldhet">
+<!ENTITY notFoundTipWindow.feedbackPage "a honlapon">
+<!ENTITY notFoundTipWindow.dontDisplayAgain "Ne mutassa újra ezt az üzenetet">
+<!ENTITY notFoundTipWindow.ieMode "Internet Explorer módban van. Váltson Firefox módra a videó letöltéséhez.">

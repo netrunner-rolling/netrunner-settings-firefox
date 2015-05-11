@@ -1,0 +1,23 @@
+<!--       antplayer.dtd      firefox            Created by Zak on 2008-07-03.      Copyright 2008 Ant.com. All rights reserved. -->
+<!ENTITY antPlayerWindow.title "Ant.com видео проигрыватель">
+<!ENTITY antPlayerHeadSearchBox.value "Искать в сети">
+<!ENTITY antPlayerHeadDoSearch.tooltiptext "Искать в сети">
+<!ENTITY antPlayerPopupPlay.label "Играть">
+<!ENTITY antPlayerPopupRename.label "Переименовать">
+<!ENTITY antPlayerPopupDelete.label "Удалить">
+<!ENTITY antPlayerHeaderOrigin.label "Источник">
+<!ENTITY antPlayerHeaderPath.label "Путь">
+<!ENTITY antPlayerHeaderName.label "Имя">
+<!ENTITY antPlayerHeaderFileSize.label "Размер">
+<!ENTITY antPlayerHeaderDate.label "Дата">
+<!ENTITY antPlayerHeaderDuration.label "Длительность">
+<!ENTITY antPlayerAutoPlayNext "Автоматически играть следующее видео">
+<!ENTITY antPlayerLoopPlay "Зациклить проигрывание">
+<!ENTITY antPlayerRandomPlay "Случайный выбор">
+<!ENTITY antPlayerButtonNext "Следующее">
+<!ENTITY antPlayerButtonPrevious "Предыдущее">
+<!ENTITY antPlayerButtonAddPlaylist "Создать новый список воспроизведения">
+<!ENTITY antPlayerGeneralPlaylist "Без категории">
+<!ENTITY antPlayerAddTo.label "Переместить в">
+<!ENTITY antPlayerNewPlaylist.label "Новый список воспроизведения">
+<!ENTITY antPlayerDeleteAllVideos "Удалить все видео в этом списке">

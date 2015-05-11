@@ -1,0 +1,27 @@
+<!--       antoptions.dtd      firefox            Created by Zak on 2008-07-03.      Copyright 2008-2009 Ant.com. All rights reserved. -->
+<!-- options.xul -->
+<!-- Note to translators ... make this value bigger if your strings are cut off at the       sides in the settings screen. This will widen the screen. -->
+<!ENTITY preferences.window.size "width: 38em; height: 50em;">
+<!ENTITY antBarPrefs.title "Ant Araç Çubuğu Seçenekleri">
+<!ENTITY antBarPrefsPane.label "Ant.com Tercihleri">
+<!ENTITY antBarPrefsFlvDirLabel.value "Filmlerin indirileceği konum:">
+<!ENTITY antBarPrefsFlvDirButton.label "Seç">
+<!ENTITY antBarPrefsNotificationCheckBox.label "Enable notifications">
+<!ENTITY antBarPrefsShowNotFoundWindow.label "Display notifications when video is not detected">
+<!ENTITY antBarPrefsSearch.label "Display search tools">
+<!ENTITY antBarPrefsSecurity.title "Privacy options">
+<!ENTITY antBarPrefsSecurityHint.title "Data collected by Ant.com is not sold or made available to any third party. This data is not used for ad targeting nor personal tracking.">
+<!ENTITY antBarPrefsRankModeCheckBox.label "Send browsing statistics (This enables AntRank)">
+<!ENTITY antBarPrefsSendDownloadStatsCheckBox.label "Send download statistics">
+<!ENTITY antBarPrefsSendHeartBeatCheckBox.label "Send daily heartbeat (This lets us know that you'r using the add-on)">
+<!ENTITY antBarPrefsCloseButton.label "Kapat">
+<!ENTITY antBarPrefsChoseMode "Display mode:">
+<!ENTITY antBarPrefsStatusBar "Statusbar">
+<!ENTITY antBarPrefsToolbar "Toolbar">
+<!ENTITY antBarPrefsToolbarCompact "Compact mode">
+<!ENTITY antBarPrefsGeneralOptions "General options">
+<!ENTITY antBarPrefsPlayerMode "Player Options">
+<!ENTITY antBarPrefsPlayerModeTab "Open the player in a new tab">
+<!ENTITY antBarPrefsPlayerModePopup "Open the player in a new window">
+<!-- NOTE to translators - do not translate next 1 string -->
+<!ENTITY addonBarCmd.label "Tinkle Bar">

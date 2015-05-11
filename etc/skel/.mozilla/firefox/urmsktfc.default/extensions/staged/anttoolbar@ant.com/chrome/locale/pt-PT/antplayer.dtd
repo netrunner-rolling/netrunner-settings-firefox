@@ -1,0 +1,23 @@
+<!-- -*- coding: utf-8 -*- -->
+<!ENTITY antPlayerWindow.title "Reprodutore de vídeo Ant.com">
+<!ENTITY antPlayerHeadSearchBox.value "Pesquisa com Ant !">
+<!ENTITY antPlayerHeadDoSearch.tooltiptext "Pesquisa com Ant !">
+<!ENTITY antPlayerPopupPlay.label "Reproduzir">
+<!ENTITY antPlayerPopupRename.label "Renomear">
+<!ENTITY antPlayerPopupDelete.label "Apagar">
+<!ENTITY antPlayerHeaderOrigin.label "Origem">
+<!ENTITY antPlayerHeaderPath.label "Caminho">
+<!ENTITY antPlayerHeaderName.label "Nome">
+<!ENTITY antPlayerHeaderFileSize.label "Size">
+<!ENTITY antPlayerHeaderDate.label "Date">
+<!ENTITY antPlayerHeaderDuration.label "Duration">
+<!ENTITY antPlayerAutoPlayNext "Auto play next video">
+<!ENTITY antPlayerLoopPlay "Loop playlist">
+<!ENTITY antPlayerRandomPlay "Random play">
+<!ENTITY antPlayerButtonNext "Next">
+<!ENTITY antPlayerButtonPrevious "Previous">
+<!ENTITY antPlayerButtonAddPlaylist "Create a new playlist">
+<!ENTITY antPlayerGeneralPlaylist "Uncategorized">
+<!ENTITY antPlayerAddTo.label "Move to">
+<!ENTITY antPlayerNewPlaylist.label "New playlist">
+<!ENTITY antPlayerDeleteAllVideos "Delete all the videos in this playlist">
