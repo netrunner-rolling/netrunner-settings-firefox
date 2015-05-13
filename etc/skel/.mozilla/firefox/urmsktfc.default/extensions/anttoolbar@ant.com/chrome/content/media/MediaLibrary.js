@@ -176,9 +176,11 @@ function MediaLibrary(isprivate)
                     isprivate
                         ? Downloads.PRIVATE
                         : Downloads.ALL);
-
                 downloadInst = yield Downloads.createDownload({
-                    source: uri,
+                    source: {
+                        url: uri.spec,
+                        isPrivate: isprivate
+                    },
                     target: target,
                     saver: "copy"
                 });

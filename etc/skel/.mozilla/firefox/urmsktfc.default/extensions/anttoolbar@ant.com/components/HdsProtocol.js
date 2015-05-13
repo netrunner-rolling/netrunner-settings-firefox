@@ -758,9 +758,11 @@ HdsProtocol.prototype =
     // }}}
 };
 
-if (XPCOMUtils.generateNSGetFactory)
-    const NSGetFactory = XPCOMUtils.generateNSGetFactory( [HdsProtocol] );
-else
-    const NSGetModule = XPCOMUtils.generateNSGetModule( [HdsProtocol] );
+const NSGetFactory = XPCOMUtils.generateNSGetFactory
+          ? XPCOMUtils.generateNSGetFactory([HdsProtocol])
+          : undefined;
+const NSGetModule = !XPCOMUtils.generateNSGetFactory
+          ? XPCOMUtils.generateNSGetModule([HdsProtocol])
+          : undefined;
 
 // }}}

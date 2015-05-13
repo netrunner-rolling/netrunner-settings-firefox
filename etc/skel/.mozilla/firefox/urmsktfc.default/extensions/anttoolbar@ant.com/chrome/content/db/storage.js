@@ -100,20 +100,38 @@ var AntStorage = {
                           :sha1, :title, :path, :url,\
                           :feed, :domain, :duration, :size,\
                           :playlist, :last_view, :nb_views, :created_at)',
-                          sha1, title, path, url,
-                          feed, domain, duration, size,
-                          playlist, last_view, nb_views, created_at
+			   {
+                               sha1:       sha1,
+			       title:      title,
+			       path:       path,
+			       url:        url,
+                               feed:       feed,
+			       domain:     domain,
+			       duration:   duration,
+			       size:       size,
+                               playlist:   playlist,
+			       last_view:  last_view,
+			       nb_views:   nb_views,
+			       created_at: created_at
+			   }
                         )).exec();
     },
     updateVideoPlaylist: function(sha1, playlist) {
         
         (new AntRecordSet( 'UPDATE videos SET playlist=:playlist WHERE sha1=:sha1',
-                            playlist, sha1)).exec();
+			   {
+			       playlist: playlist,
+			       sha1: sha1
+			   })).exec();
     },
     updateVideoViews: function(sha1, last_view, nb_views) {
         
         (new AntRecordSet( 'UPDATE videos SET last_view=:last_view, nb_views=:nb_views WHERE sha1=:sha1',
-                            last_view, nb_views, sha1 )).exec();
+			   {
+                               last_view: last_view,
+			       nb_views: nb_views,
+			       sha1: sha1
+			   })).exec();
     },
     deleteVideoRecords: function(records, isDelete) {
         
@@ -143,10 +161,10 @@ var AntStorage = {
     },
     deleteVideoRecord: function(path) {
         
-        (new AntRecordSet('DELETE FROM videos WHERE path=:path', path)).exec();        
+        (new AntRecordSet('DELETE FROM videos WHERE path=:path',
+			  { path: path })).exec();        
     },
     getVideos: function() {
-        
         return new AntRecordSet( 'SELECT * FROM videos' );
     },
     getPlaylists: function() {
@@ -155,11 +173,13 @@ var AntStorage = {
     },
     addPlaylist: function(playlist) {
         
-        (new AntRecordSet('INSERT OR IGNORE INTO playlists VALUES(:playlist)', playlist)).exec();
+        (new AntRecordSet('INSERT OR IGNORE INTO playlists VALUES(:playlist)',
+			  { playlist: playlist })).exec();
     },
     deletePlaylist: function(playlist) {
         
-        (new AntRecordSet('DELETE FROM playlists WHERE playlist=:playlist', playlist)).exec();
+        (new AntRecordSet('DELETE FROM playlists WHERE playlist=:playlist',
+			  { playlist: playlist })).exec();
     },
     beginTransaction: function() {
         
