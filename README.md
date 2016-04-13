@@ -1,4 +1,4 @@
-netrunner-artwork-firefox
+netrunner-settings-firefox
 =========================
 
-Netrunner Artwork Firefox containing the firefox profile with artwork
+Containing the firefox profile with settings
