@@ -12,8 +12,6 @@ const Cr = Components.results;
 const ID_SIMPLEURI_CONTRACT = "@mozilla.org/network/simple-uri;1";
 const ID_IOSERVICE_CONTRACT = "@mozilla.org/network/io-service;1";
 
-// {{{ StreamListenerProxy class
-
 /**
  * @class StreamListenerProxy
  * @implements nsIStreamListener
@@ -21,8 +19,6 @@ const ID_IOSERVICE_CONTRACT = "@mozilla.org/network/io-service;1";
 function StreamListenerProxy()
 {
     var ctx = this;
-
-    // {{{ Attributes
 
     /**
      * Total number of transmitted bytes
@@ -81,15 +77,10 @@ function StreamListenerProxy()
      * @name ownerOnOffsetChanged
      */
     this.ownerOnOffsetChanged = null;
-    // }}}
 
     /**
      * nsIStreamListener implementation
      */
-    // {{{ nsIStreamListener implementation
-
-    // {{{ nsIRequestObserver implementation
-
     this.onStartRequest = function(aRequest, aContext)
     {
         ctx.ownerOnStartRequest();
@@ -100,14 +91,11 @@ function StreamListenerProxy()
         ctx.ownerOnStopRequest(ctx.offset, aStatus);
     };
 
-    // }}}
-
     /**
      * @member onDataAvailable
      * @see nsIStreamListener#onDataAvailable
      */
-    this.onDataAvailable = function(
-        aRequest, aContext, aStream, aSourceOffset, aLength)
+    this.onDataAvailable = function(aRequest, aContext, aStream, aSourceOffset, aLength)
     {
         ctx.ownerListener.onDataAvailable(
             ctx.ownerRequest
@@ -119,21 +107,8 @@ function StreamListenerProxy()
         ctx.ownerOnOffsetChanged(ctx.offset);
     };
 
-    // }}}
-
-
-    // {{{ QueryInterface
-    this.QueryInterface =
-        XPCOMUtils.generateQI([
-            Ci.nsIStreamListener,
-            Ci.nsIRequestObserver
-        ]);
-    // }}}
+    this.QueryInterface = XPCOMUtils.generateQI([Ci.nsIStreamListener,  Ci.nsIRequestObserver]);
 };
-
-// }}}
-
-// {{{ HdsChannel class
 
 /**
  * @class HdsChannel
@@ -148,7 +123,6 @@ function HdsChannel(uri, stream)
     /**
      * nsIRequest implementation
      */
-    // {{{ Attributes
 
     /**
      * @type nsLoadFlags
@@ -162,15 +136,13 @@ function HdsChannel(uri, stream)
      */
     var loadGroup = null;
 
-    // {{{ notificationCallbacks accessors
     Object.defineProperty(
-        this
-        , "loadGroup"
-        , {
+        this,
+        "loadGroup",
+        {
             get: function() { return loadGroup; },
             set: function(value) { loadGroup = value; }
         });
-    // }}}
 
     /**
      * @type AUTF8String
@@ -181,10 +153,6 @@ function HdsChannel(uri, stream)
      * @type nsresult
      */
     this.status = Cr.NS_OK;
-
-    // }}}
-
-    // {{{ cancel method
 
     /**
      * @member cancel
@@ -204,9 +172,6 @@ function HdsChannel(uri, stream)
         }
     };
 
-    // }}}
-
-    // {{{ isPending method
     /**
      * @member isPending
      * @see nsIRequest#isPending
@@ -215,9 +180,7 @@ function HdsChannel(uri, stream)
     {
         return pending && !isCanceled;
     };
-    // }}}
 
-    // {{{ suspend method
     /**
      * @member suspend
      * @see nsIRequest#suspend
@@ -226,9 +189,7 @@ function HdsChannel(uri, stream)
     {
         throw Cr.NS_ERROR_NOT_IMPLEMENTED;
     };
-    // }}}
 
-    // {{{ resume method
     /**
      * @member resume
      * @see nsIRequest#resume
@@ -237,12 +198,10 @@ function HdsChannel(uri, stream)
     {
         throw Cr.NS_ERROR_NOT_IMPLEMENTED;
     };
-    // }}}
 
     /**
      * nsIChannel implemenation
      */
-    // {{{ Attributes
 
     /**
      * @type Number
@@ -282,11 +241,10 @@ function HdsChannel(uri, stream)
      */
     var notificationCallbacks = null;
 
-    // {{{ notificationCallbacks accessors
     Object.defineProperty(
-        this
-        , "notificationCallbacks"
-        , {
+        this,
+        "notificationCallbacks",
+        {
             get: function() { return notificationCallbacks; },
             set: function(value)
             {
@@ -295,16 +253,11 @@ function HdsChannel(uri, stream)
                 precacheProgressEventSink();
             }
         });
-    // }}}
 
     /**
      * @type nsISupports
      */
     this.securityInfo = null;
-
-    // }}}
-
-    // {{{ asyncOpen method
 
     /**
      * @member asyncOpen
@@ -329,9 +282,6 @@ function HdsChannel(uri, stream)
         downloadRestStreamAsync(0, 0);
     };
 
-    // }}}
-
-    // {{{ open method
     /**
      * @member open
      * @see nsIChannel#open
@@ -340,9 +290,6 @@ function HdsChannel(uri, stream)
     {
         throw Cr.NS_ERROR_NOT_IMPLEMENTED;
     };
-    // }}}
-
-    // {{{ downloadRestStreamAsync private method
 
     /**
      * @private
@@ -358,6 +305,7 @@ function HdsChannel(uri, stream)
 
         /** @type DmHdsStreamFragment */
         let fragment = stream.getFragment(chunk);
+        
         /** @type Number */
         let startTime = 0;
 
@@ -375,6 +323,7 @@ function HdsChannel(uri, stream)
         };
 
         var slp = new StreamListenerProxy();
+        
         slp.ownerRequest = ctx;
         slp.ownerListener = clientStreamListener;
         slp.ownerContext = clientContext;
@@ -384,17 +333,16 @@ function HdsChannel(uri, stream)
         slp.ownerOnOffsetChanged = onProgress;
 
         var channel = fragment.createChannel();
+        
         channel.notificationCallbacks = null;
         channel.asyncOpen(slp, null);
+        
         activeChannel = channel;
     };
-
-    // }}}
 
     /**
      * Channel event handlers
      */
-    // {{{ onBeginChunk event handler
 
     /**
      * @private
@@ -415,10 +363,6 @@ function HdsChannel(uri, stream)
         }
     };
 
-    // }}}
-
-    // {{{ onEndChunk event handler
-
     /**
      * @private
      * @member onEndChunk
@@ -432,13 +376,16 @@ function HdsChannel(uri, stream)
         activeChannel = null;
 
         var nextChunkId = chunk + 1;
-        if (!Components.isSuccessCode(status)
-            || (true == isCanceled)
-            || (nextChunkId == stream.getFragmentCount()))
+
+        if (!Components.isSuccessCode(status) || (true == isCanceled) || (nextChunkId == stream.getFragmentCount()))
         {
             pending = false;
+
             if (null == clientStreamListener)
+            {
                 return;
+            }
+            
             clientStreamListener.onStopRequest(ctx, clientContext, status);
         }
         else
@@ -447,12 +394,10 @@ function HdsChannel(uri, stream)
         }
     };
 
-    // }}}
-
     /**
      * Status notifications
      */
-    // {{{ onProgress private method
+
     /**
      * @private
      * @name onProgress
@@ -464,8 +409,6 @@ function HdsChannel(uri, stream)
             notifyTransportProgress(offset, ctx.contentLength);
         } catch (e) {}
     };
-    // }}}
-    // {{{ notifyTransportProgress private method
 
     /**
      * @private
@@ -489,10 +432,6 @@ function HdsChannel(uri, stream)
         }
     };
 
-    // }}}
-
-    // {{{ precacheProgressEventSink private method
-
     /**
      * Queries an instance of the nsIProgressEventSink interface
      * either from notificationCallbacks, either from associated loadGroup.
@@ -506,14 +445,14 @@ function HdsChannel(uri, stream)
     {
         cachedProgressEventSink = null;
         var clbck = getCallback();
+        
         if (!clbck)
+        {
             return;
+        }
+        
         cachedProgressEventSink = clbck.getInterface(Ci.nsIProgressEventSink);
     };
-
-    // }}}
-
-    // {{{ getCallback private method
 
     /**
      * @private
@@ -523,17 +462,18 @@ function HdsChannel(uri, stream)
     var getCallback = function()
     {
         var cb = notificationCallbacks;
+        
         if (!cb)
+        {
             return null;
+        }
+        
         return cb.QueryInterface(Ci.nsIInterfaceRequestor);
     };
-
-    // }}}
 
     /**
      * Channel state
      */
-    // {{{ State fields
 
     /**
      * Holds a reference to a user supplied instance of nsIStreamListener.
@@ -595,26 +535,15 @@ function HdsChannel(uri, stream)
      */
     var cachedProgressEventSink = null;
 
-    // }}}
-
     /**
      * Aux
      */
-    // {{{ QueryInterface
+
     /**
      * @member QueryInterface
      */
-    this.QueryInterface = XPCOMUtils.generateQI(
-        [
-            Ci.nsIChannel
-            , Ci.nsIRequest
-        ]);
-    // }}}
+    this.QueryInterface = XPCOMUtils.generateQI([Ci.nsIChannel, Ci.nsIRequest]);
 };
-
-// }}}
-
-// {{{ HdsProtocol class
 
 /**
  * @class HdsProtocol
@@ -623,8 +552,6 @@ function HdsProtocol()
 {
     var ctx = this;
     var streams = {};
-
-    // {{{ Public interface
 
     /**
      * @member createUri
@@ -667,10 +594,6 @@ function HdsProtocol()
         return stream;
     };
 
-    // }}}
-
-    // {{{ nsIProtocolHandler implementation
-
     /**
      * Make this object accessible to js clients
      */
@@ -695,9 +618,9 @@ function HdsProtocol()
      * @name protocolFlags
      * @type Number
      */
-    this.protocolFlags = Ci.nsIProtocolHandler.URI_NORELATIVE
-        | Ci.nsIProtocolHandler.URI_NOAUTH
-        | Ci.nsIProtocolHandler.URI_LOADABLE_BY_ANYONE;
+    this.protocolFlags = Ci.nsIProtocolHandler.URI_NORELATIVE           |
+                         Ci.nsIProtocolHandler.URI_NOAUTH               |
+                         Ci.nsIProtocolHandler.URI_LOADABLE_BY_ANYONE;
 
     /**
      * @member netURI
@@ -709,7 +632,9 @@ function HdsProtocol()
     this.newURI = function(aSpec, aOriginalCharset, aBaseURI)
     {
         var uri = Cc[ID_SIMPLEURI_CONTRACT].createInstance(Ci.nsIURI);
+
         uri.spec = aSpec;
+
         return uri;
     };
 
@@ -726,6 +651,7 @@ function HdsProtocol()
         {
             throw Cr.NS_ERROR_NOT_IMPLEMENTED;
         }
+        
         return new HdsChannel(aURI, stream);
     };
 
@@ -745,24 +671,15 @@ function HdsProtocol()
      * @returns {Object}
      */
     this.QueryInterface = XPCOMUtils.generateQI([Ci.nsIProtocolHandler]);
-
-    // }}}
 };
 
 HdsProtocol.prototype =
 {
-    // {{{ Module description
     classDescription: "Implementation of x-hds protocol",
     classID: Components.ID('{20419380-eec6-11e2-91e2-0800200c9a66}'),
+
     _xpcom_factory: XPCOMUtils.generateSingletonFactory(HdsProtocol)
-    // }}}
 };
 
-const NSGetFactory = XPCOMUtils.generateNSGetFactory
-          ? XPCOMUtils.generateNSGetFactory([HdsProtocol])
-          : undefined;
-const NSGetModule = !XPCOMUtils.generateNSGetFactory
-          ? XPCOMUtils.generateNSGetModule([HdsProtocol])
-          : undefined;
-
-// }}}
+const NSGetFactory = XPCOMUtils.generateNSGetFactory ? XPCOMUtils.generateNSGetFactory([HdsProtocol]) : undefined;
+const NSGetModule = !XPCOMUtils.generateNSGetFactory ? XPCOMUtils.generateNSGetModule([HdsProtocol]) : undefined;

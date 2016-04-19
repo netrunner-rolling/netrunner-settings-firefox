@@ -27,20 +27,24 @@ var AntFlvUi =
 
         self.downloadButton.push(AntLib.ob('antToolBarDownloadButton'));
         self.downloadButton.push(AntLib.ob('ant-video-statusbar-dl-button'));
-        for each(var button in self.downloadButton) {
+
+        for each(var button in self.downloadButton)
+        {
             button.setAttribute("oncommand", "AntFlvUi.videoNotDetected();");
         }
 
         self.downloadList.push(AntLib.ob('ant-video-toolbar-dllist', doc));
         self.downloadList.push(AntLib.ob('ant-video-statusbar-dllist', doc));
+        
         // Compact toolbar item may be hidden (Customized...)
-        try {
+        try
+        {
             self.downloadList.push(AntLib.ob('ant-ctoolbar-menu', doc));
         }
-        catch(e) {}
+        catch(e)
+        {}
         
         AntWatchUrl.addWatcher( self.onChangedUrl );
-        
     },
 
     /**
@@ -49,8 +53,10 @@ var AntFlvUi =
      * @param id                  The id of the button to add
      * @param afterId (optional)  The id of the button to insert the new button after
      */
-    installButton: function (toolbarId, id, afterId) {
-        if (!document.getElementById(id)) {
+    installButton: function (toolbarId, id, afterId)
+    {
+        if (!document.getElementById(id))
+        {
             var toolbar = document.getElementById(toolbarId);
 
             // If no afterId is given, then append the item to the toolbar
@@ -119,30 +125,29 @@ var AntFlvUi =
         return null;
     },
 
-    feedbackClickCallback: function(addonList) {
-        
+    feedbackClickCallback: function(addonList)
+    {
         var self = AntFlvUi;
         var userid = AntRank.UUID;
         var url = gBrowser.selectedBrowser.contentWindow.location.href;
         var addons = AntLib.getExtListString(addonList);
         
         self.getNFPanel().hidePopup();
-        var supportTab = 
-            gBrowser.addTab(
-                'http://support.ant.com/?url='+AntLib.uriEncode(url)+"&userid="+AntLib.uriEncode(userid)+"&addons="+AntLib.uriEncode(addons)
-                            );
+        var supportTab = gBrowser.addTab('http://support.ant.com/?url='+AntLib.uriEncode(url)+"&userid="+AntLib.uriEncode(userid)+"&addons="+AntLib.uriEncode(addons));
         
         gBrowser.selectedTab = supportTab;
     },
+    
     feedbackClick: function ()
     {
         var self = AntFlvUi;
         
-        if ( AntLib.getFirefoxVersion() < 4 ) {
-
+        if ( AntLib.getFirefoxVersion() < 4 )
+        {
             self.feedbackClickCallback();
         }
-        else {
+        else
+        {
             Components.utils.import("resource://gre/modules/AddonManager.jsm");
             AddonManager.getAllAddons( self.feedbackClickCallback );
         }
@@ -167,75 +172,73 @@ var AntFlvUi =
         var ctoolbarBtn = document.getElementById('ant-ctoolbar-dropdown');
         var data = AntTabMan.getAntData(doc);
 
-        if (data.videos.length) {
+        if (data.videos.length)
+        {
             data.notFound = false;
             self.downloadButtonAttrMagic(!data.downloadClicked);
 
             // Compact toolbar item may be hidden (Customized...)
-            if (ctoolbarBtn) {
-                ctoolbarBtn.setAttribute(
-                    'oncommand'
-                    , 'AntBar.onDownloadButtonClick();');
+            if (ctoolbarBtn)
+            {
+                ctoolbarBtn.setAttribute('oncommand', 'AntBar.onDownloadButtonClick();');
             }
 
-            var btnClass = data.downloadClicked
-                    ? 'ant-download-class-downloaded'
-                    : 'ant-download-class-detected';
-            if ( data.videos.length == 1 ) {
-                for each(var button in self.downloadButton) {
+            var btnClass = data.downloadClicked ? 'ant-download-class-downloaded' : 'ant-download-class-detected';
+
+            if ( data.videos.length == 1 )
+            {
+                for each(var button in self.downloadButton)
+                {
                     button.setAttribute('type', '');
-                    button.setAttribute(
-                        "oncommand", "AntBar.onDownloadButtonClick();");
-                    button.setAttribute(
-                        'class', self.getDlButtonCSSClass(btnClass, button));
-                    button.setAttribute(
-                        'label', antvd.AntLang.getString('AntBar.DownloadButtonLabel'));
+                    button.setAttribute("oncommand", "AntBar.onDownloadButtonClick();");
+                    button.setAttribute('class', self.getDlButtonCSSClass(btnClass, button));
+                    button.setAttribute('label', antvd.AntLang.getString('AntBar.DownloadButtonLabel'));
                 }
-            } else {
-                for each(var button in self.downloadButton) {
+            }
+            else
+            {
+                for each(var button in self.downloadButton)
+                {
                     button.setAttribute('type', 'menu');
                     button.setAttribute("oncommand", "");
-                    button.setAttribute(
-                        'class', self.getDlButtonCSSClass(btnClass, button));
-                    button.setAttribute(
-                        'label', antvd.AntLang.getString('AntBar.DownloadButtonLabel'));
+                    button.setAttribute('class', self.getDlButtonCSSClass(btnClass, button));
+                    button.setAttribute('label', antvd.AntLang.getString('AntBar.DownloadButtonLabel'));
                 }
             }
+
             // Regardless of number of videos...
             self.updateMenuDownload(doc);
-        } else {
+        }
+        else
+        {
             self.downloadButtonAttrMagic();
+        
             // Compact toolbar item may be hidden (Customized...)
-            if (ctoolbarBtn) {
-                ctoolbarBtn.setAttribute(
-                    'oncommand', 'AntFlvUi.videoNotDetected();');
+            if (ctoolbarBtn)
+            {
+                ctoolbarBtn.setAttribute('oncommand', 'AntFlvUi.videoNotDetected();');
             }
             
-            for each(var button in self.downloadButton) {
-                
+            for each(var button in self.downloadButton)
+            {
                 button.setAttribute('type', '');
                 button.setAttribute("oncommand", "AntFlvUi.videoNotDetected();");
                 
-                if ( data.notFound ) {
-                    button.setAttribute(
-                        'class'
-                        , self.getDlButtonCSSClass(
-                            'ant-video-not-detected'
-                            , button));
-                    button.setAttribute(
-                        'label', antvd.AntLang.getString("AntBar.DownloadButtonNotFound"));
-                } else {
-                    button.setAttribute(
-                        'class'
-                        , self.getDlButtonCSSClass(
-                            'ant-download-class-not-detected'
-                            , button));
-                    button.setAttribute(
-                        'label', antvd.AntLang.getString('AntBar.DownloadButtonLabel'));
+                if ( data.notFound )
+                {
+                    button.setAttribute('class', self.getDlButtonCSSClass('ant-video-not-detected', button));
+                    button.setAttribute('label', antvd.AntLang.getString("AntBar.DownloadButtonNotFound"));
+                }
+                else
+                {
+                    button.setAttribute('class', self.getDlButtonCSSClass('ant-download-class-not-detected', button));
+                    button.setAttribute('label', antvd.AntLang.getString('AntBar.DownloadButtonLabel'));
                 }
             }
+
             self.cleanMenuDownload();
         }
+
         return true;
     },
 
@@ -244,13 +247,13 @@ var AntFlvUi =
                 || AntPrefs.displayMode == 'addonsbar');
     },
 
-    getDlButtonCSSClass: function(extraClass, btn){
-        
+    getDlButtonCSSClass: function(extraClass, btn)
+    {
         var self = AntFlvUi;
         var cssClass = '';
         
-        switch ( btn.id ) {
-            
+        switch ( btn.id )
+        {
             case 'ant-video-statusbar-dl-button':
                 cssClass = 'ant-statusbar-button-class';
                 break;
@@ -262,14 +265,15 @@ var AntFlvUi =
         
         cssClass += ' ' + extraClass;
         return cssClass;
-
     },
-    downloadButtonAttrMagic: function(add) {
-        
+
+    downloadButtonAttrMagic: function(add)
+    {
         var self = AntFlvUi;
         var compact = self.doc.getElementById('ant-ctoolbar-dropdown');
         
-        if (compact) {
+        if (compact)
+        {
             if ( add )
                 compact.setAttribute('detected', null);
             else
@@ -277,11 +281,13 @@ var AntFlvUi =
         }
     },
 
-    getDownloadButton: function() {
-        
+    getDownloadButton: function()
+    {
         var self = AntFlvUi;
         var btnId = '';
-        switch ( AntPrefs.displayMode ) {
+
+        switch ( AntPrefs.displayMode )
+        {
             case 'toolbar':
                 btnId = 'antToolBarDownloadButton';
                 break;
@@ -299,20 +305,21 @@ var AntFlvUi =
         var btnIdEl = document.getElementById(btnId);
         return btnIdEl ? btnIdEl : null;
     },
-    getNFPanel: function(autoclose) {
-        
+    
+    getNFPanel: function(autoclose)
+    {
         var doc = gBrowser.contentDocument;
         
-        if ( doc.getElementById('IETab')
-          || doc.getElementById('IETab2') ) {
-            
+        if ( doc.getElementById('IETab') || doc.getElementById('IETab2') )
+        {
             return document.getElementById( 'ant-ie-tab-mode-panel' );
         }
         
         return document.getElementById( "ant-notfound-video-panel" );
     },
-    videoNotDetected: function(){
-      
+    
+    videoNotDetected: function()
+    {
         var self = AntFlvUi;
         var btns = self.downloadButton;
         
@@ -329,7 +336,9 @@ var AntFlvUi =
         if (AntPrefs.showNotFoundWindow())
         {
             var dlBtn = self.getDownloadButton();
-            if (dlBtn) {
+            
+            if (dlBtn)
+            {
                 var pos = self.isStatusBar() ? 'before_start' : 'after_start';
                 self.getNFPanel().openPopup( dlBtn, pos, 0, 0, false, false );
             }
@@ -339,7 +348,6 @@ var AntFlvUi =
     /*
      * Update the list of videos found
      */
-
     cleanMenuDownload: function ()
     {
         var self = AntFlvUi;
@@ -350,8 +358,7 @@ var AntFlvUi =
             if (!menuPopup)
                 continue;
 
-            while (menuPopup.firstChild
-                   && (menuPopup.firstChild.id != 'ant-ctoolbar-player'))
+            while (menuPopup.firstChild && (menuPopup.firstChild.id != 'ant-ctoolbar-player'))
             {
                 menuPopup.removeChild(menuPopup.firstChild);
             }
@@ -377,11 +384,14 @@ var AntFlvUi =
      * @member createMenuItem
      * @param {MediaRequest} videoRequest
      */
-    createMenuItem: function(videoRequest, index, menuNum) {
+    createMenuItem: function(videoRequest, index, menuNum)
+    {
         var self = AntFlvUi;
 
         const MAX_ITEM_LENGTH = 40;
-        var label = AntLib.truncate(videoRequest.displayName, MAX_ITEM_LENGTH);
+        let videoDisplayName = (videoRequest.displayName === undefined) ? videoRequest._base.displayName : videoRequest.displayName;
+        
+        var label = AntLib.truncate(videoDisplayName, MAX_ITEM_LENGTH);
 
         var id = menuNum.toString() + index.toString();
         
@@ -394,8 +404,7 @@ var AntFlvUi =
         
         menuCellIcon.setAttribute('class', 'listcell-iconic ant-download-class');
         
-        var displayContentLength =
-                self.formatDisplaySizeCell(videoRequest.size);
+        var displayContentLength = self.formatDisplaySizeCell(videoRequest.size);
 
         menuCellSize.setAttribute('id', 'ant-video-tb-size-'+id);
         menuCellSize.setAttribute('label', displayContentLength);
@@ -422,12 +431,14 @@ var AntFlvUi =
         
         return menuItem;
     },
+    
     updateMenuDownload: function (doc)
     {
         var self = AntFlvUi;
         self.cleanMenuDownload();
         
-        if (doc == null) {
+        if (doc == null)
+        {
           var curBrowser = AntLib.getMainWindow().getBrowser();
           doc = curBrowser.selectedBrowser.contentDocument;
         }
@@ -439,7 +450,8 @@ var AntFlvUi =
             var menuPopup = self.downloadList[i];
             //self.downloadList.push(AntLib.ob('ant-ctoolbar-menu', doc));
 
-            if (menuPopup) {
+            if (menuPopup)
+            {
                 for (var j in listflv)
                 {
                     var menuitem = self.createMenuItem(listflv[j], j, i);
@@ -448,19 +460,20 @@ var AntFlvUi =
             }
         }
     },
+
     /*
      * removes animation when download button pressed
      */
-    downloadButtonPressed: function() {
-        
+    downloadButtonPressed: function()
+    {        
         var self = AntFlvUi;
         
-        for each(var button in self.downloadButton) {
+        for each(var button in self.downloadButton)
+        {
             button.setAttribute(
-                'class'
-                , self.getDlButtonCSSClass(
-                    'ant-download-class-downloaded'
-                    , button));
+                'class',
+                self.getDlButtonCSSClass('ant-download-class-downloaded', button)
+            );
         }
         
         self.downloadButtonAttrMagic();

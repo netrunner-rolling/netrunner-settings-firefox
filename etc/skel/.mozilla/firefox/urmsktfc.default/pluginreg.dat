@@ -5,12 +5,28 @@ Version:0.17:$
 Arch:x86_64-gcc3:$
 
 [PLUGINS]
-IcedTeaPlugin.so:$
-/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/IcedTeaPlugin.so:$
+libnpo1d.so:$
+/opt/google/talkplugin/libnpo1d.so:$
 :$
-1417177132000:0:0:0:$
+1449879510000:0:0:0:$
+Version: 5.41.0.0:$
+Google Talk Plugin Video Renderer:$
+1
+0:application/o1d:Google Talk Plugin Video Renderer:o1d:$
+libnpgoogletalk.so:$
+/opt/google/talkplugin/libnpgoogletalk.so:$
+:$
+1449879510000:0:0:0:$
+Version: 5.41.0.0:$
+Google Talk Plugin:$
+1
+0:application/googletalk:Google Talk Plugin:googletalk:$
+IcedTeaPlugin.so:$
+/usr/share/icedtea-web/lib/IcedTeaPlugin.so:$
+:$
+1454518715000:0:0:0:$
 The <a href="http://icedtea.classpath.org/wiki/IcedTea-Web">IcedTea-Web Plugin</a> executes Java applets.:$
-IcedTea-Web Plugin (using IcedTea-Web 1.5.2 (1.5.2-1ubuntu2)):$
+IcedTea-Web Plugin (using IcedTea-Web 1.6.2):$
 36
 0:application/x-java-vm:IcedTea:class,jar:$
 1:application/x-java-applet:IcedTea:class,jar:$
@@ -48,26 +64,10 @@ IcedTea-Web Plugin (using IcedTea-Web 1.5.2 (1.5.2-1ubuntu2)):$
 33:application/x-java-bean;version=1.7:IcedTea:class,jar:$
 34:application/x-java-bean;jpi-version=1.7.0_50:IcedTea:class,jar:$
 35:application/x-java-vm-npruntime:IcedTea::$
-libnpo1d.so:$
-/opt/google/talkplugin/libnpo1d.so:$
-:$
-1427408287000:0:0:0:$
-Version: 5.41.0.0:$
-Google Talk Plugin Video Renderer:$
-1
-0:application/o1d:Google Talk Plugin Video Renderer:o1d:$
-libnpgoogletalk.so:$
-/opt/google/talkplugin/libnpgoogletalk.so:$
-:$
-1427408288000:0:0:0:$
-Version: 5.41.0.0:$
-Google Talk Plugin:$
-1
-0:application/googletalk:Google Talk Plugin:googletalk:$
 libflashplayer.so:$
-/usr/lib/flashplugin-installer/libflashplayer.so:$
-11.2.202.457:$
-1431443886000:0:0:0:$
+/usr/lib/mozilla/plugins/libflashplayer.so:$
+11.2.202.616:$
+1460064515000:0:0:0:$
 Shockwave Flash 11.2 r202:$
 Shockwave Flash:$
 2

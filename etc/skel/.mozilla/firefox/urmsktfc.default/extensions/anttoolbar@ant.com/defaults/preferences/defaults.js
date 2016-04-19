@@ -1,9 +1,9 @@
 pref("extensions.anttoolbar.version", "0.0");
 pref("extensions.anttoolbar.firstrun", true);
 pref("extensions.anttoolbar.flvdir", "");
-pref("extensions.anttoolbar.rankmode", true);
-pref("extensions.anttoolbar.videorepports", true);
-pref("extensions.anttoolbar.heartbeat", true);
+pref("extensions.anttoolbar.rankmode", false);
+pref("extensions.anttoolbar.videorepports", false);
+pref("extensions.anttoolbar.heartbeat", false);
 pref("extensions.anttoolbar.notification", false);
 pref("extensions.anttoolbar.flvToPlay", "");
 pref("extensions.anttoolbar.mode", "ctoolbar");

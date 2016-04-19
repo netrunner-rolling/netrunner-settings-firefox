@@ -73,21 +73,29 @@ var AntGrabber =  {
      */
     foundFlvLink: function (origin, videoRequest, eraseList)
     {
-        try {
+        try
+        {
             var videos = AntTabMan.getAntData(origin).videos;
+        
             if (eraseList)
             {
                 AntTabMan.getAntData(origin).releaseVideos();
             }
 
-            for each (var r in videos) {
-                if (r.compare(videoRequest)) {
+            for each (var r in videos)
+            {
+                if (r.compare(videoRequest))
+                {
                     return;
                 }
             }
+            
             videos.push(videoRequest);
-            AntFlvUi.updateDownloadButton(origin);
-        } catch (ex) {
+            
+            AntFlvUi.updateDownloadButton(origin);            
+        }
+        catch (ex)
+        {
             AntLib.logError("[Grabber]: Unexpected exception", ex);
         }
     }

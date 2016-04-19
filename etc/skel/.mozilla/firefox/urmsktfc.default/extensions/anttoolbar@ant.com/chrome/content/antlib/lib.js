@@ -5,41 +5,116 @@
 //  Created by Zak on 2008-06-12.
 //  Contributor Brian King
 //  Copyright 2008-2012 Ant.com. All rights reserved.
-// 
+//
 
-var AntLib = {
+var AntLib =
+{
     emGUID : "anttoolbar@ant.com",
-
-    toLog: function (str){
-        var self = AntLib;
-        var consoleService = self.CCSV("@mozilla.org/consoleservice;1", "nsIConsoleService");
-        if (AntPrefs) {
-            if (AntPrefs.getAntBranch().getBoolPref('debug'))
-                consoleService.logStringMessage("AntLog: " + str);
-        }
-        else {
-            consoleService.logStringMessage("AntLog: PREFS not available" + str);
-        }
-    },
-    logError: function(msg, e) {
-        AntLib.toLog(msg
-                     + (e ? "\nError: " + e : "")
-                     + ((e && e.result) ? "\nResult: " + e.result : "")
-                     + ((e && e.stack) ? "\nStack:\n" + e.stack : ""));
-    },
-    openURL: function (url /* , newtab */){
+    
+    internalPrepareConsoleMessage: function(sContext, sMessage)
+    {
+        let _message = "AVD-FF " + g_AVDFFVersionString + ": ";
         
-        if (arguments.length > 1 && arguments[1]) {
+        if ( (typeof sContext === "string") && (sContext.length > 0) )
+        {
+            _message = "AVD-FF " + g_AVDFFVersionString + " / " + sContext + ": ";
+        }
+        
+        _message = _message + sMessage;
+        
+        return _message;
+    },
+    
+    toLog: function (sContext, sMessage)
+    {
+        Components.utils.import('resource://gre/modules/devtools/Console.jsm', this);
+        
+        if (AntPrefs)
+        {
+            if (AntPrefs.getAntBranch().getBoolPref('debug'))
+            {
+                let _message = this.internalPrepareConsoleMessage(sContext, sMessage);
+
+                console.log(_message);
+            }
+        }
+    },
+    
+    logError: function(sContext, sMessage, sE)
+    {
+        Components.utils.import('resource://gre/modules/devtools/Console.jsm');
+        
+        if (AntPrefs)
+        {
+            if (AntPrefs.getAntBranch().getBoolPref('debug'))
+            {
+                let _message = this.internalPrepareConsoleMessage(sContext, sMessage);
+
+                if (sE)
+                {
+                    _message = _message + "\nError: " + sE;
+                    
+                    if (sE.result)
+                    {
+                        _message = _message + "\nResult: " + sE.result;
+                    }
+                    
+                    if (sE.stack)
+                    {
+                        _message = _message + "\nStack: " + sE.stack;
+                    }
+                }
+                
+                console.error(_message);
+            }
+        }
+    },
+    
+    logWarning: function(sContext, sMessage, sE)
+    {
+        Components.utils.import('resource://gre/modules/devtools/Console.jsm');
+        
+        if (AntPrefs)
+        {
+            if (AntPrefs.getAntBranch().getBoolPref('debug'))
+            {
+                let _message = this.internalPrepareConsoleMessage(sContext, sMessage);
+
+                if (sE)
+                {
+                    _message = _message + "\nError: " + sE;
+                    
+                    if (sE.result)
+                    {
+                        _message = _message + "\nResult: " + sE.result;
+                    }
+                    
+                    if (sE.stack)
+                    {
+                        _message = _message + "\nStack: " + sE.stack;
+                    }
+                }
+                
+                console.warn(_message);
+            }
+        }
+    },
+
+    openURL: function (url)
+    {
+        if (arguments.length > 1 && arguments[1])
+        {
             getBrowser().selectedTab = getBrowser().addTab(url);
         }
-        else {
+        else
+        {
             window._content.document.location = url;
             window.content.focus();
         }
     },
 
-    uriEncode: function (input){
-        
+    uriEncode: function (input)
+    {
         var self = AntLib;
         var output = encodeURIComponent(input);
         return output;
@@ -48,26 +123,23 @@ var AntLib = {
     openDialog: function (url, windowType, features, arg1, arg2)
     {
         var self = AntLib;
-        var wm = self.CCSV("@mozilla.org/appshell/window-mediator;1"
-                           , "nsIWindowMediator");
+        var wm = self.CCSV("@mozilla.org/appshell/window-mediator;1", "nsIWindowMediator");
         var win = windowType ? wm.getMostRecentWindow(windowType) : null;
 
         if (win)
         {
-            if ("initWithParams" in win) {
+            if ("initWithParams" in win)
+            {
               win.initWithParams(aParams);
             }
+            
             win.focus();
         }
         else
         {
-            var winFeatures = "resizable,dialog=no,centerscreen"
-                    + (features ? ("," + features) : "");
+            var winFeatures = "resizable,dialog=no,centerscreen" + (features ? ("," + features) : "");
 
-            var parentWindow =
-                    (self.instantApply || !window.opener || window.opener.closed)
-                    ? window
-                    : window.opener;
+            var parentWindow = (self.instantApply || !window.opener || window.opener.closed) ? window : window.opener;
 
             win = parentWindow.openDialog(url, "_blank", winFeatures, arg1, arg2);
         }
@@ -78,7 +150,6 @@ var AntLib = {
     MAX_FILE_NAME: 255,
     MAX_FILE_PATH: 300,
 
-    // {{{ mangleFileName private method
     /**
      * Ensures that the full filename is no more than MAX_FILE_NAME symbols
      *
@@ -93,24 +164,26 @@ var AntLib = {
         let fileExtLen = fileExtension ? (1 + fileExtension.length) : 0;
         let mangledName = fileName;
         const maxFullNameLen = AntLib.MAX_FILE_NAME;
+
         if (fileName.length + fileExtLen > maxFullNameLen)
         {
-            mangledName = AntLib.truncate(
-                fileName
-                , maxFullNameLen - fileExtLen
-                , "~");
+            mangledName = AntLib.truncate(fileName, maxFullNameLen - fileExtLen, "~");
         }
 
         if (fileExtLen)
+        {
             return mangledName + "." + fileExtension;
+        }
+        
         return mangledName;
     },
-    // }}}
     
     truncate: function (str, maxLength, separator)
     {
         if (!str || (str.length <= maxLength))
+        {
             return str;
+        }
 
         separator = separator || '...';
 
@@ -119,16 +192,16 @@ var AntLib = {
             frontChars = Math.ceil(charsToShow/2),
             backChars = Math.floor(charsToShow/2);
 
-        return str.substr(0, frontChars)
-            + separator
-            + str.substr(str.length - backChars);
+        return str.substr(0, frontChars) + separator + str.substr(str.length - backChars);
     },
 
-    getSiteName: function (locationObj){
+    getSiteName: function (locationObj)
+    {
         var self = AntLib;
         var hostname = self.safeGet(locationObj, "hostname");
 
-        try {
+        try
+        {
             // Only available in Firefox 3
             var eTLDService = self.CCSV("@mozilla.org/network/effective-tld-service;1", "nsIEffectiveTLDService");
             var suff = eTLDService.getPublicSuffixFromHost(hostname);
@@ -136,26 +209,35 @@ var AntLib = {
             hostname = hostname.substring(0, endPos-1);
             var startPos = hostname.lastIndexOf('.');
             
-            if(startPos > -1) {
+            if(startPos > -1)
+            {
                 hostname =  hostname.substring(startPos+1, hostname.length);
             }
         }
-        catch (e) {
-            self.toLog('eTLDService error: ' + e);
+        catch (e)
+        {
             var index;
             
             index = hostname.lastIndexOf(".");
+            
             if (index > -1)
+            {
                 hostname = hostname.substring(0, index);
+            }
+            
             index = hostname.lastIndexOf(".");
+            
             if (index > -1)
+            {
                 hostname = hostname.substring(index + 1);
+            }
         }
+        
         return hostname;
     },
 
-    getDomain: function (strURL){
-        
+    getDomain: function (strURL)
+    {
         var domain;
         var self = AntLib;
         
@@ -163,38 +245,48 @@ var AntLib = {
         {
             var uri = AntLib.toURI(strURL);
             
-            try {
+            try
+            {
                 var eTLDService = self.CCSV("@mozilla.org/network/effective-tld-service;1", "nsIEffectiveTLDService");
                 
-                try {
+                try
+                {
                     domain = eTLDService.getBaseDomain(uri, 1);
                 }
-                catch (e) {
-                    
+                catch (e)
+                {
                     if ( e.name != 'NS_ERROR_INSUFFICIENT_DOMAIN_LEVELS')
+                    {
                         throw e;
+                    }
                     
                     domain = eTLDService.getBaseDomain(uri);
                 }
                 
                 domain = domain.replace( /^www./i, '' );
             }
-            catch (e) {
-                
+            catch (e)
+            {
                 var host = uri.host;
                 var TLD = host.substring(host.lastIndexOf('.')+1, host.length);
                 var hostNoTLD = host.substring(0, host.lastIndexOf('.'));
                 
                 domain = TLD;
+                
                 //including 3 subdomains maximum
                 var sdCount = 3;
-                while ( sdCount ) {
-                    
+
+                while ( sdCount )
+                {
                     var index = hostNoTLD.lastIndexOf('.');
-                    if ( index == -1 ) {
-                        
+                
+                    if ( index == -1 )
+                    {
                         if ( hostNoTLD != 'www'  )
+                        {
                             domain = hostNoTLD + '.' + domain;
+                        }
+                        
                         break;
                     }
                     
@@ -205,9 +297,11 @@ var AntLib = {
                 }
             }
         }
-        catch (e) {
+        catch (e)
+        {
             return null;
         }
+        
         return domain;
     },
 
@@ -215,16 +309,20 @@ var AntLib = {
     {
         var uri = AntLib.toURI(url);
         var tabs = gBrowser.tabContainer.childNodes;
+        
         for (let i = 0; i < tabs.length; ++i)
         {
             let tab = tabs[i];
+        
             if (gBrowser.getBrowserForTab(tab).currentURI.equals(uri))
+            {
                 return tab;
+            }
         }
+        
         return null;
     },
 
-    // {{{ deductExtension private method
     /**
      * @private
      * @member deductExtention
@@ -233,23 +331,21 @@ var AntLib = {
      */
     deductExtension: function(contentType)
     {
-        // {{{ Misc
         const knownExtensions = [
-            "flv", "mp4", "m4v", "m4a", "f4v", "mp3"
-            , "mov", "webm", "wmv", "ogg", "ogv", "avi", "3gpp"];
+            "flv", "mp4", "m4v", "m4a", "f4v", "mp3", "mov", "webm", "wmv", "ogg", "ogv", "avi", "3gpp"
+        ];
 
-        const reContentType = new RegExp(
-            "[^\\/]+\\/(x-)?(" + knownExtensions.join("|") + ")"
-            , "i"
-        );
-        // }}}
+        const reContentType = new RegExp("[^\\/]+\\/(x-)?(" + knownExtensions.join("|") + ")", "i");
 
         if (contentType)
         {
             if (contentType.match(/audio\/(x-)?(mpeg|mpg)/i))
+            {
                 return "mp3";
+            }
 
             var cmatch = contentType.match(reContentType);
+            
             if (cmatch)
             {
                 return cmatch[2].toLowerCase();
@@ -258,9 +354,7 @@ var AntLib = {
 
         return "flv";
     },
-    // }}}
 
-    // {{{ getWindowByRequest member
     /**
      * Searches a window which opened the channel
      * @member getWindowByRequest
@@ -269,37 +363,85 @@ var AntLib = {
      */
     getWindowByRequest: function(request)
     {
-        /** TODO(Igor): move to the outer scope */
+        // TODO(Igor): move to the outer scope
         const Ci = Components.interfaces;
         const Cc = Components.classes;
 
-        /** @type Array.<nsIInterfaceRequestor> */
-        let clients = [request.notificationCallbacks
-                       , request.loadGroup
-                       ? request.loadGroup.notificationCallbacks
-                       : null];
+        // type Array.<nsIInterfaceRequestor>
+        let clients = [
+            request.notificationCallbacks,
+            request.loadGroup ? request.loadGroup.notificationCallbacks : null
+        ];
 
         let lastError = null;
-        for (let i in clients) {
-            let client = clients[i];
-            if (!client || !client.getInterface)
-                continue;
 
-            try {
-                return client.getInterface(Ci.nsILoadContext).associatedWindow;
-            } catch (ex) {
+        for (let i in clients)
+        {
+            let client = clients[i];
+        
+            if (!client || !client.getInterface)
+            {
+                continue;
+            }
+
+            try
+            {
+                return client.getInterface(Ci.nsILoadContext).associatedWindow;            
+            }
+            catch (ex)
+            {
                 lastError = ex;
+                
+                //AntLib.logError(
+                //    "AntLib.getWindowByRequest (lib.js)",
+                //    "Error obtaining associatedWindow (1st chance)",
+                //    ex
+                //);
+                
+                if (request instanceof Components.interfaces.nsIRequest)
+                {
+                    try
+                    {
+                        if (request.notificationCallbacks)
+                        {
+                            let _i = request.notificationCallbacks.getInterface(Components.interfaces.nsILoadContext);
+                            return _i.associatedWindow;
+                        }
+                    }
+                    catch(e)
+                    {
+                        //AntLib.logError(
+                        //    "AntLib.getWindowByRequest (lib.js)",
+                        //    "Error obtaining associatedWindow (2nd chance)",
+                        //    ex
+                        //);
+                    }
+                        
+                    try
+                    {
+                        if (request.loadGroup && request.loadGroup.notificationCallbacks)
+                        {
+                            let _i = request.loadGroup.notificationCallbacks.getInterface(Components.interfaces.nsILoadContext);
+                            return _i.associatedWindow;
+                        }
+                    }
+                    catch(e)
+                    {
+                        //AntLib.logError(
+                        //    "AntLib.getWindowByRequest (lib.js)",
+                        //    "Error obtaining associatedWindow (3rd chance)",
+                        //    ex
+                        //);
+                    }
+                }
+                
+                return null;
             }
         }
 
-        /**
-         * TODO(Igor): Log lastError at the INFO level
-         */
         return null;
     },
-    // }}}
 
-    // {{{ getDocumentByRequest private member
     /**
      * @member getDocumentByRequest
      * @param {nsIChannel} request
@@ -309,13 +451,15 @@ var AntLib = {
     {
         var self = AntLib;
         var window = self.getWindowByRequest(request);
+        
         if (!window)
+        {
             return null;
+        }
+        
         return window.top.document;
     },
-    // }}}
 
-    // {{{ getUploadStream private method
     /**
      * @member getUploadStream
      * @param {nsIHttpChannel} channel
@@ -328,22 +472,19 @@ var AntLib = {
 
         try
         {
-            return channel
-                .QueryInterface(Ci.nsIUploadChannel)
-                .uploadStream;
+            return channel.QueryInterface(Ci.nsIUploadChannel).uploadStream;
         }
         catch (e)
         {
             return null;
         }
     },
-    // }}}
 
     /**
      * Get main browser window, use in order to bypass security context
      */
-    getMainWindow: function (){
-        
+    getMainWindow: function ()
+    {
         var mainWindow = window.QueryInterface(Components.interfaces.nsIInterfaceRequestor)
         .getInterface(Components.interfaces.nsIWebNavigation)
         .QueryInterface(Components.interfaces.nsIDocShellTreeItem)
@@ -357,7 +498,8 @@ var AntLib = {
     /**
      * Get the most recent browser window
      */
-    getMostRecentBrowserWindow: function (){
+    getMostRecentBrowserWindow: function ()
+    {
         var self = AntLib;
         var wm = self.CCSV("@mozilla.org/appshell/window-mediator;1", "nsIWindowMediator");
         var mainWindow = wm.getMostRecentWindow("navigator:browser");
@@ -369,25 +511,28 @@ var AntLib = {
      * enumerates all tabs in all windows and calls @callback with its instance
      * if callback returns 'true' - breaking the enumeration
      */
-    forEachDocument: function( callback, types ){
-        
+    forEachDocument: function( callback, types )
+    {
         var self = AntLib;
+
         if ( !types )
+        {
             types = ['navigator:browser'];
+        }
         
         var wm = self.CCSV( '@mozilla.org/appshell/window-mediator;1', 'nsIWindowMediator' );
         
-        for ( var i = 0; i < types.length; ++i ) {
-            
+        for ( var i = 0; i < types.length; ++i )
+        {
             var browserEnumerator = wm.getEnumerator( types[i] );
             
-            while ( browserEnumerator.hasMoreElements() ) {
-                
+            while ( browserEnumerator.hasMoreElements() )
+            {
                 var browserWin = browserEnumerator.getNext();
                 var tabbrowser = browserWin.gBrowser;
                 
-                if ( !tabbrowser ) {
-                    
+                if ( !tabbrowser )
+                {
                     var wnd = browserWin.QueryInterface(Components.interfaces.nsIInterfaceRequestor)
                                         .getInterface(Components.interfaces.nsIWebNavigation)
                                         .QueryInterface(Components.interfaces.nsIDocShellTreeItem)
@@ -396,17 +541,22 @@ var AntLib = {
                                         .getInterface(Components.interfaces.nsIDOMWindow);
                     
                     if ( callback(wnd.document) )
+                    {
                         return;
+                    }
                     
                     continue;
                 }
                 
                 var tabs = tabbrowser.tabContainer;
                 var length = tabs.itemCount;
-                for ( var i = 0; i < length; i++ ) {
-                    
+
+                for ( var i = 0; i < length; i++ )
+                {
                     if ( callback( tabs.getItemAtIndex(i).linkedBrowser.contentDocument ) )
+                    {
                         return;
+                    }
                 }
             }
         }
@@ -417,8 +567,8 @@ var AntLib = {
      * "Linux" on GNU/Linux; and "Darwin" on Mac OS X.
      * @return string The Name of the opertating system
      */
-    getOsName: function (){
-        
+    getOsName: function ()
+    {
         var self = AntLib;
         return self.CCSV("@mozilla.org/xre/app-info;1", "nsIXULRuntime").OS;
     },
@@ -426,28 +576,31 @@ var AntLib = {
     /*
      * returns time zone
      */
-    getTimezone: function(){
+    getTimezone: function()
+    {
         var rightNow = new Date();
         var jan1 = new Date(rightNow.getFullYear(), 0, 1, 0, 0, 0, 0);
         var temp = jan1.toGMTString();
         var jan2 = new Date( temp.substring(0, temp.lastIndexOf(" ")-1) );
         var stdTimeOffset = (jan1 - jan2) / (1000 * 60 * 60);
-        
         var offsetStr = "GMT";
+
         offsetStr += (stdTimeOffset >= 0) ? '+' : '';
         offsetStr += stdTimeOffset.toString();
         
         return offsetStr;
     },
-    makeRequest: function(requestObj, address, onLoadCallback){
-        
+
+    makeRequest: function(requestObj, address, onLoadCallback)
+    {
         var self = AntLib;
         var body = JSON.stringify(requestObj);
         
         //this method used from XPCOM, so getting XMLHttpRequest in the following way:
         var httpRequest = self.CCIN('@mozilla.org/xmlextras/xmlhttprequest;1', 'nsIXMLHttpRequest');
         
-        if (onLoadCallback) {
+        if (onLoadCallback)
+        {
             httpRequest.onload = function () { onLoadCallback(httpRequest); };       
         }
         
@@ -455,50 +608,59 @@ var AntLib = {
         httpRequest.setRequestHeader('Content-Type', 'application/json');
         httpRequest.send(body);
     },
+    
     /* TODO Update for Firefox 4+ */
-    getExtensionsList: function(){
-        
+    getExtensionsList: function()
+    {
         var self = AntLib;
         var extMan = AntLib.CCSV("@mozilla.org/extensions/manager;1", "nsIExtensionManager");
         var list = extMan.getItemList(AntLib.CI('nsIUpdateItem')["TYPE_EXTENSION"], {});
         return list;
     },  
-    getShortExtList: function(list){
-      
+
+    getShortExtList: function(list)
+    {
         var self = AntLib;
         
-        if ( list == undefined ) {
+        if ( list == undefined )
+        {
           list = self.getExtensionsList();
         }
         
         var resList = [];
+
         for each(var ext in list)
         {
-          resList.push({'name':ext.name, 'version':ext.version });
+            resList.push({'name':ext.name, 'version':ext.version });
         }
+
         return resList;
     },
-    getExtListString: function(list){
-      
+
+    getExtListString: function(list)
+    {
         var self = AntLib;
         
-        if ( list == undefined ) {
-          list = self.getExtensionsList();
+        if ( list == undefined )
+        {
+            list = self.getExtensionsList();
         }
         
         var result = [];
+
         for each(var ext in list)
         {
-          result.push(ext.name+'_'+ext.version );
+            result.push(ext.name+'_'+ext.version );
         }
+
         return result.join(',');
     },
     
     /**
     * @return float like 4 or 3.6
     */
-    getFirefoxVersion: function(){
-        
+    getFirefoxVersion: function()
+    {
         var fv = parseFloat(navigator.userAgent.match(/Firefox\/([0-9]{1,}\.[0-9])/)[1]);
         return fv;
     },
@@ -510,41 +672,41 @@ var AntLib = {
     {
         var self = AntLib;
 
-        try {
+        try
+        {
             Components.utils.import("resource://gre/modules/AddonManager.jsm");
-            AddonManager.getAddonByID(self.emGUID, function(addon) {
-                aCallback(addon.version, addon.creator.name);
-            });
-        } catch (e) {
+            AddonManager.getAddonByID(self.emGUID, function(addon) { aCallback(addon.version, addon.creator.name); });
+        }
+        catch (e)
+        {
             var extMan = self.CCSV("@mozilla.org/extensions/manager;1", "nsIExtensionManager");
             var ext = extMan.getItemForID(self.emGUID);
             aCallback(ext.version);
         }
     },
-
+    
     /**
      * convert string path to nsIURI
      */
-    toURI: function(url){
-        
+    toURI: function(url)
+    {
         return AntLib.CCSV("@mozilla.org/network/io-service;1", "nsIIOService").newURI( url, "UTF-8", null );
     },
 
-    createChannelFromURL: function(url) {
-        var ioService = AntLib.CCSV(
-            "@mozilla.org/network/io-service;1"
-            , "nsIIOService");
+    createChannelFromURL: function(url)
+    {
+        var ioService = AntLib.CCSV("@mozilla.org/network/io-service;1", "nsIIOService");
         var uri = ioService.newURI(url, "UTF-8", null);
+
         return ioService.newChannelFromURI(uri);
     },
     
     /**
      * convert nsIURL fo path
      */
-    urlToPath: function (path){
-        
-        var ph = Components.classes["@mozilla.org/network/protocol;1?name=file"]
-                           .createInstance(Components.interfaces.nsIFileProtocolHandler);
+    urlToPath: function (path)
+    {
+        var ph = Components.classes["@mozilla.org/network/protocol;1?name=file"].createInstance(Components.interfaces.nsIFileProtocolHandler);
         
         return ph.getFileFromURLSpec(path).path;
     },
@@ -553,8 +715,8 @@ var AntLib = {
      * returns path to local file for crome Url
      * @param path path like chrome://filename
      */
-    chromeToPath: function (path){
-        
+    chromeToPath: function (path)
+    {
         var self = AntLib;
         var uri = self.toURI(path);
         
@@ -584,7 +746,9 @@ var AntLib = {
             aBytes /= 1024;
             unitIndex++;
         }
+
         aBytes = aBytes.toFixed((aBytes > 0) && (aBytes < 100) ? 1 : 0);
+
         return [aBytes, units[unitIndex]];
     },
     
@@ -609,7 +773,10 @@ var AntLib = {
         var r = str;
       
         if (!r)
+        {
             return '';
+        }
+        
         r = r.replace(/^\s+/, '');
         r = r.replace(/\s+$/, '');
         r = r.replace(/\s+/g, ' ');
@@ -655,10 +822,12 @@ var AntLib = {
     {
         var property;
         
-        try {
+        try
+        {
             property = obj[prop];
         } 
-        catch (e){
+        catch (e)
+        {
             property = '';
         }
         
@@ -670,21 +839,27 @@ var AntLib = {
     {
         var p;
         var NSIFILE = Components.interfaces.nsIFile;
-        var dirLocator = Components.classes["@mozilla.org/file/directory_service;1"]
-                        .getService(Components.interfaces.nsIProperties);
+        var dirLocator = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties);
         p = dirLocator.get("ProfD", NSIFILE).path;
         var dirLocal;
-        try { // requires Gecko 14
+
+        // requires Gecko 14
+        try
+        { 
             dirLocal = AntLib.CCIN("@mozilla.org/file/local;1", "nsIFile");
             dirLocal.initWithPath(p);
         }
-        catch(e) {
+        catch(e)
+        {
             dirLocal = AntLib.CCIN("@mozilla.org/file/local;1", "nsILocalFile");
             dirLocal.initWithPath(p);
         }
-        if (dirLocal.exists() && dirLocal.isDirectory())  {
+        
+        if (dirLocal.exists() && dirLocal.isDirectory())
+        {
             return dirLocal;
         }
+
         return null;
     },
     
@@ -695,39 +870,46 @@ var AntLib = {
     /**
      * Helpers to acces Mozilla Interfaces, Classes and Services
      */
-    CC: function(cName){
-        
+    CC: function(cName)
+    {
         var self = AntLib;
         return self._CC[cName];
     },
 
-    CI: function(ifaceName){
-        
+    CI: function(ifaceName)
+    {
         var self = AntLib;
         return self._CI[ifaceName];
     },
 
-    CCSV: function(cName, ifaceName){
-        
+    CCSV: function(cName, ifaceName)
+    {
         var self = AntLib;
         return self._CC[cName].getService(self._CI[ifaceName]);    
     },
     
-    CCIN: function(cName, ifaceName){
-        
+    CCIN: function(cName, ifaceName)
+    {
         var self = AntLib;
         return self._CC[cName].createInstance(self._CI[ifaceName]);
     },
     
-    QI: function(obj, iface){
-        
+    QI: function(obj, iface)
+    {
         return obj.QueryInterface(iface);
     },
     
-    GI: function (obj, iface){
+    GI: function (obj, iface)
+    {
+        try
+        {
+            return obj.getInterface(iface);
+        }
+        catch (e)
+        {
+            if (e.name == "NS_NOINTERFACE") {}
+        }
         
-        try { return obj.getInterface(iface); }
-        catch (e) { if (e.name == "NS_NOINTERFACE") {} }
         return null;
     },
     
@@ -740,117 +922,143 @@ var AntLib = {
     {
         var self = AntLib;
         var ret;
-        if (doc == undefined)
-            ret = document.getElementById(id);
-        else
-            ret = doc.getElementById(id);
         
-        if (ret == null)
+        if (doc == undefined)
         {
-            self.toLog("Missing ID: " + id);
+            ret = document.getElementById(id);
+        }
+        else
+        {
+            ret = doc.getElementById(id);
         }
         
         return ret;
     },
     
-    registerNS: function(ns){
-        
+    registerNS: function(ns)
+    {
         var nsParts = ns.split(".");
         var root = window;
         
         for(var i=0; i<nsParts.length; i++)
         {
             if(typeof root[nsParts[i]] == "undefined")
+            {
                 root[nsParts[i]] = new Object();
+            }
             
             root = root[nsParts[i]];
         }
     },
+    
     /*
      * returns integer value between min and max
      */
-    getRandomInt: function(min, max){
-        
+    getRandomInt: function(min, max)
+    {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     },
+
     /*
      * syntesize mouse event
      */
-    synthesizeMouse: function(type, el, offX, offY, clicks){
-        
-        var utils = window.QueryInterface(Components.interfaces.nsIInterfaceRequestor)
-                          .getInterface(Components.interfaces.nsIDOMWindowUtils);
-        
+    synthesizeMouse: function(type, el, offX, offY, clicks)
+    {
+        var utils = window.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsIDOMWindowUtils);        
         var x, y;
-        if ( el ) {
-            
+
+        if ( el )
+        {
             var rect = el.getBoundingClientRect();
+
             if ( typeof(offX) == 'number' )
+            {
                 x = rect.left + offX;
+            }
             else if ( typeof(offX) == 'function' )
+            {
                 x = offX(rect);
+            }
             else
+            {
                 x = rect.left;
+            }
             
             if ( typeof(offY) == 'number' )
+            {
                 y = rect.top + offY;
+            }
             else if ( typeof(offY) == 'function' )
+            {
                 y = offY(rect);
+            }
             else
+            {
                 y = rect.top;
+            }
         }
-        else {
-            
+        else
+        {
             x = offX | 0;
             y = offY | 0;
         }
         
         if ( clicks === undefined )
+        {
             clicks = 1;
+        }
         
-        if ( type == 'click' ) {
-            
-            for ( let i = 0; i < clicks; i++ ) {
+        if ( type == 'click' )
+        {
+            for ( let i = 0; i < clicks; i++ )
+            {
                 utils.sendMouseEvent('mousedown', x, y, 0, 1, 0);
                 utils.sendMouseEvent('mouseup', x, y, 0, 1, 0);
             }
         }
         else
+        {
             utils.sendMouseEvent(type, x, y, 0, clicks, 0);
+        }
     },
     
-    streamToData: function(stream) {
-        
-        stream.QueryInterface( AntLib._CI['nsISeekableStream'] )
-              .seek( AntLib._CI['nsISeekableStream'].NS_SEEK_SET, 0 );
-        
+    streamToData: function(stream)
+    {
+        stream.QueryInterface( AntLib._CI['nsISeekableStream'] ).seek( AntLib._CI['nsISeekableStream'].NS_SEEK_SET, 0 );
         var bynStream = AntLib.CCIN( '@mozilla.org/binaryinputstream;1', 'nsIBinaryInputStream' );
+
         bynStream.setInputStream( stream );
         
         return bynStream.readByteArray( bynStream.available() );
     },
+
     /* returns true, if browser in private mode.
      * otherwise - false
      */
     get inPrivate()
     {
-        try {
-            Components.utils
-                .import("resource://gre/modules/PrivateBrowsingUtils.jsm");
+        try
+        {
+            Components.utils.import("resource://gre/modules/PrivateBrowsingUtils.jsm");
+
             return PrivateBrowsingUtils.isWindowPrivate(window);
-        } catch(e) {
+        }
+        catch(e)
+        {
             AntLib.logError("Failed to get the privacy context", e);
             return false;
         }
     },
+    
     /*
      * retrievs first ip of the host
      */
-    ipOf: function(url) {
-        
+    ipOf: function(url)
+    {
         var self = AntLib;
         var dnsService = self.CCIN( '@mozilla.org/network/dns-service;1', 'nsIDNSService' );
         var hostname = self.CCIN( '@mozilla.org/supports-string;1', 'nsISupportsString' ); 
+
         hostname.data = self.toURI(url).host;
         
         var ips = dnsService.resolve( hostname, 0 );

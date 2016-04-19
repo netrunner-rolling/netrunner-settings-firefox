@@ -3,22 +3,24 @@
  * @author Igor Chornous ichornous@heliostech.hk
  * @namespace antvd
  */
-var antvd = (function(antvd) {
+var antvd = (function(antvd)
+{
     Components.utils.import("resource://gre/modules/Task.jsm");
     Components.utils.import("resource://gre/modules/Promise.jsm");
     Components.utils.import("resource://gre/modules/FileUtils.jsm");
     Components.utils.import("resource://gre/modules/Services.jsm");
+
     if (!antvd.AntLib)
+    {
         antvd.AntLib = AntLib;
+    }
 
     const Cc = Components.classes;
     const Ci = Components.interfaces;
     const Cr = Components.results;
 
-    const URL_GENERAL_HELP_PAGE =
-          "http://www.ant.com/toolbar/firefox/help";
-    const URL_TRANSCODER_HELP_PAGE =
-          "http://support.ant.com/entries/30182610-How-to-install-Media-Converter";
+    const URL_GENERAL_HELP_PAGE = "http://www.ant.com/toolbar/firefox/help";
+    const URL_TRANSCODER_HELP_PAGE = "http://support.ant.com/entries/30182610-How-to-install-Media-Converter";
 
     /**
      * Facade for preference usecases
@@ -26,7 +28,8 @@ var antvd = (function(antvd) {
      * @class Options
      * @param {ConverterPackage} opts.converterConf
      */
-    function Options(opts) {
+    function Options(opts)
+    {
         /**
          * @private
          * @type Options
@@ -38,33 +41,34 @@ var antvd = (function(antvd) {
          *
          * @member showPreferences
          */
-        this.showPreferences = function() {
+        this.showPreferences = function()
+        {
             /** Prevent opening multiple windows */
-            var wm = Cc["@mozilla.org/appshell/window-mediator;1"]
-                    .getService(Ci.nsIWindowMediator);
+            var wm = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator);
+
             let prefDialog = wm.getMostRecentWindow("Ant:Preferences");
-            if (prefDialog) {
+
+            if (prefDialog)
+            {
                 prefDialog.focus();
                 return;
             }
 
             /** @type nsIPrefService */
-            let prefSvc = Cc["@mozilla.org/preferences-service;1"].
-                    getService(Ci.nsIPrefService);
+            let prefSvc = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService);
             let prefServiceCache = prefSvc.getBranch(null);
 
             /** @type Boolean */
-            let instantApply = prefServiceCache.getBoolPref(
-                "browser.preferences.instantApply");
+            let instantApply = prefServiceCache.getBoolPref("browser.preferences.instantApply");
 
-            let flags = "chrome, titlebar, toolbar, centerscreen"
-                    + (instantApply ? ", dialog=no" : ", modal");
+            let flags = "chrome, titlebar, toolbar, centerscreen" + (instantApply ? ", dialog=no" : ", modal");
 
             window.openDialog(
-                "chrome://antbar/content/xul/options.xul"
-                , "antpreferences"
-                , flags
-                , new antvd.OptionsUI(ctx));
+                "chrome://antbar/content/xul/options.xul",
+                "antpreferences",
+                flags,
+                new antvd.OptionsUI(ctx)
+            );
         };
 
         /**
@@ -77,12 +81,12 @@ var antvd = (function(antvd) {
             /** @type String */
             let url;
             switch (topic) {
-            case Options.HT_TRANSCODER_INSTALL:
-                url = URL_TRANSCODER_HELP_PAGE;
-                break;
-            case Options.HT_GENERAL:
-            default:
-                url = URL_GENERAL_HELP_PAGE;
+                case Options.HT_TRANSCODER_INSTALL:
+                    url = URL_TRANSCODER_HELP_PAGE;
+                    break;
+                case Options.HT_GENERAL:
+                default:
+                    url = URL_GENERAL_HELP_PAGE;
             }
 
             antvd.AntLib.openURL(url, 1);
@@ -140,27 +144,39 @@ var antvd = (function(antvd) {
          * @returns {Promise}
          */
         this.installTranscoder = function(eventListener) {
+            
             const InstErr = antvd.MediaConverterPackageError;
-            return Task.spawn(function() {
-                try {
+            
+            return Task.spawn(function()
+            {
+                try
+                {
                     eventListener.onBeginInstall();
-                } catch (_e) {
-                    antvd.AntLib.logError(
-                        "[UI]: Target of execution has failed", _e);
+                }
+                catch (_e)
+                {
+                    antvd.AntLib.logError("[UI]: Target of execution has failed", _e);
                 }
 
-                try {
+                try
+                {
                     yield opts.converterConf.install();
-                    try {
+                
+                    try
+                    {
                         eventListener.onEndInstall();
-                    } catch (_e) {
-                        /** Otherwise that would influence the execution flow */
-                        antvd.AntLib.logError(
-                            "[UI]: Target of execution has failed", _e);
                     }
-                } catch (/** @type MediaConverterPackageError */ ex) {
+                    catch (_e)
+                    {
+                        /** Otherwise that would influence the execution flow */
+                        antvd.AntLib.logError("[UI]: Target of execution has failed", _e);
+                    }
+                }
+                catch (/** @type MediaConverterPackageError */ ex)
+                {
                     /** @type Number */
                     let errCode;
+                
                     if ((ex.code == InstErr.E_SERVICE_UNAVAILABLE)
                         || (ex.code == InstErr.E_TARGET_BADHASH)) {
                         errCode = Options.E_IT_BADSERVICE;

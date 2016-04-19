@@ -50,20 +50,23 @@
      </description>
   </vbox>
 
-  <separator class="groove"
-             style="margin-top: 0px;"/>
+  <separator class="groove" style="margin-top: 0px;"/>
 
   <script type="application/x-javascript">
-    window.addEventListener('load',
-                            function() {
-                              document.getElementById('ant-c-years').value = '2009-' + (new Date()).getFullYear();
-                              var aboutCallback = function(aVersion) {
-                                  var vers = document.getElementById('ant-version-label');
-                                  vers.value = vers.value.replace('\'s\'', aVersion);
-                              }
-                              AntLib.getExtensionVersion(aboutCallback);
-                            },
-                            false);
+    window.addEventListener('load', function()
+        {
+            document.getElementById('ant-c-years').value = '2009-' + (new Date()).getFullYear();
+            
+            var aboutCallback = function(aVersion)
+            {
+                var vers = document.getElementById('ant-version-label');
+                vers.value = vers.value.replace('\'s\'', aVersion);
+            }
+            
+            AntLib.getExtensionVersion(aboutCallback);
+        },
+        false
+    );
   </script>
 
 </dialog>

@@ -141,7 +141,7 @@ var AntPlayer =
      * Handle plugin woes
     */
     handlePluginWoes: function(aEvent, aState) {
-        AntLib.toLog("Handling plugin woes : "+aState);
+        //AntLib.toLog("Handling plugin woes : "+aState);
         var self = AntPlayer;
         let plugin = aEvent.target;
         let doc = plugin.ownerDocument;
@@ -156,7 +156,7 @@ var AntPlayer =
                                .actualType;
         if (tagMimetype == "")
           tagMimetype = plugin.type;
-        AntLib.toLog("Plugin type = "+tagMimetype);
+        //AntLib.toLog("Plugin type = "+tagMimetype);
 
         // The event is fired when the object is loaded.
         // We need to remove the object to ensure the event is fired when next video is activated
@@ -353,7 +353,7 @@ var AntPlayer =
             }
         }
         catch (e) {
-            AntLib.toLog(e);
+            //AntLib.toLog(e);
         }
         
         return false;
@@ -633,7 +633,7 @@ var AntPlayer =
      */
     updateTreeContent: function() {
         
-        AntLib.toLog("Updating Player Tree Content");
+        //AntLib.toLog("Updating Player Tree Content");
         var self = AntPlayer;
         self.videoList = (new AntVideoList()).list;
         self.fillVideos();
@@ -1528,7 +1528,7 @@ var AntPlayer =
                 catch (e) {
                     
                     alert( antvd.AntLang.getString("AntPlayer.ErrorDeleting") );
-                    AntLib.toLog( "ERROR: AntPlayer.onPopupDelete: " + e );
+                    //AntLib.toLog( "ERROR: AntPlayer.onPopupDelete: " + e );
                 }
             }
         }
@@ -1853,7 +1853,7 @@ var AntPlayer =
                     }
                 }
                 catch (e) {
-                    AntLib.toLog(e);
+                    //AntLib.toLog(e);
                 }
             }
             
@@ -1870,7 +1870,7 @@ var AntPlayer =
         }
         catch (e) {
             
-            AntLib.toLog(e);
+            //AntLib.toLog(e);
         }
         finally {
             
@@ -1956,7 +1956,7 @@ var AntPlayer =
             }
         }
         catch (e) {
-            AntLib.toLog( 'error in toFlashCompatible: ' + e );
+            //AntLib.toLog( 'error in toFlashCompatible: ' + e );
         }
     },
     dragStart: function(event) {
