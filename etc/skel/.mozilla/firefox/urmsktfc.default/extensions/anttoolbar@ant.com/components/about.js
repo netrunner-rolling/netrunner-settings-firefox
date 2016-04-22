@@ -34,7 +34,9 @@ AboutAntPlayer.prototype = {
     }
 };
 
-if (XPCOMUtils.generateNSGetFactory)
-    const NSGetFactory = XPCOMUtils.generateNSGetFactory( [AboutAntPlayer] );
-else
-    const NSGetModule = XPCOMUtils.generateNSGetModule( [AboutAntPlayer] );
+const NSGetFactory = XPCOMUtils.generateNSGetFactory
+          ? XPCOMUtils.generateNSGetFactory([AboutAntPlayer])
+          : undefined;
+const NSGetModule = !XPCOMUtils.generateNSGetFactory
+          ? XPCOMUtils.generateNSGetModule([AboutAntPlayer])
+          : undefined;

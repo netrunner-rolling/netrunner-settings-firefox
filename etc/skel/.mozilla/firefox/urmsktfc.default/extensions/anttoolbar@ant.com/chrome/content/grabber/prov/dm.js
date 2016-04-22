@@ -414,20 +414,34 @@ function DmSearchResult()
      */
     this.addVideoManifestContent = function(content, found)
     {
-        var manifest = JSON.parse(content);
-        if (manifest['version'] != '1')
-        {
-            // TODO: Log this error
+        /** @type Object */
+        let manifest = null;
+        try {
+            manifest = JSON.parse(content);
+        } catch (ex) {
+            antvd.AntLib.logError("[DM] Failed to parse video manifest", ex);
             return;
         }
 
-        var defaultStreamName = manifest['default'];
-        for each(var i in manifest['alternates'])
+        if (manifest['version'] != '1')
         {
-            var name = i['name'];
-            var streamManifestUriSpec = i['template'];
-            var streamManifestUri = uriFromString(streamManifestUriSpec);
-            ctx.addVideoStreamManifestUri(name, streamManifestUri);
+            // TODO: Log this error
+            antvd.AntLib.toLog("[DM] Unsupported video manifest version:"
+                               + "\nVersion: " + manifest['version']);
+        }
+
+        try {
+            let defaultStreamName = manifest['default'];
+            for each(var i in manifest['alternates'])
+            {
+                let name = i['name'];
+                let streamManifestUriSpec = i['template'];
+                let streamManifestUri = uriFromString(streamManifestUriSpec);
+                ctx.addVideoStreamManifestUri(name, streamManifestUri);
+            }
+        } catch (ex) {
+            antvd.AntLib.logError(
+                "[DM] Failed to extract stream manifests", ex);
         }
     };
 
@@ -445,7 +459,12 @@ function DmSearchResult()
             uri
             , function(content)
             {
-                ctx.addVideoStreamManifestContent(uri, name, content);
+                try {
+                    ctx.addVideoStreamManifestContent(uri, name, content);
+                } catch (ex) {
+                    antvd.AntLib.logError(
+                        "[DM] Failed to register a stream manifest", ex);
+                }
             });
     };
     // }}}
@@ -461,9 +480,19 @@ function DmSearchResult()
      */
     this.addVideoStreamManifestContent = function(uri, name, content)
     {
-        var streamManifest = JSON.parse(content);
-        if (streamManifest['version'] != "1")
-        {
+        /** @type Object */
+        let streamManifest = null;
+        try {
+            streamManifest = JSON.parse(content);
+            if (streamManifest['version'] != "1")
+            {
+                antvd.AntLib.toLog("[DM] Unsupported manifest version:"
+                                   + "\nuri: " + uri.spec
+                                   + "\nversion: " + streamManifest['version']);
+            }
+        } catch (ex) {
+            antvd.AntLib.logError("[DM] Failed to parse a stream manifest:"
+                                  + "\nuri: " + uri.spec, ex);
             return;
         }
 
@@ -549,30 +578,21 @@ function DmSearchResult()
      */
     var withContentUri = function(uri, func, err)
     {
-        NetUtil.asyncFetch(
-            uri
-            , function(inputStream, status)
-            {
-                if (!Components.isSuccessCode(status) && err)
-                {
-                    err(uri, status);
-                    return;
-                }
+        /** @type XMLHttpRequest */
+        let hr = new XMLHttpRequest();
+        hr.onload = function(ev) {
+            if (hr.status == 200) {
+                func(hr.responseText);
+            } else {
+                antvd.AntLib.toLog("[DM] Failed to fetch content:"
+                                   + "\nuri: " + uri.spec
+                                   + "\nerror: " + hr.statusText
+                                   + "\nstatus: " + hr.status);
+            }
+        };
 
-                try
-                {
-                    var content =
-                            NetUtil.readInputStreamToString(
-                                inputStream
-                                , inputStream.available());
-                    func(content);
-                }
-                catch (e)
-                {
-                    // TODO: log error
-                    return;
-                }
-            });
+        hr.open("GET", uri.spec, true);
+        hr.send();
     };
 
     // }}}

@@ -20,29 +20,32 @@ function AntVideoList(includeNotExist) {
         
         var row;
         while( (row = recordSet.getNext()) ) {
-            
-            var item = {};
-            for ( var i = 0; i < length; i++ ) {
-                
+	    var item = {};
+	    for ( var i = 0; i < length; i++ ) {
                 var prop = columns[i];
                 item[prop] = row[prop];
-            }
-            
-            var file;
-            try { // requires Gecko 14
+	    }
+
+	    if (!item.path) {
+		AntLib.toLog("Playlist item has invalid path")
+		continue;
+	    }
+
+	    var file;
+	    try { // requires Gecko 14
                 file = AntLib.CCIN("@mozilla.org/file/local;1", "nsIFile");
                 file.initWithPath(item.path);
-            }
-            catch(e) {
+	    }
+	    catch(e) {
                 file = AntLib.CCIN("@mozilla.org/file/local;1", "nsILocalFile");
                 file.initWithPath(item.path);
-            }
-            var exists = file.exists();
-            
-            if ( !exists )
+	    }
+	    var exists = file.exists();
+
+	    if ( !exists )
                 deletedArr.push(item);
-            
-            if ( exists || includeNotExist )
+
+	    if ( exists || includeNotExist )
                 arr.push(item);
         }
         

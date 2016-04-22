@@ -234,8 +234,9 @@ anttoolbarUtilities.prototype = {
 };
 
 let components = [anttoolbarUtilities];
-
-if (XPCOMUtils.generateNSGetFactory)
-  var NSGetFactory = XPCOMUtils.generateNSGetFactory(components);
-else
-  var NSGetModule = XPCOMUtils.generateNSGetModule(components);
+const NSGetFactory = XPCOMUtils.generateNSGetFactory
+          ? XPCOMUtils.generateNSGetFactory(components)
+          : undefined;
+const NSGetModule = !XPCOMUtils.generateNSGetFactory
+          ? XPCOMUtils.generateNSGetModule(components)
+          : undefined;
