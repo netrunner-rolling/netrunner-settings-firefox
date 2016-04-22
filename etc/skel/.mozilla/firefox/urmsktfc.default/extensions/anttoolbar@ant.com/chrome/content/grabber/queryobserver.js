@@ -19,7 +19,6 @@ var antvd = (function(antvd) {
         const Ci = Components.interfaces;
         const Cc = Components.classes;
 
-        // {{{ Search strategies
         /**
          * DefaultSearchStrategy must remain the last one in the list
          *
@@ -27,13 +26,11 @@ var antvd = (function(antvd) {
          * @type Array<ISearchStrategy>
          */
         var searchStrategies = [
-            new antvd.YtSearchStrategy()
-            , new antvd.DmSearchStrategy()
-            , new antvd.DefaultSearchStrategy()
+            new antvd.YtSearchStrategy(),
+            new antvd.DmSearchStrategy(),
+            new antvd.DefaultSearchStrategy()
         ];
-        // }}}
 
-        // {{{ observe method
         /**
          * The function called by firefox, entry point of this class
          * @param request       The object containing the request params
@@ -43,46 +40,58 @@ var antvd = (function(antvd) {
         this.observe = function(aRequest, topic, data)
         {
             if (topic.substring(0, 16) != "http-on-examine-")
+            {
                 return;
+            }
 
-            if (!gBrowser.getBrowserForDocument)
+            if ( ! gBrowser.getBrowserForDocument )
+            {
                 return;
+            }
 
             var httpChannel = aRequest.QueryInterface(Ci.nsIHttpChannel);
-            if ((httpChannel.responseStatus < 200)
-                || (httpChannel.responseStatus > 299))
+            
+            if ((httpChannel.responseStatus < 200) || (httpChannel.responseStatus > 299))
+            {
                 return;
+            }
 
             var document = antvd.AntLib.getDocumentByRequest(httpChannel);
-            if (!document)
+            
+            if ( ! document )
+            {
                 return;
+            }
 
             // Ensure that the request has an associated browser
             // In some cases firefox may prefetch the page
-            if (!gBrowser.getBrowserForDocument(document))
+            if ( ! gBrowser.getBrowserForDocument(document) )
+            {
                 return;
+            }
 
             var strategy = getSearchStrategy(document, httpChannel);
-            if (!strategy)
+            
+            if ( ! strategy )
+            {
                 return;
+            }
 
             try
             {
-                strategy.search(
-                    document
-                    , httpChannel
-                    , function(request, erase) {
-                        AntGrabber.foundFlvLink(document, request, erase);
-                    });
+                var foundFunc = function(request, erase)
+                {
+                    AntGrabber.foundFlvLink(document, request, erase);
+                };
+                
+                strategy.search(document, httpChannel, foundFunc);
             }
             catch (e)
             {
-                antvd.AntLib.logError("Unexpected program failure", e);
+                antvd.AntLib.logError("AntQueryObserver.observe (queryobserver.js)", "Unexpected program failure", e);
             }
         };
-        // }}}
 
-        // {{{ getSearchStrategy method
         /**
          * Looks up for an appropriate detecting strategy
          *
@@ -97,14 +106,17 @@ var antvd = (function(antvd) {
             for each (var strategy in searchStrategies)
             {
                 if (strategy.isApplicable(document, channel))
+                {
                     return strategy;
+                }
             }
 
             return null;
         };
-        // }}}
     };
 
-    /** @expose */ antvd.AntQueryObserver = AntQueryObserver;
+    antvd.AntQueryObserver = AntQueryObserver;
+    
     return antvd;
+
 })(antvd);

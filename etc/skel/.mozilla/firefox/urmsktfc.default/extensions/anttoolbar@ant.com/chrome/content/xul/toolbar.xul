@@ -15,6 +15,7 @@ Copyright 2008-2012 Ant.com. All rights reserved.
 
 <overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <script type="application/x-javascript" src="chrome://antbar/content/namespace.js"/>
+  <script type="application/x-javascript" src="chrome://antbar/content/version.js"/>  
   <script type="application/x-javascript" src="chrome://antbar/content/antlib/array.js"/>
   <script type="application/x-javascript" src="chrome://antbar/content/antlib/lib.js"/>
   <script type="application/x-javascript" src="chrome://antbar/content/lib/FileUtils.js"/>
@@ -36,10 +37,8 @@ Copyright 2008-2012 Ant.com. All rights reserved.
   <script type="application/x-javascript" src="chrome://antbar/content/media/Converter.js"/>
   <script type="application/x-javascript" src="chrome://antbar/content/media/ConverterPackage.js"/>
   <script type="application/x-javascript" src="chrome://antbar/content/media/MediaLibrary.js"/>
-  <script type="application/x-javascript"
-          src="chrome://antbar/content/prefs/Options.js"/>
-  <script type="application/x-javascript"
-          src="chrome://antbar/content/prefs/OptionsUI.js"/>
+  <script type="application/x-javascript" src="chrome://antbar/content/prefs/Options.js"/>
+  <script type="application/x-javascript" src="chrome://antbar/content/prefs/OptionsUI.js"/>
   <script type="application/x-javascript" src="chrome://antbar/content/antlib/rank.js"/>
   <script type="application/x-javascript" src="chrome://antbar/content/antlib/watchURL.js"/>
   <script type="application/x-javascript" src="chrome://antbar/content/lib/bugreport.js"/>

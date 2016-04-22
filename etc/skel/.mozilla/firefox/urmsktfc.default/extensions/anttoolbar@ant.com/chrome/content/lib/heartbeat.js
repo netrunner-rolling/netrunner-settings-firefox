@@ -126,10 +126,15 @@ var antvd = (function(antvd) {
          * @static
          * @member init
          */
-        AntHeartBeat.init = function () {
+        AntHeartBeat.init = function ()
+        {
             antvd.AntLib.toLog("Starting up hearbeat");
-            if (!inst)
+        
+            if ( ! inst )
+            {
                 return;
+            }
+            
             inst.init();
         };
 

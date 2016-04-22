@@ -26,18 +26,12 @@ Copyright 2008-2012 Ant.com. All rights reserved.
             resizable="true"
             style="width: 38em; min-height: 50em;">
 
-  <script type="application/x-javascript"
-          src="chrome://antbar/content/namespace.js"/>
-  <script type="application/x-javascript"
-          src="chrome://antbar/content/antlib/array.js"/>
-  <script type="application/x-javascript"
-          src="chrome://antbar/content/antlib/lib.js"/>
-  <script type="application/x-javascript"
-          src="chrome://antbar/content/antlib/lang.js"/>
-  <script type="application/x-javascript"
-          src="chrome://antbar/content/prefs/newprefs.js"/>
-  <script type="application/x-javascript"
-          src="chrome://antbar/content/prefs/prefsui.js"/>
+  <script type="application/x-javascript" src="chrome://antbar/content/namespace.js"/>
+  <script type="application/x-javascript" src="chrome://antbar/content/antlib/array.js"/>
+  <script type="application/x-javascript" src="chrome://antbar/content/antlib/lib.js"/>
+  <script type="application/x-javascript" src="chrome://antbar/content/antlib/lang.js"/>
+  <script type="application/x-javascript" src="chrome://antbar/content/prefs/newprefs.js"/>
+  <script type="application/x-javascript" src="chrome://antbar/content/prefs/prefsui.js"/>
 
   <prefpane id="antBarPrefsPane" label="&antBarPrefsPane.label;" flex="1">
     <preferences>
@@ -46,13 +40,13 @@ Copyright 2008-2012 Ant.com. All rights reserved.
                   type="string"/>
       <preference id="antBarPrefsRankMode"
                   name="extensions.anttoolbar.rankmode"
-                  type="bool"/>
+                  type="bool" />
       <preference id="antBarPrefsDownloadStats"
                   name="extensions.anttoolbar.videorepports"
-                  type="bool"/>
+                  type="bool" />
       <preference id="antBarPrefsHeartBeat"
                   name="extensions.anttoolbar.heartbeat"
-                  type="bool"/>
+                  type="bool" />
       <preference id="antBarPrefsMode"
                   name="extensions.anttoolbar.mode"
                   type="string"/>
@@ -130,7 +124,7 @@ Copyright 2008-2012 Ant.com. All rights reserved.
     <checkbox id="antBarPrefsRankModeCheckBox"
               label="&antBarPrefsRankModeCheckBox.label;"
               preference="antBarPrefsRankMode"
-              checked="false"
+              checked="false" 
               oncommand="AntPrefs.isRankMode = this.checked"/>
     <checkbox id="antBarPrefsSendDownloadStatsCheckBox"
               label="&antBarPrefsSendDownloadStatsCheckBox.label;"

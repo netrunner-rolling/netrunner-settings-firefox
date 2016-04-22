@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!-- 
+     download.xul
+     Custom downloading window for Youtube and Dailymotion
+     
+     Eugene Dorofeyev (ievgenii.d@webgroup-limited.com)
+     Copyright 2008-2015 Ant.com. All rights reserved.
+  -->
+<!DOCTYPE window SYSTEM "chrome://antbar/locale/download.dtd">
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" style="width: 400px">
+    <label control="ant-download-videoname" value="Knifes come out | Gordon Behind Bars" style="font-weight:bold;" />
+    <label control="ant-download-progress-label" value="Downloading... 1% (1 Mb of 100 Mb)" />
+    
+    <progressmeter id="ant-download-progress" mode="determined" value="25" />
+ 
+    <label control="ant-download-timelaps" value="5 min left" />
+
+    <hbox style="margin-top: 12px">
+        <button id="ant-download-showinfolder" label="Open in folder" />
+        <button id="ant-download-cancel" label="Cancel download" align="end" />
+    </hbox>
+</window>

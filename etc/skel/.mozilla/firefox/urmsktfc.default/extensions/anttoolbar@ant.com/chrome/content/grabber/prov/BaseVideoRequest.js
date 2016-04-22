@@ -6,9 +6,12 @@
 /**
  * @namespace antvd
  */
-var antvd = (function(antvd) {
+var antvd = (function(antvd)
+{
     if (!antvd.AntLib)
+    {
         antvd.AntLib = AntLib;
+    }
 
     Components.utils.import("resource://gre/modules/Promise.jsm");
 
@@ -19,7 +22,8 @@ var antvd = (function(antvd) {
      * @param {String?} name Optional display name
      * @param {Number?} size Optional size hint
      */
-    function MediaRequest(originUri, referrerUrl, name, size) {
+    function MediaRequest(originUri, referrerUrl, name, size)
+    {
         this._originUrl = originUri.asciiSpec;
         this._referrerUrl = referrerUrl;
         this.displayName = name;
@@ -27,7 +31,8 @@ var antvd = (function(antvd) {
         this._streams = {};
     };
 
-    MediaRequest.prototype = {
+    MediaRequest.prototype =
+    {
         /**
          * Named to be printed in the UI
          *
@@ -79,34 +84,49 @@ var antvd = (function(antvd) {
          * @param {Number} meta.size
          * @param {String} meta.type
          */
-        setStreamMetadata: function(uri, meta) {
+        setStreamMetadata: function(uri, meta)
+        {
             if (meta.time)
+            {
                 this._streams[uri.spec].time = meta.time;
+            }
+            
             if (meta.size)
+            {
+                
                 this._streams[uri.spec].size = meta.size;
+            }
+            
             if (meta.type)
+            {
                 this._streams[uri.spec].type = meta.type;
+            }
         },
 
         /**
          * @member reportDownload
          * @returns {Promise}
          */
-        reportDownload: function() {
+        reportDownload: function()
+        {
             /** @type RpcMediaDownload */
             let msg = null;
-            try {
-                msg = new antvd.RpcMediaDownload(
-                    this._originUrl
-                    , this._referrerUrl);
-                for (let i in this._streams) {
+        
+            try
+            {
+                msg = new antvd.RpcMediaDownload(this._originUrl, this._referrerUrl);
+
+                for (let i in this._streams)
+                {
                     msg.addStream(this._streams[i]);
                 }
-            } catch (ex) {
-                antvd.AntLib.logError(
-                    "[MediaRequest]: Failed to build an rpc message", ex);
+            }
+            catch (ex)
+            {
+                antvd.AntLib.logError("[MediaRequest]: Failed to build an rpc message", ex);
                 return Promise.reject(new Error("Unexpected failure"));
             }
+
             return msg.send();
         }
     };
@@ -117,11 +137,18 @@ var antvd = (function(antvd) {
      * @class DefaultMediaRequest
      */
     function DefaultMediaRequest() {};
-    DefaultMediaRequest.prototype = {
-        /** public */ get displayName() {
+    
+    DefaultMediaRequest.prototype =
+    {
+        /** public */
+        get displayName()
+        {
             return this._base.displayName;
         },
-        /** public */ get size() {
+        
+        /** public */
+        get size()
+        {
             return this._base.size;
         },
 
@@ -150,18 +177,25 @@ var antvd = (function(antvd) {
          * @param {Number} size
          * @param {String} [type="video/x-flv"]
          */
-        init: function(uri, origin, size, type) {
+        init: function(uri, origin, size, type)
+        {
             let cleanName = DefaultMediaRequest.getCleanName(origin.title);
             this._contentType = type ? type : "video/x-flv";
 
             this._base = new antvd.MediaRequest(
-                origin.documentURIObject
-                , origin.referrer
-                , cleanName
-                , size);
+                origin.documentURIObject,
+                origin.referrer,
+                cleanName,
+                size
+            );
+
             this._base.addStream(uri);
+
             if (!type)
+            {
                 this._base.setStreamMetadata(uri, {type: type});
+            }
+            
             this._streamUri = uri;
         },
 
