@@ -2,9 +2,9 @@
 //  tabman.js
 //  firefox
 //  
-//  Created by Dima Sidorchenko on 2008-11-1.
-//  Contributor Brian King
-//  Copyright 2008-2012 Ant.com. All rights reserved.
+//  Created by DS on 2008-11-1.
+//  Contributor BK
+//  Copyright 2008-2016 Ant.com. All rights reserved.
 //
 
 function AntData()

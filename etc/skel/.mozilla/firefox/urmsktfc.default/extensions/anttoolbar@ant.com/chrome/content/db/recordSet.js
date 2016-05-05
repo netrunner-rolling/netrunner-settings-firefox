@@ -3,7 +3,7 @@
 // firefox
 //
 // Created by Dmitriy on 2011-02-15
-// Copyright 2008-2012 Ant.com. All rights reserved.
+// Copyright 2008-2016 Ant.com. All rights reserved.
 //
 
 function AntRecordSet() {

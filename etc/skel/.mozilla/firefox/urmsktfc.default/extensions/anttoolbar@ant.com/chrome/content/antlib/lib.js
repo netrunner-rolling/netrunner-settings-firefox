@@ -3,8 +3,8 @@
 //  firefox
 //  
 //  Created by Zak on 2008-06-12.
-//  Contributor Brian King
-//  Copyright 2008-2012 Ant.com. All rights reserved.
+//  Contributor BK
+//  Copyright 2008-2016 Ant.com. All rights reserved.
 //
 
 var AntLib =
@@ -363,7 +363,7 @@ var AntLib =
      */
     getWindowByRequest: function(request)
     {
-        // TODO(Igor): move to the outer scope
+        // TODO(ICh): move to the outer scope
         const Ci = Components.interfaces;
         const Cc = Components.classes;
 
@@ -702,7 +702,7 @@ var AntLib =
     },
     
     /**
-     * convert nsIURL fo path
+     * convert nsIURL to path
      */
     urlToPath: function (path)
     {
@@ -810,6 +810,86 @@ var AntLib =
         }
 
         return str.replace( replaceRex, ' ' );
+    },
+    
+    sprintf: function()
+    {
+        var args = arguments, string = args[0], i = 1;
+        
+        return string.replace(/%((%)|s|d)/g, function (m)
+        {
+            // m is the matched format, e.g. %s, %d
+            var val = null;
+            
+            if (m[2])
+            {
+                val = m[2];
+            }
+            else
+            {
+                val = args[i];
+
+                // A switch statement so that the formatter can be extended. Default is %s
+                switch (m)
+                {
+                    case '%d':
+                        val = parseFloat(val);
+                        
+                        if (isNaN(val))
+                        {
+                            val = 0;
+                        }
+                        
+                    break;
+                }
+            
+                i++;
+            }
+            
+            return val;
+        });
+    },
+    
+    // Concats two relative URLs into single one
+    concatAndResolveUrl: function(url, concat)
+    {
+        var url1 = url.split('/');
+        var url2 = concat.split('/');
+        var url3 = [ ];
+        
+        for(var i = 0, l = url1.length; i < l; i ++)
+        {
+            if (url1[i] == '..')
+            {
+                url3.pop();
+            }
+            else if (url1[i] == '.')
+            {
+                continue;
+            }
+            else
+            {
+                url3.push(url1[i]);
+            }
+        }
+        
+        for (var i = 0, l = url2.length; i < l; i ++)
+        {
+            if (url2[i] == '..')
+            {
+                url3.pop();
+            }
+            else if (url2[i] == '.')
+            {
+                continue;
+            }
+            else
+            {
+                url3.push(url2[i]);
+            }
+        }
+        
+        return url3.join('/');
     },
     
     /**
@@ -1063,5 +1143,58 @@ var AntLib =
         
         var ips = dnsService.resolve( hostname, 0 );
         return ips && ips.hasMore() ? ips.getNextAddrAsString() : '';
+    },
+    
+    // Converts string in Base64 encoding into Blob object
+    Base64ToBlob: function(b64Data, contentType, sliceSize)
+    {
+        contentType = contentType || '';
+        sliceSize = sliceSize || 512;
+        
+        var byteCharacters = atob(b64Data);
+        var byteArrays = [];
+
+        for (var offset = 0; offset < byteCharacters.length; offset += sliceSize)
+        {
+            var slice = byteCharacters.slice(offset, offset + sliceSize);
+            var byteNumbers = new Array(slice.length);
+            
+            for (var i = 0; i < slice.length; i++)
+            {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+            
+            var byteArray = new Uint8Array(byteNumbers);
+            
+            byteArrays.push(byteArray);
+        }
+        
+        var blob = new Blob(byteArrays, {type: contentType});
+        
+        return blob;
+    },
+    
+    convertDataURIToBinary: function(dataURI)
+    {
+        var BASE64_MARKER = ';base64,';
+        var base64Index = dataURI.indexOf(BASE64_MARKER);
+        var base64 = dataURI;
+        
+        if (base64Index > -1)
+        {
+            base64 = dataURI.substring(base64Index + BASE64_MARKER.length);
+        }
+        
+        var raw = window.atob(base64);
+        var rawLength = raw.length;
+        
+        var array = new Uint8Array(new ArrayBuffer(rawLength));
+        
+        for(i = 0; i < rawLength; i++)
+        {
+            array[i] = raw.charCodeAt(i);
+        }
+
+        return array;
     }
 };

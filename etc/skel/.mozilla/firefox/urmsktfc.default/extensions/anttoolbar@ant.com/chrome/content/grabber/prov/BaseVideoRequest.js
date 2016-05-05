@@ -1,6 +1,6 @@
 /**
  * BaseVideoRequest.js, 2013
- * @author Chornous Igor ichornous@heliostech.hk
+ * @author ICh
  */
 
 /**
@@ -188,6 +188,14 @@ var antvd = (function(antvd)
                 cleanName,
                 size
             );
+            
+            antvd.AntLib.toLog(
+                "DefaultMediaRequest.init (BaseVideoRequest.js)",
+                antvd.AntLib.sprintf(
+                    "Initialized default media request: clean name -> %s; content type -> %s, document -> %s; stream -> %s",
+                    cleanName, this._contentType, origin.documentURIObject, uri.spec
+                )
+            );
 
             this._base.addStream(uri);
 
@@ -204,41 +212,48 @@ var antvd = (function(antvd)
          * @param {MediaLibrary} library
          * @returns {Promise}
          */
-        download: function(library) {
-            /** @type DefaultMediaRequest */ let ctx = this;
-            return library.save({
-                uri: this._streamUri,
-                filename: this._getFileName(),
-                origin: {
-                    url: this._base.originUrl,
-                    title: this.displayName
-                }
-            }).then(function(/** @type DownloadResult */ dr) {
-                ctx._base.setStreamMetadata(
-                    dr.source
-                    , {
-                        size: dr.size,
-                        time: dr.downloadTime
-                    });
+        download: function(library)
+        {
+            /** @type DefaultMediaRequest */
+            let ctx = this;
+            var _save_object =
+            {
+                    uri: this._streamUri,
+                    filename: this._getFileName(),
+                    origin:
+                    {
+                        url: this._base.originUrl,
+                        title: this.displayName
+                    }
+            };
+
+            var _then_function = function(dr)
+            {
+                ctx._base.setStreamMetadata(dr.source, { size: dr.size, time: dr.downloadTime });
                 return dr;
-            });
+            };
+
+            return library.save(_save_object).then(_then_function);
         },
 
         /**
          * @private
          * @member _getFileName
          */
-        _getFileName: function() {
+        _getFileName: function()
+        {
             return antvd.AntLib.mangleFileName(
-                antvd.AntLib.sanitize(this.displayName)
-                , antvd.AntLib.deductExtension(this._contentType));
+                antvd.AntLib.sanitize(this.displayName),
+                antvd.AntLib.deductExtension(this._contentType)
+            );
         },
 
         /**
          * @member reportDownload
          * @returns {Promise}
          */
-        reportDownload: function() {
+        reportDownload: function()
+        {
             return this._base.reportDownload();
         },
 
@@ -248,12 +263,19 @@ var antvd = (function(antvd)
          * @param request
          * @returns {Boolean}
          */
-        compare: function(request) {
+        compare: function(request)
+        {
             if (!request || !request._streamUri)
+            {
                 return false;
-            try {
+            }
+            
+            try
+            {
                 return this._streamUri.equals(request._streamUri);
-            } catch (e) {
+            }
+            catch (e)
+            {
                 throw new Error("Internal failure");
             }
         },
@@ -269,12 +291,13 @@ var antvd = (function(antvd)
      * @member getCleanName
      * @param {String} dirtyName
      */
-    DefaultMediaRequest.getCleanName = function(dirtyName) {
-        return antvd.AntLib.sanitize(dirtyName)
-            .replace(/[,:()\[\]"'.`~▶]/ig,"")
-            .trim();
+    DefaultMediaRequest.getCleanName = function(dirtyName)
+    {
+        return antvd.AntLib.sanitize(dirtyName).replace(/[,:()\[\]"'.`~▶]/ig,"").trim();
     };
 
-    /** @xpose */ antvd.DefaultMediaRequest = DefaultMediaRequest;
+    antvd.DefaultMediaRequest = DefaultMediaRequest;
+
     return antvd;
+
 })(antvd);

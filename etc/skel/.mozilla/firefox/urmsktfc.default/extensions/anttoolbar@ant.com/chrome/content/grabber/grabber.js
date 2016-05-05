@@ -3,9 +3,8 @@
 //  firefox
 //
 //  Created by Zak on 2008-07-14.
-//  Contributor Brian King
-//  Contributor Chornous Igor
-//  Copyright 2008-2012 Ant.com. All rights reserved.
+//  Contributors BK, ICh, ED
+//  Copyright 2008-2016 Ant.com. All rights reserved.
 //
 
 var AntGrabber =  {

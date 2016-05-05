@@ -1,5 +1,6 @@
 // dm.js, 2013
-// @author Igor Chornous ichornous@heliostech.hk
+// @author ICh
+
 var antvd = (function(antvd)
 {
     if ( ! antvd.AntLib )
@@ -646,7 +647,14 @@ DmHlsMediaRequest.prototype =
             {
                 for(let i = 0; i < ctx._chunks.length; i++)
                 {
-                    let _video = library.download(NetUtil.newURI(ctx._chunks[i]), DmHlsMediaRequest.TEMP_FILE_NAME, true);
+                    let _video = library.download(
+                        NetUtil.newURI(ctx._chunks[i]),
+                        antvd.AntLib.sprintf(
+                            "Chunk-%d-of-%d-%s",
+                            i+1, ctx._chunks.length, ctx.displayName
+                        ),
+                        true
+                    );
                     
                     _svideo = yield _video;
                     
@@ -1039,7 +1047,7 @@ antvd.DmSearchStrategy = function()
     {
         if (!document || !channel || !found)
         {
-            // TODO(Igor): Notify error
+            // TODO(ICh): Notify error
             return;
         }
 

@@ -2,8 +2,8 @@
 //  html5helper.js
 //  firefox
 //  
-//  Created by Dmitriy Sidorchenko on 2008-06-18.
-//  Copyright 2008-2012 Ant.com. All rights reserved.
+//  Created by DS on 2008-06-18.
+//  Copyright 2008-2016 Ant.com. All rights reserved.
 //
 
 function html5VideoHelper() {

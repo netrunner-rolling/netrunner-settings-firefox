@@ -1,14 +1,17 @@
 /**
  * FileUtils.js, 2013
- * @author Igor Chornous ichornous@heliostech.hk
+ * @author ICh
  */
 
 /**
  * @namespace antvd
  */
-var antvd = (function(antvd) {
+var antvd = (function(antvd)
+{
     if (!antvd.AntLib)
+    {
         antvd.AntLib = AntLib;
+    }
 
     const Ci = Components.interfaces;
     const Cc = Components.classes;
@@ -26,60 +29,92 @@ var antvd = (function(antvd) {
     /**
      * @public
      */
-    var FileUtils = {
+    var FileUtils =
+    {
         /**
          * @member getFileHash
          * @param {nsIFile} file File to calculate hash for
          * @returns {Promise<String>}
          */
-        getFileHash: function(file) {
+        getFileHash: function(file)
+        {
             if (!file)
+            {
                 return Promise.reject(new Error("'file' is a mandatory argument"));
+            }
 
             /** @type nsICryptoHash */
             let ch = null;
-            try {
-                ch = Cc["@mozilla.org/security/hash;1"]
-                    .createInstance(Ci.nsICryptoHash);
-                /** FIXME(Igor): Do we need to customize this? Not sure */
+            
+            try
+            {
+                ch = Cc["@mozilla.org/security/hash;1"].createInstance(Ci.nsICryptoHash);
+
+                /** FIXME(ICh): Do we need to customize this? Not sure */
                 ch.init(ch.MD5);
-            } catch (ex) {
+            }
+            catch (ex)
+            {
                 antvd.AntLib.logError(
-                    "[FileUtils]: Failed to instantiate the crypto service"
-                    , ex);
+                    "antvd.FileUtils.getFileHash (FileUtils.js)",
+                    "Failed to instantiate the crypto service",
+                    ex
+                );
+                
                 return Promise.reject(new Error("Failed to instantiate a submodule"));
             }
 
             let deferred = Promise.defer();
 
             NetUtil.asyncFetch(
-                file
-                , /**
-                   * @param {nsIInputStream} stream
-                   * @param {Number} result
-                   */
-                function(istream, result) {
-                    try {
-                        if (!Components.isSuccessCode(result)) {
+                file,
+                function(istream, result)
+                {
+                    try
+                    {
+                        if (!Components.isSuccessCode(result))
+                        {
                             antvd.AntLib.toLog(
-                                "[FileUtils]: Failed to open an input stream:"
-                                    + "\nPath: " + file.path
-                                    + "\nIO result: " + result);
+                                "antvd.FileUtils.getFileHash (FileUtils.js)",
+                                antvd.AntLib.sprintf(
+                                    "Failed to open an input stream from path %s, IO result %d",
+                                    file.path, result
+                                )
+                            );
+                            
                             deferred.reject(new Error("IO Failure"));
+                            
                             return;
                         }
+                        
                         ch.updateFromStream(istream, PR_UINT32_MAX);
+                        
                         let hash = ch.finish(false);
+                        
                         /** @type String */
-                        let strHash = [toHex(hash.charCodeAt(i)) for (i in hash)]
-                                .join("");
+                        let strHashArray = [];
+                        
+                        for (let i in hash)
+                        {
+                            strHashArray.push(toHex(hash.charCodeAt(i)));
+                        }
+                        
+                        let strHash = strHashArray.join("");
+                        
                         deferred.resolve(strHash);
-                    } catch (ex) {
+                    }
+                    catch (ex)
+                    {
                         antvd.AntLib.logError(
-                            "[FileUtils]: Unexpected exception occured", ex);
+                            "antvd.FileUtils.getFileHash (FileUtils.js)",
+                            "Unexpected exception occured",
+                            ex
+                        );
+                        
                         deferred.reject(new Error("Unexpected error"));
                     }
                 });
+
             return deferred.promise;
         }
     };
@@ -98,6 +133,7 @@ var antvd = (function(antvd) {
         return ("0" + charCode.toString(16)).slice(-2);
     }
 
-    /** @expose */ antvd.FileUtils = FileUtils;
+    antvd.FileUtils = FileUtils;
     return antvd;
+
 })(antvd);

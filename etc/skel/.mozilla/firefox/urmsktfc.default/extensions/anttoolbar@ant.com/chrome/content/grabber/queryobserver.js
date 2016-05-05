@@ -28,6 +28,7 @@ var antvd = (function(antvd) {
         var searchStrategies = [
             new antvd.YtSearchStrategy(),
             new antvd.DmSearchStrategy(),
+            new antvd.VimeoSearchStrategy(),
             new antvd.DefaultSearchStrategy()
         ];
 

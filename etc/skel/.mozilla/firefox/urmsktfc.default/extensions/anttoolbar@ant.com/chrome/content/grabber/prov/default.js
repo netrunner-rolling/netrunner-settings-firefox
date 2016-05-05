@@ -1,6 +1,6 @@
 /**
  * default.js, 2013
- * @author Igor Chornous ichornous@heliostech.hk
+ * @author ICh
  */
 
 /**
@@ -72,7 +72,7 @@ var antvd = (function(antvd)
         {
             if (!document || !channel || !found)
             {
-                // TODO(Igor): Notify error
+                // TODO(ICh): Notify error
                 return;
             }
     

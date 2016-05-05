@@ -40,7 +40,7 @@
 <!ENTITY antToolBarAboutButton.label "About">
 <!ENTITY notFoundTipWindow.title "There is no video detected on this page">
 <!ENTITY notFoundTipWindow.startPlayingVideo "You may need to start playing the video on this page before attempting to download it.">
-<!--     antbar.dtd     firefox     Created by Nuky on 2009-11-16.     Copyright 2009 Ant.com. All rights reserved.  -->
+<!--     antbar.dtd     firefox     Created by Nuky on 2009-11-16.     Copyright 2009-2016 Ant.com. All rights reserved.  -->
 <!ENTITY notFoundTipWindow.reportIt "In case of detection problem, you can report it on">
 <!ENTITY notFoundTipWindow.feedbackPage "the feedback page">
 <!ENTITY notFoundTipWindow.dontDisplayAgain "Do not display this message again">

@@ -1,10 +1,10 @@
 /**
  * flvlist.js, 2008
  * @author Zak
- * @contributor Brian King
- * @contributor Igor Chornous ichornous@heliostech.hk
+ * @contributor BK
+ * @contributor ICh
  *
- * TODO(Igor): Untangle UI. This shouldn't be a separate module
+ * TODO(ICh): Untangle UI. This shouldn't be a separate module
  */
 
 var antvd = (function (antvd)

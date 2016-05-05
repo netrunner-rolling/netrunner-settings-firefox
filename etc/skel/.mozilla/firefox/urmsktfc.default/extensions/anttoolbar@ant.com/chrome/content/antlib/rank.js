@@ -3,7 +3,7 @@
 //  firefox
 //  
 //  Created by Seed on 2008-10-23.
-//  Contributor Brian King
+//  Contributor BK
 //  Copyright 2008-2016 Ant.com. All rights reserved.
 // 
 var AntRank =

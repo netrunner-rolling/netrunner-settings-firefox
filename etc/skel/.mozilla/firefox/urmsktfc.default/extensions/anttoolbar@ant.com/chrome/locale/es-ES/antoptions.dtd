@@ -1,4 +1,4 @@
-<!--       antoptions.dtd      firefox            Created by RigoNet on 2009.      Copyright 2008-2009 Ant.com. All rights reserved. -->
+<!--       antoptions.dtd      firefox            Created by RigoNet on 2009.      Copyright 2008-2016 Ant.com. All rights reserved. -->
 <!-- options.xul -->
 <!-- Note to translators ... make this value bigger if your strings are cut off at the       sides in the settings screen. This will widen the screen. -->
 <!ENTITY preferences.window.size "width:58em; height: 50em;">

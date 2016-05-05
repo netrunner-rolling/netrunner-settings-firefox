@@ -1,6 +1,6 @@
 /**
  * HdsProtocol.js, 2013
- * @author Igor Chornous ichornous@heliostech.hk
+ * @author ICh
  */
 
 Components.utils.import('resource://gre/modules/XPCOMUtils.jsm');

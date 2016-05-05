@@ -1,6 +1,6 @@
 // ConverterPackage.js, 2014-2016
-// author       Igor Chornous (ichornous@heliostech.hk)
-// contributor  Eugene Dorofeyev (ievgenii.d@webgroup-limited.com)
+// author       ICh
+// contributor  ED
 // namespace    antvd
 //
 
@@ -90,7 +90,7 @@ var antvd = (function(antvd)
     MediaConverterPackageError.E_SERVICE_UNAVAILABLE        = 4;
     MediaConverterPackageError.E_UNEXPECTED_ERROR           = 5;
     
-    // TODO(Igor): I guess, the next errors should be handled in the UI
+    // TODO(ICh): I guess, the next errors should be handled in the UI
     MediaConverterPackageError.E_TEMP_CREATION_FAILURE      = 6;
     MediaConverterPackageError.E_TARGET_CREATION_FAILURE    = 7;
     MediaConverterPackageError.E_TARGET_BADHASH             = 8;
@@ -689,7 +689,7 @@ var antvd = (function(antvd)
 
         /**
          * Removes a download entry from the browser's history
-         * FIXME(Igor): This function duplicates the one defined in MediaLibrary.
+         * FIXME(ICh): This function duplicates the one defined in MediaLibrary.
          *              Think if it could be added to AntLib
          *
          * @private

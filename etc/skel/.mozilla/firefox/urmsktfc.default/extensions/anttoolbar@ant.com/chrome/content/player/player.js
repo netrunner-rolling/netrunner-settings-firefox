@@ -3,8 +3,8 @@
 //  firefox
 //  
 //  Created by Zak on 2008-06-18.
-//  Contributor Brian King
-//  Copyright 2008-2012 Ant.com. All rights reserved.
+//  Contributor BK
+//  Copyright 2008-2016 Ant.com. All rights reserved.
 // 
 
 var flashPlayerId   = 0;
@@ -562,7 +562,7 @@ var AntPlayer =
 
     fillTitlebar: function (aOrigin, aName) {
         var self = AntPlayer;
-        // Fix to remove innerHTML insertion by Wladimir Palant, integrated by Brian King
+        // Fix to remove innerHTML insertion by Wladimir Palant, integrated by BK
         var str = antvd.AntLang.getFormatString("AntPlayer.TitleBar", aOrigin, aName);
         var element = AntLib.ob("antFlvPlayerTitleBar");
         

@@ -2,8 +2,8 @@
 // wrappers.js
 // firefox
 //
-// Created by Dmitriy on 2011-03-09
-// Contributor Brian King
+// Created by DS on 2011-03-09
+// Contributor BK
 // Copyright 2008-2016 Ant.com. All rights reserved.
 //
 function AntVideoList(includeNotExist)
