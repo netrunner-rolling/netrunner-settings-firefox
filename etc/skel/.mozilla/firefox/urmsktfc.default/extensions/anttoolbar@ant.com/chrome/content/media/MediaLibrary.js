@@ -1,6 +1,6 @@
 /**
  * Converter.js, 2014
- * @author Igor Chornous ichornous@heliostech.hk
+ * @author ICh
  * @namespace antvd
  */
 var antvd = (function(antvd)
@@ -268,6 +268,132 @@ var antvd = (function(antvd)
         };
 
         /**
+         * Downloads a file and appends it to a binary stream
+         *
+         * @member download
+         * @param {nsIURI} uri Source location
+         * @param {String} filename Desired file name
+         * @param {nsIBinaryOutputStream} outputBinary Binary stream to which the downloaded file should be written
+         * @param {Boolean} istemp Whether the target file should be stored in
+         *                         a temporary location instead of the user selected
+         *                         library
+         * @returns {Promise}
+         * @resolves Instance of {@link DownloadResult}
+         * @rejects {@link MediaLibraryError} if the operation has failed
+         */
+        this.incrementalDownload = function(uri, filename, outputBinary, isTemp)
+        {
+            let _na = "N/A";
+            
+            if (!uri || !filename)
+            {
+                antvd.AntLib.logError(
+                    "MediaLibrary.incrementalDownload (MediaLibrary.js)",
+                    antvd.AntLib.sprintf(
+                        "Mandatory fields are missing: uri -> %s; filename ->%s",
+                        (uri ? uri.spec : _na), (filename ? filename : _na)
+                    ),
+                    null
+                );
+                
+                throw new MediaLibraryError(MediaLibraryError.E_INVALID_OPERATION);
+            }
+            
+            if (!outputBinary)
+            {
+                antvd.AntLib.logError(
+                    "MediaLibrary.incrementalDownload (MediaLibrary.js)",
+                    "Binary output stream is invalid",
+                    null
+                );
+                
+                throw new MediaLibraryError(MediaLibraryError.E_INVALID_OPERATION);
+            }
+
+            return Task.spawn(function ()
+            {
+                // @throws MediaLibraryError
+                let target = setupTargetPath(filename, true, isTemp);
+
+                // @type Download
+                let downloadInst = null;
+            
+                try
+                {
+                    let list = yield Downloads.getList(isprivate ? Downloads.PRIVATE : Downloads.ALL);
+                
+                    downloadInst = yield Downloads.createDownload(
+                    {
+                        source:
+                        {
+                            url: uri.spec,
+                            isPrivate: isprivate
+                        },
+                        target: target,
+                        saver: "copy"
+                    });
+
+                    downloadInst.tryToKeepPartialData = true;
+                    yield list.add(downloadInst);
+
+                    try
+                    {
+                        downloadInst.start();
+                    }
+                    catch (e)
+                    {
+                        yield list.remove(downloadInst);
+                        throw e;
+                    }
+
+                    try
+                    {
+                        yield downloadInst.whenSucceeded();
+                    }
+                    catch(ex)
+                    {
+                        antvd.AntLib.logError(
+                            "MediaLibrary.incrementalDownload (MediaLibrary.js)",
+                            antvd.AntLib.sprintf(
+                                "Failed to complete copy from chunk stream %s to output stream",
+                                target.path
+                            ), ex
+                        );
+                        
+                        throw new MediaLibraryError(MediaLibraryError.E_DOWNLOAD_FAILED, ex);
+                    }
+                }
+                catch (ex)
+                {
+                    antvd.AntLib.logError(
+                        "MediaLibrary.incrementalDownload (MediaLibrary.js)",
+                        "Failed to complete download: " + uri.spec,
+                        ex
+                    );
+                    
+                    throw new MediaLibraryError(MediaLibraryError.E_DOWNLOAD_FAILED, ex);
+                }
+
+                // Clear temporary download
+                if (isTemp)
+                {
+                    list.remove(downloadInst);
+                    clear(uri);
+                }
+
+                // Resolve the corresponding promise with an instance of DownloadResult
+                throw new Task.Result(
+                    DownloadResult.create(
+                        uri,
+                        target.path,
+                        downloadInst.currentBytes,
+                        Date.now() - downloadInst.startTime.getTime()
+                    )
+                );
+            });
+        };
+
+        /**
          * Return the movies destination folder and create it if it doesn't exist
          *
          * @private
@@ -369,7 +495,7 @@ var antvd = (function(antvd)
 
         /**
          * Removes an entry from the browser's download history
-         * TODO(Igor): This is a shortcut so we should think if there is a better
+         * TODO(ICh): This is a shortcut so we should think if there is a better
          *             architectural solution
          * @private
          * @member clear

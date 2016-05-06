@@ -3,8 +3,8 @@
 //  antbar
 //  
 //  Created by Zak on 2008-06-11.
-//  Contributor Brian King
-//  Copyright 2008-2012 Ant.com. All rights reserved.
+//  Contributor BK
+//  Copyright 2008-2016 Ant.com. All rights reserved.
 // 
 
 var AntBar =
@@ -61,7 +61,7 @@ var AntBar =
     {
         try
         {
-            // TODO(Igor): Move AntStorage's deinitialization to
+            // TODO(ICh): Move AntStorage's deinitialization to
             // the quit-application handler.
             // For FF 4.0 and higher
             AntStorage.deinit();

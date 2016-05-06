@@ -2,8 +2,8 @@
 //  utilities.js
 //  uninstall observer
 //  
-//  Created by Brian King on 2011-05-30.
-//  Copyright 2011-2012 Ant.com. All rights reserved.
+//  Created by BK on 2011-05-30.
+//  Copyright 2011-2016 Ant.com. All rights reserved.
 //
 
 Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");

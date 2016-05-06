@@ -1,4 +1,4 @@
-<!--       antplayer.dtd (fr)      firefox            Created by Zak on 2008-07-03.      Copyright 2008 Ant.com. All rights reserved. -->
+<!--       antplayer.dtd (fr)      firefox            Created by Zak on 2008-07-03.      Copyright 2008-2016 Ant.com. All rights reserved. -->
 <!ENTITY antPlayerWindow.title "Lecteur de vidéos Ant.com">
 <!ENTITY antPlayerHeadSearchBox.value "Rechercher avec Ant !">
 <!ENTITY antPlayerHeadDoSearch.tooltiptext "Rechercher avec Ant !">

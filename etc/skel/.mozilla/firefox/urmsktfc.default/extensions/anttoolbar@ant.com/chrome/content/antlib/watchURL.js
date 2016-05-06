@@ -3,7 +3,7 @@
 //  firefox
 //  
 //  Created by Zak on 2008-07-14.
-//  Copyright 2008-2012 Ant.com. All rights reserved.
+//  Copyright 2008-2016 Ant.com. All rights reserved.
 // 
 
 

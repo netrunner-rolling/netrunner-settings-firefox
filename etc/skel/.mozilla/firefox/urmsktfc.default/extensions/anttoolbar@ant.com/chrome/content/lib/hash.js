@@ -2,8 +2,8 @@
 // hash.js
 // firefox
 //
-// Created by Dmitriy on 2011-02-15
-// Copyright 2008-2012 Ant.com. All rights reserved.
+// Created by DS on 2011-02-15
+// Copyright 2008-2016 Ant.com. All rights reserved.
 //
 
 var AntHash = {

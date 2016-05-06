@@ -2,9 +2,9 @@
 //  tree.js
 //  firefox
 //  
-//  Created by Dima on 2011-02-18.
-//  Contributor Brian King
-//  Copyright 2008-2012 Ant.com. All rights reserved.
+//  Created by DS on 2011-02-18.
+//  Contributor BK
+//  Copyright 2008-2016 Ant.com. All rights reserved.
 //
 
 

@@ -1,4 +1,4 @@
-<!--       antplayer.dtd      firefox            Created by Zak on 2008-07-03.      Copyright 2008 Ant.com. All rights reserved. -->
+<!--       antplayer.dtd      firefox            Created by Zak on 2008-07-03.      Copyright 2008-2016 Ant.com. All rights reserved. -->
 <!ENTITY antPlayerWindow.title "Ant.com видео проигрыватель">
 <!ENTITY antPlayerHeadSearchBox.value "Искать в сети">
 <!ENTITY antPlayerHeadDoSearch.tooltiptext "Искать в сети">

@@ -3,7 +3,7 @@
 //  firefox
 //  
 //  Created by Zak on 2008-07-03.
-//  Copyright 2008-2009 Ant.com. All rights reserved.
+//  Copyright 2008-2016 Ant.com. All rights reserved.
 // 
 
 //AntList functionality in procedural style due to some problems with push in FF 4.0b8

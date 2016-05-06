@@ -1,4 +1,4 @@
-<!--       antplayer.dtd      firefox            Created by Zak on 2008-07-03.      Copyright 2008 Ant.com. All rights reserved. -->
+<!--       antplayer.dtd      firefox            Created by Zak on 2008-07-03.      Copyright 2008-2016 Ant.com. All rights reserved. -->
 <!ENTITY antPlayerWindow.title "Ant.com 影片播放器">
 <!ENTITY antPlayerHeadSearchBox.value "搜索网络">
 <!ENTITY antPlayerHeadDoSearch.tooltiptext "搜索网络">

@@ -1,6 +1,6 @@
 /**
  * Converter.js, 2014
- * @author Igor Chornous ichornous@heliostech.hk
+ * @author ICh
  * @namespace antvd
  */
 var antvd = (function(antvd)
@@ -159,7 +159,13 @@ var antvd = (function(antvd)
 
             // @type nsIFile
             let file = null;
-            let args = ["-y", "-i", videoStreamPath, "-i", audioStreamPath, "-map", "0:v", "-map", "1:a", "-codec", "copy"];
+            let args = [
+                "-y", "-i",
+                videoStreamPath,
+                "-i",
+                audioStreamPath,
+                "-map", "0:v", "-map", "1:a", "-codec", "copy"
+            ];
 
             
             videoMimeType = videoMimeType.toLowerCase();
@@ -172,15 +178,14 @@ var antvd = (function(antvd)
             else if (videoMimeType == "video/webm" && audioMimeType == "audio/webm")
             {
                 fileExtension = Converter.EXT_WEBM;
-                args = ["-y", "-i", videoStreamPath, "-i", audioStreamPath, "-map", "0:v", "-map", "1:a", "-codec", "copy", "-strict", "-2"];
+                args = [
+                    "-y", "-i",
+                    videoStreamPath,
+                    "-i",
+                    audioStreamPath,
+                    "-map", "0:v", "-map", "1:a", "-codec", "copy", "-strict", "-2"
+                ];
             }
-            // The following has been commented since conversion of audio takes time
-            //
-            // else if (videoMimeType == "video/webm" && audioMimeType != "audio/webm")
-            // {
-            //     fileExtension = Converter.EXT_WEBM;
-            //     args = ["-y", "-i", videoStreamPath, "-i", audioStreamPath, "-map", "0:v", "-map", "1:a", "-c:a", "libvorbis"];
-            // }
             else
             {
                 fileExtension = Converter.EXT_MKV;
@@ -240,7 +245,36 @@ var antvd = (function(antvd)
                 
                 for(let i = 0; i < chunks.length; i++)
                 {
-                    _content = _content + "file " + chunks[i].target.replace(/\\/g, "\\\\") + "\n";
+                    let _write_chunk = false;
+                    
+                    try
+                    {
+                        let _chunk_target_file = new FileUtils.File(chunks[i].target);
+                        
+                        if (_chunk_target_file)
+                        {
+                            if (_chunk_target_file.exists() && _chunk_target_file.fileSize > 0)
+                            {
+                                _write_chunk = true;
+                            }
+                        }
+                    }
+                    catch(ex)
+                    {
+                    }
+                    
+                    if (_write_chunk == false)
+                    {
+                        antvd.AntLib.toLog(
+                            "Converter.joinChunks (Converter.js)",
+                            "Skipping missing or empty chunk: " + chunks[i].target
+                        );
+
+                    }
+                    else
+                    {
+                        _content = _content + "file '" + chunks[i].target.replace(/\\/g, "\\\\") + "'\n";
+                    }
                 }
 
                 stream.write(_content, _content.length);
@@ -283,7 +317,7 @@ var antvd = (function(antvd)
             //   (Demuxer is a text file that contains links to video pieces to merge)
             args = ["-y", "-f", "concat", "-i", demuxer.path];
             
-            if (extraCmdOption.length > 0)
+            if (extraCmdOption && extraCmdOption.length > 0)
             {
                 for(let i = 0; i < extraCmdOption.length; i++)
                 {
@@ -417,7 +451,7 @@ var antvd = (function(antvd)
                     }
                 };
 
-                process.runAsync(args, args.length, callback, false);
+                process.runwAsync(args, args.length, callback, false);
             }
             catch (ex)
             {

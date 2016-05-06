@@ -1,6 +1,6 @@
 /**
  * OptionsUI.js, 2014
- * @author Igor Chornous ichornous@heliostech.hk
+ * @author ICh
  * @namespace antvd
  */
 var antvd = (function(antvd) {

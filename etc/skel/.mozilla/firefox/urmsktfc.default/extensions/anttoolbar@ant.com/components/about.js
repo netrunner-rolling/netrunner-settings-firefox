@@ -2,8 +2,8 @@
 //  about.js
 //  firefox
 //  
-//  Created by Dima Sidorchenko on 2011-04-11.
-//  Copyright 2008-2012 Ant.com. All rights reserved.
+//  Created by DS on 2011-04-11.
+//  Copyright 2008-2016 Ant.com. All rights reserved.
 //
 
 const Cc = Components.classes;

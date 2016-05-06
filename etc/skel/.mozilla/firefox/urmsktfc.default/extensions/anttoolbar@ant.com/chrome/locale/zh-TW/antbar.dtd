@@ -1,4 +1,4 @@
-<!--      antbar.dtd     firefox          Created by Zak on 2008-07-03.     Copyright 2008 Ant.com. All rights reserved.  -->
+<!--      antbar.dtd     firefox          Created by Zak on 2008-07-03.     Copyright 2008-2016 Ant.com. All rights reserved.  -->
 <!ENTITY antFlvListPopupDownloadCurrent.label "下載此影片">
 <!ENTITY antFlvListPopupPlayCurrent.label "在播放器觀看">
 <!ENTITY antFlvListPopupCopyLink.label "複製影片地址">

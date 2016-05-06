@@ -3,9 +3,9 @@
      about.xul
      firefox
      
-     Created by DimaS on 2008-06-12.
-     Contributor Brian King
-     Copyright 2008-2012 Ant.com. All rights reserved.
+     Created by DS on 2008-06-12.
+     Contributor BK
+     Copyright 2008-2016 Ant.com. All rights reserved.
   -->
 
 <!DOCTYPE window SYSTEM "chrome://antbar/locale/antabout.dtd">

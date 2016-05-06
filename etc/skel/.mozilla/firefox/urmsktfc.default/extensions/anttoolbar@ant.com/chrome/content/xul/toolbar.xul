@@ -4,9 +4,9 @@ toolbar.xul
 firefox
 
 Created by Zak on 2008-06-12.
-Contributor Brian King
-Edited by Simon on 2011-02-15.
-Copyright 2008-2012 Ant.com. All rights reserved.
+Contributor BK
+Edited by SM on 2011-02-15.
+Copyright 2008-2016 Ant.com. All rights reserved.
 -->
 
 <!DOCTYPE overlay SYSTEM "chrome://antbar/locale/antbar.dtd">
@@ -27,16 +27,17 @@ Copyright 2008-2012 Ant.com. All rights reserved.
   <script type="application/x-javascript" src="chrome://antbar/content/lib/tabman.js" />
   <script type="application/x-javascript" src="chrome://antbar/content/userinterface.js"/>
   <script type="application/x-javascript" src="chrome://antbar/content/grabber/grabber.js"/>
-  <script type="application/x-javascript" src="chrome://antbar/content/grabber/prov/BaseVideoRequest.js"/>
-  <script type="application/x-javascript" src="chrome://antbar/content/grabber/prov/default.js"/>
-  <script type="application/x-javascript" src="chrome://antbar/content/grabber/prov/dm.js"/>
-  <script type="application/x-javascript" src="chrome://antbar/content/grabber/prov/yt.js"/>
-  <script type="application/x-javascript" src="chrome://antbar/content/grabber/flvlist.js"/>
-  <script type="application/x-javascript" src="chrome://antbar/content/grabber/detector.js"/>
-  <script type="application/x-javascript" src="chrome://antbar/content/grabber/queryobserver.js"/>
-  <script type="application/x-javascript" src="chrome://antbar/content/media/Converter.js"/>
-  <script type="application/x-javascript" src="chrome://antbar/content/media/ConverterPackage.js"/>
-  <script type="application/x-javascript" src="chrome://antbar/content/media/MediaLibrary.js"/>
+  <script type="application/x-javascript" src="chrome://antbar/content/grabber/prov/BaseVideoRequest.js" />
+  <script type="application/x-javascript" src="chrome://antbar/content/grabber/prov/default.js" />
+  <script type="application/x-javascript" src="chrome://antbar/content/grabber/prov/dm.js" />
+  <script type="application/x-javascript" src="chrome://antbar/content/grabber/prov/yt.js" />
+  <script type="application/x-javascript" src="chrome://antbar/content/grabber/prov/vimeo.js" />
+  <script type="application/x-javascript" src="chrome://antbar/content/grabber/flvlist.js" />
+  <script type="application/x-javascript" src="chrome://antbar/content/grabber/detector.js" />
+  <script type="application/x-javascript" src="chrome://antbar/content/grabber/queryobserver.js" />
+  <script type="application/x-javascript" src="chrome://antbar/content/media/Converter.js" />
+  <script type="application/x-javascript" src="chrome://antbar/content/media/ConverterPackage.js" />
+  <script type="application/x-javascript" src="chrome://antbar/content/media/MediaLibrary.js" />
   <script type="application/x-javascript" src="chrome://antbar/content/prefs/Options.js"/>
   <script type="application/x-javascript" src="chrome://antbar/content/prefs/OptionsUI.js"/>
   <script type="application/x-javascript" src="chrome://antbar/content/antlib/rank.js"/>

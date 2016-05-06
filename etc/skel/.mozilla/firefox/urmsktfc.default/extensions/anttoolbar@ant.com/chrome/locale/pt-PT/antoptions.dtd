@@ -1,5 +1,5 @@
 <!-- -*- coding: utf-8 -*- -->
-<!--      antoptions.dtd      firefox      Created by Nuky on 2009-11-16.      Copyright 2009 Ant.com. All rights reserved. -->
+<!--      antoptions.dtd      firefox      Created by Nuky on 2009-11-16.      Copyright 2009-2016 Ant.com. All rights reserved. -->
 <!-- options.xul -->
 <!ENTITY preferences.window.size "width: 38em; height: 50em;">
 <!ENTITY antBarPrefs.title "Preferências da barra de ferramentas Ant">

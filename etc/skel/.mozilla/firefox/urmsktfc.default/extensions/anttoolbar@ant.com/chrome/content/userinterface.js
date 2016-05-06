@@ -3,8 +3,8 @@
 //  firefox
 //
 //  Created by Zak on 2008-06-16.
-//  Contributor Brian King
-//  Copyright 2008-2012 Ant.com. All rights reserved.
+//  Contributor BK
+//  Copyright 2008-2016 Ant.com. All rights reserved.
 //
 
 var AntFlvUi =
@@ -375,8 +375,12 @@ var AntFlvUi =
     formatDisplaySizeCell: function(sizeInBytes)
     {
         if (!sizeInBytes || (sizeInBytes < 0))
+        {
             return "";
+        }
+        
         var a = AntLib.convertByteUnits(sizeInBytes);
+        
         return a[0] + " " + a[1];
     },
 
@@ -388,7 +392,7 @@ var AntFlvUi =
     {
         var self = AntFlvUi;
 
-        const MAX_ITEM_LENGTH = 40;
+        const MAX_ITEM_LENGTH = 255;
         let videoDisplayName = (videoRequest.displayName === undefined) ? videoRequest._base.displayName : videoRequest.displayName;
         
         var label = AntLib.truncate(videoDisplayName, MAX_ITEM_LENGTH);

@@ -3,8 +3,8 @@
 //  firefox
 //  
 //  Created by Zak on 2008-06-17.
-//  Contributor Brian King
-//  Copyright 2008-2012 Ant.com. All rights reserved.
+//  Contributor BK
+//  Copyright 2008-2016 Ant.com. All rights reserved.
 // 
 var AntPrefs =
 {

@@ -1,9 +1,9 @@
 //
 // detector.js
 //
-// Created by Dima Sidorchenko on 21-10-2010
-// Contributor Brian King
-// Copyright 2008-2012 Ant.com. All rights reserved.
+// Created by DS on 21-10-2010
+// Contributor BK
+// Copyright 2008-2016 Ant.com. All rights reserved.
 //
 
 // AntVideoDetector class contains functions for detecting video
@@ -352,6 +352,14 @@ var AntVideoDetector =
         {
             score -= 50;
             logMessage = logMessage + "...rule 34, score -50, total " + score + "\n";
+        }
+
+        // Rule #35
+        // Vimeo.com video segments, reffered from vimeo, with name "segment-N.m4s"
+        if (url.match(/segment\-\d+\.m4s/i) && referrer.match(/vimeo\.com/i))
+        {
+            score -= 80;
+            logMessage = logMessage + "...rule 30, score 15, total " + score + "\n";
         }
 
         this.debugLogScoring(logMessage, score);

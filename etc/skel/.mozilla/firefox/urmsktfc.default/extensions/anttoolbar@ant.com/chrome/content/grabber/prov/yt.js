@@ -1,6 +1,6 @@
 // yt.js, 2013-2016
-// author       Igor Chornous ichornous@heliostech.hk
-// contributor  Eugene Dorofeyev (ievgenii.d@webgroup-limited.com)
+// author       ICh
+// contributor  ED
 // namespace    antvd
 //
 
@@ -99,11 +99,20 @@ var antvd = (function(antvd)
 
                 try
                 {
-                    antvd.AntLib.toLog("YtVideoRequest.download (yt.js)", "Downloading video stream " + ctx._video.uri);
-                    antvd.AntLib.toLog("YtVideoRequest.download (yt.js)", "Downloading audio stream " + ctx._audio.uri);
+                    antvd.AntLib.toLog("YtVideoRequest.download (yt.js)", "Downloading video stream " + ctx._video.uri.spec);
+                    antvd.AntLib.toLog("YtVideoRequest.download (yt.js)", "Downloading audio stream " + ctx._audio.uri.spec);
                     
-                    let vdr = library.download(ctx._video.uri, YtVideoRequest.TEMP_FILE_NAME, true);
-                    let adr = library.download(ctx._audio.uri, YtVideoRequest.TEMP_FILE_NAME, true);
+                    let vdr = library.download(
+                        ctx._video.uri,
+                        antvd.AntLib.sprintf("video-stream-%s", ctx.displayName).replace(/ /g, "_"),
+                        true
+                    );
+                    
+                    let adr = library.download(
+                        ctx._audio.uri,
+                        antvd.AntLib.sprintf("audio-stream-%s", ctx.displayName).replace(/ /g, "_"),
+                        true
+                    );
 
                     svideo = yield vdr;
 
@@ -136,12 +145,19 @@ var antvd = (function(antvd)
 
                 try
                 {
-                    antvd.AntLib.toLog("YtVideoRequest.download (yt.js)", "Converting\n   video " + svideo.target + "\n   audio " + saudio.target + "\nto " + converter.getFileName());
+                    antvd.AntLib.toLog(
+                        "YtVideoRequest.download (yt.js)",
+                        antvd.AntLib.sprintf(
+                            "Converting\n   video %s\n   audio %s\nto %s",
+                            svideo.target, saudio.target, converter.getFileName()
+                        )
+                    );
+                    
                     yield converter.join(svideo.target, saudio.target, ctx._video.ctype, ctx._audio.ctype);
                 }
                 catch (ex)
                 {
-                    antvd.AntLib.logError("YtVideoRequest.download (yt.js)", "Failed to concat streams", ex);
+                    antvd.AntLib.logError("YtVideoRequest.download (yt.js)", "Failed to merge streams", ex);
                     throw ex;
                 }
 
@@ -174,7 +190,7 @@ var antvd = (function(antvd)
                 {
                     try
                     {
-                        // TODO(Igor): Add a shared function which would perform the "nothrow" removal
+                        // TODO(ICh): Add a shared function which would perform the "nothrow" removal
                         FileUtils.File(svideo.target).remove(false);
                         FileUtils.File(saudio.target).remove(false);
 

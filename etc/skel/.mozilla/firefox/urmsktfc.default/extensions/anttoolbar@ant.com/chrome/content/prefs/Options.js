@@ -1,6 +1,6 @@
 /**
  * Options.js, 2014
- * @author Igor Chornous ichornous@heliostech.hk
+ * @author ICh
  * @namespace antvd
  */
 var antvd = (function(antvd)
@@ -77,14 +77,18 @@ var antvd = (function(antvd)
          * @member showHelp
          * @param {Number} topic
          */
-        this.showHelp = function(topic) {
+        this.showHelp = function(topic)
+        {
             /** @type String */
             let url;
-            switch (topic) {
+
+            switch (topic)
+            {
                 case Options.HT_TRANSCODER_INSTALL:
                     url = URL_TRANSCODER_HELP_PAGE;
                     break;
-                case Options.HT_GENERAL:
+             
+                case Options.HT_GENERAL:             
                 default:
                     url = URL_GENERAL_HELP_PAGE;
             }
@@ -98,39 +102,60 @@ var antvd = (function(antvd)
          * @member selectTranscoder
          * @param {XULWindow?} parent Optional parent window. To be in focus
          */
-        this.selectTranscoder = function(parent) {
+        this.selectTranscoder = function(parent)
+        {
             /** @type nsIFilePicker */
-            let fp = Cc["@mozilla.org/filepicker;1"]
-                    .createInstance(Ci.nsIFilePicker);
+            let fp = Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
+
             fp.init(
-                parent ? parent : window
-                , "Select converter's executable"
-                , Ci.nsIFilePicker.modeOpen);
+                parent ? parent : window,
+                "Select converter's executable",
+                Ci.nsIFilePicker.modeOpen
+            );
+
             fp.appendFilters(Ci.nsIFilePicker.filterApps);
 
             /** Make sure that the file picker will initially display
              the folder where the currently configured converter resides */
-            try {
+            try
+            {
                 let file = opts.converterConf.getAvconvLocation();
+
                 if (file && !file.isDirectory())
+                {
                     file = file.parent;
+                }
 
                 if (file)
+                {
                     fp.displayDirectory = file;
-            } catch (ex) {
+                }
+                    
+            }
+            catch (ex)
+            {
                 antvd.AntLib.logError(
-                    "[UI]: Failed to set an initial directory", ex);
+                    "Options.selectTranscoder (Options.js)",
+                    "Failed to set an initial directory",
+                    ex
+                );
             }
 
             /** @type nsIFilePickerShownCallback */
-            let callback = {
+            let callback =
+            {
                 /** @param result returnOK, returnCancel, or returnReplace */
-                done: function(result) {
+                done: function(result)
+                {
                     if (result != Ci.nsIFilePicker.returnOK)
+                    {
                         return;
+                    }
+                    
                     opts.converterConf.setAvconvLocation(fp.file);
                 }
             };
+            
             fp.open(callback);
         };
 
@@ -143,8 +168,8 @@ var antvd = (function(antvd)
          * @param {function(reason, error)} eventListener.onFailure
          * @returns {Promise}
          */
-        this.installTranscoder = function(eventListener) {
-            
+        this.installTranscoder = function(eventListener)
+        {
             const InstErr = antvd.MediaConverterPackageError;
             
             return Task.spawn(function()
@@ -155,7 +180,11 @@ var antvd = (function(antvd)
                 }
                 catch (_e)
                 {
-                    antvd.AntLib.logError("[UI]: Target of execution has failed", _e);
+                    antvd.AntLib.logError(
+                        "Options.installTranscoder (Options.js)",
+                        "onBeginInstall() failed",
+                        _e
+                    );
                 }
 
                 try
@@ -169,7 +198,11 @@ var antvd = (function(antvd)
                     catch (_e)
                     {
                         /** Otherwise that would influence the execution flow */
-                        antvd.AntLib.logError("[UI]: Target of execution has failed", _e);
+                        antvd.AntLib.logError(
+                            "Options.installTranscoder (Options.js)",
+                            "onEndInstall() failed",
+                            _e
+                        );
                     }
                 }
                 catch (/** @type MediaConverterPackageError */ ex)
@@ -177,47 +210,66 @@ var antvd = (function(antvd)
                     /** @type Number */
                     let errCode;
                 
-                    if ((ex.code == InstErr.E_SERVICE_UNAVAILABLE)
-                        || (ex.code == InstErr.E_TARGET_BADHASH)) {
+                    if ((ex.code == InstErr.E_SERVICE_UNAVAILABLE) || (ex.code == InstErr.E_TARGET_BADHASH))
+                    {
                         errCode = Options.E_IT_BADSERVICE;
-                    } else if (ex.code == InstErr.E_INSTALL_IN_PROGRESS) {
+                    }
+                    else if (ex.code == InstErr.E_INSTALL_IN_PROGRESS)
+                    {
                         errCode = Options.E_IT_NOTFINISHED;
-                    } else {
+                    }
+                    else
+                    {
                         errCode = Options.E_IT_FAILURE;
+                    
                         antvd.AntLib.logError(
-                            "[UI]: Unexpected failure during the autoconfiguration"
-                            , ex);
+                            "Options.installTranscoder (Options.js)",
+                            "Unexpected failure during the autoconfiguration",
+                            ex
+                        );
                     }
 
-                    try {
+                    try
+                    {
                         eventListener.onFailure(errCode, ex);
-                    } catch (_e) {
+                    }
+                    catch (_e)
+                    {
                         antvd.AntLib.logError(
-                            "[UI]: Target of execution has failed", _e);
+                            "Options.installTranscoder (Options.js)",
+                            "Execution of ConverterPackage.install() has failed",
+                            _e
+                        );
                     }
                 }
             });
         };
     };
 
-    /** @const */ Options.E_IT_BADSERVICE = 1;
-    /** @const */ Options.E_IT_FAILURE = 2;
-    /** @const */ Options.E_IT_NOTFINISHED = 3;
+    Options.E_IT_BADSERVICE = 1;
+    Options.E_IT_FAILURE = 2;
+    Options.E_IT_NOTFINISHED = 3;
 
-    /** Help topics */
-    /** @const */ Options.HT_TRANSCODER_INSTALL = 1;
-    /** @const */ Options.HT_GENERAL = 2;
+    // Help topics
+    Options.HT_TRANSCODER_INSTALL = 1;
+    Options.HT_GENERAL = 2;
 
-    (function(me) {
-        let inst = new Options({
-            converterConf: antvd.ConverterPackage.getDefault()
-        });
-        me.getDefault = function() {
+    (function(me)
+     {
+        let inst = new Options(
+            {
+                converterConf: antvd.ConverterPackage.getDefault()
+            }
+        );
+        
+        me.getDefault = function()
+        {
             return inst;
         };
+        
     })(Options);
-
-    /** @expose */
+    
     antvd.Options = Options;
     return antvd;
+
 })(antvd);

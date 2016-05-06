@@ -3,7 +3,7 @@
 // Firefox
 //
 // Created by Seed on 2008-11-07
-// Copyright 2008 Ant.com. All right reserved
+// Copyright 2008-2016 Ant.com. All right reserved
 
 var AntBugReport =
 {

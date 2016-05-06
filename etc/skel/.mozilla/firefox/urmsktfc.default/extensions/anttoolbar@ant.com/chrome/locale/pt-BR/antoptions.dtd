@@ -1,4 +1,4 @@
-<!--       antoptions.dtd      firefox      Copyright 2008-2009 Ant.com. All rights reserved.-->
+<!--       antoptions.dtd      firefox      Copyright 2008-2016 Ant.com. All rights reserved.-->
 <!-- options.xul -->
 <!-- Note to translators ... make this value bigger if your strings are cut off at the       sides in the settings screen. This will widen the screen. -->
 <!ENTITY preferences.window.size "largura: 38em; altura: 50em;">

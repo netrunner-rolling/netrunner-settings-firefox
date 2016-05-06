@@ -2,8 +2,8 @@
 //  antrpc.js
 //  firefox
 //  
-//  Created by Dima Sidorchenko on 2008-10-23.
-//  Copyright 2008-2012 Ant.com. All rights reserved.
+//  Created by DS on 2008-10-23.
+//  Copyright 2008-2016 Ant.com. All rights reserved.
 //
 
 /**
@@ -19,7 +19,7 @@ var antvd = (function(antvd) {
         antvd.AntLib = AntLib;
 
     /**
-     * @author Igor Chornous ichornous@heliostech.hk
+     * @author ICh
      * @class RpcRequest
      * @param {String} method Name of a remote procedure
      */
@@ -256,7 +256,7 @@ var antvd = (function(antvd) {
      * Reports info valueable to estimate whether the user faces
      * issues in major submodules
      *
-     * @author Igor Chornous ichornous@heliostech.hk
+     * @author ICh
      * @class RpcHeartBeat
      */
     function RpcHeartBeat() {
