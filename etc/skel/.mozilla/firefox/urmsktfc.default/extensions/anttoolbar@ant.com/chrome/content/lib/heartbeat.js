@@ -128,7 +128,7 @@ var antvd = (function(antvd) {
          */
         AntHeartBeat.init = function ()
         {
-            antvd.AntLib.toLog("Starting up hearbeat");
+            antvd.AntLib.toLog("AntHeartBeat.init (heartbeat.js)", "Starting up hearbeat");
         
             if ( ! inst )
             {
