@@ -29,7 +29,8 @@ Copyright 2008-2016 Ant.com. All rights reserved.
   <script type="application/x-javascript" src="chrome://antbar/content/grabber/grabber.js"/>
   <script type="application/x-javascript" src="chrome://antbar/content/grabber/prov/BaseVideoRequest.js" />
   <script type="application/x-javascript" src="chrome://antbar/content/grabber/prov/default.js" />
-  <script type="application/x-javascript" src="chrome://antbar/content/grabber/prov/dm.js" />
+  <script type="application/x-javascript" src="chrome://antbar/content/grabber/prov/hls.js" />
+  <script type="application/x-javascript" src="chrome://antbar/content/grabber/prov/hds.js" />  
   <script type="application/x-javascript" src="chrome://antbar/content/grabber/prov/yt.js" />
   <script type="application/x-javascript" src="chrome://antbar/content/grabber/prov/vimeo.js" />
   <script type="application/x-javascript" src="chrome://antbar/content/grabber/flvlist.js" />

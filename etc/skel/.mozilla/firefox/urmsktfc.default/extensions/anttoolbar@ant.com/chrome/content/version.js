@@ -1,1 +1,1 @@
-const g_AVDFFVersionString = "2.4.7.41";
+const g_AVDFFVersionString = "2.4.7.42";

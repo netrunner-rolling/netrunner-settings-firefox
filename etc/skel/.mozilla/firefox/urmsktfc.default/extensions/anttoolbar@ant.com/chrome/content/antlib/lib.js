@@ -1196,5 +1196,37 @@ var AntLib =
         }
 
         return array;
+    },
+    
+    isURL: function(Link)
+    {
+        if (Link == null)
+        {
+            return false;
+        }
+        
+        if (Link.length == 0)
+        {
+            return false;
+        }
+        
+        return Link.match(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/ig);
+    },
+    
+    startsWithHTTP: function(Link)
+    {
+        if (Link == null)
+        {
+            return false;
+        }
+        
+        if (Link.length == 0)
+        {
+            return false;
+        }
+        
+        let _l = Link.toLowerCase();
+        
+        return (_l.startsWith("http://") || _l.startsWith("https://"));
     }
 };

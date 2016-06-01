@@ -26,10 +26,11 @@ var antvd = (function(antvd) {
          * @type Array<ISearchStrategy>
          */
         var searchStrategies = [
-            new antvd.YtSearchStrategy(),
-            new antvd.DmSearchStrategy(),
-            new antvd.VimeoSearchStrategy(),
-            new antvd.DefaultSearchStrategy()
+            new antvd.YtSearchStrategy(),       // YouTube
+            new antvd.HlsSearchStrategy(),      // Dailymotion, Xvideos
+            new antvd.VimeoSearchStrategy(),    // Vimeo and all Vimeo-embedded
+            new antvd.HdsSearchStrategy(),      // Old Dailymotion
+            new antvd.DefaultSearchStrategy()   // Rest
         ];
 
         /**
@@ -89,7 +90,11 @@ var antvd = (function(antvd) {
             }
             catch (e)
             {
-                antvd.AntLib.logError("AntQueryObserver.observe (queryobserver.js)", "Unexpected program failure", e);
+                antvd.AntLib.logError(
+                    "AntQueryObserver.observe (queryobserver.js)",
+                    "Unexpected program failure",
+                    e
+                );
             }
         };
 

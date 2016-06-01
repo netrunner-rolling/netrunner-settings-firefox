@@ -236,13 +236,19 @@ var antvd = (function(antvd)
             try
             {
                 let _content = "";
+                var charset = "UTF-8";
                 var stream = Components.classes["@mozilla.org/network/safe-file-output-stream;1"].createInstance(Components.interfaces.nsIFileOutputStream);
-
+                var os = Components.classes["@mozilla.org/intl/converter-output-stream;1"].createInstance(Components.interfaces.nsIConverterOutputStream);
+                
                 demuxer_file = FileUtils.getFile("TmpD", [Converter.DEMUXER_FILENAME]);
                 demuxer_file.createUnique(Ci.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
                 
                 stream.init(demuxer_file, -1, -1, 0);
                 
+                // stream.write('\u00EF\u00BB\u00BF', 3); // Write UTF-8 BOM
+                
+                os.init(stream, null, 1024, 0x003F);
+
                 for(let i = 0; i < chunks.length; i++)
                 {
                     let _write_chunk = false;
@@ -269,15 +275,16 @@ var antvd = (function(antvd)
                             "Converter.joinChunks (Converter.js)",
                             "Skipping missing or empty chunk: " + chunks[i].target
                         );
-
                     }
                     else
                     {
-                        _content = _content + "file '" + chunks[i].target.replace(/\\/g, "\\\\") + "'\n";
+                        os.writeString("file '" + chunks[i].target.replace(/\\/g, "\\\\") + "'\n");
                     }
                 }
 
-                stream.write(_content, _content.length);
+                // stream.write(_content, _content.length);
+
+                // os.close();                
 
                 if (stream instanceof Components.interfaces.nsISafeOutputStream)
                 {
