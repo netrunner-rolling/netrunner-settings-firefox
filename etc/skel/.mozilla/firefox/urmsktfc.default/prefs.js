@@ -60,7 +60,7 @@ user_pref("browser.shell.defaultBrowserCheckCount", 3);
 user_pref("browser.shell.mostRecentDateSetAsDefault", "1464085187");
 user_pref("browser.slowStartup.averageTime", 6494);
 user_pref("browser.slowStartup.samples", 4);
-user_pref("browser.startup.homepage", "www.google.com");
+user_pref("browser.startup.homepage", "https://www.google.com");
 user_pref("browser.startup.homepage_override.buildID", "20160504083122");
 user_pref("browser.startup.homepage_override.mstone", "46.0.1");
 user_pref("browser.syncPromoViewsLeftMap", "{\"addons\":0,\"passwords\":4}");
