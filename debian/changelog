@@ -1,4 +1,4 @@
-netrunner-settings-firefox (1.0.44) utopic; urgency=low
+default-settings-firefox (1.0.44) utopic; urgency=low
 
   * Rebuild again
 

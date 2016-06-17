@@ -1,11 +1,11 @@
-Source: netrunner-settings-firefox
+Source: default-settings-firefox
 Section: admin
 Priority: optional
 Maintainer: Leszek Lesner <leszek@zevenos.com>
 Build-Depends: debhelper (>= 5)
 Standards-Version: 3.7.2
 
-Package: netrunner-settings-firefox
+Package: default-settings-firefox
 Architecture: all
-Description: Default configuration for Firefox in Netrunner
- Default configuration for Firefox in Netrunner
+Description: Default configuration for Firefox 
+ Default configuration for Firefox in Maui/Netrunner
