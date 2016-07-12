@@ -245,8 +245,6 @@ var antvd = (function(antvd)
                 
                 stream.init(demuxer_file, -1, -1, 0);
                 
-                // stream.write('\u00EF\u00BB\u00BF', 3); // Write UTF-8 BOM
-                
                 os.init(stream, null, 1024, 0x003F);
 
                 for(let i = 0; i < chunks.length; i++)
@@ -281,10 +279,6 @@ var antvd = (function(antvd)
                         os.writeString("file '" + chunks[i].target.replace(/\\/g, "\\\\") + "'\n");
                     }
                 }
-
-                // stream.write(_content, _content.length);
-
-                // os.close();                
 
                 if (stream instanceof Components.interfaces.nsISafeOutputStream)
                 {

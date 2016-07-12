@@ -26,7 +26,8 @@ var antvd = (function(antvd) {
          * @type Array<ISearchStrategy>
          */
         var searchStrategies = [
-            new antvd.YtSearchStrategy(),       // YouTube
+            new antvd.MpegDashSearchStrategy(), // YouTube MPEG-DASH
+            new antvd.YtSearchStrategy(),       // YouTube Audio/Video streams
             new antvd.HlsSearchStrategy(),      // Dailymotion, Xvideos
             new antvd.VimeoSearchStrategy(),    // Vimeo and all Vimeo-embedded
             new antvd.HdsSearchStrategy(),      // Old Dailymotion
