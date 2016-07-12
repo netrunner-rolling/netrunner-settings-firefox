@@ -2,8 +2,8 @@ Manifest-Version: 1.0
 
 Name: install.rdf
 Digest-Algorithms: MD5 SHA1
-MD5-Digest: fBD5oYLAVQUbu8qHlc+e3Q==
-SHA1-Digest: IxHx7QnjbYfpceANlKmP3+LXE+c=
+MD5-Digest: LpzZk9990gIMT62t7ABrtw==
+SHA1-Digest: bSWwIH9YjI2ypqc3bdiAHG5qPMc=
 
 Name: chrome.manifest
 Digest-Algorithms: MD5 SHA1
@@ -27,8 +27,8 @@ SHA1-Digest: Jcu8HStD28BtJ9WzTZAEvsXFmTc=
 
 Name: chrome/content/version.js
 Digest-Algorithms: MD5 SHA1
-MD5-Digest: AqCMyNbIR5fTZXwiKQo0NA==
-SHA1-Digest: eryVjzEUKMhrMcNkLTRBOOLpZi4=
+MD5-Digest: /IQ8FHnlm4HZjrXSlk3xgA==
+SHA1-Digest: 84bhK7TE1Tgc7zG0GYI82h6GzT8=
 
 Name: chrome/content/antlib/array.js
 Digest-Algorithms: MD5 SHA1
@@ -92,13 +92,18 @@ SHA1-Digest: zWvAV6eCRH4Brmgu+6iGrc52SXM=
 
 Name: chrome/content/grabber/queryobserver.js
 Digest-Algorithms: MD5 SHA1
-MD5-Digest: D8WdOPV+Y3gx8mXWwtzbfg==
-SHA1-Digest: ULqe4A1fi1aHZZKrZM8r5tVPtdc=
+MD5-Digest: ZHAslZ96lebGLCFaboOwsQ==
+SHA1-Digest: vc0xdDbv47jBFLqqa72TOx1k5gQ=
 
 Name: chrome/content/grabber/prov/BaseVideoRequest.js
 Digest-Algorithms: MD5 SHA1
 MD5-Digest: aPqR49qJbcO+jVBp8CvSdg==
 SHA1-Digest: 9jfhpbSbOCeWbylS1VovRBzZ9OU=
+
+Name: chrome/content/grabber/prov/dash.js
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: hOxZBlkYdgjujeH4g62hbg==
+SHA1-Digest: dL6c0ylhWiAMuP5ZbP5ObiQjNUM=
 
 Name: chrome/content/grabber/prov/default.js
 Digest-Algorithms: MD5 SHA1
@@ -122,8 +127,8 @@ SHA1-Digest: 4IODHhPmuW7nUJ7jw0QbEGT9nfw=
 
 Name: chrome/content/grabber/prov/yt.js
 Digest-Algorithms: MD5 SHA1
-MD5-Digest: CUsDBe5dUTerulrG5ATxzw==
-SHA1-Digest: pHBOdG8S6KL3CFp0KvZalUIvbvg=
+MD5-Digest: YcHs8Jcvb+xpTCmrDZmbxQ==
+SHA1-Digest: dms9xtL9ZxQPchlnTys9sDWAOlE=
 
 Name: chrome/content/lib/antrpc.js
 Digest-Algorithms: MD5 SHA1
@@ -162,8 +167,8 @@ SHA1-Digest: MoGuOxcGBT2wpAyyVfMIhppJ0X0=
 
 Name: chrome/content/media/Converter.js
 Digest-Algorithms: MD5 SHA1
-MD5-Digest: O/WJ7Y88I5kJtxHzc0yfGw==
-SHA1-Digest: obQTfEjT0KdAfjWNubDTBqB98gA=
+MD5-Digest: dTFAYc4xxriKSyCkBSPl/A==
+SHA1-Digest: wGJ4tUhkYTIiXwil7YqQD8WcKIo=
 
 Name: chrome/content/media/ConverterPackage.js
 Digest-Algorithms: MD5 SHA1
@@ -232,8 +237,8 @@ SHA1-Digest: IrP/EbJebN8krix62S5SzTOGemk=
 
 Name: chrome/content/xul/toolbar.xul
 Digest-Algorithms: MD5 SHA1
-MD5-Digest: pnvVP0sgupa5HTCkfjyG+w==
-SHA1-Digest: G9lTrv57WxUueSIRhmIuKx/Mfxw=
+MD5-Digest: h4eEcf8Ei4h2cIqiDOY8mA==
+SHA1-Digest: 6sMfV8rSfZGAvFjoYhJu69J+ve0=
 
 Name: chrome/locale/de/antabout.dtd
 Digest-Algorithms: MD5 SHA1

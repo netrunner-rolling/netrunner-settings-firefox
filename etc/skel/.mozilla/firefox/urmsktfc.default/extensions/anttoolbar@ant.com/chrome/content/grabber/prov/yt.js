@@ -457,6 +457,7 @@ var antvd = (function(antvd)
                 266:    { label: vi, br: "1440p"        },
                 271:    { label: vi, br: "2160p-WEBM"   },
                 278:    { label: vi, br: "144p-WEBM"    },
+                298:    { label: vi, br: "720p60"       },
                 299:    { label: vi, br: "1080p"        },
                 
                 302:    { label: vi, br: "720p"         },
@@ -490,6 +491,15 @@ var antvd = (function(antvd)
         {
             var docUri = document.documentURIObject;
             var reqUri = channel.URI;
+            let _skip = false;
+            
+            _skip = (docUri != null && docUri.spec.indexOf("mpd_version") != -1) ||
+                    (reqUri != null && reqUri.spec.indexOf("mpd_version") != -1);
+            
+            if (_skip == true)
+            {
+                return false;
+            }
 
             try
             {
