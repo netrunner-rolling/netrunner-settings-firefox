@@ -7,5 +7,7 @@ Standards-Version: 3.7.2
 
 Package: netrunner-settings-firefox
 Architecture: all
+Breaks: default-settings-firefox
+Replaces: default-settings-firefox
 Description: Default configuration for Firefox 
  Default configuration for Firefox in Maui/Netrunner
