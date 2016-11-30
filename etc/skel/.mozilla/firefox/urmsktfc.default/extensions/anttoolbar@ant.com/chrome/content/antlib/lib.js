@@ -100,6 +100,47 @@ var AntLib =
         }
     },
 
+    isDebugConverterStop: function()
+    {
+        try
+        {
+            if (AntPrefs)
+            {
+                if (AntPrefs.getAntBranch().getBoolPref('debug.converter.stop'))
+                {
+                    antvd.AntLib.toLog(
+                        "AntLib.isDebugConverterStop (lib.js)",
+                        "Preference 'extensions.anttoolbar.debug.converter.stop' set to TRUE, skipping converter run"
+                    );
+    
+                    return true;
+                }
+            }
+        }
+        catch(ex)
+        {
+        }
+        
+        return false;
+    },
+    
+    // 'extensions.anttoolbar.debug.converter.output'
+    isDebugConverterOutput: function()
+    {
+        try
+        {
+            if (AntPrefs)
+            {
+                return AntPrefs.getAntBranch().getCharPref('debug.converter.output');
+            }
+        }
+        catch(ex)
+        {
+        }
+        
+        return null;
+    },
+
     openURL: function (url)
     {
         if (arguments.length > 1 && arguments[1])

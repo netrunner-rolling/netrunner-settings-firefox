@@ -190,14 +190,18 @@ var antvd = (function(antvd)
                 {
                     try
                     {
-                        // TODO(ICh): Add a shared function which would perform the "nothrow" removal
-                        FileUtils.File(svideo.target).remove(false);
-                        FileUtils.File(saudio.target).remove(false);
-
-                        antvd.AntLib.toLog(
-                            "YtVideoRequest.download (yt.js)",
-                            "Removed temporary files\n   " + svideo.target + "\n   " + saudio.target
-                        );
+                        // Do not clean up streams if converter stop flag is set
+                        if (AntLib.isDebugConverterStop() == false)
+                        {
+                            // TODO(ICh): Add a shared function which would perform the "nothrow" removal
+                            FileUtils.File(svideo.target).remove(false);
+                            FileUtils.File(saudio.target).remove(false);
+    
+                            antvd.AntLib.toLog(
+                                "YtVideoRequest.download (yt.js)",
+                                "Removed temporary files\n   " + svideo.target + "\n   " + saudio.target
+                            );
+                        }
                     }
                     catch (_e0)
                     {

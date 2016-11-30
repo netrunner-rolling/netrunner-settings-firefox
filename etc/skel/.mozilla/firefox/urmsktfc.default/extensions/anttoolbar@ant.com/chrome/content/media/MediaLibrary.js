@@ -416,6 +416,7 @@ var antvd = (function(antvd)
         
             try
             {
+                AntPrefs.manageFlvDir();
                 file = new FileUtils.File(AntPrefs.flvDir);
             }
             catch (e)

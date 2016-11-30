@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <!-- 
-options.xul
-firefox
-
-Created by Zak on 2008-06-17.
-Contributors BK, ICh
-Copyright 2008-2016 Ant.com. All rights reserved.
+  options.xul
+  firefox
+  
+  Created by Zak on 2008-06-17.
+  Contributors BK, ICh
+  Copyright 2008-2016 Ant.com. All rights reserved.
 -->
 
 <!DOCTYPE prefwindow [
@@ -90,7 +90,6 @@ Copyright 2008-2016 Ant.com. All rights reserved.
     <hbox align="center" flex="1">
       <textbox id="AntPrefsFlvDir"
                preference="antBarPrefsFlvDir" 
-               readonly="true"
                flex="1" />
       <button id="antBarPrefsFlvDirButton"
               class="ant-explore-class"

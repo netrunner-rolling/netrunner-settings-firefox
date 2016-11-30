@@ -20,20 +20,61 @@ var antvd = (function(antvd)
     Components.utils.import("resource://gre/modules/Downloads.jsm");
     Components.utils.import("resource://gre/modules/FileUtils.jsm");
 
-    function HlsMediaRequest(Document, Chunks, QualityTag)
+    function HlsMediaRequest(Document, Chunks, QualityTag, Encrypted, MasterPlaylistURL, Strategy)
     {
         this._document = Document;
         this._chunks = Chunks;
         this.m_CleanDocumentName = antvd.AntLib.sanitize(this._document.title).replace(/[,:()\[\]\|"'.`~▶]/ig,"").trim();
         let cleanName = this.m_CleanDocumentName;
+        
+        this.m_OurStrategy = Strategy;
 
         if(QualityTag != null)
         {
             this.m_QualityTag = QualityTag;
-            cleanName = antvd.AntLib.sprintf("%s - %s", QualityTag, this.m_CleanDocumentName);
+        }
+        else
+        {
+            this.m_QualityTag = "...x...";
         }
         
+        // Patch for vk.com
+        if (MasterPlaylistURL.match(/vk\.(?:com|me|cc|ru|ua)\//i))
+        {
+            try
+            {
+                var regex_result = MasterPlaylistURL.match(/\/index\-f(\d+)/i);
+                
+                if (regex_result == null)
+                {
+                    antvd.AntLib.toLog(
+                        "HlsMediaRequest.ctor (hls.js)",
+                        "VK patch: Playlist URI does not contain index field, quality tag unchanged",
+                        ex
+                    );
+                }
+                else
+                {
+                    this.m_QualityTag = "Video " + regex_result[1];
+                }
+            }
+            catch(ex)
+            {
+                antvd.AntLib.logError(
+                    "HlsMediaRequest.ctor (hls.js)",
+                    "VK patch failed, quality tag unchanged",
+                    ex
+                );
+            }
+        }
+        
+        cleanName = antvd.AntLib.sprintf("%s - %s", this.m_QualityTag, this.m_CleanDocumentName);
+
         this._base = new antvd.MediaRequest(Document.documentURIObject, Document.referrer, cleanName, 0);
+        
+        this._base.encrypted = Encrypted;
+        
+        this.m_MasterPlaylistURL = MasterPlaylistURL;
 
         antvd.AntLib.toLog(
             "HlsSearchResult.ctor (hls.js)",
@@ -50,6 +91,8 @@ var antvd = (function(antvd)
         _chunks: null,    
         _document: null,
         m_QualityTag: null,
+        m_MasterPlaylistURL: null,
+        m_OurStrategy: null,
         
         get displayName()
         {
@@ -63,17 +106,42 @@ var antvd = (function(antvd)
     
         compare: function(request)
         {
-            if (request.m_QualityTag == this.m_QualityTag)
+            let result = false;
+            
+            // Check if this playlist is in list of dependant media playlists
+            if (this.m_OurStrategy)
             {
-                return true;
+                let _playlist = this.m_OurStrategy.dependant_media_playlists_map.get(this.m_MasterPlaylistURL);
+                
+                if (_playlist != undefined)
+                {
+                    return true;
+                }
             }
             
-            return false;
+            if (request.m_MasterPlaylistURL == this.m_MasterPlaylistURL)
+            {
+                if (request.m_QualityTag == this.m_QualityTag)
+                {
+                    result = true;
+                }
+            }
+            
+            antvd.AntLib.toLog(
+                "HlsMediaRequest.compare (hls.js)",
+                antvd.AntLib.sprintf(
+                    "Request: Master playlist URL: %s, quality tag: %s\n   This: Master playlist URL: %s, quality tag: %s\n Result: %d",
+                    request.m_MasterPlaylistURL, request.m_QualityTag, this.m_MasterPlaylistURL, this.m_QualityTag, result
+                )
+            );
+            
+            return result;
         },
         
         download: function(library)
         {
             let ctx = this;
+            
             let converterConf = antvd.ConverterPackage.getDefault();
             
             try
@@ -137,7 +205,7 @@ var antvd = (function(antvd)
                         "Failed to convert media",
                         ex
                     );
-    
+
                     throw ex;
                 }
     
@@ -160,20 +228,24 @@ var antvd = (function(antvd)
                 }
                 finally
                 {
-                    try
+                    // Do not clean up chunks if converter stop flag is set
+                    if (AntLib.isDebugConverterStop() == false)
                     {
-                        for(let i = 0; i < ctx._chunks.length; i++)
+                        try
                         {
-                            FileUtils.File(_svideos[i].target).remove(false);
+                            for(let i = 0; i < ctx._chunks.length; i++)
+                            {
+                                FileUtils.File(_svideos[i].target).remove(false);
+                            }
                         }
-                    }
-                    catch (_e0)
-                    {
-                        antvd.AntLib.logWarning(
-                            "HlsMediaRequest.download (hls.js)",
-                            "Failed to cleanup temporary files",
-                            _e0
-                        );
+                        catch (_e0)
+                        {
+                            antvd.AntLib.logWarning(
+                                "HlsMediaRequest.download (hls.js)",
+                                "Failed to cleanup temporary files",
+                                _e0
+                            );
+                        }
                     }
                 }
             });
@@ -186,12 +258,20 @@ var antvd = (function(antvd)
     
         release: function()
         {
+            let ctx = this;
+            
+            // Remove this playlist from the list of dependant media playlists
+            if (ctx.m_OurStrategy)
+            {
+                ctx.m_OurStrategy.dependant_media_playlists_map.delete(this.m_MasterPlaylistURL);
+            }
         }
     };
     
-    function HlsSearchResult(MasterPlaylistUri, Document)
+    function HlsSearchResult(MasterPlaylistUri, Document, Strategy)
     {
         var m_Ctx = this;
+        var m_OurStrategy = Strategy;
         
         var m_MasterPlaylistUrl = MasterPlaylistUri;
         var m_MasterPlaylistBase = m_MasterPlaylistUrl.spec.substring(0, m_MasterPlaylistUrl.spec.lastIndexOf("/") + 1);
@@ -206,24 +286,24 @@ var antvd = (function(antvd)
         
         const Ci = Components.interfaces;
         const Cc = Components.classes;
-    
+        
         const ID_IOSERVICE_CONTRACT = "@mozilla.org/network/io-service;1";
     
         // ISearchResult implementation
         
         // Asynchronously downloads and parses the manifest
         // @member asyncFetch
-        // @param {Function} clbck May be called multiple times.
-        //                         An instance of FlvLink is as a single argument
+        // @param {Function} callback   May be called multiple times.
+        //                              An instance of FlvLink is as a single argument
         // @returns {undefined} nothing
         this.asyncFetch = function(callback)
         {
             m_Callback = callback;
             
-            this.withContentUri(m_MasterPlaylistUrl, this.processMasterPlaylistCallback);
+            this.withContentUri(m_MasterPlaylistUrl, this.processPlaylistCallback);
         };
         
-        this.processOrdinalPlaylist = function(XStreamInf, StreamLink)
+        this.processMediaPlaylist = function(XStreamInf, StreamLink)
         {
             // Here, XStreamInf is the line from EXTM3U playlist. It has the following form:
             // #EXT-X-STREAM-INF:NAME=VALUE,NAME=VALUE,NAME=VALUE,...
@@ -234,6 +314,7 @@ var antvd = (function(antvd)
             
             // Create payload JSON object that then will go as parameter into callback
             var payload = {};
+            var forbidden_chars = /[\/\0\<\>\:\"\\\|\?\*]/gi;
             
             if (streamInfArray.length > 0)
             {
@@ -247,18 +328,18 @@ var antvd = (function(antvd)
                         
                         if (streamInfArray[i].toLowerCase().startsWith("resolution"))
                         {
-                            payload['resolution'] = value;
+                            payload['resolution'] = value.replace(forbidden_chars, "");
                         }
                         else if (streamInfArray[i].toLowerCase().startsWith("name"))
                         {
-                            payload['quality'] = value.replace(/\"/g, "");
+                            payload['quality'] = value.replace(forbidden_chars, "");
                         }
                     }
                 }
                 catch(e)
                 {
                     antvd.AntLib.logError(
-                        "HlsSearchResult.processOrdinalPlaylist (hls.js)",
+                        "HlsSearchResult.processMediaPlaylist (hls.js)",
                         "Error while parsing EXT-X-STREAM-INF header",
                         e
                     );
@@ -272,11 +353,17 @@ var antvd = (function(antvd)
             }
             
             antvd.AntLib.toLog(
-                "HlsSearchStrategy.processOrdinalPlaylist (hls.js)",
-                "Detected playlist " + StreamLink
+                "HlsSearchStrategy.processMediaPlaylist (hls.js)",
+                "Detected media playlist " + StreamLink
             );
             
             payload['playlist'] = StreamLink;
+            
+            // Set playlist to map of dependant media playlist
+            // Once we make HTTP request to obtain media playlist, AVD will re-detect it,
+            // and treat as single media playlist
+            // Checking map will avoid duplication of qualities in drop-down menu
+            m_OurStrategy.dependant_media_playlists_map.set(StreamLink);
             
             let hr = new XMLHttpRequest();
             
@@ -286,12 +373,13 @@ var antvd = (function(antvd)
                 {
                     if (hr.status == 200)
                     {
-                        m_Ctx.processOrdinalPlaylistCallback(hr.responseText, payload);
+                        
+                        m_Ctx.processMediaPlaylistCallback(hr.responseText, payload);
                     }
                     else
                     {
                         antvd.AntLib.toLog(
-                            "HlsSearchResult.processOrdinalPlaylist (hls.js)",
+                            "HlsSearchResult.processMediaPlaylist (hls.js)",
                             "Failed to fetch content: " + "\n   URI: " + uri.spec +
                             "\n   Error: " + hr.statusText +
                             "\n   Status: " + hr.status
@@ -305,24 +393,25 @@ var antvd = (function(antvd)
             catch(e)
             {
                 antvd.AntLib.logError(
-                    "HlsSearchResult.processOrdinalPlaylist (hls.js)",
+                    "HlsSearchResult.processMediaPlaylist (hls.js)",
                     "Async HTTP request failed, URI: " + StreamLink,
                     e
                 );
             }
         };
         
-        // processOrdinalPlaylistCallback method
+        // processMediaPlaylistCallback method
         // Synchronously parses the content and builds a valid object of VideoSource
-        // @member processOrdinalPlaylistCallback
-        // @param {String} content Ordinal playlist content
-        // @param {JSON} payload Additional information from master playlist
-        this.processOrdinalPlaylistCallback = function(content, payload)
+        // @member processMediaPlaylistCallback
+        // @param {String} content -- Media playlist content
+        // @param {JSON} payload -- Additional information from master playlist
+        this.processMediaPlaylistCallback = function(content, payload)
         {
             let playlist = null;
             let chunks = new Array();
             let playlist_base = "";
             let playlist_host = "";
+            let encrypted = false;
         
             if (payload && payload.hasOwnProperty("playlist"))
             {
@@ -340,7 +429,7 @@ var antvd = (function(antvd)
                 catch(e)
                 {
                     antvd.AntLib.logError(
-                        "HlsSearchResult.processOrdinalPlaylistCallback (hls.js)",
+                        "HlsSearchResult.processMediaPlaylistCallback (hls.js)",
                         "Error while extracting pre-path from playlist URI " + playlist_base,
                         e
                     );
@@ -355,6 +444,17 @@ var antvd = (function(antvd)
                 {            
                     if ( typeof(playlist[i]) === undefined )
                     {
+                        continue;
+                    }
+                    
+                    if (playlist[i].length == 0)
+                    {
+                        continue;
+                    }
+                    
+                    if (playlist[i].startsWith("#EXT-X-KEY") == true)
+                    {
+                        encrypted = true;
                         continue;
                     }
         
@@ -392,7 +492,7 @@ var antvd = (function(antvd)
                         if (antvd.AntLib.startsWithHTTP(chunk_link) == false)
                         {
                             antvd.AntLib.logWarning(
-                                "HlsMediaRequest.processOrdinalPlaylistCallback (hls.js)",
+                                "HlsMediaRequest.processMediaPlaylistCallback (hls.js)",
                                 "Chunk is not a valid HTTP URI: " + chunk_link,
                                 null
                             );
@@ -405,7 +505,7 @@ var antvd = (function(antvd)
             catch (ex)
             {
                 antvd.AntLib.logError(
-                    "HlsSearchResult.processOrdinalPlaylistCallback (hls.js)",
+                    "HlsSearchResult.processMediaPlaylistCallback (hls.js)",
                     "Failed to parse playlist",
                     ex
                 );
@@ -426,85 +526,155 @@ var antvd = (function(antvd)
                     quality = payload['resolution'];
                 }
                 
-                let mediaRequest = new HlsMediaRequest(m_Document, chunks, quality);
+                let mediaRequest = new HlsMediaRequest(
+                    m_Document,
+                    chunks,
+                    quality,
+                    encrypted,
+                    m_MasterPlaylistUrl.spec
+                );
 
                 m_Callback(mediaRequest);
             }
         };
         
-        // processMasterPlaylistCallback method
+        // processPlaylistCallback method
         // Synchronously parses the content and builds a valid object of VideoSource
-        // @member processMasterPlaylistCallback
+        // @member processPlaylistCallback
         // @param {String} content HLS manifest's content
-        this.processMasterPlaylistCallback = function(content, found)
+        this.processPlaylistCallback = function(content, found)
         {
-            let master_playlist = null;
+            let playlist = null;
+            let playlist_type_media = false;
+            let playlist_type_master = false;
         
-            try
+            playlist = content.split("\n");
+            
+            if (playlist.length == 0)
             {
-                master_playlist = content.split("\n");
+                antvd.AntLib.toLog("HlsSearchResult.processPlaylistCallback (hls.js)", "Empty playlist");
                 
-                for(let i = 0; i < master_playlist.length; i++)
+                return;
+            }
+            
+            // Scan playlist content to check if it is a master playlist
+            for(let i = 0; i < playlist.length; i++)
+            {
+                if ( typeof(playlist[i]) === undefined )
                 {
-                    if ( typeof(master_playlist[i]) === undefined )
-                    {
-                        continue;
-                    }
-        
-                    master_playlist[i] = master_playlist[i].trim();
-        
-                    if (master_playlist[i].startsWith("#EXT-X-STREAM-INF:"))
-                    {
-                        let lineA = master_playlist[i]; i++;
-                        let lineB = master_playlist[i];
-                        
-                        m_Ctx.processOrdinalPlaylist(lineA, lineB);
-                    }
+                    continue;
+                }
+    
+                playlist[i] = playlist[i].trim();
+    
+                if (playlist[i].startsWith("#EXT-X-STREAM-INF"))
+                {
+                    playlist_type_master = true;
+                    break;
                 }
             }
-            catch (ex)
+        
+            // Scan playlist content to check if it is a media playlist
+            for(let i = 0; i < playlist.length; i++)
+            {
+                if ( typeof(playlist[i]) === undefined )
+                {
+                    continue;
+                }
+    
+                playlist[i] = playlist[i].trim();
+    
+                if (playlist[i].startsWith("#EXTINF"))
+                {
+                    playlist_type_media = true;
+                    break;
+                }
+            }
+            
+            if (playlist_type_master == true && playlist_type_media == true)
             {
                 antvd.AntLib.logError(
-                    "HlsSearchResult.processMasterPlaylistCallback (hls.js)",
-                    "Failed to parse master playlist",
-                    ex
+                    "HlsSearchResult.processPlaylistCallback (hls.js)",
+                    "Playlist is invalid (MASTER and MEDIA at the same time)",
+                    null
                 );
                 
                 return;
             }
-        };
-        
-        
-        // addVideoStream private method
-        // @private
-        // @member addVideoStream
-        // @param {nsIURI} uri
-        // @param {DailymotionHdsStream} hdsStream
-        this.addVideoStream = function(uri, hdsStream)
-        {
-            if (hdsStream.getFragmentCount() == 0)
+
+            if (playlist_type_master == false && playlist_type_media == false)
             {
                 antvd.AntLib.toLog(
-                    "HlsSearchResult.addVideoStream (hls.js)",
-                    "Video manifest doesn't contain fragments: " + uri.spec
+                    "HlsSearchResult.processPlaylistCallback (hls.js)",
+                    "Playlist is not HTTP Live Streaming playlist (not MASTER and not MEDIA)"
                 );
-        
+                
                 return;
             }
-        
-            try
+            
+            if (playlist_type_master == true)
             {
-                let mediaRequest = new DailymotionMediaRequest(uri, hdsStream, m_Document);
-        
-                m_Callback(mediaRequest);
+                try
+                {
+                    for(let i = 0; i < playlist.length; i++)
+                    {
+                        if ( typeof(playlist[i]) === undefined )
+                        {
+                            continue;
+                        }
+            
+                        playlist[i] = playlist[i].trim();
+            
+                        if (playlist[i].startsWith("#EXT-X-STREAM-INF:"))
+                        {
+                            let stream_description = playlist[i]; i++;
+                            let stream_uri = playlist[i];
+                            
+                            m_Ctx.processMediaPlaylist(stream_description, stream_uri);
+                        }
+                    }
+                }
+                catch (ex)
+                {
+                    antvd.AntLib.logError(
+                        "HlsSearchResult.processPlaylistCallback (hls.js)",
+                        "Failed to parse master playlist",
+                        ex
+                    );
+                    
+                    return;
+                }
             }
-            catch (e)
+            else if (playlist_type_media == true)
+            {
+                try
+                {
+                    var payload = {};
+                    
+                    payload['playlist'] = m_MasterPlaylistUrl.spec;
+                    
+                    m_Ctx.processMediaPlaylistCallback(content, payload);
+                }
+                catch (ex)
+                {
+                    antvd.AntLib.logError(
+                        "HlsSearchResult.processPlaylistCallback (hls.js)",
+                        "Failed to parse media playlist",
+                        ex
+                    );
+                    
+                    return;
+                }
+            }
+            else
             {
                 antvd.AntLib.logError(
-                    "HlsSearchResult.addVideoStream (hls.js)",
-                    "Failed to add a stream: " + uri.spec,
-                    e
+                    "HlsSearchResult.processPlaylistCallback (hls.js)",
+                    "Internal error while parsing playlist. Did you mess up with the code?",
+                    null
                 );
+                
+                return;
             }
         };
         
@@ -560,13 +730,16 @@ var antvd = (function(antvd)
         };
     };
     
-     // @class HlsSearchStrategy
-     // @implements ISearchStrategy
+    // @class HlsSearchStrategy
+    // @implements ISearchStrategy
     antvd.HlsSearchStrategy = function()
     {
         var ctx = this;
+        
+        var dependant_media_playlists_map = null;
     
-        const manifestContentTypeHLS = "application/vnd.apple.mpegurl";
+        const manifestContentTypeHLS        = "application/vnd.apple.mpegurl";
+        const manifestContentTypeXMPEGURL   = "application/x-mpegurl";
         
         // Xvideos
         const m_XVReManifestName = "hls.m3u8";
@@ -586,13 +759,15 @@ var antvd = (function(antvd)
             var reqUri = channel.URI;
             var host = null;
             
-            if (channel.contentType == manifestContentTypeHLS)
+            let contentType = channel.contentType.toLowerCase();
+            
+            if (contentType == manifestContentTypeHLS || contentType == manifestContentTypeXMPEGURL)
             {
                 antvd.AntLib.toLog(
                     "HlsSearchStrategy.isApplicable (hls.js)",
                     antvd.AntLib.sprintf(
-                        "Detected master playlist file %s at %s",
-                        manifestContentTypeHLS, channel.URI.spec
+                        "Detected playlist file %s at %s",
+                        contentType, channel.URI.spec
                     )
                 );
 
@@ -643,11 +818,13 @@ var antvd = (function(antvd)
             var uri = channel.URI;
             let _runHLS = false;
     
-            if (channel.contentType == manifestContentTypeHLS)
+            let contentType = channel.contentType.toLowerCase();
+            
+            if (contentType == manifestContentTypeHLS || contentType == manifestContentTypeXMPEGURL)
             {
                 _runHLS = true;
             }
-            else if (channel.contentType == manifestContentTypePlain)
+            else if (contentType == manifestContentTypePlain)
             {
                 if (uri.path.indexOf(m_XVReManifestName) != -1)
                 {
@@ -658,13 +835,18 @@ var antvd = (function(antvd)
             {
                 antvd.AntLib.toLog(
                     "HlsSearchStrategy.search (hls.js)",
-                    "Unsupported manifest type: " + channel.contentType
+                    "Unsupported manifest type: " + contentType
                 );
             }
 
             if (_runHLS == true)
             {
-                var searchResult = new HlsSearchResult(uri, document);
+                if (ctx.dependant_media_playlists_map == null)
+                {
+                    ctx.dependant_media_playlists_map = new Map();
+                }
+                
+                var searchResult = new HlsSearchResult(uri, document, ctx);
     
                 searchResult.asyncFetch(found);
             }

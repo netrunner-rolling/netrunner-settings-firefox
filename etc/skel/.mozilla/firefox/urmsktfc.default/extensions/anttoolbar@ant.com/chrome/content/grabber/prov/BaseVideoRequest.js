@@ -28,6 +28,7 @@ var antvd = (function(antvd)
         this._referrerUrl = referrerUrl;
         this.displayName = name;
         this.size = size;
+        this.encrypted = false;
         this._streams = {};
     };
 
@@ -46,6 +47,11 @@ var antvd = (function(antvd)
          * @type Number
          */
         size: null,
+
+        // Indicates that request points to encrypted stream.
+        // In downloading chain this will be used to prevent
+        // downloading of unsupported encrypted streams
+        encrypted: false,
 
         /**
          * Origin url. Must not be null

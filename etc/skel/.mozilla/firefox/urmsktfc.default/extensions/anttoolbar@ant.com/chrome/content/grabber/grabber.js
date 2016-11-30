@@ -9,27 +9,32 @@
 
 var AntGrabber =  {
 
-    requestObserver : {
+    requestObserver :
+    {
         observe : function (request, topic, data)
         {
-            try {
-
+            try
+            {
                 if ( typeof(Components) == 'undefined' )
+                {
                     return;
+                }
 
-                request = request.QueryInterface(
-                    Components.interfaces["nsIHttpChannel"]);
+                request = request.QueryInterface(Components.interfaces["nsIHttpChannel"]);
 
-                if ( request.URI.host.match( /(\.|^)ant.com/ ) ) {
+                if ( request.URI.host.match( /(\.|^)ant.com/ ) )
+                {
                     request.setRequestHeader( 'X-Ant-UID', AntRank.UUID, false );
                     request.setRequestHeader( 'X-Ant-Agent', AntBar.getAgent(), false );
                 }
             }
-            catch (e) {
-                AntLib.toLog("EXCEPTION : "+e);
+            catch (e)
+            {
+                AntLib.toLog("EXCEPTION : " + e);
             }
         }
     },
+    
     queryObserver: null,
 
     /**
@@ -49,17 +54,12 @@ var AntGrabber =  {
     start: function ()
     {
         var self = AntGrabber;
-        var observerService = AntLib.CCSV(
-            "@mozilla.org/observer-service;1", "nsIObserverService");
+        var observerService = AntLib.CCSV("@mozilla.org/observer-service;1", "nsIObserverService");
 
-        observerService.addObserver(
-            self.requestObserver, "http-on-modify-request", false);
-        observerService.addObserver(
-            self.queryObserver, "http-on-examine-response", false);
-        observerService.addObserver(
-            self.queryObserver, "http-on-examine-cached-response", false);
-        observerService.addObserver(
-            self.queryObserver, "http-on-examine-merged-response", false);
+        observerService.addObserver(self.requestObserver, "http-on-modify-request", false);
+        observerService.addObserver(self.queryObserver, "http-on-examine-response", false);
+        observerService.addObserver(self.queryObserver, "http-on-examine-cached-response", false);
+        observerService.addObserver(self.queryObserver, "http-on-examine-merged-response", false);
     },
 
     /**

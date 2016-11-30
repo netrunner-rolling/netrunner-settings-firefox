@@ -251,8 +251,12 @@ var antvd = (function(antvd)
                 {
                     try
                     {
-                        audio_file.remove(false);
-                        video_file.remove(false);
+                        // Do not clean up streams if converter stop flag is set
+                        if (AntLib.isDebugConverterStop() == false)
+                        {
+                            audio_file.remove(false);
+                            video_file.remove(false);
+                        }
                     }
                     catch (_e0)
                     {

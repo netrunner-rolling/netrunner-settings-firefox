@@ -130,6 +130,7 @@ var antvd = (function(antvd)
         // @param String audioMimeType Type of audio stream
         //
         // @returns {Promise} Async result of the conversion procedure
+        //          null      If convertsion stop flag is set in preferences
         //
         this.join = function(videoStreamPath, audioStreamPath, videoMimeType, audioMimeType)
         {
@@ -183,7 +184,7 @@ var antvd = (function(antvd)
                     videoStreamPath,
                     "-i",
                     audioStreamPath,
-                    "-map", "0:v", "-map", "1:a", "-codec", "copy", "-strict", "-2"
+                    "-map", "0:v", "-map", "1:a", "-codec", "copy"
                 ];
             }
             else
@@ -204,8 +205,41 @@ var antvd = (function(antvd)
                 return Promise.reject(new MediaConverterError(MediaConverterError.E_IO_FAILURE, ex));
             }
 
-            args.push(output.path);
+            // Check if report output setting is set
+            converter_output = AntLib.isDebugConverterOutput();
+            
+            if (converter_output == null)
+            {
+                args.push("-loglevel", "quiet");
+            }
+            else
+            {
+                converter_output = converter_output.toLowerCase();
+                
+                if ( converter_output == "show" )
+                {
+                    args.push("-loglevel", "verbose");
+                }
+                else if (converter_output == "report")
+                {
+                    args.push("-report");
+                }
+                else
+                {
+                    antvd.AntLib.toLog(
+                        "Converter.join (Converter.js)",
+                        "Unrecognized value '" + converter_output + "' of the option 'extensions.anttoolbar.debug.converter.output'. Acceptable values are: show, report"
+                    );
+                }
+            }
 
+            args.push("-strict", "-2", output.path);
+
+            if (AntLib.isDebugConverterStop() == true)
+            {
+                return null;
+            }
+            
             return run(args);
         };
 
@@ -219,6 +253,7 @@ var antvd = (function(antvd)
         // @param 'chunks' (Array) Array of filenames, each of them is pointing to a temporary MP4-file on disk
         // @param 'extraCmdOption' (Array) Additional command line options to be passed to FFMpeg tool
         // @returns {Promise} Async result of the conversion procedure
+        //          null      If convertsion stop flag is set in preferences
         this.joinChunks = function(chunks, extraCmdOption)
         {
             if (chunks.length == 0)
@@ -231,6 +266,7 @@ var antvd = (function(antvd)
             let output_file = null;     // @type nsIFile
             let demuxer_file = null;    // @type nsIFile
             let args = [];
+            let converter_output = null;
             
             // Create demuxer file
             try
@@ -326,7 +362,40 @@ var antvd = (function(antvd)
                 }
             }
             
+            // Check if report output setting is set
+            converter_output = AntLib.isDebugConverterOutput();
+            
+            if (converter_output == null)
+            {
+                args.push("-loglevel", "quiet");
+            }
+            else
+            {
+                converter_output = converter_output.toLowerCase();
+                
+                if ( converter_output == "show" )
+                {
+                    args.push("-loglevel", "verbose");
+                }
+                else if (converter_output == "report")
+                {
+                    args.push("-report");
+                }
+                else
+                {
+                    antvd.AntLib.toLog(
+                        "Converter.joinChunks (Converter.js)",
+                        "Unrecognized value '" + converter_output + "' of the option 'extensions.anttoolbar.debug.converter.output'. Acceptable values are: show, report"
+                    );
+                }
+            }
+            
             args.push("-codec", "copy", output.path);
+
+            if (AntLib.isDebugConverterStop() == true)
+            {
+                return null;
+            }
 
             return run(args);
         };
@@ -361,7 +430,7 @@ var antvd = (function(antvd)
         {
             try
             {
-                if (output)
+                if (output && AntLib.isDebugConverterStop() == false)
                 {
                     output.remove(false);
                 }
@@ -374,7 +443,7 @@ var antvd = (function(antvd)
             
             try
             {
-                if (demuxer)
+                if (demuxer && AntLib.isDebugConverterStop() == false)
                 {
                     demuxer.remove(this);
                 }

@@ -112,8 +112,16 @@ var AntBar =
                     videoToDownload = videos[i];
                 }
             }
+            
+            if (videoToDownload._base.encrypted == true)
+            {
+                alert( antvd.AntLang.getString('AntDownloadManager.encryptedHLSAlert') );
+            }
+            else
+            {
+                antvd.AntFlvList.download(videoToDownload);
+            }
 
-            antvd.AntFlvList.download(videoToDownload);
         }
 
         AntFlvUi.downloadButtonPressed();
@@ -126,7 +134,17 @@ var AntBar =
 
         if (id < videos.length)
         {
-            antvd.AntFlvList.download(videos[id]);
+            var video = videos[id];
+            
+            if (video._base.encrypted == true)
+            {
+                alert( antvd.AntLang.getString('AntDownloadManager.encryptedHLSAlert') );
+            }
+            else
+            {
+                antvd.AntFlvList.download(video);
+            }
+            
         }
 
         AntFlvUi.downloadButtonPressed();

@@ -140,10 +140,10 @@ var AntVideoDetector =
         }
 
         // Rule #5
-        if (path.match(/banner|ads|advertiser/i))
+        if (path.match(/banner|banners|ads|advertiser/i))
         {
-            score += -15;
-            logMessage = logMessage + "...rule 5, score -15, total " + score + "\n";
+            score += -50;
+            logMessage = logMessage + "...rule 5, score -50, total " + score + "\n";
         }
 
         // Rule #6
@@ -172,6 +172,13 @@ var AntVideoDetector =
         {
             score += 10;
             logMessage = logMessage + "...rule 9, score 10, total " + score + "\n";
+        }
+
+        // Rule #9-1
+        if (referrer.match(/banner|banners|ads|advertiser/i))
+        {
+            score -= 50;
+            logMessage = logMessage + "...rule 9-1, score -50, total " + score + "\n";
         }
 
         // Rule #10
@@ -359,7 +366,15 @@ var AntVideoDetector =
         if (url.match(/segment\-\d+\.m4s/i) && referrer.match(/vimeo\.com/i))
         {
             score -= 80;
-            logMessage = logMessage + "...rule 30, score 15, total " + score + "\n";
+            logMessage = logMessage + "...rule 35, score -80, total " + score + "\n";
+        }
+
+        // Rule #36
+        // Video segments of webtv.ert.gr (which uses Adobe F4M unimplemented yet)
+        if (url.match(/Seg\d+\-Frag\d+\?als=/i))
+        {
+            score -= 80;
+            logMessage = logMessage + "...rule 36, score -80, total " + score + "\n";
         }
 
         this.debugLogScoring(logMessage, score);

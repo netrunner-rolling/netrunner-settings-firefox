@@ -71,7 +71,7 @@ var AntPrefs =
         }
 
         self.manageSearchBoxDisplay();
-        self.manageFlvDir();
+        // self.manageFlvDir();
         self.manageDisplayMode(false);
         self.prefWatcher.startup();
         self.flashTrusting();
