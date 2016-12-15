@@ -1,0 +1,23 @@
+<!--       antplayer.dtd      firefox            Created by Zak on 2008-07-03.      Copyright 2008-2016 Ant.com. All rights reserved. -->
+<!ENTITY antPlayerWindow.title "Ant.com 影片播放器">
+<!ENTITY antPlayerHeadSearchBox.value "搜索网络">
+<!ENTITY antPlayerHeadDoSearch.tooltiptext "搜索网络">
+<!ENTITY antPlayerPopupPlay.label "播放">
+<!ENTITY antPlayerPopupRename.label "重命名">
+<!ENTITY antPlayerPopupDelete.label "删除">
+<!ENTITY antPlayerHeaderOrigin.label "来源">
+<!ENTITY antPlayerHeaderPath.label "路径">
+<!ENTITY antPlayerHeaderName.label "名称">
+<!ENTITY antPlayerHeaderFileSize.label "大小">
+<!ENTITY antPlayerHeaderDate.label "日期">
+<!ENTITY antPlayerHeaderDuration.label "持续时间">
+<!ENTITY antPlayerAutoPlayNext "自动播放下一个视频">
+<!ENTITY antPlayerLoopPlay "循环播放列表">
+<!ENTITY antPlayerRandomPlay "随机播放">
+<!ENTITY antPlayerButtonNext "下一个">
+<!ENTITY antPlayerButtonPrevious "上一个">
+<!ENTITY antPlayerButtonAddPlaylist "创建一个新的播放列表">
+<!ENTITY antPlayerGeneralPlaylist "未分类">
+<!ENTITY antPlayerAddTo.label "移动至">
+<!ENTITY antPlayerNewPlaylist.label "新建播放列表">
+<!ENTITY antPlayerDeleteAllVideos "删除此播放列表中的所有视频">

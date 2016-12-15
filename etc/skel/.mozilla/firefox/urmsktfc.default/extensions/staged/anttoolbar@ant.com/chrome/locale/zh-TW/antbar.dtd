@@ -1,0 +1,47 @@
+<!--      antbar.dtd     firefox          Created by Zak on 2008-07-03.     Copyright 2008-2016 Ant.com. All rights reserved.  -->
+<!ENTITY antFlvListPopupDownloadCurrent.label "下載此影片">
+<!ENTITY antFlvListPopupPlayCurrent.label "在播放器觀看">
+<!ENTITY antFlvListPopupCopyLink.label "複製影片地址">
+<!ENTITY antFlvListPopupRename.label "重新命名">
+<!ENTITY antFlvListPopupDownloadSelected.label "下載選中影片">
+<!ENTITY antFlvListPopupDownloadAll.label "下載全部影片">
+<!ENTITY antFlvListPopupClearList.label "清除影片清單">
+<!ENTITY antFlvToolbar.label "影片清單">
+<!ENTITY antFlvToolBarMenuPrefButton.label "設定">
+<!ENTITY antFlvToolBarMenuPrefButton.tooltiptext "開啟 Ant 設定視窗">
+<!ENTITY antFlvToolBarMenuDisableButton.label "刪除此網站">
+<!ENTITY antFlvToolBarMenuDisableButton.tooltiptext "在此網站停用影片捕捉">
+<!ENTITY antFlvToolbarClearList.tooltiptext "清除">
+<!ENTITY antFlvToolbarHelp.tooltiptext "幫助">
+<!ENTITY antFlvToolbarClose.tooltiptext "關閉">
+<!ENTITY antFlvHeaderOrigin.label "來源">
+<!ENTITY antFlvHeaderUrl.label "URL">
+<!ENTITY antFlvHeaderName.label "名稱">
+<!ENTITY antFlvBoxDisabled.description "啟用此網站視訊檢測。">
+<!ENTITY antFlvBoxAddToWatchListButton.label "啟用">
+<!ENTITY antToolbar.toolbarname "Ant 工具列">
+<!ENTITY antToolBarSearchBox.value "搜尋網路">
+<!ENTITY antToolBarResizeSplitter.tooltiptext "調整搜尋框大小">
+<!ENTITY antToolBarCombinedButton.label "搜尋">
+<!ENTITY antToolBarCombinedButton.tooltiptext "搜尋">
+<!ENTITY antToolBarPlayerButton.tooltiptext "觀看您下載的影片">
+<!ENTITY antToolBarPlayerButton.label "播放器">
+<!ENTITY antToolBarMovieListButton.tooltiptext "點擊這裡來開啟下載影片面板。">
+<!ENTITY antToolBarMovieListButton.label "影片清單">
+<!ENTITY antToolBarDownloadButton.tooltiptext "點擊這裡來從此頁下載影片">
+<!ENTITY antToolBarDownloadButton.label "下載">
+<!ENTITY antToolBarOpenDirButton.tooltiptext "點擊這裡來開啟視訊資料夾">
+<!ENTITY antToolBarOpenDirButton.label "探測">
+<!ENTITY antToolBarRankButton.tooltiptext "點擊這裡來排名頁面。">
+<!ENTITY antToolBarRankButton.label "無等級">
+<!ENTITY antToolBarSupportButton.tooltiptext "如果您需要幫助，不要猶豫，詢問我們的支援。">
+<!ENTITY antToolBarSupportButton.label "幫助">
+<!ENTITY antToolBarAboutButton.tooltiptext "關於 Ant Downloader">
+<!ENTITY antToolBarAboutButton.label "關於">
+<!ENTITY notFoundTipWindow.title "此頁面沒有檢測到視訊">
+<!ENTITY notFoundTipWindow.startPlayingVideo "您可能需要在此頁面開始播放視訊後再嘗試下載它。">
+<!-- next two phrases are two parts of one whole sentence -->
+<!ENTITY notFoundTipWindow.reportIt "在檢測出現問題的情況下，您可以回報它到">
+<!ENTITY notFoundTipWindow.feedbackPage "反饋頁面">
+<!ENTITY notFoundTipWindow.dontDisplayAgain "不再提示此訊息">
+<!ENTITY notFoundTipWindow.ieMode "您現在在 IE 模式。切換到 FireFox 模式以下載該視訊。">

@@ -1,0 +1,6 @@
+<!--      antabout.dtd     firefox          Created by DS on 2011-07-06.     Copyright 2008-2016 Ant.com. All rights reserved.  -->
+<!ENTITY antAboutTitle.label "Descargador de video Ant.com">
+<!ENTITY antAboutFirst.label "Descargador de video Ant.com.">
+<!ENTITY antAboutVersion.label "Versión actual es 's'">
+<!ENTITY antAboutCopyright1.label "Copyright ©">
+<!ENTITY antAboutCopyright2.label "Todos los derechos reservados">

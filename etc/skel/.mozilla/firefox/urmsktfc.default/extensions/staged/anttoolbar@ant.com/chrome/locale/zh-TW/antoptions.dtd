@@ -1,0 +1,27 @@
+<!--       antoptions.dtd      firefox            Created by Zak on 2008-07-03.      Copyright 2008-2016 Ant.com. All rights reserved. -->
+<!-- options.xul -->
+<!-- Note to translators ... make this value bigger if your strings are cut off at the       sides in the settings screen. This will widen the screen. -->
+<!ENTITY preferences.window.size "width: 38em; height: 50em;">
+<!ENTITY antBarPrefs.title "Ant 工具列選項">
+<!ENTITY antBarPrefsPane.label "Ant.com 主要選項">
+<!ENTITY antBarPrefsFlvDirLabel.value "在哪裡下載電影：">
+<!ENTITY antBarPrefsFlvDirButton.label "選擇">
+<!ENTITY antBarPrefsNotificationCheckBox.label "啟用通知">
+<!ENTITY antBarPrefsShowNotFoundWindow.label "當找不到視訊時不顯示提示">
+<!ENTITY antBarPrefsSearch.label "顯示搜尋工具">
+<!ENTITY antBarPrefsSecurity.title "隱私選項">
+<!ENTITY antBarPrefsSecurityHint.title "Ant.com 收集的數據不會出售或提供給任何第三方。此數據不會用於廣告定位和個人追蹤。">
+<!ENTITY antBarPrefsRankModeCheckBox.label "發送瀏覽統計 (這啟用 AntRank)">
+<!ENTITY antBarPrefsSendDownloadStatsCheckBox.label "發送下載統計">
+<!ENTITY antBarPrefsSendHeartBeatCheckBox.label "發送每天的心跳 (這可以讓我們知道，您正在使用本附加元件)">
+<!ENTITY antBarPrefsCloseButton.label "關閉">
+<!ENTITY antBarPrefsChoseMode "顯示模式：">
+<!ENTITY antBarPrefsStatusBar "狀態列">
+<!ENTITY antBarPrefsToolbar "工具列">
+<!ENTITY antBarPrefsToolbarCompact "精簡模式">
+<!ENTITY antBarPrefsGeneralOptions "一般選項">
+<!ENTITY antBarPrefsPlayerMode "播放器選項">
+<!ENTITY antBarPrefsPlayerModeTab "在新分頁開啟播放器">
+<!ENTITY antBarPrefsPlayerModePopup "在新視窗開啟播放器">
+<!-- NOTE to translators - do not translate next 1 string -->
+<!ENTITY addonBarCmd.label "Tinkle Bar">

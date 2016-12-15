@@ -1,0 +1,27 @@
+<!--       antoptions.dtd      firefox            Created by Zak on 2008-07-03.      Copyright 2008-2016 Ant.com. All rights reserved. -->
+<!-- options.xul -->
+<!-- Note to translators ... make this value bigger if your strings are cut off at the       sides in the settings screen. This will widen the screen. -->
+<!ENTITY preferences.window.size "width: 38em; height: 50em;">
+<!ENTITY antBarPrefs.title "Inställningar för Ant Video Downloader">
+<!ENTITY antBarPrefsPane.label "Ant.com">
+<!ENTITY antBarPrefsFlvDirLabel.value "Mapp för hämtade videor: ">
+<!ENTITY antBarPrefsFlvDirButton.label "Bläddra">
+<!ENTITY antBarPrefsNotificationCheckBox.label "Aktivera aviseringar">
+<!ENTITY antBarPrefsShowNotFoundWindow.label "Visa aviseringar när videor inte identifieras">
+<!ENTITY antBarPrefsSearch.label "Visa sökverktyg">
+<!ENTITY antBarPrefsSecurity.title "Sekretessinställningar">
+<!ENTITY antBarPrefsSecurityHint.title "Data som samlas in av Ant.com säljs inte vidare eller görs tillgänglig för någon tredje part. Ingen data används heller för personanpassad reklam eller personspårning.">
+<!ENTITY antBarPrefsRankModeCheckBox.label "Skicka surfningsstatistik (aktiverar AntRank)">
+<!ENTITY antBarPrefsSendDownloadStatsCheckBox.label "Skicka filhämtningsstatistik">
+<!ENTITY antBarPrefsSendHeartBeatCheckBox.label "Skicka ett dagligt hjärtslag (låter oss veta att du använder tillägget)">
+<!ENTITY antBarPrefsCloseButton.label "Stäng">
+<!ENTITY antBarPrefsChoseMode "Visningsläge:">
+<!ENTITY antBarPrefsStatusBar "Statusfältet">
+<!ENTITY antBarPrefsToolbar "Verktygsfält">
+<!ENTITY antBarPrefsToolbarCompact "Kompakt läge">
+<!ENTITY antBarPrefsGeneralOptions "Allmänt">
+<!ENTITY antBarPrefsPlayerMode "Videospelare">
+<!ENTITY antBarPrefsPlayerModeTab "Öppna videospelaren i en ny flik">
+<!ENTITY antBarPrefsPlayerModePopup "Öppna videospelaren i ett nytt fönster">
+<!-- NOTE to translators - do not translate next 1 string -->
+<!ENTITY addonBarCmd.label "Tinkle Bar">

@@ -1,0 +1,47 @@
+<!--      antbar.dtd     firefox          Created by Zak on 2008-07-03.     Copyright 2008-2016 Ant.com. All rights reserved.  -->
+<!ENTITY antFlvListPopupDownloadCurrent.label "Descargar esta película">
+<!ENTITY antFlvListPopupPlayCurrent.label "Ver en el reproductor">
+<!ENTITY antFlvListPopupCopyLink.label "Copiar ubicación de la película">
+<!ENTITY antFlvListPopupRename.label "Cambiar el nombre">
+<!ENTITY antFlvListPopupDownloadSelected.label "Descargar las películas seleccionadas">
+<!ENTITY antFlvListPopupDownloadAll.label "Descargar todas las películas">
+<!ENTITY antFlvListPopupClearList.label "Borrar lista de películas">
+<!ENTITY antFlvToolbar.label "Lista de películas">
+<!ENTITY antFlvToolBarMenuPrefButton.label "Preferencias">
+<!ENTITY antFlvToolBarMenuPrefButton.tooltiptext "Abrir ventana de preferencias de Ant">
+<!ENTITY antFlvToolBarMenuDisableButton.label "Eliminar este sitio">
+<!ENTITY antFlvToolBarMenuDisableButton.tooltiptext "Inhabilitar la captura de películas para este sitio">
+<!ENTITY antFlvToolbarClearList.tooltiptext "Borrar">
+<!ENTITY antFlvToolbarHelp.tooltiptext "Ayuda">
+<!ENTITY antFlvToolbarClose.tooltiptext "Cerrar">
+<!ENTITY antFlvHeaderOrigin.label "Origen">
+<!ENTITY antFlvHeaderUrl.label "Url">
+<!ENTITY antFlvHeaderName.label "Nombre">
+<!ENTITY antFlvBoxDisabled.description "Activar la detección de los videos de este sitio.">
+<!ENTITY antFlvBoxAddToWatchListButton.label "Habilitar">
+<!ENTITY antToolbar.toolbarname "Ant Video Downloader">
+<!ENTITY antToolBarSearchBox.value "Buscar en la Web">
+<!ENTITY antToolBarResizeSplitter.tooltiptext "Redimensionar la caja de búsqueda">
+<!ENTITY antToolBarCombinedButton.label "Buscar">
+<!ENTITY antToolBarCombinedButton.tooltiptext "Búsqueda">
+<!ENTITY antToolBarPlayerButton.tooltiptext "Ver las películas que ha descargado.">
+<!ENTITY antToolBarPlayerButton.label "Reproductor">
+<!ENTITY antToolBarMovieListButton.tooltiptext "Haga clic aquí para abrir el panel de descarga de películas.">
+<!ENTITY antToolBarMovieListButton.label "Lista de películas">
+<!ENTITY antToolBarDownloadButton.tooltiptext "Haga clic aquí para descargar películas de esta página.">
+<!ENTITY antToolBarDownloadButton.label "Descargar">
+<!ENTITY antToolBarOpenDirButton.tooltiptext "Haga clic aquí para abrir el directorio de videos.">
+<!ENTITY antToolBarOpenDirButton.label "Examinar">
+<!ENTITY antToolBarRankButton.tooltiptext "Haga clic aquí para clasificar la página.">
+<!ENTITY antToolBarRankButton.label "No clasificar">
+<!ENTITY antToolBarSupportButton.tooltiptext "Si necesita ayuda, no dude en preguntar a nuestro soporte.">
+<!ENTITY antToolBarSupportButton.label "Ayuda">
+<!ENTITY antToolBarAboutButton.tooltiptext "About Ant downloader">
+<!ENTITY antToolBarAboutButton.label "About">
+<!ENTITY notFoundTipWindow.title "No se ha detectado ningún video en esta página">
+<!ENTITY notFoundTipWindow.startPlayingVideo "Puede tener que iniciar la reproducción del video en esta página antes de intentar descargarlo.">
+<!-- next two phrases are two parts of one whole sentence -->
+<!ENTITY notFoundTipWindow.reportIt "En caso de problemas de detección, puede informarlos en">
+<!ENTITY notFoundTipWindow.feedbackPage "la página de comentarios">
+<!ENTITY notFoundTipWindow.dontDisplayAgain "No mostrar este mensaje de nuevo">
+<!ENTITY notFoundTipWindow.ieMode "You are in the Internet Explorer mode. Switch to the FireFox mode to download the video.">

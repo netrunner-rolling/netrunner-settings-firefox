@@ -1,0 +1,30 @@
+<!--       antoptions.dtd      firefox            Created by Zak on 2008-07-03.      Copyright 2008-2016 Ant.com. All rights reserved. -->
+<!-- options.xul -->
+<!-- Note to translators ... make this value bigger if your strings are cut off at the       sides in the settings screen. This will widen the screen. -->
+<!ENTITY preferences.window.size "width: 38em; height: 53em;">
+<!ENTITY antBarPrefs.title "Параметри Відео Завантажувача Ant">
+<!ENTITY antBarPrefsPane.label "Ant.com Налаштування">
+<!ENTITY antBarPrefsFlvDirLabel.value "Куди завантажити фільми">
+<!ENTITY antBarPrefsFlvDirButton.label "Вибрати">
+<!ENTITY antBarPrefsNotificationCheckBox.label "Показувати нагадування">
+<!ENTITY antBarPrefsShowNotFoundWindow.label "Відображати повідомлення, якщо відео не знайдено">
+<!ENTITY antBarPrefsSearch.label "Відображати пошукові інструменти">
+<!ENTITY antBarPrefsSecurity.title "Налаштування конфіденційності">
+<!ENTITY antBarPrefsSecurityHint.title "Данні, що збираються Ant.com не продаються та не надаються 3-м особам. Ці данні не використовуються для стеження за вами, чи для таргетінга рекламних матеріалів.">
+<!ENTITY antBarPrefsRankModeCheckBox.label "Відправляти статистику відвідування (Буде показуватися Ant рейтинг)">
+<!ENTITY antBarPrefsSendDownloadStatsCheckBox.label "Відправляти статистику закачок">
+<!ENTITY antBarPrefsSendHeartBeatCheckBox.label "Відправляти статистику використання (Ми будемо знати, як ви використовуєте наше доповнення)">
+<!ENTITY antBarPrefsCloseButton.label "Закрити">
+<!ENTITY antBarPrefsChoseMode "Форма відображення:">
+<!ENTITY antBarPrefsStatusBar "Панель статусу">
+<!ENTITY antBarPrefsToolbar "Панель інструментів">
+<!ENTITY antBarPrefsToolbarCompact "Компактна">
+<!ENTITY antBarPrefsGeneralOptions "Базові налаштування">
+<!ENTITY antBarPrefsPlayerMode "Налаштування плеєра">
+<!ENTITY antBarPrefsPlayerModeTab "Відкривати плеєр у новій вкладенці">
+<!ENTITY antBarPrefsPlayerModePopup "Відкривати плеєр у новому вікні">
+<!ENTITY antBarPrefsConverter.title "Медіа конвертер">
+<!ENTITY antBarPrefsConverter.browse "Вибрати">
+<!ENTITY antBarPrefsConverter.install "Встановити">
+<!-- NOTE to translators - do not translate next 1 string -->
+<!ENTITY addonBarCmd.label "Tinkle Bar">

@@ -1,0 +1,23 @@
+<!--       antplayer.dtd      firefox            Created by Zak on 2008-07-03.      Copyright 2008-2016 Ant.com. All rights reserved. -->
+<!ENTITY antPlayerWindow.title "Reproductor de películas de Ant.com">
+<!ENTITY antPlayerHeadSearchBox.value "Buscar en la Web">
+<!ENTITY antPlayerHeadDoSearch.tooltiptext "Buscar en la Web">
+<!ENTITY antPlayerPopupPlay.label "Reproducir">
+<!ENTITY antPlayerPopupRename.label "Cambiar el nombre">
+<!ENTITY antPlayerPopupDelete.label "Eliminar">
+<!ENTITY antPlayerHeaderOrigin.label "Origen">
+<!ENTITY antPlayerHeaderPath.label "Ruta">
+<!ENTITY antPlayerHeaderName.label "Nombre">
+<!ENTITY antPlayerHeaderFileSize.label "Size">
+<!ENTITY antPlayerHeaderDate.label "Date">
+<!ENTITY antPlayerHeaderDuration.label "Duration">
+<!ENTITY antPlayerAutoPlayNext "Reproducir automáticamente el siguiente video">
+<!ENTITY antPlayerLoopPlay "Loop playlist">
+<!ENTITY antPlayerRandomPlay "Random play">
+<!ENTITY antPlayerButtonNext "Next">
+<!ENTITY antPlayerButtonPrevious "Previous">
+<!ENTITY antPlayerButtonAddPlaylist "Create a new playlist">
+<!ENTITY antPlayerGeneralPlaylist "Uncategorized">
+<!ENTITY antPlayerAddTo.label "Move to">
+<!ENTITY antPlayerNewPlaylist.label "New playlist">
+<!ENTITY antPlayerDeleteAllVideos "Delete all the videos in this playlist">

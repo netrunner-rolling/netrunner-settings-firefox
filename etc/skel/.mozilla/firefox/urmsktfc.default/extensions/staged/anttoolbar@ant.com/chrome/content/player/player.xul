@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<!--
+    player.xul
+    firefox
+
+    Created by Zak on 2008-06-17.
+    Contributor BK
+    Copyright 2008-2016 Ant.com. All rights reserved.
+-->
+
+<!DOCTYPE window SYSTEM "chrome://antbar/locale/antplayer.dtd">
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://antbar/skin/player.css" type="text/css"?>
+
+<window id="antFlvPlayerWindow"
+        title="&antPlayerWindow.title;"
+        windowtype="Ant:Player"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        onload="AntPlayer.init();"
+        width="1000"
+        height="480"
+        persist="width height screenX screenY">
+
+    <!-- Includes -->
+    <script type="application/x-javascript"
+            src="chrome://antbar/content/namespace.js"/>
+    <script type="application/x-javascript"
+            src="chrome://antbar/content/antlib/lib.js"/>
+    <script type="application/x-javascript" src="chrome://antbar/content/antlib/array.js"/>
+    <script type="application/x-javascript" src="chrome://antbar/content/antlib/lang.js"/>
+    <script type="application/x-javascript" src="chrome://antbar/content/prefs/newprefs.js"/>
+    <script type="application/x-javascript" src="chrome://antbar/content/db/recordSet.js"/>
+    <script type="application/x-javascript" src="chrome://antbar/content/db/wrappers.js"/>
+    <script type="application/x-javascript" src="chrome://antbar/content/db/storage.js"/>
+    <script type="application/x-javascript" src="chrome://antbar/content/lib/hash.js"/>
+    <script type="application/x-javascript" src="chrome://antbar/content/player/html5helper.js"/>
+    <script type="application/x-javascript" src="chrome://antbar/content/player/tree.js"/>
+    <script type="application/x-javascript" src="chrome://antbar/content/player/player.js"/>
+    <script type="application/x-javascript" src="chrome://browser/content/nsContextMenu.js"/>
+
+    <stringbundleset id="antbarStrbundles">
+        <stringbundle id="antbarStrings" src="chrome://antbar/locale/antbar.properties"/>
+    </stringbundleset>
+
+    <hbox flex="1">
+
+        <vbox id="antPlayerSidebar" persist="width">
+            <!-- Search Box -->
+            <hbox id="search_box">
+                <vbox flex="1">
+                    <textbox id="search-text"
+                             flex="1"
+                             oninput="AntPlayer.onUpdateSearchResults(event.target);"
+                             onkeypress="AntPlayer.onSearchBoxKeyPress(event)"/>
+                </vbox>
+                <vbox id="close-search" hidden="true">
+                    <image src="chrome://antbar/skin/img/close.gif"
+                           height="18px"
+                           width="18px"
+                           onclick="AntPlayer.restoreFullList()"/>
+                </vbox>
+            </hbox>
+
+            <!-- Listing FLV in a tree -->
+            <tree flex="1"
+                  id="antFlvPlayerTree"
+                  contextmenu="antFlvPlayerPopupMenu"
+                  selType="multiple"
+                  enableColumnDrag="true">
+                <treecols id="antFlvPlayerTreeCols">
+                    <treecol id="titleCol"
+                             primary="true"
+                             label="&antPlayerHeaderName.label;"
+                             flex="4"
+                             ordinal="1"
+                             onclick="AntPlayer.onSort(event.target)"/> <!-- Video title -->
+                    <splitter class="tree-splitter" />
+                    <treecol label="&antPlayerHeaderFileSize.label;"
+                             id="sizeCol"
+                             hidden="true"
+                             width="60"
+                             onclick="AntPlayer.onSort(event.target)"/> <!-- Filesize -->
+                    <splitter class="tree-splitter" />
+                    <treecol label="&antPlayerHeaderDate.label;"
+                             id="created_atCol"
+                             width="60"
+                             onclick="AntPlayer.onSort(event.target)"/> <!-- Date -->
+                    <splitter class="tree-splitter" />
+                    <treecol label="&antPlayerHeaderOrigin.label;"
+                             id="domainCol"
+                             hidden="true"
+                             width="60"
+                             flex="1"
+                             onclick="AntPlayer.onSort(event.target)"/> <!-- Domain -->
+                </treecols>
+
+                <treechildren id="antFlvPlayerTree-ch"
+                              ondragstart="AntPlayer.dragStart(event)"
+                              ondragover="AntPlayer.dragOver(event)"
+                              ondrop="AntPlayer.dragDrop(event)"/>
+            </tree>
+
+            <!-- Player controls -->
+            <hbox id="player_controls" align="right">
+              <toolbarbutton id="continuousId" class="continuous" st_dis="continuous" st_en="continuousEnabled" oncommand="AntPlayer.switchButton(event.target)" tooltiptext="&antPlayerAutoPlayNext;"/>
+              <toolbarbutton id="loopId" class="loop" st_dis="loop" st_en="loopEnabled" oncommand="AntPlayer.switchButton(event.target)" tooltiptext="&antPlayerLoopPlay;"/>
+              <toolbarbutton id="randomId" class="random" st_dis="random" st_en="randomEnabled" oncommand="AntPlayer.switchButton(event.target)" tooltiptext="&antPlayerRandomPlay;"/>
+              <toolbarbutton class="prev" oncommand="AntPlayer.onNextClicked(true, true)" tooltiptext="&antPlayerButtonPrevious;"/>
+              <toolbarbutton class="next" oncommand="AntPlayer.onNextClicked(false, true)" tooltiptext="&antPlayerButtonNext;"/>
+            </hbox>
+        </vbox>
+
+        <splitter />
+
+        <!-- Player -->
+        <vbox id="antFlvPlayerContentBox" flex="1" tooltiptext=""><!--empty tooltip added to prevent displaying tooltip, while synthesizing moving mouse-->
+            <html:p id="antFlvPlayerTitleBar" oncontextmenu="return false;">[<html:strong>Ant.com</html:strong>] Player</html:p>
+
+        <!-- FF 6.0 beta bugfix -->
+        <!-- remove stack, when it will be fixed: -->
+        <!-- https://bugzilla.mozilla.org/show_bug.cgi?id=670955 -->
+        <hbox id="antPlayerBox" flex="1">
+            <deck id="antPlayerDeck" flex="1">
+                <stack id="antPlayerContainer" flex="1">
+                    <html:div id="ant-video-cont" style="display:none"/>
+                </stack>
+                <vbox id="ant-video-plugin-missing-box" align="center" pack="center" flex="1">
+                    <image id="ant-video-plugin-image"/>
+                    <description id="ant-video-plugin-message"/>
+                    <label id="ant-video-plugin-download" class="text-link"/>
+                </vbox>
+            </deck>
+        </hbox>
+
+        <!-- Contextual menu -->
+        <popupset>
+            <menupopup id="antFlvPlayerPopupMenu" onpopupshowing="AntPlayer.onMenuOpen();">
+                <menuitem id="antFlvPlayerPopupPlay"
+                          label="&antPlayerPopupPlay.label;"
+                          default="true"
+                          oncommand="AntPlayer.onPopupPlay(event);"/>
+                <menuitem id="antFlvPlayerPopupPlayOrigin"
+                          label=""
+                          oncommand="AntPlayer.onPopupOpenOrigin();"/>
+                <menuseparator/>
+                <menuitem id="antFlvPlayerPopupRename"
+                            label="&antPlayerPopupRename.label;"
+                            oncommand="AntPlayer.onPopupRename(event);"/>
+                <menuitem id="antFlvPlayerPopupDelete"
+                            label="&antPlayerPopupDelete.label;"
+                            oncommand="AntPlayer.onPopupDelete(event);"/>
+                                <menuitem id="antFlvPlayerCreateNew"
+                                                        label="&antPlayerButtonAddPlaylist;"
+                                                        oncommand="AntPlayer.onPopupCreateNew(event);" />
+                                <menu id="antFlvPlayerAddToPlaylist"
+                                                        label="&antPlayerAddTo.label;"
+                                                        oncommand="" >
+                                    <menupopup onpopupshowing="AntPlayer.onAddToPlaylistShowing(event);">
+                                        <menuitem id="antFlvPlayerAddToNewPlaylist"
+                                                  label="&antPlayerNewPlaylist.label;"
+                                                  default="true"
+                                                  oncommand="AntPlayer.onAddToNewPlaylist();" />
+                                    </menupopup>
+                                </menu>
+            </menupopup>
+        </popupset>
+
+        </vbox>
+    </hbox>
+
+    <html:script for="MediaPlayer2" event="PlayStateChange(NewState)" >
+        function OnDSPlayStateChangeEvt(NewState) {
+        
+            AntPlayer.wmpStateChangeCallback(NewState);
+        }
+    </html:script>
+
+</window>

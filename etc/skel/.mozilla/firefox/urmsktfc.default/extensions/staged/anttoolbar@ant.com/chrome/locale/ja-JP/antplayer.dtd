@@ -1,0 +1,23 @@
+<!--       antplayer.dtd      firefox            Created by Zak on 2008-07-03.      Copyright 2008-2016 Ant.com. All rights reserved. -->
+<!ENTITY antPlayerWindow.title "Ant.com Movie Player">
+<!ENTITY antPlayerHeadSearchBox.value "web を検索">
+<!ENTITY antPlayerHeadDoSearch.tooltiptext "web を検索">
+<!ENTITY antPlayerPopupPlay.label "再生">
+<!ENTITY antPlayerPopupRename.label "名前を変更">
+<!ENTITY antPlayerPopupDelete.label "削除">
+<!ENTITY antPlayerHeaderOrigin.label "開始位置">
+<!ENTITY antPlayerHeaderPath.label "パス">
+<!ENTITY antPlayerHeaderName.label "名前">
+<!ENTITY antPlayerHeaderFileSize.label "サイズ">
+<!ENTITY antPlayerHeaderDate.label "日時">
+<!ENTITY antPlayerHeaderDuration.label "再生時間">
+<!ENTITY antPlayerAutoPlayNext "次の動画を自動再生">
+<!ENTITY antPlayerLoopPlay "プレイリストをループ">
+<!ENTITY antPlayerRandomPlay "ランダム再生">
+<!ENTITY antPlayerButtonNext "次へ">
+<!ENTITY antPlayerButtonPrevious "前へ">
+<!ENTITY antPlayerButtonAddPlaylist "新しいプレイリストを作成">
+<!ENTITY antPlayerGeneralPlaylist "分類なし">
+<!ENTITY antPlayerAddTo.label "移動先">
+<!ENTITY antPlayerNewPlaylist.label "新規プレイリスト">
+<!ENTITY antPlayerDeleteAllVideos "このプレイリスト内のすべての動画を削除">

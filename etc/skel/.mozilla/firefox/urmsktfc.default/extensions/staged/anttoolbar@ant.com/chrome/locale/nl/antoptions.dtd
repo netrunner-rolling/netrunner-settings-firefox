@@ -1,0 +1,27 @@
+<!--       antoptions.dtd      firefox            Created by Zak on 2008-07-03.      Copyright 2008-2016 Ant.com. All rights reserved. -->
+<!-- options.xul -->
+<!-- Note to translators ... make this value bigger if your strings are cut off at the       sides in the settings screen. This will widen the screen. -->
+<!ENTITY preferences.window.size "width: 38em; height: 50em;">
+<!ENTITY antBarPrefs.title "Ant Video Download-opties">
+<!ENTITY antBarPrefsPane.label "Ant.com-voorkeuren">
+<!ENTITY antBarPrefsFlvDirLabel.value "Video’s downloaden naar:">
+<!ENTITY antBarPrefsFlvDirButton.label "Bladeren">
+<!ENTITY antBarPrefsNotificationCheckBox.label "Notificaties inschakelen">
+<!ENTITY antBarPrefsShowNotFoundWindow.label "Notificaties weergeven wanneer video niet wordt gedetecteerd">
+<!ENTITY antBarPrefsSearch.label "Zoekhulpmiddelen weergeven">
+<!ENTITY antBarPrefsSecurity.title "Privacy-opties">
+<!ENTITY antBarPrefsSecurityHint.title "Door Ant.com verzamelde gegevens worden niet verkocht of aan derden ter beschikking gesteld. De gegevens worden niet gebruikt om gericht te adverteren of u persoonlijk te volgen.">
+<!ENTITY antBarPrefsRankModeCheckBox.label "Surfstatistieken verzenden (dit schakelt AntRank in)">
+<!ENTITY antBarPrefsSendDownloadStatsCheckBox.label "Downloadstatistieken verzenden">
+<!ENTITY antBarPrefsSendHeartBeatCheckBox.label "Dagelijkse hartslag verzenden (hiermee laat de add-on ons weten dat deze nog steeds wordt gebruikt)">
+<!ENTITY antBarPrefsCloseButton.label "Sluiten">
+<!ENTITY antBarPrefsChoseMode "Weergavemodus:">
+<!ENTITY antBarPrefsStatusBar "Statusbalk">
+<!ENTITY antBarPrefsToolbar "Werkbalk">
+<!ENTITY antBarPrefsToolbarCompact "Compacte modus">
+<!ENTITY antBarPrefsGeneralOptions "Algemene opties">
+<!ENTITY antBarPrefsPlayerMode "Speleropties">
+<!ENTITY antBarPrefsPlayerModeTab "Speler in een nieuw tabblad openen">
+<!ENTITY antBarPrefsPlayerModePopup "Speler in een nieuw venster openen">
+<!-- NOTE to translators - do not translate next 1 string -->
+<!ENTITY addonBarCmd.label "Tinkle Bar">

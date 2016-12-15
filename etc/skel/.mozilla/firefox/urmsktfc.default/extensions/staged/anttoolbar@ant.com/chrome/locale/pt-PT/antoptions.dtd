@@ -1,0 +1,27 @@
+<!-- -*- coding: utf-8 -*- -->
+<!--      antoptions.dtd      firefox      Created by Nuky on 2009-11-16.      Copyright 2009-2016 Ant.com. All rights reserved. -->
+<!-- options.xul -->
+<!ENTITY preferences.window.size "width: 38em; height: 50em;">
+<!ENTITY antBarPrefs.title "Preferências da barra de ferramentas Ant">
+<!ENTITY antBarPrefsPane.label "Ant.com Preferências">
+<!ENTITY antBarPrefsFlvDirLabel.value "Pasta de destino: ">
+<!ENTITY antBarPrefsFlvDirButton.label "Selecionar">
+<!ENTITY antBarPrefsNotificationCheckBox.label "Activar notificações">
+<!ENTITY antBarPrefsShowNotFoundWindow.label "Display notifications when video is not detected">
+<!ENTITY antBarPrefsSearch.label "Display search tools">
+<!ENTITY antBarPrefsSecurity.title "Privacy options">
+<!ENTITY antBarPrefsSecurityHint.title "Data collected by Ant.com is not sold or made available to any third party. This data is not used for ad targeting nor personal tracking.">
+<!ENTITY antBarPrefsRankModeCheckBox.label "Send browsing statistics (This enables AntRank)">
+<!ENTITY antBarPrefsSendDownloadStatsCheckBox.label "Send download statistics">
+<!ENTITY antBarPrefsSendHeartBeatCheckBox.label "Send daily heartbeat (This lets us know that you'r using the add-on)">
+<!ENTITY antBarPrefsCloseButton.label "Fechar">
+<!ENTITY antBarPrefsChoseMode "Modo de visualização:">
+<!ENTITY antBarPrefsStatusBar "na barra de status">
+<!ENTITY antBarPrefsToolbar "em barra de ferramentas">
+<!ENTITY antBarPrefsToolbarCompact "Compact mode">
+<!ENTITY antBarPrefsGeneralOptions "General options">
+<!ENTITY antBarPrefsPlayerMode "Player Options">
+<!ENTITY antBarPrefsPlayerModeTab "Open the player in a new tab">
+<!ENTITY antBarPrefsPlayerModePopup "Open the player in a new window">
+<!-- NOTE to translators - do not translate next 1 string -->
+<!ENTITY addonBarCmd.label "Tinkle Bar">
