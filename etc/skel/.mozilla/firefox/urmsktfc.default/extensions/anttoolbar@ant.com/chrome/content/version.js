@@ -1,1 +1,0 @@
-const g_AVDFFVersionString = "2.4.7.47";
