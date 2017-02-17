@@ -72,7 +72,6 @@ user_pref("browser.urlbar.doubleClickSelectsAll", false);
 user_pref("browser.urlbar.formatting.enabled", false);
 user_pref("browser.urlbar.trimURLs", false);
 user_pref("browser.sessionstore.interval", 60000);
-user_pref("browser.disableResetPrompt", true);
 user_pref("datareporting.healthreport.lastDataSubmissionFailureTime", "1436655988718");
 user_pref("datareporting.healthreport.lastDataSubmissionRequestedTime", "1450190819156");
 user_pref("datareporting.healthreport.lastDataSubmissionSuccessfulTime", "1450190820005");
