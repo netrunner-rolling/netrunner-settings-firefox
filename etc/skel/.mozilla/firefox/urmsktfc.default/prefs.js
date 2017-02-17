@@ -196,7 +196,6 @@ user_pref("media.gmp-manager.buildID", "20160804093608");
 user_pref("media.gmp-manager.lastCheck", 1470647257);
 user_pref("media.gmp.storage.version.observed", 1);
 user_pref("media.youtube-ua.override", false);
-user_pref("mousewheel.system_scroll_override_on_root_content.enabled", true);
 user_pref("network.cookie.prefsMigrated", true);
 user_pref("network.predictor.cleaned-up", true);
 user_pref("pdfjs.migrationVersion", 2);
