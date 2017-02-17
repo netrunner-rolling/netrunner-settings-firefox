@@ -116,9 +116,6 @@ user_pref("downbar.style.db_progressbar", "background-color:#89AFDB;background:-
 user_pref("e10s.rollout.cohort", "disqualified-control");
 user_pref("e10s.rollout.cohortSample", "0.766137");
 user_pref("experiments.activeExperiment", false);
-user_pref("extensions.adblockplus.currentVersion", "2.7.3");
-user_pref("extensions.adblockplus.lastRuleUpdate", 1399633724);
-user_pref("extensions.adblockplus.notificationdata", "{\"shown\":[],\"lastCheck\":1470647244427,\"softExpiration\":1470735468973,\"hardExpiration\":1470820045634,\"data\":{\"notifications\":[],\"version\":\"201608080906\"},\"lastError\":0,\"downloadStatus\":\"synchronize_ok\",\"downloadCount\":10}");
 user_pref("extensions.add-to-searchbox@maltekraus.de.install-event-fired", true);
 user_pref("extensions.antrankservice.uuid", "{61C7F66A-4AF6-49CD-84E9-5F8D383ADA31}");
 user_pref("extensions.blocklist.pingCountTotal", 36);

@@ -2,17 +2,9 @@
 <RDF:RDF xmlns:NS1="http://downloadhelper.net/1.0#"
          xmlns:NC="http://home.netscape.com/NC-rdf#"
          xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <RDF:Description RDF:about="chrome://adblockplus/content/ui/filters.xul#abpFiltersWindow"
-                   screenX="37"
-                   screenY="141"
-                   width="950"
-                   height="450"
-                   sizemode="normal" />
   <RDF:Description RDF:about="chrome://browser/content/browser.xul#toolbar-menubar"
                    autohide="true"
                    currentset="menubar-items,navigator-throbber" />
-  <RDF:Description RDF:about="chrome://adblockplus/content/ui/filters.xul#col-slow"
-                   ordinal="3" />
   <RDF:Description RDF:about="chrome://fireftp/content/fireftp.xul#queuetype"
                    ordinal="15" />
   <RDF:Description RDF:about="chrome://mozapps/content/downloads/downloads.xul#downloadManager"
@@ -40,15 +32,6 @@
                    currentset="addonbar-closebutton,customizableui-special-spacer1,status-bar" />
   <RDF:Description RDF:about="chrome://browser/content/places/places.xul#placesContentDescription"
                    ordinal="13" />
-  <RDF:Description RDF:about="chrome://adblockplus/content/ui/filters.xul">
-    <NC:persist RDF:resource="chrome://adblockplus/content/ui/filters.xul#col-filter"/>
-    <NC:persist RDF:resource="chrome://adblockplus/content/ui/filters.xul#col-slow"/>
-    <NC:persist RDF:resource="chrome://adblockplus/content/ui/filters.xul#col-enabled"/>
-    <NC:persist RDF:resource="chrome://adblockplus/content/ui/filters.xul#col-hitcount"/>
-    <NC:persist RDF:resource="chrome://adblockplus/content/ui/filters.xul#col-lasthit"/>
-    <NC:persist RDF:resource="chrome://adblockplus/content/ui/filters.xul#tabs"/>
-    <NC:persist RDF:resource="chrome://adblockplus/content/ui/filters.xul#abpFiltersWindow"/>
-  </RDF:Description>
   <RDF:Description RDF:about="chrome://dwhelper/content/sites.xul#count"
                    ordinal="7" />
   <RDF:Description RDF:about="about:addons">
@@ -76,8 +59,6 @@
   <RDF:Description RDF:about="rdf:#$+K+wb1"
                    NS1:value="wmv/-ab 56k -ac 2 -acodec wmav2 -ar 44100 -b 3000kbps -f asf -vcodec wmv2"
                    NS1:label="WMV (Windows Media Player)" />
-  <RDF:Description RDF:about="chrome://adblockplus/content/ui/filters.xul#col-lasthit"
-                   ordinal="9" />
   <RDF:Description RDF:about="chrome://browser/content/places/bookmarkProperties.xul#bookmarkproperties"
                    screenX="519"
                    screenY="296"
@@ -147,8 +128,6 @@
   <RDF:Description RDF:about="chrome://dwhelper/content/preferences-new.xul">
     <NC:persist RDF:resource="chrome://dwhelper/content/preferences-new.xul#dwhelper-preferences-new"/>
   </RDF:Description>
-  <RDF:Description RDF:about="chrome://adblockplus/content/ui/filters.xul#col-enabled"
-                   ordinal="5" />
   <RDF:Description RDF:about="chrome://dwhelper/content/sites.xul#duration"
                    ordinal="3" />
   <RDF:Description RDF:about="chrome://dwhelper/content/sites.xul#date"
@@ -221,8 +200,6 @@
                    NS1:label="Mobile 3GP (Qcif)" />
   <RDF:Description RDF:about="chrome://browser/content/places/places.xul#placesContentDateAdded"
                    ordinal="15" />
-  <RDF:Description RDF:about="chrome://adblockplus/content/ui/filters.xul#col-filter"
-                   ordinal="1" />
   <RDF:Description RDF:about="about:config#lockCol"
                    ordinal="3"
                    width="100" />
@@ -256,8 +233,6 @@
   </RDF:Description>
   <RDF:Description RDF:about="about:addons#category-languages"
                    hidden="true" />
-  <RDF:Description RDF:about="chrome://adblockplus/content/ui/filters.xul#tabs"
-                   selectedIndex="0" />
   <RDF:Description RDF:about="chrome://fireftp/content/fireftp.xul#localdirname"
                    ordinal="1"
                    width="243" />
@@ -353,8 +328,6 @@
                    sizemode="normal"
                    screenX="13"
                    screenY="9" />
-  <RDF:Description RDF:about="chrome://adblockplus/content/ui/filters.xul#col-hitcount"
-                   ordinal="7" />
   <RDF:Description RDF:about="chrome://mozapps/content/extensions/extensions.xul">
     <NC:persist RDF:resource="chrome://mozapps/content/extensions/extensions.xul#search-view"/>
     <NC:persist RDF:resource="chrome://mozapps/content/extensions/extensions.xul#extensionsManager"/>
