@@ -4,8 +4,5 @@ pref("browser.uiCustomization.state", "{\"placements\":{\"PanelUI-contents\":[\"
 // Misc. settings from wiki
 pref("mousewheel.system_scroll_override_on_root_content.enabled", true);
 pref("browser.disableResetPrompt", true);
-pref("browser.startup.homepage", "https://www.google.com");
-pref("browser.startup.firstrunSkipsHomepage", true);
-pref("startup.homepage_welcome_url", "https://www.google.com");
 pref("browser.startup.homepage_override.mstone","ignore");
-pref("browser.startup.homepage","data:text/plain,browser.startup.homepage=http://google.com");
+pref("browser.startup.homepage","data:text/plain,browser.startup.homepage=https://google.com");
