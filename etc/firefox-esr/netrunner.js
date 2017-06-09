@@ -6,3 +6,4 @@ pref("mousewheel.system_scroll_override_on_root_content.enabled", true);
 pref("browser.disableResetPrompt", true);
 pref("browser.startup.homepage_override.mstone","ignore");
 pref("browser.startup.homepage","data:text/plain,browser.startup.homepage=https://google.com");
+pref("security.insecure_field_warning.contextual.enabled", false);

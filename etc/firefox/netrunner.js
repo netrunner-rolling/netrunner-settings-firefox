@@ -9,3 +9,4 @@ pref("browser.startup.firstrunSkipsHomepage", true);
 pref("startup.homepage_welcome_url", "https://www.google.com");
 pref("browser.startup.homepage_override.mstone","ignore");
 pref("browser.startup.homepage","data:text/plain,browser.startup.homepage=http://google.com");
+pref("security.insecure_field_warning.contextual.enabled", false);
