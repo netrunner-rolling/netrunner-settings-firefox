@@ -11,3 +11,4 @@ pref("browser.startup.homepage_override.mstone","ignore");
 pref("browser.startup.homepage","data:text/plain,browser.startup.homepage=http://google.com");
 pref("security.insecure_field_warning.contextual.enabled", false);
 pref("browser.showMenubar", true);
+pref("browser.showPersonalToolbar", true);
