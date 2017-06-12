@@ -12,3 +12,4 @@ pref("browser.startup.homepage","data:text/plain,browser.startup.homepage=http:/
 pref("security.insecure_field_warning.contextual.enabled", false);
 pref("browser.showMenubar", true);
 pref("browser.showPersonalToolbar", true);
+pref("browser.places.smartBookmarksVersion", -1);
