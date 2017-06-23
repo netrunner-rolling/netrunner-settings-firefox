@@ -13,3 +13,14 @@ pref("security.insecure_field_warning.contextual.enabled", false);
 pref("browser.showMenubar", true);
 pref("browser.showPersonalToolbar", true);
 pref("browser.places.smartBookmarksVersion", -1);
+
+pref("browser.tabs.closeWindowWithLastTab", false);
+pref("browser.tabs.loadInBackground", false);
+pref("browser.urlbar.clickSelectsAll", true);
+pref("browser.urlbar.doubleClickSelectsAll", false);
+pref("browser.urlbar.formatting.enabled", false);
+pref("browser.urlbar.trimURLs", false);
+pref("mousewheel.min_line_scroll_amount", 25);
+
+pref("browser.download.dir", "///~/");
+pref("browser.download.lastDir", "~");

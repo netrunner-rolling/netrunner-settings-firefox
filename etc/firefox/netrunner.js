@@ -21,3 +21,6 @@ pref("browser.urlbar.doubleClickSelectsAll", false);
 pref("browser.urlbar.formatting.enabled", false);
 pref("browser.urlbar.trimURLs", false);
 pref("mousewheel.min_line_scroll_amount", 25);
+
+pref("browser.download.dir", "///~/");
+pref("browser.download.lastDir", "~");
