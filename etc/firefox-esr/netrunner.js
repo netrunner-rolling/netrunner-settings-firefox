@@ -24,7 +24,6 @@ pref("browser.sessionstore.interval", 60000);
 
 pref("browser.startup.firstrunSkipsHomepage", true);
 pref("browser.startup.homepage","data:text/plain,browser.startup.homepage=http://google.com");
-pref("browser.startup.homepage", "https://www.google.com");
 pref("browser.startup.homepage_override.mstone","ignore");
 
 pref("browser.tabs.closeWindowWithLastTab", false);
