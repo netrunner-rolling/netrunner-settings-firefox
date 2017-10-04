@@ -34,6 +34,7 @@ pref("browser.uiCustomization.state", "{\"placements\":{\"PanelUI-contents\":[\"
 pref("browser.urlbar.clickSelectsAll", true);
 pref("browser.urlbar.doubleClickSelectsAll", false);
 pref("browser.urlbar.formatting.enabled", false);
+pref("browser.urlbar.timesBeforeHidingSuggestionsHint", 0);
 pref("browser.urlbar.trimURLs", false);
 
 pref("font.name.monospace.x-western", "Liberation Mono");
