@@ -9,6 +9,5 @@ Package: netrunner-settings-firefox
 Architecture: all
 Breaks: default-settings-firefox
 Replaces: default-settings-firefox
-Recommends: xul-ext-anttoolbar, xul-ext-ublock-origin
 Description: Default configuration for Firefox
  Default configuration for Firefox in Maui/Netrunner
