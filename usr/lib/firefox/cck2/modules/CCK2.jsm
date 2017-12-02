@@ -26,7 +26,7 @@ XPCOMUtils.defineLazyServiceGetter(this, "uuid",
 
 /* Hack to work around bug that AutoConfig is loaded in the wrong charset */
 /* Not used for Firefox 44 and above (see CCK2.init) */
-fixupUTF8 = function(str) {
+let fixupUTF8 = function(str) {
   if (!str) {
     return null;
   }
@@ -331,6 +331,7 @@ var CCK2 = {
       if (config.disablePocket) {
         Preferences.lock("browser.pocket.enabled", false);
         Preferences.lock("extensions.pocket.enabled", false);
+        Preferences.lock("browser.newtabpage.activity-stream.feeds.section.topstories", false);
       }
       if (config.disableHeartbeat) {
         Preferences.lock("browser.selfsupport.url", "");
@@ -364,6 +365,7 @@ var CCK2 = {
                                                 "sync-tabs");
         CCK2.aboutFactories.push(aboutSyncTabs);
         Preferences.lock("browser.syncPromoViewsLeftMap", JSON.stringify({bookmarks:0, passwords:0, addons:0}));
+        Preferences.lock("browser.newtabpage.activity-stream.migrationExpired", true);
       }
       var disableAboutConfigFactory = null;
       if (config.disableAboutConfig) {
@@ -427,6 +429,7 @@ var CCK2 = {
       }
       if (config.disableCrashReporter) {
         Preferences.lock("toolkit.crashreporter.enabled", false);
+        Preferences.lock("browser.crashReports.unsubmittedCheck.autoSubmit", false);
         try {
           Cc["@mozilla.org/toolkit/crash-reporter;1"].
             getService(Ci.nsICrashReporter).submitReports = false;
@@ -543,6 +546,9 @@ var CCK2 = {
             Preferences.lock(networkPrefMapping[i]);
           }
         }
+      }
+      if (config.removeSnippets) {
+        Preferences.lock("browser.newtabpage.activity-stream.disableSnippets", true);
       }
       // Fixup bad strings
       if ("helpMenu" in config) {
@@ -1270,8 +1276,8 @@ var documentObserver = {
       var win = subject.QueryInterface(Components.interfaces.nsIDOMWindow);
       if (topic == "chrome-document-global-created" ||
           (topic == "content-document-global-created" && win.document.documentURIObject.scheme == "about")) {
-        win.addEventListener("load", function(event) {
-          win.removeEventListener("load", arguments.callee, false);
+        win.addEventListener("load", function onLoad(event) {
+          win.removeEventListener("load", onLoad, false);
           var doc = event.target;
           var configs = CCK2.getConfigs();
           for (var id in configs) {
