@@ -24,7 +24,6 @@ pref("browser.showPersonalToolbar", true);
 pref("browser.sessionstore.interval", 60000);
 
 pref("browser.startup.firstrunSkipsHomepage", true);
-pref("browser.startup.homepage","data:text/plain,browser.startup.homepage=http://google.com");
 pref("browser.startup.homepage_override.mstone","ignore");
 pref("datareporting.policy.firstRunURL", ""); // Prevents from opening that up on firstRun
 
@@ -51,8 +50,6 @@ pref("mousewheel.system_scroll_override_on_root_content.enabled", true);
 pref("pref.privacy.disable_button.view_passwords", false);
 
 pref("security.insecure_field_warning.contextual.enabled", false);
-
-pref("startup.homepage_welcome_url", "https://www.google.com");
 
 pref("toolkit.scrollbox.smoothScroll", false);
 
