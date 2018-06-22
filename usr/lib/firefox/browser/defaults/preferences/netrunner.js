@@ -55,5 +55,6 @@ pref("security.insecure_field_warning.contextual.enabled", false);
 pref("startup.homepage_welcome_url", "https://www.google.com");
 
 pref("toolkit.scrollbox.smoothScroll", false);
+pref("toolkit.cosmeticAnimations.enabled", false);
 
 pref("ui.key.menuAccessKeyFocuses", false);
