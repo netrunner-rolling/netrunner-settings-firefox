@@ -22,6 +22,7 @@ pref("browser.showMenubar", true);
 pref("browser.showPersonalToolbar", true);
 
 pref("browser.sessionstore.interval", 60000);
+pref("browser.sessionstore.resume_from_crash", false);
 
 pref("browser.startup.firstrunSkipsHomepage", true);
 pref("browser.startup.homepage","data:text/plain,browser.startup.homepage=http://google.com");
