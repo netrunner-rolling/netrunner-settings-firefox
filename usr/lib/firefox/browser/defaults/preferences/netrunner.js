@@ -59,3 +59,5 @@ pref("toolkit.scrollbox.smoothScroll", false);
 pref("toolkit.cosmeticAnimations.enabled", false);
 
 pref("ui.key.menuAccessKeyFocuses", false);
+
+pref("toolkit.cosmeticAnimations.enabled", false);
