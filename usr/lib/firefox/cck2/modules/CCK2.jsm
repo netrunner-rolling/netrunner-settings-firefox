@@ -215,29 +215,16 @@ var CCK2 = {
           } else if (config.preferences[i].clear) {
             Preferences.reset(i);
           } else {
-            if (Preferences.defaults.has(i) && Preferences.defaults.get(i)) {
-              try {
-                // Doesn't work due to bug 1181357
-                // Services.prefs.getComplexValue(i, Ci.nsIPrefLocalizedString).data;
-                if (
-                    i == "browser.startup.homepage" ||
-                    i == "gecko.handlerService.defaultHandlersVersion" ||
-                    i == "browser.menu.showCharacterEncoding" ||
-                    i == "intl.accept_languages" ||
-                    i.indexOf("browser.search.defaultenginename") == 0 ||
-                    i.indexOf("browser.search.order") == 0 ||
-                    i.indexOf("browser.contentHandlers.types") == 0 ||
-                    i.indexOf("gecko.handlerService.schemes") == 0
-                   )
-                {
-                  // If it's a complex preference, we need to set it differently
-                  Preferences.defaults.set(i, "data:text/plain," + i + "=" + config.preferences[i].value);
-                } else {
-                  throw("Not a complex pref");                 
-                }
-              } catch (ex) {
-                Preferences.defaults.set(i, config.preferences[i].value);
-              }
+            if (i == "browser.startup.homepage" ||
+                i == "gecko.handlerService.defaultHandlersVersion" ||
+                i == "browser.menu.showCharacterEncoding" ||
+                i == "intl.accept_languages" ||
+                i.indexOf("browser.search.defaultenginename") == 0 ||
+                i.indexOf("browser.search.order") == 0 ||
+                i.indexOf("browser.contentHandlers.types") == 0 ||
+                i.indexOf("gecko.handlerService.schemes") == 0) {
+              // If it's a complex preference, we need to set it differently
+              Preferences.defaults.set(i, "data:text/plain," + i + "=" + config.preferences[i].value);
             } else {
               Preferences.defaults.set(i, config.preferences[i].value);
             }
@@ -707,13 +694,16 @@ var CCK2 = {
 
           // If we detect an old CCK Wizard, remove it's bookmarks
           var bookmarksToRemove = [];
-          var oldCCKVersion = Preferences.get("extensions." + config.extension.id + ".version", null);
-          if (oldCCKVersion) {
-            Preferences.reset("extensions." + config.extension.id + ".version");
-            bookmarksToRemove = bookmarksToRemove.concat(annos.getItemsWithAnnotation(config.extension.id + "/" + oldCCKVersion, {}));
+          if ("extension" in config) {
+            var oldCCKVersion = Preferences.get("extensions." + config.extension.id + ".version", null);
+            if (oldCCKVersion) {
+              Preferences.reset("extensions." + config.extension.id + ".version");
+              bookmarksToRemove = bookmarksToRemove.concat(annos.getItemsWithAnnotation(config.extension.id + "/" + oldCCKVersion, {}));
+            }
           }
           if (config.installedVersion != config.version) {
             bookmarksToRemove = bookmarksToRemove.concat(annos.getItemsWithAnnotation(config.id + "/" + config.installedVersion, {}));
+            bookmarksToRemove = bookmarksToRemove.concat(annos.getItemsWithAnnotation(config.installedVersion + "/" + config.installedVersion, {}));
           }
           // Just in case, remove bookmarks for this version too
           bookmarksToRemove = bookmarksToRemove.concat(annos.getItemsWithAnnotation(config.id + "/" + config.version, {}));
@@ -721,13 +711,15 @@ var CCK2 = {
             let bmFolders = [];
             for (var i = 0; i < bookmarksToRemove.length; i++) {
               try {
-                var itemType = bmsvc.getItemType(oldBookmarks[i]);
+                var itemType = bmsvc.getItemType(bookmarksToRemove[i]);
                 if (itemType == bmsvc.TYPE_FOLDER) {
-                  bmFolders.push(oldBookmarks[i]);
+                  bmFolders.push(bookmarksToRemove[i]);
                 } else {
-                  bmsvc.removeItem(oldBookmarks[i]);
+                  bmsvc.removeItem(bookmarksToRemove[i]);
                 }
-              } catch (ex) {}
+              } catch (e) {
+                Components.utils.reportError(e);
+              }
             }
             if (bmFolders.length > 0) {
               // Only remove folders if they are empty
@@ -1040,7 +1032,7 @@ async function removeOldBookmarks(oldBookmarks, oldVersion) {
 }
 
 function loadModules(config) {
-  let globalMM = Cc["@mozilla.org/globalmessagemanager;1"].getService(Ci.nsIMessageListenerManager);
+  let globalMM = Cc["@mozilla.org/globalmessagemanager;1"].getService();
   globalMM.addMessageListener("cck2:get-configs", function(message) {
     return CCK2.configs;
   });
@@ -1113,7 +1105,7 @@ function addBookmarksSync(bookmarks, destination, annotation, removeDuplicateBoo
     if (bookmarks[i].folder) {
       var newFolderId = bmsvc.createFolder(destination, fixupUTF8(bookmarks[i].name), bmsvc.DEFAULT_INDEX);
       annos.setItemAnnotation(newFolderId, annotation, "true", 0, annos.EXPIRE_NEVER);
-      addBookmarks(bookmarks[i].folder, newFolderId, annotation, removeDuplicateBookmarkNames);
+      addBookmarksSync(bookmarks[i].folder, newFolderId, annotation, removeDuplicateBookmarkNames);
     } else if (bookmarks[i].type == "separator") {
       var separatorId = bmsvc.insertSeparator(destination, bmsvc.DEFAULT_INDEX);
       annos.setItemAnnotation(separatorId, annotation, "true", 0, annos.EXPIRE_NEVER);
@@ -1214,11 +1206,15 @@ async function addBookmarks(bookmarks, parentGuid, annotation, removeDuplicateBo
           await PlacesUtils.bookmarks.remove(bookmark);
         }
         if (removeDuplicateBookmarkNames) {
-          await PlacesUtils.bookmarks.fetch({parentGuid}, b => bookmarksArray.push(b));
-          for (var k=bookmarksArray.length; k > 0; k--) {
-            if (bookmarks[i].title == title) {
-              await PlacesUtils.bookmarks.remove(bookmarksArray[i]);
+          try {
+            await PlacesUtils.bookmarks.fetch({parentGuid}, b => bookmarksArray.push(b));
+            for (var k=bookmarksArray.length; k > 0; k--) {
+              if (bookmarks[i].title == title) {
+                await PlacesUtils.bookmarks.remove(bookmarksArray[i]);
+              }
             }
+          } catch(e) {
+            // Bad index errors in some cases
           }
         }
         let guid = generateGuidWithPrefix(BOOKMARK_GUID_PREFIX);
