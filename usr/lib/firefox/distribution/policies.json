@@ -1,0 +1,34 @@
+{
+  "policies": {
+    "Bookmarks": [
+      {
+        "Favicon": "https://www.netrunner.com/favicon.ico",
+        "Placement": "toolbar",
+        "Title": "Netrunner",
+        "URL": "https://www.netrunner.com"
+      },
+      {
+        "Favicon": "https://forums.netrunner.com/favicon.ico",
+        "Placement": "toolbar",
+        "Title": "Netrunner Forums",
+        "URL": "https://forums.netrunner.com"
+      }
+    ],
+    "DisableProfileRefresh": true,
+    "DisplayBookmarksToolbar": true,
+    "DisplayMenuBar": true,
+    "Homepage": {
+      "URL": "https://www.google.com"
+    },
+    "Extensions": {
+      "Install": [
+        "https://addons.mozilla.org/firefox/downloads/file/1056733/ublock_origin-1.16.20-an+fx.xpi?src=dp-btn-primary",
+        "https://addons.mozilla.org/firefox/downloads/file/1017409/plasma_integration-1.2-an+fx-linux.xpi?src=recommended",
+        "https://addons.mozilla.org/firefox/downloads/file/973624/video_downloader_pro-1.3.9-an+fx.xpi?src=dp-btn-primary"
+      ]
+    },
+    "NoDefaultBookmarks": true,
+    "OverrideFirstRunPage": "",
+    "OverridePostUpdatePage": ""
+  }
+}
