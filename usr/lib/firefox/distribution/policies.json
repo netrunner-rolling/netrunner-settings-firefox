@@ -22,9 +22,9 @@
     },
     "Extensions": {
       "Install": [
-        "https://addons.mozilla.org/firefox/downloads/file/1056733/ublock_origin-1.16.20-an+fx.xpi?src=dp-btn-primary",
-        "https://addons.mozilla.org/firefox/downloads/file/1017409/plasma_integration-1.2-an+fx-linux.xpi?src=recommended",
-        "https://addons.mozilla.org/firefox/downloads/file/973624/video_downloader_pro-1.3.9-an+fx.xpi?src=dp-btn-primary"
+        "//usr/lib/firefox/distribution/plasma_integration-1.2-an+fx-linux.xpi",
+        "//usr/lib/firefox/distribution/ublock_origin-1.16.20-an+fx.xpi",
+        "//usr/lib/firefox/distribution/video_downloader_pro-1.3.9-an+fx.xpi"
       ],
       "Uninstall": [
         "YoutubeDownloader@PeterOlayev.com"
