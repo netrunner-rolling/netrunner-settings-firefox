@@ -1,1 +1,0 @@
-{"mpris":{"enabled":true},"mprisMediaSessions":{"enabled":false},"kdeconnect":{"enabled":true},"downloads":{"enabled":true},"tabsrunner":{"enabled":true},"breezeScrollBars":{"enabled":false}}
