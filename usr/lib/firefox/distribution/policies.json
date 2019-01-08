@@ -22,8 +22,8 @@
     },
     "Extensions": {
       "Install": [
-        "//usr/lib/firefox/distribution/plasma_integration-1.2-an+fx-linux.xpi",
-        "//usr/lib/firefox/distribution/ublock_origin-1.16.20-an+fx.xpi"
+        "//usr/lib/firefox/distribution/plasma_integration-1.4-fx-linux.xpi",
+        "//usr/lib/firefox/distribution/ublock_origin-1.17.4-an+fx.xpi"
       ],
       "Uninstall": [
         "YoutubeDownloader@PeterOlayev.com"
