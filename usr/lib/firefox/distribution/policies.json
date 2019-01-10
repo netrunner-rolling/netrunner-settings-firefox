@@ -12,6 +12,12 @@
         "Placement": "toolbar",
         "Title": "Netrunner Forums",
         "URL": "https://forums.netrunner.com"
+      },
+      {
+        "Favicon": "https://store.kde.org//favicon.ico",
+        "Placement": "toolbar",
+        "Title": "KDE Store",
+        "URL": "https://store.kde.org"
       }
     ],
     "DisableProfileRefresh": true,
