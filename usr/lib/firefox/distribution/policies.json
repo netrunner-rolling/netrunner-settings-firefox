@@ -1,25 +1,5 @@
 {
   "policies": {
-    "Bookmarks": [
-      {
-        "Favicon": "https://www.netrunner.com/favicon.ico",
-        "Placement": "toolbar",
-        "Title": "Netrunner",
-        "URL": "https://www.netrunner.com"
-      },
-      {
-        "Favicon": "https://forums.netrunner.com/favicon.ico",
-        "Placement": "toolbar",
-        "Title": "Netrunner Forums",
-        "URL": "https://forums.netrunner.com"
-      },
-      {
-        "Favicon": "https://store.kde.org//favicon.ico",
-        "Placement": "toolbar",
-        "Title": "KDE Store",
-        "URL": "https://store.kde.org"
-      }
-    ],
     "DisableProfileRefresh": true,
     "DisplayBookmarksToolbar": true,
     "DisplayMenuBar": true,
@@ -28,7 +8,7 @@
     },
     "Extensions": {
       "Install": [
-        "//usr/lib/firefox/distribution/webex/plasma_integration-1.4-fx-linux.xpi"
+        "//usr/lib/firefox/distribution/webex/plasma_integration-1.4-fx.xpi"
       ],
       "Uninstall": [
         "YoutubeDownloader@PeterOlayev.com"
