@@ -8,7 +8,7 @@
     },
     "Extensions": {
       "Install": [
-        "//usr/lib/firefox/distribution/webex/plasma_integration-1.4-fx.xpi"
+        "//usr/lib/firefox/distribution/webex/plasma-browser-integration@kde.org.xpi"
       ],
       "Uninstall": [
         "YoutubeDownloader@PeterOlayev.com"
