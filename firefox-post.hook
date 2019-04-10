@@ -8,3 +8,4 @@ Target = firefox
 Description = Copy Firefox Distribution Settings
 When = PostTransaction
 Exec = /usr/bin/cp -f /usr/share/default-settings/netrunner-firefox.ini /usr/lib/firefox/distribution/distribution.ini
+Exec = /usr/bin/cp -f /usr/share/default-settings/firefox.desktop /usr/share/applications/firefox.desktop

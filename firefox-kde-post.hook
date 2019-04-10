@@ -7,4 +7,5 @@ Target = firefox-kde-opensuse
 [Action]
 Description = Copy Firefox Distribution Settings
 When = PostTransaction
-Exec = /usr/bin/cp -f /usr/share/default-settings/netrunner-firefox-kde.ini /usr/lib/firefox/distribution/distribution.ini 
+Exec = /usr/bin/cp -f /usr/share/default-settings/netrunner-firefox-kde.ini /usr/lib/firefox/distribution/distribution.ini
+Exec = /usr/bin/cp -f /usr/share/default-settings/firefox.desktop /usr/share/applications/firefox.desktop
